@@ -9,6 +9,13 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
+         <!-- id  รหัสนิสิต-->
+         <div>
+            <x-input-label for="id" :value="__('Id')" />
+            <x-text-input id="id" class="block mt-1 w-full" type="text" name="id" :value="old('id')" required autofocus autocomplete="id" />
+            <x-input-error :messages="$errors->get('id')" class="mt-2" />
+        </div>
+
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
@@ -37,6 +44,33 @@
                             name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+         <!-- social contact-->
+        <div>
+            <x-input-label for="social_contact" :value="__('Social Contact')" />
+            <x-text-input id="social_contact" class="block mt-1 w-full" type="text" name="social_contact" :value="old('social_contact')" required autofocus autocomplete="social_contact" />
+            <x-input-error :messages="$errors->get('social_contact')" class="mt-2" />
+        </div>
+
+          <!-- Faculty-->
+        <div>
+            <x-input-label for="faculty" :value="__('Faculty')" />
+            <x-text-input id="facutly" class="block mt-1 w-full" type="text" name="facutly" :value="old('facutly')" required autofocus autocomplete="facutly" />
+            <x-input-error :messages="$errors->get('facutly')" class="mt-2" />
+        </div>
+
+           <!-- college year-->
+        <div>
+            <x-input-label for="college_year" :value="__('College Year')" />
+            <select id="college_year" class="block mt-1 w-full" type="text" name="college_year" :value="old('college_year')" required autofocus autocomplete="college_year">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            </select>
+           <!-- <x-text-input id="college_year" class="block mt-1 w-full" type="text" name="college_year" :value="old('college_year')" required autofocus autocomplete="college_year" /> -->
+            <x-input-error :messages="$errors->get('college_year')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">
