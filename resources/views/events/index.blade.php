@@ -12,12 +12,12 @@
                 Let's see all events happening in the university
             </p>
         </div>
-        <button class="py-2.5 px-6 bg-white text-gray-800 rounded-3xl inline-flex gap-x-2 content-center shadow-md">
+        <a href="{{ route('users.create-event') }}" class="py-2.5 px-6 bg-white text-gray-800 rounded-3xl inline-flex gap-x-2 content-center shadow-md">
             <!-- <svg class="w-[20px] h-[20px] text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
                 </svg> -->
             Create Event
-        </button>
+        </a>
     </div>
 
     <!-- Event Cards -->

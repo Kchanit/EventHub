@@ -17,13 +17,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [EventController::class, 'index'])
+    ->name('events.index');
 
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
+Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
+    ->name('users.create-event');
+Route::post('/events/create', [EventController::class, 'store']);
 
+Route::get('/myevents', [MyEventController::class, 'index'])
+    ->name('myevents.index');
+
+Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
+    ->name('users.create-event');
+
+Route::post('/events/create', [EventController::class, 'store']);
 Route::get('/myevents', [MyEventController::class, 'index'])
     ->name('myevents.index');
 

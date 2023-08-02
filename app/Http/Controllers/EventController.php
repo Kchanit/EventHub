@@ -10,4 +10,8 @@ class EventController extends Controller
     {
         return view('events.index');
     }
+
+    public function store()
+    {
+    }
 }
