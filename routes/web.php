@@ -26,19 +26,13 @@ Route::get('/', [EventController::class, 'index'])
 
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
-Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
-    ->name('users.create-event');
-Route::post('/events/create', [EventController::class, 'store']);
-
-Route::get('/myevents', [MyEventController::class, 'index'])
-    ->name('myevents.index');
-
+    
 Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
     ->name('users.create-event');
 
-Route::post('/events/create', [EventController::class, 'store']);
 Route::get('/myevents', [MyEventController::class, 'index'])
     ->name('myevents.index');
+Route::post('/events/create', [EventController::class, 'store']);
 
 Route::get('/attended-events', [AttendedEventController::class, 'index'])
     ->name('attended-events.index');
@@ -54,4 +48,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

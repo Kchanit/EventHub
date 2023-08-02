@@ -2,23 +2,21 @@
 
 @section('content')
 <!-- Card Section -->
-<div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-    <h1 class="text-2xl">
-        Create your event
-    </h1>
+<div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:pt-1 pb-14 mx-auto">
     <form>
         @csrf
-        
         <!-- Card -->
         <div class="bg-white rounded-xl shadow dark:bg-slate-900">
 
-            <div class="pt-0 p-4 sm:pt-0 sm:p-7">
+            <div class="p-4 sm:pt-0 sm:p-7">
                 <!-- Grid -->
                 <div class="space-y-4 sm:space-y-6">
 
-
+                    <h1 class="text-2xl font-bold text-center pt-10">
+                        Create your event
+                    </h1>
                     <div class="space-y-2">
-                        <label for="af-submit-app-project-name" class="inline-block text-sm font-medium text-gray-800 mt-5 dark:text-gray-200">
+                        <label for="af-submit-app-project-name" class="inline-block text-sm font-medium text-gray-800 mt-4 dark:text-gray-200">
                             Event title
                         </label>
 
