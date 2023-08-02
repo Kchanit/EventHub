@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AttendedEventController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\MyEventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,12 @@ Route::get('/', function () {
 
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
+
+Route::get('/myevents', [MyEventController::class, 'index'])
+    ->name('myevents.index');
+
+Route::get('/attended-events', [AttendedEventController::class, 'index'])
+    ->name('attended-events.index');
 
 
 // Route::get('/dashboard', function () {
