@@ -57,4 +57,9 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function createEvent()
+    {
+        return view('users.create-event');
+    }
 }
