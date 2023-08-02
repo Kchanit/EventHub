@@ -43,7 +43,7 @@
             <div class="mt-4">
                 <x-input-label for="password" :value="__('Password')" />
 
-                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-text-input id="password" class="block mt-1 w-full text-sm font-medium text-gray-800  dark:text-gray-200" type="password" name="password" required autocomplete="new-password" />
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
@@ -52,7 +52,7 @@
             <div class="mt-4">
                 <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-                <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-text-input id="password_confirmation" class="block mt-1 w-full text-sm font-medium text-gray-800  dark:text-gray-200" type="password" name="password_confirmation" required autocomplete="new-password" />
 
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
@@ -68,7 +68,7 @@
             <div class="mt-4">
                 <x-input-label for="faculty" :value="__('Faculty')" />
                 <x-input-error :messages="$errors->get('faculty')" class="mt-2" />
-                <select id="faculty" class="block mt-1 w-full border-gray-200 shadow-sm rounded-lg" type="text" name="faculty" :value="old('faculty')" required autofocus autocomplete="faculty">
+                <select id="faculty" class="block mt-1 w-full text-sm font-medium text-gray-800 dark:text-gray-200 border-gray-200 shadow-sm rounded-lg" type="text" name="faculty" :value="old('faculty')" required autofocus autocomplete="faculty">
                     <option selected>Select your faculty</option>
                     <option>Faculty of Agriculture</option>
                     <option> Agro-Industry </option>
@@ -92,7 +92,7 @@
             <!-- college year-->
             <div class="mt-4">
                 <x-input-label for="college_year" :value="__('College Year')" />
-                <select id="college_year" class="block mt-1 w-full border-gray-200 shadow-sm rounded-lg" type="text" name="college_year" :value="old('college_year')" required autofocus autocomplete="college_year">
+                <select id="college_year" class="block mt-1 w-full text-sm font-medium text-gray-800 dark:text-gray-200 border-gray-200 shadow-sm rounded-lg" type="text" name="college_year" :value="old('college_year')" required autofocus autocomplete="college_year">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
