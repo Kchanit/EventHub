@@ -7,6 +7,8 @@
         Create your event
     </h1>
     <form>
+        @csrf
+        
         <!-- Card -->
         <div class="bg-white rounded-xl shadow dark:bg-slate-900">
 
