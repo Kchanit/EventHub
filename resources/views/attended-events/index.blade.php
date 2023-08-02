@@ -22,7 +22,7 @@
                 class="round-xl grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
                 <template x-for="post in posts">
                     <!-- Card Item -->
-                    <div class=" rounded-xl shadow-lg shadow-gray-200 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-300 hover:-translate-y-1"
+                    <div class=" rounded-xl shadow-lg shadow-gray-200 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1"
                         x-for="(post, index) in posts">
                         <!-- Clickable Area -->
                         <a _href="link" class="cursor-pointer ">
