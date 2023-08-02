@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\InfoController;
+use App\Http\Controllers\EditInfoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +24,15 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/events', [EventController::class, 'index'])
+    ->name('events.index');
+
+Route::get('/info', [InfoController::class, 'index'])
+    ->name('info.index');
+
+Route::get('/info/editInfo', [EditInfoController::class, 'index'])
+    ->name('editInfo.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
