@@ -75,10 +75,8 @@
 
     <!-- Event Cards -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        @foreach ($events as $event)
         <!-- Grid -->
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
             <!-- Card -->
             <div class=" rounded-3xl overflow-hidden shadow-lg shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
                 <!-- Clickable Area -->
@@ -258,6 +256,5 @@
         <!-- End Grid -->
     </div>
     <!-- End Card Blog -->
-
 </div>
 @endsection
