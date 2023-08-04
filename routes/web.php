@@ -33,7 +33,6 @@ Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
 Route::get('/myevents', [MyEventController::class, 'index'])
     ->name('myevents.index');
 Route::post('/events/create', [EventController::class, 'store']);
-
 Route::get('/attended-events', [AttendedEventController::class, 'index'])
     ->name('attended-events.index');
 

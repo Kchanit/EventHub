@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,5 +63,14 @@ class ProfileController extends Controller
     public function createEvent()
     {
         return view('users.create-event');
+    }
+
+    public function storeEvent(Request $request, User $user)
+    {
+        $event = new Event();
+        $event->title = $request->get('title');
+
+        $user->events()->save($event);
+        return redirect()->route('events.index');
     }
 }
