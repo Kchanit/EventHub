@@ -6,4 +6,5 @@ class InfoController extends Controller {
     public function index() {
         return view('info.index');
     }
+
 }
