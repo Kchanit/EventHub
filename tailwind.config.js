@@ -17,6 +17,7 @@ export default {
             colors: {
                 tgray: "#EDEDED",
                 tblue: "#3656FF",
+                twhite: "#F5F5FA",
             },
         },
     },

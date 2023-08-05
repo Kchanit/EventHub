@@ -40,6 +40,17 @@
                     </div>
 
                     <div class="space-y-2">
+                        <div>
+                            Select Date
+                        </div>
+
+                        <input id="date_start" name="date_start" class="" placeholder="Select date start">
+                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                        to
+                        <input id="date_end" name="date_end" class="" placeholder="Select date end">
+                    </div>
+
+                    <div class="space-y-2">
                         <label for="af-submit-project-participants" class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
                             Participants
                         </label>

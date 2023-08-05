@@ -26,6 +26,8 @@ Route::get('/', [EventController::class, 'index'])
 
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
+Route::get('/events/detail', [EventController::class, 'show'])
+    ->name('events.show');
 
 Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
     ->name('users.create-event');

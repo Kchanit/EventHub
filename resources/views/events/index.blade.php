@@ -20,7 +20,7 @@
                     <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                     </svg>
-                    Add product
+                    Create Event
                 </a>
             </button>
             <div class="flex items-center w-full space-x-3 md:w-auto">
@@ -74,187 +74,183 @@
     </div>
 
     <!-- Event Cards -->
-    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div class="max-w-[64rem] sm:px-6 lg:px-1 lg:py-12 mx-auto">
         <!-- Grid -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Card -->
             <div class=" rounded-3xl overflow-hidden shadow-lg shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
                 <!-- Clickable Area -->
-                <a _href="#" class="cursor-pointer">
+                <a href="{{ route('events.show') }}" class="cursor-pointer">
                     <figure class="group relative">
                         <!-- Image -->
-                        <img class="bg-gray-300  h-72 w-full object-cover z-0" />
-                        <div class="p-4">
+                        <img class="bg-gray-300  h-full w-full object-cover z-0" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
+                        <div class="px-4 py-2">
                             <!-- Date -->
-                            <span class="block mb-1 text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
+                            <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
                                 20-21 July
                             </span>
                             <!-- Title -->
-                            <p class="text-lg mb-1 font-bold leading-relaxed text-gray-800 dark:text-gray-300">
+                            <p class="text-lg font-bold leading-relaxed text-gray-800 dark:text-gray-300">
                                 Freshy Night
                             </p>
                             <p class="text-gray-500">
-                                Something or somewhere about this event.
+                                Bangkok
                             </p>
                         </div>
                     </figure>
                 </a>
             </div>
             <!-- End Card -->
-
             <!-- Card -->
             <div class=" rounded-3xl overflow-hidden shadow-lg shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
                 <!-- Clickable Area -->
-                <a _href="#" class="cursor-pointer">
+                <a href="{{ route('events.show') }}" class="cursor-pointer">
                     <figure class="group relative">
                         <!-- Image -->
-                        <img class="bg-gray-300  h-72 w-full object-cover z-0" />
-                        <div class="p-4">
+                        <img class="bg-gray-300  h-full w-full object-cover z-0" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
+                        <div class="px-4 py-2">
                             <!-- Date -->
-                            <span class="block mb-1 text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
+                            <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
                                 20-21 July
                             </span>
                             <!-- Title -->
-                            <p class="text-lg mb-1 font-bold leading-relaxed text-gray-800 dark:text-gray-300">
+                            <p class="text-lg font-bold leading-relaxed text-gray-800 dark:text-gray-300">
                                 Freshy Night
                             </p>
                             <p class="text-gray-500">
-                                Something or somewhere about this event.
+                                Bangkok
                             </p>
                         </div>
                     </figure>
                 </a>
             </div>
             <!-- End Card -->
-
             <!-- Card -->
             <div class=" rounded-3xl overflow-hidden shadow-lg shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
                 <!-- Clickable Area -->
-                <a _href="#" class="cursor-pointer">
+                <a href="{{ route('events.show') }}" class="cursor-pointer">
                     <figure class="group relative">
                         <!-- Image -->
-                        <img class="bg-gray-300  h-72 w-full object-cover z-0" />
-                        <div class="p-4">
+                        <img class="bg-gray-300  h-full w-full object-cover z-0" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
+                        <div class="px-4 py-2">
                             <!-- Date -->
-                            <span class="block mb-1 text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
+                            <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
                                 20-21 July
                             </span>
                             <!-- Title -->
-                            <p class="text-lg mb-1 font-bold leading-relaxed text-gray-800 dark:text-gray-300">
+                            <p class="text-lg font-bold leading-relaxed text-gray-800 dark:text-gray-300">
                                 Freshy Night
                             </p>
                             <p class="text-gray-500">
-                                Something or somewhere about this event.
+                                Bangkok
                             </p>
                         </div>
                     </figure>
                 </a>
             </div>
             <!-- End Card -->
-
             <!-- Card -->
             <div class=" rounded-3xl overflow-hidden shadow-lg shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
                 <!-- Clickable Area -->
-                <a _href="#" class="cursor-pointer">
+                <a href="{{ route('events.show') }}" class="cursor-pointer">
                     <figure class="group relative">
                         <!-- Image -->
-                        <img class="bg-gray-300  h-72 w-full object-cover z-0" />
-                        <div class="p-4">
+                        <img class="bg-gray-300  h-full w-full object-cover z-0" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
+                        <div class="px-4 py-2">
                             <!-- Date -->
-                            <span class="block mb-1 text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
+                            <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
                                 20-21 July
                             </span>
                             <!-- Title -->
-                            <p class="text-lg mb-1 font-bold leading-relaxed text-gray-800 dark:text-gray-300">
+                            <p class="text-lg font-bold leading-relaxed text-gray-800 dark:text-gray-300">
                                 Freshy Night
                             </p>
                             <p class="text-gray-500">
-                                Something or somewhere about this event.
+                                Bangkok
                             </p>
                         </div>
                     </figure>
                 </a>
             </div>
             <!-- End Card -->
-
-            <!-- Card -->
-            <div class=" rounded-3xl overflow-hidden shadow-lg shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
-                <!-- Clickable Area -->
-                <a _href="#" class="cursor-pointer">
-                    <figure class="group relative">
-                        <!-- Image -->
-                        <img class="bg-gray-300  h-72 w-full object-cover z-0" />
-                        <div class="p-4">
-                            <!-- Date -->
-                            <span class="block mb-1 text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
-                                20-21 July
-                            </span>
-                            <!-- Title -->
-                            <p class="text-lg mb-1 font-bold leading-relaxed text-gray-800 dark:text-gray-300">
-                                Freshy Night
-                            </p>
-                            <p class="text-gray-500">
-                                Something or somewhere about this event.
-                            </p>
-                        </div>
-                    </figure>
-                </a>
-            </div>
-            <!-- End Card -->
-
-            <!-- Card -->
-            <div class=" rounded-3xl overflow-hidden shadow-lg shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
-                <!-- Clickable Area -->
-                <a _href="#" class="cursor-pointer">
-                    <figure class="group relative">
-                        <!-- Image -->
-                        <img class="bg-gray-300  h-72 w-full object-cover z-0" />
-                        <div class="p-4">
-                            <!-- Date -->
-                            <span class="block mb-1 text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
-                                20-21 July
-                            </span>
-                            <!-- Title -->
-                            <p class="text-lg mb-1 font-bold leading-relaxed text-gray-800 dark:text-gray-300">
-                                Freshy Night
-                            </p>
-                            <p class="text-gray-500">
-                                Something or somewhere about this event.
-                            </p>
-                        </div>
-                    </figure>
-                </a>
-            </div>
-            <!-- End Card -->
-
-            <!-- Card -->
-            <div class=" rounded-3xl overflow-hidden shadow-lg shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
-                <!-- Clickable Area -->
-                <a _href="#" class="cursor-pointer">
-                    <figure class="group relative">
-                        <!-- Image -->
-                        <img class="bg-gray-300  h-72 w-full object-cover z-0" />
-                        <div class="p-4">
-                            <!-- Date -->
-                            <span class="block mb-1 text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
-                                20-21 July
-                            </span>
-                            <!-- Title -->
-                            <p class="text-lg mb-1 font-bold leading-relaxed text-gray-800 dark:text-gray-300">
-                                Freshy Night
-                            </p>
-                            <p class="text-gray-500">
-                                Something or somewhere about this event.
-                            </p>
-                        </div>
-                    </figure>
-                </a>
-            </div>
-            <!-- End Card -->
+            
 
         </div>
         <!-- End Grid -->
     </div>
     <!-- End Card Blog -->
+    <hr>
+
+
+    <!-- Event Cards -->
+    <div class="max-w-[50rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <!-- Grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Card -->
+            <div class="flex ">
+                <a href="{{ route('events.show') }}" class="cursor-pointer">
+                    <img class="bg-gray-300  w-full rounded-md  object-cover z-0" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
+                    <div class="pt-2 px-2">
+                        <!-- Date -->
+                        <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
+                            20-21 July
+                        </span>
+                        <!-- Title -->
+                        <p class="text-lg  font-bold leading-relaxed text-gray-800 dark:text-gray-300">
+                            Freshy Night
+                        </p>
+                        <p class="text-gray-500">
+                            Bangkok
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <!-- End Card -->
+            <!-- Card -->
+            <div class="flex ">
+                <a href="{{ route('events.show') }}" class="cursor-pointer">
+                    <img class="bg-gray-300  w-full rounded-md  object-cover z-0" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
+                    <div class="pt-2 px-2">
+                        <!-- Date -->
+                        <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
+                            20-21 July
+                        </span>
+                        <!-- Title -->
+                        <p class="text-lg  font-bold leading-relaxed text-gray-800 dark:text-gray-300">
+                            Freshy Night
+                        </p>
+                        <p class="text-gray-500">
+                            Bangkok
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <!-- End Card -->
+            <!-- Card -->
+            <div class="flex ">
+                <a href="{{ route('events.show') }}" class="cursor-pointer">
+                    <img class="bg-gray-300  w-full  rounded-md object-cover z-0" src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
+                    <div class="pt-2 px-2">
+                        <!-- Date -->
+                        <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
+                            20-21 July
+                        </span>
+                        <!-- Title -->
+                        <p class="text-lg  font-bold leading-relaxed text-gray-800 dark:text-gray-300">
+                            Freshy Night
+                        </p>
+                        <p class="text-gray-500">
+                            Bangkok
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <!-- End Card -->
+        </div>
+        <!-- End Grid -->
+    </div>
+    <!-- End Card Blog -->
+
 </div>
 @endsection

@@ -12,6 +12,11 @@ class EventController extends Controller
         return view('events.index',);
     }
 
+    public function show()
+    {
+        return view('events.show');
+    }
+
     public function store()
     {
     }
