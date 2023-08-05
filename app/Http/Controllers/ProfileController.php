@@ -62,7 +62,7 @@ class ProfileController extends Controller
 
     public function createEvent()
     {
-        return view('users.create-event');
+        return view('profile.create-event');
     }
 
     public function storeEvent(Request $request, User $user)

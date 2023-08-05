@@ -30,7 +30,7 @@ Route::get('/events/detail', [EventController::class, 'show'])
     ->name('events.show');
 
 Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
-    ->name('users.create-event');
+    ->name('profile.create-event');
 
 Route::get('/myevents', [MyEventController::class, 'index'])
     ->name('myevents.index');
