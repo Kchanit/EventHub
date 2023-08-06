@@ -8,13 +8,16 @@ Alpine.start();
 
 const menuToggle = document.getElementById("menu-toggle");
 const sidebar = document.getElementById("application-sidebar");
+const content = document.getElementById("content");
 
-// // Function to toggle the menu
-// function toggleMenu() {
-//     sidebar.classList.toggle("-translate-x-full"); // Add or remove the class to show/hide the sidebar
-// }
-
-// Event listener to toggle the menu when the button is clicked
 menuToggle.addEventListener("click", () => {
     sidebar.classList.toggle("hidden");
+    content.classList.toggle("hidden");
+    if (content.classList.contains("close")) {
+        content.classList.remove("lg:pl-69");
+        content.classList.add("lg:pl-72");
+    } else {
+        content.classList.remove("lg:pl-72");
+        content.classList.add("lg:pl-69");
+    }
 });

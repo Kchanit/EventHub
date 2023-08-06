@@ -1,4 +1,4 @@
-<footer class="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto bg-gray-200">
+<footer class="mt-auto w-full max-w-[85rem] py-4 px-4 sm:px-6 lg:pl-72 lg:pr-8 mx-auto bg-white ">
     <!-- Grid -->
     <div class="text-center">
         <div>

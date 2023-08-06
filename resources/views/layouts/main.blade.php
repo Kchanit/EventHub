@@ -10,16 +10,19 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-@include('layouts.subviews.pre-navbar')
-@include('layouts.subviews.pre-sidenav')
+@include('layouts.subviews.navbar')
+@include('layouts.subviews.sidenav')
+
 
 <body>
 
 
-    <main class="bg-white w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72 min-h-screen">
+    <main class="bg-white content w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72 min-h-screen">
         @yield('content')
     </main>
     @yield('scripts')
 </body>
+
+@include('layouts.subviews.footer')
 
 </html>
