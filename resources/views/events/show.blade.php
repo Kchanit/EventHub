@@ -10,16 +10,16 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
                 <path d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM5 7h14v2H5V7z"></path>
             </svg>
-            22 July 2023
+            17-19 November 2023
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
             </svg>
-            Somewhere
+            Sermsuk Warehouse, Bangkok
         </p>
         <dl>
-            <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Details</dt>
-            <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">Standard glass ,3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet, Magic Mouse 2, Magic Keyboard - US.</dd>
+            <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Description</dt>
+            <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">Introducing Brew Crew, the premier international craft and culture community at Brewtopia the first-ever international craft & culture festival in Thailand, where beverages, food, and music harmoniously unite. Join us in embracing the true essence of Brewtopia as more than just a festival – it's a vibrant community that celebrates the love of all things brew. Let's raise our glasses and be part of the legendary Brew Crew experience! </dd>
         </dl>
         <dl class="flex items-center space-x-6">
             <div>

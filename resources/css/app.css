@@ -8,3 +8,26 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
+
+.sidebar.close {
+    width: 60px;
+    left: -20px;
+}
+
+.sidebar .text {
+    white-space: nowrap;
+}
+
+.sidebar.close .text {
+    visibility: hidden;
+    white-space: nowrap;
+}
+
+.sidebar.close .hs-accordion-content {
+    visibility: hidden;
+}
+
+.sidebar.close .toggle {
+    margin: 4px;
+    position: absolute;
+}
