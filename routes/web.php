@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendedEventController;
+use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MyEventController;
@@ -40,6 +41,9 @@ Route::get('/attended-events', [AttendedEventController::class, 'index'])
 
 Route::get('/members', [MemberController::class, 'index'])
     ->name('members.index');
+Route::get('/budgets', [BudgetController::class, 'index'])
+    ->name('budgets.index');
+
 
 
 Route::get('/dashboard', function () {
