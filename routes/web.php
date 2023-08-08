@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AttendedEventController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MyEventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,9 @@ Route::get('/myevents', [MyEventController::class, 'index'])
     ->name('myevents.index');
 Route::get('/attended-events', [AttendedEventController::class, 'index'])
     ->name('attended-events.index');
+
+Route::get('/members', [MemberController::class, 'index'])
+    ->name('members.index');
 
 
 Route::get('/dashboard', function () {

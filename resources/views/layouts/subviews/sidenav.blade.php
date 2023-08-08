@@ -88,7 +88,7 @@
                               d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zM3 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V9h-4.5A1.5 1.5 0 0 0 9 10.5V15H3.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V10.5a.5.5 0 0 1 .5-.5h4.293L10 14.793z">
                           </path>
                       </svg>
-                      <p class="text">Events Management</p>
+                      <p class="text">Event Management</p>
 
                       <svg id="events-arrow" onclick="dropdownEvents()"
                           class="events-arrow hs-accordion-active:hidden ml-auto block w-3 h-3 text-gray-600 group-hover:text-gray-500 rotate-90 duration-150  width="
@@ -109,7 +109,7 @@
                           </li>
                           <li>
                               <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:font-semibold focus:bg-gray-100"
-                                  href="javascript:;">
+                                  href="{{ route('members.index') }}">
                                   Members
                               </a>
                           </li>
