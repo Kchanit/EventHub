@@ -30,6 +30,8 @@ Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
 Route::get('/events/detail', [EventController::class, 'show'])
     ->name('events.show');
+Route::get('/events/members', [MemberController::class, 'index'])
+    ->name('events.members');
 
 Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
     ->name('profile.create-event');
@@ -39,8 +41,6 @@ Route::get('/myevents', [MyEventController::class, 'index'])
 Route::get('/attended-events', [AttendedEventController::class, 'index'])
     ->name('attended-events.index');
 
-Route::get('/members', [MemberController::class, 'index'])
-    ->name('members.index');
 Route::get('/budgets', [BudgetController::class, 'index'])
     ->name('budgets.index');
 

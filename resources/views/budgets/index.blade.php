@@ -28,8 +28,9 @@
                                         View all
                                     </a>
 
-                                    <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                                        href="#">
+                                    <button type="button"
+                                        class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold hover:bg-indigo-600 bg-indigo-700 text-white  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                                        id="create-btn" href="#" onclick="modalHandler(true)">
                                         <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" viewBox="0 0 16 16" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +38,7 @@
                                                 stroke-width="2" stroke-linecap="round" />
                                         </svg>
                                         Create
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -360,173 +361,162 @@
     </div>
     <!-- End Table Section -->
 
-    <!-- Modal -->
-    <div id="hs-ai-invoice-modal"
-        class="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto">
-        <div
-            class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
-            <div class="relative flex flex-col bg-white shadow-lg rounded-xl dark:bg-gray-800">
-                <div class="relative overflow-hidden min-h-[8rem] bg-gray-900 text-center rounded-t-xl">
-                    <!-- Close Button -->
-                    <div class="absolute top-2 right-2">
-                        <button type="button"
-                            class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all text-sm dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
-                            data-hs-overlay="#hs-bg-gray-on-hover-cards" data-hs-remove-element="#hs-ai-modal">
-                            <span class="sr-only">Close</span>
-                            <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+    {{-- Modal --}}
+    <dialog class="modal" id="modal">
+        <div class="h-full w-full fixed top-0  left-0 z-[60] overflow-x-hidden overflow-y-auto">
+            <div class="py-12 bg-opacity-90  transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0"
+                id="modal">
+                <div role="alert" class="container mx-auto w-11/12 md:w-2/3 max-w-lg">
+                    <div class="relative  py-8 px-5 md:px-10 bg-white shadow-lg rounded-3xl border-gray-400">
+                        <div class="w-full flex justify-start text-gray-600 mb-3">
+                            {{-- Wallet Icon --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wallet"
+                                width="52" height="52" viewBox="0 0 24 24" stroke-width="1"
+                                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
                                 <path
-                                    d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
-                                    fill="currentColor" />
+                                    d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12" />
+                                <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
+                            </svg>
+                        </div>
+                        <h1 class="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4">
+                            Creaate new expense
+                        </h1>
+
+                        {{-- Name --}}
+                        <label for="name" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                            Item</label>
+                        <input id="name"
+                            class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                            placeholder="James" />
+
+                        {{-- Date --}}
+                        <label for="expiry" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                            Date</label>
+                        <div class="relative mb-5 mt-2">
+                            <div class="absolute right-0 text-gray-600 flex items-center pr-3 h-full cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-calendar-event" width="20" height="20"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" />
+                                    <rect x="4" y="5" width="16" height="16" rx="2" />
+                                    <line x1="16" y1="3" x2="16" y2="7" />
+                                    <line x1="8" y1="3" x2="8" y2="7" />
+                                    <line x1="4" y1="11" x2="20" y2="11" />
+                                    <rect x="8" y="15" width="2" height="2" />
+                                </svg>
+                            </div>
+                            <input id="expiry"
+                                class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                                placeholder="MM/YY" />
+                        </div>
+
+                        <div class="flex gap-2">
+                            <div>
+
+                                {{-- Amount --}}
+                                <label for="amount"
+                                    class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                                    Amount</label>
+                                <input id="amount" type="number"
+                                    class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                                    placeholder="1000" />
+                            </div>
+
+                            <div>
+
+                                {{-- Quantity --}}
+                                <label for="quantity"
+                                    class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                                    Quantity</label>
+                                <input id="quantity" type="number"
+                                    class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                                    placeholder="1" />
+                            </div>
+                        </div>
+
+                        {{-- Note --}}
+                        <label for="note" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                            Note</label>
+                        <textarea id="note"
+                            class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-20 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."></textarea>
+
+
+                        {{-- Buttons --}}
+                        <div class="flex items-center justify-start w-full">
+                            <button
+                                class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 rounded-md transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 text-white px-8 py-2 text-sm">Submit</button>
+                            <button
+                                class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded-md px-8 py-2 text-sm"
+                                onclick="modalHandler()" id="cancel-btn">Cancel</button>
+                        </div>
+
+                        {{-- exit icon --}}
+                        <button
+                            class="cursor-pointer absolute top-0 right-0 mt-4 mr-5 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"
+                            onclick="modalHandler()" aria-label="close modal" role="button" id="close-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="20"
+                                height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
                             </svg>
                         </button>
                     </div>
-                    <!-- End Close Button -->
-
-                    <!-- SVG Background Element -->
-                    <figure class="absolute inset-x-0 bottom-0">
-                        <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                            viewBox="0 0 1920 100.1">
-                            <path fill="currentColor" class="fill-white dark:fill-gray-800"
-                                d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"></path>
-                        </svg>
-                    </figure>
-                    <!-- End SVG Background Element -->
                 </div>
-
-                <div class="relative z-10 -mt-12">
-                    <!-- Icon -->
-                    <span
-                        class="mx-auto flex justify-center items-center w-[62px] h-[62px] rounded-full border border-gray-200 bg-white text-gray-700 shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" viewBox="0 0 16 16">
-                            <path
-                                d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                            <path
-                                d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                        </svg>
-                    </span>
-                    <!-- End Icon -->
-                </div>
-
-                <!-- Body -->
-                <div class="p-4 sm:p-7 overflow-y-auto">
-                    <div class="text-center">
-                        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                            Invoice from Preline
-                        </h3>
-                        <p class="text-sm text-gray-500">
-                            Invoice #3682303
-                        </p>
-                    </div>
-
-                    <!-- Grid -->
-                    <div class="mt-5 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 gap-5">
-                        <div>
-                            <span class="block text-xs uppercase text-gray-500">Amount paid:</span>
-                            <span class="block text-sm font-medium text-gray-800 dark:text-gray-200">$316.8</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div>
-                            <span class="block text-xs uppercase text-gray-500">Date paid:</span>
-                            <span class="block text-sm font-medium text-gray-800 dark:text-gray-200">April 22, 2020</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div>
-                            <span class="block text-xs uppercase text-gray-500">Payment method:</span>
-                            <div class="flex items-center gap-x-2">
-                                <svg class="w-5 h-5" width="400" height="248" viewBox="0 0 400 248" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0)">
-                                        <path d="M254 220.8H146V26.4H254V220.8Z" fill="#FF5F00" />
-                                        <path
-                                            d="M152.8 123.6C152.8 84.2 171.2 49 200 26.4C178.2 9.2 151.4 0 123.6 0C55.4 0 0 55.4 0 123.6C0 191.8 55.4 247.2 123.6 247.2C151.4 247.2 178.2 238 200 220.8C171.2 198.2 152.8 163 152.8 123.6Z"
-                                            fill="#EB001B" />
-                                        <path
-                                            d="M400 123.6C400 191.8 344.6 247.2 276.4 247.2C248.6 247.2 221.8 238 200 220.8C228.8 198.2 247.2 163 247.2 123.6C247.2 84.2 228.8 49 200 26.4C221.8 9.2 248.6 0 276.4 0C344.6 0 400 55.4 400 123.6Z"
-                                            fill="#F79E1B" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0">
-                                            <rect width="400" height="247.2" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                                <span class="block text-sm font-medium text-gray-800 dark:text-gray-200">•••• 4242</span>
-                            </div>
-                        </div>
-                        <!-- End Col -->
-                    </div>
-                    <!-- End Grid -->
-
-                    <div class="mt-5 sm:mt-10">
-                        <h4 class="text-xs font-semibold uppercase text-gray-800 dark:text-gray-200">Summary</h4>
-
-                        <ul class="mt-3 flex flex-col">
-                            <li
-                                class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-gray-700 dark:text-gray-200">
-                                <div class="flex items-center justify-between w-full">
-                                    <span>Payment to Front</span>
-                                    <span>$264.00</span>
-                                </div>
-                            </li>
-                            <li
-                                class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-gray-700 dark:text-gray-200">
-                                <div class="flex items-center justify-between w-full">
-                                    <span>Tax fee</span>
-                                    <span>$52.8</span>
-                                </div>
-                            </li>
-                            <li
-                                class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-semibold bg-gray-50 border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-slate-800 dark:border-gray-700 dark:text-gray-200">
-                                <div class="flex items-center justify-between w-full">
-                                    <span>Amount paid</span>
-                                    <span>$316.8</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Button -->
-                    <div class="mt-5 flex justify-end gap-x-2">
-                        <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                            href="#">
-                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                fill="currentColor" viewBox="0 0 16 16">
-                                <path
-                                    d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                <path
-                                    d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                            </svg>
-                            Invoice PDF
-                        </a>
-                        <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                            href="#">
-                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                fill="currentColor" viewBox="0 0 16 16">
-                                <path
-                                    d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z" />
-                                <path
-                                    d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
-                            </svg>
-                            Print
-                        </a>
-                    </div>
-                    <!-- End Buttons -->
-
-                    <div class="mt-5 sm:mt-10">
-                        <p class="text-sm text-gray-500">If you have any questions, please contact us at <a
-                                class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium"
-                                href="#">example@site.com</a> or call at <a
-                                class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium"
-                                href="tel:+1898345492">+1 898-34-5492</a></p>
-                    </div>
-                </div>
-                <!-- End Body -->
             </div>
+
         </div>
-    </div>
-    <!-- End Modal -->
+    </dialog>
+    {{-- End Modal --}}
+    <script>
+        const modal = document.querySelector("#modal");
+        const openModal = document.getElementById("create-btn");
+        const closeModal = document.querySelector("#close-btn");
+        const cancel = document.querySelector("#cancel-btn");
+
+        openModal.addEventListener("click", () => {
+            modal.showModal();
+        });
+        closeModal.addEventListener("click", () => {
+            modal.close();
+        });
+        cancel.addEventListener("click", () => {
+            modal.close();
+        });
+
+        function modalHandler(val) {
+            if (val) {
+                fadeIn(modal);
+            } else {
+                fadeOut(modal);
+            }
+        }
+
+        function fadeOut(el) {
+            el.style.opacity = 1;
+            (function fade() {
+                if ((el.style.opacity -= 0.1) < 0) {
+                    el.style.display = "none";
+                } else {
+                    requestAnimationFrame(fade);
+                }
+            })();
+        }
+
+        function fadeIn(el, display) {
+            el.style.opacity = 0;
+            el.style.display = display || "flex";
+            (function fade() {
+                let val = parseFloat(el.style.opacity);
+                if (!((val += 0.2) > 1)) {
+                    el.style.opacity = val;
+                    requestAnimationFrame(fade);
+                }
+            })();
+        }
+    </script>
 @endsection
