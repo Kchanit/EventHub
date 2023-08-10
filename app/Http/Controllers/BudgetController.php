@@ -8,6 +8,6 @@ class BudgetController extends Controller
 {
     public function index()
     {
-        return view('budgets.index');
+        return view('events.budgets');
     }
 }
