@@ -98,116 +98,41 @@
         <div class="max-w-[64rem] sm:px-6 lg:px-1 lg:py-12 mx-auto">
             <!-- Grid -->
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card -->
-                <div
-                    class=" rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
-                    <!-- Clickable Area -->
-                    <a href="{{ route('events.show') }}" class="cursor-pointer">
-                        <figure class="group relative">
-                            <!-- Image -->
-                            <img class="bg-gray-300  h-full w-full object-cover z-0"
-                                src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
-                            <div class="px-4 py-2">
-                                <!-- Date -->
-                                <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
-                                    20-21 July
-                                </span>
-                                <!-- Title -->
-                                <p class="text-lg font-bold leading-relaxed text-gray-800 dark:text-gray-300">
-                                    Freshy Night
-                                </p>
-                                <p class="text-gray-500">
-                                    Bangkok
-                                </p>
-                            </div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- End Card -->
-                <!-- Card -->
-                <div
-                    class=" rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
-                    <!-- Clickable Area -->
-                    <a href="{{ route('events.show') }}" class="cursor-pointer">
-                        <figure class="group relative">
-                            <!-- Image -->
-                            <img class="bg-gray-300 h-full w-full object-cover z-0"
-                                src="https://p-u.popcdn.net/event_details/posters/000/015/695/large/2f4b41db65c10947730f2a64eb916bfd4b6230a8.png?1689753720" />
-                            <div class="px-4 py-2">
-                                <!-- Date -->
-                                <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
-                                    7-8 October 2023
-                                </span>
-                                <!-- Title -->
-                                <p class="text-lg font-bold leading-5 line-clamp-2 text-gray-800 dark:text-gray-300">
-                                    “LE SSERAFIM” announces the first tour in Thailand!
-                                </p>
-                                <p class="text-gray-500">
-                                    Thunder Dome, Muang Thong Thani
-                                </p>
-                            </div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- End Card -->
-                <!-- Card -->
-                <div
-                    class=" rounded-3xl overflow-hidden shadow-lg shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
-                    <!-- Clickable Area -->
-                    <a href="{{ route('events.show') }}" class="cursor-pointer">
-                        <figure class="group relative">
-                            <!-- Image -->
-                            <img class="bg-gray-300  h-full w-full object-cover z-0"
-                                src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
-                            <div class="px-4 py-2">
-                                <!-- Date -->
-                                <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
-                                    20-21 July
-                                </span>
-                                <!-- Title -->
-                                <p class="text-lg font-bold leading-relaxed text-gray-800 dark:text-gray-300">
-                                    Freshy Night
-                                </p>
-                                <p class="text-gray-500">
-                                    Bangkok
-                                </p>
-                            </div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- End Card -->
-                <!-- Card -->
-                <div
-                    class=" rounded-3xl overflow-hidden shadow-lg shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
-                    <!-- Clickable Area -->
-                    <a href="{{ route('events.show') }}" class="cursor-pointer">
-                        <figure class="group relative">
-                            <!-- Image -->
-                            <img class="bg-gray-300  h-full w-full object-cover z-0"
-                                src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
-                            <div class="px-4 py-2">
-                                <!-- Date -->
-                                <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
-                                    20-21 July
-                                </span>
-                                <!-- Title -->
-                                <p class="text-lg font-bold leading-relaxed text-gray-800 dark:text-gray-300">
-                                    Freshy Night
-                                </p>
-                                <p class="text-gray-500">
-                                    Bangkok
-                                </p>
-                            </div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- End Card -->
+                @foreach ($events as $event)
+                    <!-- Card -->
+                    <div
+                        class=" rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
+                        <!-- Clickable Area -->
+                        <a href="{{ route('events.show') }}" class="cursor-pointer">
+                            <figure class="group relative">
+                                <!-- Image -->
+                                <img class="bg-gray-300  h-full w-full object-cover z-0" src="{{ $event->image_url }}" />
+                                <div class="px-4 py-2">
+                                    <!-- Date -->
+                                    <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
+                                        {{ date('d F', strtotime($event->date)) }}
+                                    </span>
+                                    <!-- Title -->
+                                    <p class="text-lg font-bold leading-relaxed text-gray-800 dark:text-gray-300">
+                                        {{ $event->title }}
+                                    </p>
+                                    <p class="text-gray-500">
+                                        {{ $event->location }}
+                                    </p>
+                                </div>
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- End Card -->
+                @endforeach
 
 
             </div>
             <!-- End Grid -->
         </div>
         <!-- End Card Blog -->
+
+
         <hr>
 
 

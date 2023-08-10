@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\User::class);
             $table->string('location');
             $table->integer('participants');
+            $table->text('description');
+            $table->date('date');
             $table->string('image_url');
             $table->timestamps();
             $table->softDeletes();
