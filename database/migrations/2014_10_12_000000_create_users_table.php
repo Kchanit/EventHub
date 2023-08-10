@@ -18,10 +18,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role')->default('user');
-            $table->string('student_id')->unique();
-            $table->string('faculty');
-            $table->string('college_year');
-            $table->string('image_url')->nullable();
+            // $table->string('student_id')->unique();
+            // $table->string('faculty');
+            // $table->string('college_year');
+            // $table->string('image_url')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

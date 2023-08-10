@@ -47,7 +47,7 @@
                             <thead class="bg-gray-50 dark:bg-slate-800">
                                 <tr>
                                     <th scope="col" class="pl-6 py-3 text-left">
-                                        <label for="hs-at-with-checkboxes-main" class="flex">
+                                        <label for="hs-at-with-checkboxes-main" class="flex mr-4">
                                             <input type="checkbox"
                                                 class="shrink-0 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                                                 id="hs-at-with-checkboxes-main">
@@ -623,7 +623,7 @@
                             <label for="id" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
                                 User ID</label>
                             <input type="text" name="id" id="id"
-                                class="block mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                                class=" mb-5 mt-2  text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 items-center pl-3 text-sm border-gray-300 rounded border"
                                 placeholder="Enter User ID">
                             {{-- Team Select --}}
                             <label for="team" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">

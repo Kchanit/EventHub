@@ -58,50 +58,7 @@
                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
 
-                <!-- Student ID-->
-                <div class="mt-4">
-                    <x-input-label for="student_id" :value="__('Student ID')" />
-                    <x-text-input id="student_id" class="mt-1 w-full text-sm font-medium text-gray-800  dark:text-gray-200" type="text" name="student_id" :value="old('student_id')" required autofocus autocomplete="student_id" />
-                    <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
-                </div>
 
-                <!-- Faculty-->
-                <div class="mt-4">
-                    <x-input-label for="faculty" :value="__('Faculty')" />
-                    <x-input-error :messages="$errors->get('faculty')" class="mt-2" />
-                    <select id="faculty" class="block mt-1 w-full text-sm font-medium text-gray-800 dark:text-gray-200 border-gray-200 shadow-sm rounded-lg" type="text" name="faculty" :value="old('faculty')" required autofocus autocomplete="faculty">
-                        <option selected>Select your faculty</option>
-                        <option>Faculty of Agriculture</option>
-                        <option> Agro-Industry </option>
-                        <option> Architecture</option>
-                        <option> Business Administration</option>
-                        <option> Economics</option>
-                        <option> Education</option>
-                        <option> Engineering</option>
-                        <option> Environment</option>
-                        <option> Fisheries</option>
-                        <option> Forestry</option>
-                        <option> Humanities</option>
-                        <option> Medicine</option>
-                        <option> Science</option>
-                        <option> Social Sciences</option>
-                        <option> Veterinary Medicine</option>
-                        <option> Veterinary Technology</option>
-                    </select>
-                </div>
-
-                <!-- college year-->
-                <div class="mt-4">
-                    <x-input-label for="college_year" :value="__('College Year')" />
-                    <select id="college_year" class="block mt-1 w-full text-sm font-medium text-gray-800 dark:text-gray-200 border-gray-200 shadow-sm rounded-lg" type="text" name="college_year" :value="old('college_year')" required autofocus autocomplete="college_year">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                    <!-- <x-text-input id="college_year" class="block mt-1 w-full" type="text" name="college_year" :value="old('college_year')" required autofocus autocomplete="college_year" /> -->
-                    <x-input-error :messages="$errors->get('college_year')" class="mt-2" />
-                </div>
 
                 <button type="submit" class="block mt-5 mb-2 py-3 px-4 w-full justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">{{ __('Register') }}</button>
         </form>
