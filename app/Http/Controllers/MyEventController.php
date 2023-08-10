@@ -6,6 +6,6 @@ class MyEventController extends Controller
 {
     public function index()
     {
-        return view('myevents.index');
+        return view('events.my-events');
     }
 }

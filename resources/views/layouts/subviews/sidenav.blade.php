@@ -103,7 +103,7 @@
                       <ul class="pt-2 pl-2">
                           <li>
                               <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100  focus:outline-none focus:ring-1 focus:ring-gray-500 focus:font-semibold focus:bg-gray-100"
-                                  href="{{ route('myevents.index') }}">
+                                  href="{{ route('events.my-events') }}">
                                   My Events
                               </a>
                           </li>
@@ -148,7 +148,7 @@
               </li>
 
               <li><a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:font-semibold focus:bg-gray-100"
-                      href="{{ route('myevents.index') }}">
+                      href="{{ route('events.attended-events') }}">
                       <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                           fill="currentColor" viewBox="0 0 16 16">
                           <path
@@ -159,7 +159,7 @@
                       <p class="text"> Applied Events </p>
                   </a></li>
               <li><a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:font-semibold focus:bg-gray-100"
-                      href="{{ route('attended-events.index') }}">
+                      href="">
                       <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                           fill="currentColor" viewBox="0 0 16 16">
                           <path
