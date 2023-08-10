@@ -6,6 +6,6 @@ class AttendedEventController extends Controller
 {
     public function index()
     {
-        return view('attended-events.index');
+        return view('events.attended-events');
     }
 }

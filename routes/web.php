@@ -40,10 +40,10 @@ Route::get('/events/budgets', [BudgetController::class, 'index'])
 Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
     ->name('profile.create-event');
 
-Route::get('/myevents', [MyEventController::class, 'index'])
-    ->name('myevents.index');
-Route::get('/attended-events', [AttendedEventController::class, 'index'])
-    ->name('attended-events.index');
+Route::get('/events/my-events', [MyEventController::class, 'index'])
+    ->name('events.my-events');
+Route::get('events/attended-events', [AttendedEventController::class, 'index'])
+    ->name('events.attended-events');
 
 
 
