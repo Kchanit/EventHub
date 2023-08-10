@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            // $table->string('location');
-            // $table->integer('participants');
-            // $table->string('image');
-            // $table->string('url');
             $table->foreignIdFor(\App\Models\User::class);
+            $table->string('location');
+            $table->integer('participants');
+            $table->string('image_url');
             $table->timestamps();
             $table->softDeletes();
         });
