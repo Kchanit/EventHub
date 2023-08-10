@@ -103,7 +103,7 @@
                     <div
                         class=" rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1">
                         <!-- Clickable Area -->
-                        <a href="{{ route('events.show') }}" class="cursor-pointer">
+                        <a href=" {{ route('events.show', ['event' => $event]) }} ">
                             <figure class="group relative">
                                 <!-- Image -->
                                 <img class="bg-gray-300  h-full w-full object-cover z-0" src="{{ $event->image_url }}" />
@@ -125,8 +125,6 @@
                     </div>
                     <!-- End Card -->
                 @endforeach
-
-
             </div>
             <!-- End Grid -->
         </div>
@@ -143,7 +141,7 @@
 
                 <!-- Card -->
                 <div class="flex ">
-                    <a href="{{ route('events.show') }}" class="cursor-pointer">
+                    <a href="#" class="cursor-pointer">
                         <img class="bg-gray-300  w-full rounded-md  object-cover z-0"
                             src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
                         <div class="pt-2 px-2">
@@ -164,7 +162,7 @@
                 <!-- End Card -->
                 <!-- Card -->
                 <div class="flex ">
-                    <a href="{{ route('events.show') }}" class="cursor-pointer">
+                    <a href="#" class="cursor-pointer">
                         <img class="bg-gray-300  w-full rounded-md  object-cover z-0"
                             src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
                         <div class="pt-2 px-2">
@@ -185,7 +183,7 @@
                 <!-- End Card -->
                 <!-- Card -->
                 <div class="flex ">
-                    <a href="{{ route('events.show') }}" class="cursor-pointer">
+                    <a href="#" class="cursor-pointer">
                         <img class="bg-gray-300  w-full  rounded-md object-cover z-0"
                             src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610" />
                         <div class="pt-2 px-2">

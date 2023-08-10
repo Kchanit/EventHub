@@ -14,9 +14,9 @@ class EventController extends Controller
         return view('events.index', ['events' => $events]);
     }
 
-    public function show()
+    public function show(Event $event)
     {
-        return view('events.show');
+        return view('events.show', ['event' => $event]);
     }
 
     public function store()

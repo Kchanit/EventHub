@@ -21,22 +21,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', [EventController::class, 'index'])
     ->name('events.index');
 
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
-Route::get('/events/detail', [EventController::class, 'show'])
+Route::get('/events/{event}', [EventController::class, 'show'])
     ->name('events.show');
 Route::get('/events/members', [MemberController::class, 'index'])
     ->name('events.members');
 Route::get('/events/budgets', [BudgetController::class, 'index'])
     ->name('events.budgets');
-
 Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
     ->name('profile.create-event');
 
@@ -46,21 +41,14 @@ Route::get('events/attended-events', [AttendedEventController::class, 'index'])
     ->name('events.attended-events');
 
 
-
-
+Route::get('/info', [InfoController::class, 'index'])
+    ->name('info.index');
+Route::get('/info/editInfo', [EditInfoController::class, 'index'])
+    ->name('editInfo.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/events', [EventController::class, 'index'])
-    ->name('events.index');
-
-Route::get('/info', [InfoController::class, 'index'])
-    ->name('info.index');
-
-Route::get('/info/editInfo', [EditInfoController::class, 'index'])
-    ->name('editInfo.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
