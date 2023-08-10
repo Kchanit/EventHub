@@ -5,6 +5,7 @@ use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MyEventController;
+use App\Http\Controllers\AllTasksController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\EditInfoController;
@@ -36,6 +37,8 @@ Route::get('/events/members', [MemberController::class, 'index'])
     ->name('events.members');
 Route::get('/events/budgets', [BudgetController::class, 'index'])
     ->name('events.budgets');
+Route::get('/events/all-tasks', [AllTasksController::class, 'index'])
+    ->name('events.all-tasks');
 
 Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
     ->name('profile.create-event');
