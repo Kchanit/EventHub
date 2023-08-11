@@ -113,10 +113,10 @@
                                         {{ date('d F', strtotime($event->date)) }}
                                     </span>
                                     <!-- Title -->
-                                    <p class="text-lg font-bold leading-relaxed text-gray-800 dark:text-gray-300">
+                                    <p class="text-lg font-bold leading-5 line-clamp-2 mt-1 text-gray-800 dark:text-gray-300">
                                         {{ $event->title }}
                                     </p>
-                                    <p class="text-gray-500">
+                                    <p class="text-gray-500 leading-4 mt-1">
                                         {{ $event->location }}
                                     </p>
                                 </div>

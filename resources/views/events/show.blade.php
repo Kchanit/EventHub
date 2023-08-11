@@ -5,8 +5,7 @@
         <div class="py-8 px-4 mx-auto max-w-2xl ">
             <h2 class="mb-2 text-xl font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">{{ $event->title }}
             </h2>
-            <img src="https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610"
-                class="bg-gray-300 mb-4 max-w-[16rem] object-cover z-0 shadow-md">
+            <img src="{{ $event->image_url }}" class="bg-gray-300 mb-4 max-w-[16rem] object-cover z-0 shadow-md">
 
             <p class="flex mb-4 text-xl gap-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
