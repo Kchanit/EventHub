@@ -8,4 +8,8 @@ class AttendedEventController extends Controller
     {
         return view('events.attended-events');
     }
+    public function certificate()
+    {
+        return view('events.certificate');
+    }
 }

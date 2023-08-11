@@ -22,7 +22,7 @@
 
         <!-- component -->
         <!-- Card List Section -->
-        <section x-data="xData()" class="bg-gray-100 dark:bg-gray-100 py-10 px-12">
+        <section x-data="xData()" class="bg-transparent py-10 px-12">
             <!-- Card Grid -->
             <div
                 class="round-xl grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">

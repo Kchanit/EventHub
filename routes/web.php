@@ -42,8 +42,13 @@ Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
 
 Route::get('/events/my-events', [MyEventController::class, 'index'])
     ->name('events.my-events');
+    Route::get('/events/my-events/attendees', [MyEventController::class, 'attendees'])
+    ->name('events.attendees');
+
 Route::get('events/attended-events', [AttendedEventController::class, 'index'])
     ->name('events.attended-events');
+Route::get('events/attended-events/certificate', [AttendedEventController::class, 'certificate'])
+    ->name('events.certificate');
 
 
 

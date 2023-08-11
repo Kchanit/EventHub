@@ -8,4 +8,9 @@ class MyEventController extends Controller
     {
         return view('events.my-events');
     }
+
+    public function attendees()
+    {
+        return view('events.attendees');
+    }
 }

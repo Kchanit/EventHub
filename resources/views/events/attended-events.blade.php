@@ -16,7 +16,7 @@
 
        <!-- component -->
         <!-- Card List Section -->
-        <section x-data="xData()" class="bg-gray-100 dark:bg-gray-100 py-10 px-12">
+        <section x-data="xData()" class="bg-transparent py-10 px-12">
             <!-- Card Grid -->
             <div
                 class="round-xl grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
@@ -25,7 +25,7 @@
                     <div class=" rounded-xl shadow-lg shadow-gray-200 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-150 hover:-translate-y-1"
                         x-for="(post, index) in posts">
                         <!-- Clickable Area -->
-                        <a _href="link" class="cursor-pointer ">
+                        <a href="{{ route('events.certificate')}}" class="cursor-pointer ">
                             <figure class="group relative">
                                     <span
                                         class="z-10 opacity-0 transition duration-300 group-hover:opacity-100 group-hover:ease-in-out absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pr-10 pl-10 pt-4 pb-4 text-center text-black bg-opacity-90 bg-white  dark:text-white dark:bg-opacity-95  dark:bg-gray-800  rounded-3xl">

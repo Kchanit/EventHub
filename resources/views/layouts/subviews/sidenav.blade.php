@@ -133,7 +133,7 @@
                           </li>
                           <li>
                               <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:font-semibold focus:bg-gray-100"
-                                  href="javascript:;">
+                                  href="{{ route('events.attendees')}}">
                                   Attendees
                               </a>
                           </li>
