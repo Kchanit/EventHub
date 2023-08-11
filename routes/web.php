@@ -26,14 +26,14 @@ Route::get('/', [EventController::class, 'index'])
 
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
-Route::get('/events/{event}', [EventController::class, 'show'])
-    ->name('events.show');
+Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
+    ->name('profile.create-event');
 Route::get('/events/members', [MemberController::class, 'index'])
     ->name('events.members');
 Route::get('/events/budgets', [BudgetController::class, 'index'])
     ->name('events.budgets');
-Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
-    ->name('profile.create-event');
+Route::get('/events/{event}', [EventController::class, 'show'])
+    ->name('events.show');
 
 Route::get('/events/my-events', [MyEventController::class, 'index'])
     ->name('events.my-events');
@@ -54,6 +54,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::post('/events/create-event', [ProfileController::class, 'storeEvent'])
+        ->name('profile.store-event');
 });
 
 require __DIR__ . '/auth.php';

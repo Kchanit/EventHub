@@ -3,7 +3,7 @@
 @section('content')
     <!-- Card Section -->
     <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:pt-1 pb-14 mx-auto">
-        <form action="" method="POST">
+        <form action="{{ route('profile.store-event') }}" method="POST">
             @csrf
             <!-- Card -->
             <div class="bg-white rounded-xl shadow-md dark:bg-slate-900">
@@ -16,74 +16,62 @@
                             Create your event
                         </h1>
                         <div class="space-y-2">
-                            <label for="af-submit-app-project-name"
+                            <label for="title"
                                 class="inline-block text-sm font-medium text-gray-800 mt-4 dark:text-gray-200">
                                 Event title
                             </label>
 
-                            <input id="af-submit-app-project-name" type="text"
+                            <input id="title" type="text" name="title"
                                 class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                                 placeholder="Enter event title">
                         </div>
 
-                        <div class="space-y-2">
-                            <label for="af-submit-project-url"
-                                class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
-                                Event URL
-                            </label>
-
-                            <input id="af-submit-project-url" type="text"
-                                class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-                                placeholder="https://example.so">
-                        </div>
 
                         <div class="space-y-2">
-                            <label for="af-submit-project-event"
+                            <label for="location"
                                 class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
                                 Location
                             </label>
 
-                            <input id="af-submit-project-event" type="text"
+                            <input id="location" type="text" name="location"
                                 class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                                 placeholder="Enter your event location">
                         </div>
 
                         <div class="space-y-2 text-sm font-medium text-gray-800  dark:text-gray-200">
-                            <label class="block mt-2.5">
+                            <label class="block mt-2.5" for="date">
                                 Select Date
                             </label>
-                            <input id="date_start" name="date_start" type="date"
+                            <input id="date" name="date" type="date"
                                 class="py-2 px-3 pr-11 border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                                 placeholder="Select date start">
                             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                             <span class="mx-2">
                                 to
                             </span>
-                            <input id="date_end" name="date_end" type="date"
-                                class="py-2 px-3 pr-11 border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400""
-                                placeholder="Select date end">
+
                         </div>
 
                         <div class="space-y-2">
-                            <label for="af-submit-project-participants"
+                            <label for="participants"
                                 class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
                                 Participants
                             </label>
 
-                            <input id="af-submit-project-participants" type="number" min="1"
+                            <input id="participants" name="participants" type="number" min="1"
                                 class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                                 placeholder="10">
                         </div>
 
                         <div class="space-y-2">
-                            <label for="af-submit-app-upload-images"
+                            <label for="image_url"
                                 class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
                                 Preview image
                             </label>
 
-                            <label for="af-submit-app-upload-images"
+                            <label for="image_url"
                                 class="group p-4 sm:p-7 block cursor-pointer text-center border-2 border-dashed border-gray-200 rounded-lg focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 dark:border-gray-700">
-                                <input id="af-submit-app-upload-images" name="af-submit-app-upload-images" type="file"
+                                <input id="image_url" name="image_url" type="file"
                                     class="sr-only">
                                 <svg class="w-10 h-10 mx-auto text-gray-400 dark:text-gray-600"
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -103,7 +91,7 @@
                             </label>
                         </div>
 
-                        <div class="space-y-2">
+                        {{-- <div class="space-y-2">
                             <label for="af-submit-app-category"
                                 class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
                                 Category
@@ -119,15 +107,15 @@
                                 <option>Sport</option>
                                 <option>Others</option>
                             </select>
-                        </div>
+                        </div> --}}
 
                         <div class="space-y-2">
-                            <label for="af-submit-app-description"
+                            <label for="description"
                                 class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
                                 Description
                             </label>
 
-                            <textarea id="af-submit-app-description"
+                            <textarea id="description" name="description"
                                 class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                                 rows="6"
                                 placeholder="A detailed summary will better explain your event to the participants. Our users will see this in your dedicated event page."></textarea>
@@ -136,7 +124,7 @@
                     <!-- End Grid -->
 
                     <div class="mt-5 flex justify-center gap-x-2">
-                        <button type="button"
+                        <button type="submit"
                             class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
                             Submit your event
                         </button>

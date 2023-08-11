@@ -105,15 +105,21 @@
                         <!-- Clickable Area -->
                         <a href=" {{ route('events.show', ['event' => $event]) }} ">
                             <figure class="group relative">
+                                {{-- Image from upload --}}
+                                {{-- <img class="bg-gray-300  h-full w-full object-cover z-0"
+                                src="{{ asset('storage/' . $event->image_url) }}" /> --}}
+
                                 <!-- Image -->
                                 <img class="bg-gray-300  h-full w-full object-cover z-0" src="{{ $event->image_url }}" />
+
                                 <div class="px-4 py-2">
                                     <!-- Date -->
                                     <span class="block text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
                                         {{ date('d F', strtotime($event->date)) }}
                                     </span>
                                     <!-- Title -->
-                                    <p class="text-lg font-bold leading-5 line-clamp-2 mt-1 text-gray-800 dark:text-gray-300">
+                                    <p
+                                        class="text-lg font-bold leading-5 line-clamp-2 mt-1 text-gray-800 dark:text-gray-300">
                                         {{ $event->title }}
                                     </p>
                                     <p class="text-gray-500 leading-4 mt-1">

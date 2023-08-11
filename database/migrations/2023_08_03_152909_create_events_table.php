@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('participants');
             $table->text('description');
             $table->date('date');
-            $table->string('image_url');
+            $table->string('image_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
