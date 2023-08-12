@@ -1,9 +1,6 @@
-@extends('layouts.main')
+@extends('layouts.main2')
 
 @section('content')
-    @can('update', $event)
-        @include('layouts.subviews.tabs')
-    @endcan
     <section class="bg-white">
         <div class="py-8 px-4 mx-auto max-w-2xl ">
             <h2 class="mb-2 text-xl font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">{{ $event->title }}

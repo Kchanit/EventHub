@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-    @include('layouts.subviews.tabs')
 
     <div>
         <div class="flex items-center justify-between">
