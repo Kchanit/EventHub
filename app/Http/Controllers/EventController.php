@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class EventController extends Controller
 {
@@ -26,14 +26,12 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         Gate::authorize('update', $event);
-        
+
         $request->validate([
             'title' => 'required',
             'description' => 'required',
             'date' => 'required',
-            'time' => 'required',
             'location' => 'required',
-
         ]);
 
         $event->title = $request->title;
@@ -45,5 +43,12 @@ class EventController extends Controller
         $event->save();
 
         return redirect()->route('events.show', ['event' => $event]);
+    }
+
+    public function edit(Event $event)
+    {
+        Gate::authorize('update', $event);
+
+        return view('events.edit', ['event' => $event]);
     }
 }

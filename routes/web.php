@@ -39,6 +39,10 @@ Route::get('events/attended-events', [AttendedEventController::class, 'index'])
     ->name('events.attended-events');
 Route::get('/events/{event}', [EventController::class, 'show'])
     ->name('events.show');
+Route::get('/events/{event}/edit', [EventController::class, 'edit'])
+    ->name('events.edit');
+Route::put('/events/{event}/update', [EventController::class, 'update'])
+    ->name('events.update');
 
 
 Route::get('/info', [InfoController::class, 'index'])
