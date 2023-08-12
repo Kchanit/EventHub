@@ -2,7 +2,8 @@
     class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b text-sm py-2.5 sm:py-4 dark:bg-slate-900 dark:border-gray-700">
     <nav class="max-w-7xl flex basis-full items-center w-full mx-auto px-4 sm:px-6 lg:px-8" aria-label="Global">
         <div class="mr-5 md:mr-8">
-            <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand">EventHub</a>
+            <a class="flex-none text-xl font-semibold dark:text-white" href="{{ route('events.index') }}"
+                aria-label="Brand">EventHub</a>
         </div>
 
         <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
@@ -26,7 +27,7 @@
 
             {{-- Menu --}}
             <div class="flex flex-row items-center justify-end gap-6 font-semibold">
-                <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-gray-500 focus:font-semibold focus:bg-gray-100"
+                <a class="flex items-center gap-x-3.5 py-2.5 px-3.5 text-sm transition-all duration-150 ease-in-out text-slate-700 rounded-xl hover:bg-blue-800  hover:text-gray-900 hover:text-opacity-100 hover:shadow-md hover:bg-opacity-10  focus:outline-none focus:ring-1 focus:ring-gray-300 "
                     href="{{ route('events.index') }}">
                     <svg class="icon w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" viewBox="0 0 16 16">
@@ -37,18 +38,75 @@
                     </svg>
                     <p class="text font-b">Home</p>
                 </a>
-                <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:font-semibold focus:bg-gray-100"
-                    href="{{ route('events.attended-events') }}">
-                    <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        fill="currentColor" viewBox="0 0 16 16">
-                        <path
-                            d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
-                        <path
-                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-                    </svg>
-                    <p class="text"> Applied Events </p>
-                </a>
-                <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:font-semibold focus:bg-gray-100"
+                {{--  --}}
+                <div class="relative group">
+                    <div>
+                        <a class="flex items-center gap-x-3.5 py-2.5 px-3.5 text-sm transition-all duration-200 ease-in-out text-slate-700 rounded-xl hover:bg-blue-800  hover:text-gray-900 hover:text-opacity-100 hover:shadow-md hover:bg-opacity-10  focus:outline-none focus:ring-1 focus:ring-gray-300 "
+                            href="{{ route('events.attended-events') }}">
+                            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
+                                <path
+                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                            </svg>
+                            <p class="text"> Applied Events </p>
+                        </a>
+                    </div>
+                    {{-- Dropdown items --}}
+                    <div
+                        class="absolute left-0 -translate-x-1/3 pt-2 hidden group-hover:block z-50 transition-all ease-in-out duration-1000">
+                        <div
+                            class="w-[350px] max-w-[75vw] p-3 flex flex-col gap-1 border border-black-200 bg-white shadow-xl rounded-2xl ">
+                            <a href="#"
+                                class="px-4 py-3 rounded-xl hover:bg-black-50 flex flex-col gap-1 hover:bg-twhite">
+                                <div class="flex flex-row gap-4">
+                                    <svg class="w-3.5 h-3.5 justify-start" xmlns="http://www.w3.org/2000/svg"
+                                        width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path
+                                            d="M1.5 0A1.5 1.5 0 0 0 0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5z">
+                                        </path>
+                                        <path
+                                            d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zM3 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V9h-4.5A1.5 1.5 0 0 0 9 10.5V15H3.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V10.5a.5.5 0 0 1 .5-.5h4.293L10 14.793z">
+                                        </path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-semibold">
+                                            Upcoming Events
+                                        </p>
+                                        <p class="font-extralight text-black-700">
+                                            Events you have applied for and are yet to be held.
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="px-4 py-3 rounded-xl hover:bg-black-50 flex flex-col gap-1 hover:bg-twhite">
+                                <div class="flex flex-row gap-4">
+                                    <svg class="w-3.5 h-3.5 justify-start" xmlns="http://www.w3.org/2000/svg"
+                                        width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path
+                                            d="M1.5 0A1.5 1.5 0 0 0 0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5z">
+                                        </path>
+                                        <path
+                                            d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zM3 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V9h-4.5A1.5 1.5 0 0 0 9 10.5V15H3.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V10.5a.5.5 0 0 1 .5-.5h4.293L10 14.793z">
+                                        </path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-semibold">
+                                            Past Events
+                                        </p>
+                                        <p class="font-extralight text-black-700">
+                                            Events you have applied for and have been held.
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {{--  --}}
+                <a class="flex items-center gap-x-3.5 py-2.5 px-3.5 text-sm transition-all duration-150 ease-in-out text-slate-700 rounded-xl hover:bg-blue-800  hover:text-gray-900 hover:text-opacity-100 hover:shadow-md hover:bg-opacity-10  focus:outline-none focus:ring-1 focus:ring-gray-300"
                     href="{{ route('events.my-events') }}">
                     <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" viewBox="0 0 16 16">
@@ -60,9 +118,8 @@
                         </path>
                     </svg>
                     <p class="text">Event Management</p>
-
-
                 </a>
+
             </div>
 
             {{-- Noti + Profile --}}
@@ -332,14 +389,16 @@
                     </div>
                     {{-- End Profile --}}
                 @else
-                    <a href="{{ route('login') }}"
-                        class="bg-tgray text-gray-800 rounded-3xl py-3 px-3.5 font-bold hover:bg-gray-800 hover:text-tgray duration-100">
-                        Login
-                    </a>
-                    <a href="{{ route('register') }}"
-                        class="bg-tgray text-gray-800 rounded-3xl py-3 px-3.5 font-bold hover:bg-gray-800 hover:text-tgray duration-100">
-                        Register
-                    </a>
+                    {{-- Login & Register --}}
+                    <div class="">
+                        <a href="{{ route('login') }}">
+                            Login
+                        </a>
+                        <a href="{{ route('register') }}"
+                            class="bg-tgray text-gray-800 rounded-2xl py-3 px-3.5 ml-2 font-bold hover:bg-gray-800 hover:text-tgray duration-100">
+                            Register
+                        </a>
+                    </div>
                 @endif
 
 
