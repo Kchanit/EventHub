@@ -11,10 +11,11 @@
 </head>
 
 
-@include('layouts.subviews.mega-menu')
+@include('layouts.subviews.nav-tabs')
 
 <body>
     <main class="bg-white content w-full sm:px-6 md:px-8 lg:px-10 lg:py-4 min-h-screen">
+
         @yield('content')
     </main>
     @yield('scripts')
