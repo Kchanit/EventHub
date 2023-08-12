@@ -84,10 +84,11 @@ class ProfileController extends Controller
         $event->participants = $request->get('participants');
         $event->user_id = $user->id;
         if ($request->hasFile('image_url')) {
-            $path = $request->file('image_url')->store('event_images', 'public');
-            $event->image_url = $path;
+            $path = "/storage/" . $request->file('image_url')->store('event_images','public');
+        }else{
+            $path = "/storage/event_images/default.png";
         }
-
+        $event->image_url = $path;
         $user->events()->save($event);
         return redirect()->route('events.index');
     }
