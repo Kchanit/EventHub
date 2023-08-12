@@ -113,7 +113,7 @@
                                 src="{{ asset('storage/' . $event->image_url) }}" /> --}}
 
                             <!-- Image -->
-                            <img class="bg-gray-300  h-full w-full object-cover z-0" src="{{ $event->image_url }}" />
+                            <img class="bg-gray-300  h-full w-full object-cover z-0" src="{{ asset('storage/' . $event->image_url) }}" />
 
                             <div class="px-4 py-2">
                                 <!-- Date -->

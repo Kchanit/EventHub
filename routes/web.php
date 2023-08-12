@@ -21,51 +21,77 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [EventController::class, 'index'])
-    ->name('events.index');
+//======================            Events            =========================
 
-Route::get('/events', [EventController::class, 'index'])
-    ->name('events.index');
-Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
-    ->name('profile.create-event');
-Route::get('/events/members', [MemberController::class, 'index'])
-    ->name('events.members');
-Route::get('/events/budgets', [BudgetController::class, 'index'])
-    ->name('events.budgets');
+    Route::get('/', [EventController::class, 'index'])
+        ->name('events.index');
 
-Route::get('/events/my-events', [MyEventController::class, 'index'])
-    ->name('events.my-events');
+    Route::get('/events', [EventController::class, 'index'])
+        ->name('events.index');
+
+    Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
+        ->name('profile.create-event');
+
+    Route::get('/events/{event}', [EventController::class, 'show'])
+        ->name('events.show');
+
+    Route::get('/events/{event}/edit', [EventController::class, 'edit'])
+        ->name('events.edit');
+        
+    Route::put('/events/{event}/update', [EventController::class, 'update'])
+        ->name('events.update');
+
+//==============================================================================
+
+//======================          My Events            =========================
+
+    Route::get('/events/members', [MemberController::class, 'index'])
+        ->name('events.members');
+
+    Route::get('/events/budgets', [BudgetController::class, 'index'])
+        ->name('events.budgets');
+
+    Route::get('/events/my-events', [MyEventController::class, 'index'])
+        ->name('events.my-events');
+
     Route::get('/events/my-events/attendees', [MyEventController::class, 'attendees'])
-    ->name('events.attendees');
+        ->name('events.attendees');
 
-Route::get('events/attended-events', [AttendedEventController::class, 'index'])
-    ->name('events.attended-events');
-Route::get('events/attended-events/certificate', [AttendedEventController::class, 'certificate'])
-    ->name('events.certificate');
-Route::get('/events/{event}', [EventController::class, 'show'])
-    ->name('events.show');
-Route::get('/events/{event}/edit', [EventController::class, 'edit'])
-    ->name('events.edit');
-Route::put('/events/{event}/update', [EventController::class, 'update'])
-    ->name('events.update');
+//==============================================================================
 
+//======================        Applied Events         =========================
 
-Route::get('/info', [InfoController::class, 'index'])
-    ->name('info.index');
-Route::get('/info/editInfo', [EditInfoController::class, 'index'])
-    ->name('editInfo.index');
+    Route::get('events/attended-events', [AttendedEventController::class, 'index'])
+        ->name('events.attended-events');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('events/attended-events/certificate', [AttendedEventController::class, 'certificate'])
+        ->name('events.certificate');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+//==============================================================================
 
-    Route::post('/events/create-event', [ProfileController::class, 'storeEvent'])
-        ->name('profile.store-event');
-});
+//======================             Info              =========================
 
+    Route::get('/info', [InfoController::class, 'index'])
+        ->name('info.index');
+        
+    Route::get('/info/editInfo', [EditInfoController::class, 'index'])
+        ->name('editInfo.index');
+
+//==============================================================================
+
+//======================        Dashboard & Auth       =========================
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::post('/events/create-event', [ProfileController::class, 'storeEvent'])
+            ->name('profile.store-event');
+    });
+
+//==============================================================================
 require __DIR__ . '/auth.php';

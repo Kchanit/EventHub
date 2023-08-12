@@ -34,11 +34,27 @@ class EventController extends Controller
             'location' => 'required',
         ]);
 
+        if($request->image_url != ''){        
+            $path = public_path().'/';
+  
+            //code for remove old file
+            if($event->image_url != ''  && $event->image_url!= null && $event->image_url!="event_images/default.png"){
+                 $file_old = storage_path('/app/public/'.$event->image_url);
+                 unlink($file_old);
+            }
+            // upload new file
+            if ($request->hasFile('image_url')) {
+                $path = $request->file('image_url')->store('event_images','public');
+            }else{
+                $path = "event_images/default.png";
+            }
+            $event->image_url = $path;
+        }
+
         $event->title = $request->title;
         $event->description = $request->description;
         $event->date = $request->date;
         $event->location = $request->location;
-        $event->image_url = $request->image_url;
         $event->participants = $request->participants;
         $event->save();
 

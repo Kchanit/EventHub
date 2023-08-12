@@ -148,7 +148,7 @@
                             <textarea id="description" name="description" 
                                 class="@error('description') border-red-400 @enderror py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                                 rows="6"
-                                placeholder="A detailed summary will better explain your event to the participants. Our users will see this in your dedicated event page."></textarea>
+                                placeholder="A detailed summary will better explain your event to the participants. Our users will see this in your dedicated event page.">{{old('description')}}</textarea>
                             @error('description')
                                 <div class=" text-red-500 text-sm">
                                     {{ $message }}
