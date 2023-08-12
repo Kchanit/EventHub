@@ -1,15 +1,15 @@
  <!-- ========== HEADER ========== -->
  <header
-     class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full shadow-lg bg-white border-b text-sm py-2.5 sm:py-4 lg:pl-64 dark:bg-gray-800 dark:border-gray-700">
+     class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full shadow-lg bg-white border-b text-sm py-2.5 sm:py-4 lg:pl-64 ">
      <nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8" aria-label="Global">
          <div class="mr-5 lg:mr-0 lg:hidden">
-             <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand">EventHub</a>
+             <a class="flex-none text-xl font-semibold " href="#" aria-label="Brand">EventHub</a>
          </div>
 
          <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
              <div class="sm:hidden">
                  <button type="button"
-                     class="inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
+                     class="inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs  ">
                      <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                          fill="currentColor" viewBox="0 0 16 16">
                          <path
@@ -18,7 +18,7 @@
                  </button>
              </div>
 
-             {{-- Search --}}
+             {{-- Search  --}}
              <div class="hidden sm:block">
                  <label for="icon" class="sr-only">Search</label>
                  <div class="relative">
@@ -30,7 +30,7 @@
                          </svg>
                      </div>
                      <input type="text" id="icon" name="icon"
-                         class="py-2 px-4 pl-11 block w-full border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                         class="py-2 px-4 pl-11 block w-full border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500  "
                          placeholder="Search">
                  </div>
              </div>
@@ -40,7 +40,7 @@
                      <div x-data="{ isOpen: false }">
                          <!-- Notification Icon -->
                          <button type="button" @click="isOpen=!isOpen" @click.away="isOpen=false"
-                             class="inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
+                             class="inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs  ">
                              <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                  fill="currentColor" viewBox="0 0 16 16">
                                  <path
@@ -50,21 +50,19 @@
 
                          {{-- Notification Dropdown --}}
                          <div x-show="isOpen"
-                             class=" overflow-hidden absolute right-0 z-50 my-4 max-w-sm bg-white text-base list-none bg-green divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl"
+                             class=" overflow-hidden absolute right-0 z-50 my-4 max-w-sm bg-white text-base list-none bg-green divide-y divide-gray-100 shadow-lg  rounded-xl"
                              id="notification-dropdown">
-                             <div
-                                 class="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-600 dark:text-gray-300">
+                             <div class="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 ">
                                  Notifications
                              </div>
                              <div>
-                                 <a href="#"
-                                     class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+                                 <a href="#" class="flex py-3 px-4 border-b hover:bg-gray-100 ">
                                      <div class="flex-shrink-0">
                                          <img class="w-11 h-11 rounded-full"
                                              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
                                              alt="Bonnie Green avatar" />
                                          <div
-                                             class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 rounded-full border border-white bg-primary-700 dark:border-gray-700">
+                                             class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 rounded-full border border-white bg-primary-700 ">
                                              <svg aria-hidden="true" class="w-3 h-3 text-white" fill="currentColor"
                                                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                  <path
@@ -77,25 +75,24 @@
                                          </div>
                                      </div>
                                      <div class="pl-3 w-full">
-                                         <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
+                                         <div class="text-gray-500 font-normal text-sm mb-1.5 ">
                                              New message from
-                                             <span class="font-semibold text-gray-900 dark:text-white">Bonnie
+                                             <span class="font-semibold text-gray-900 ">Bonnie
                                                  Green</span>:
                                              "Hey, what's up? All set for the presentation?"
                                          </div>
-                                         <div class="text-xs font-medium text-primary-600 dark:text-primary-500">
+                                         <div class="text-xs font-medium text-primary-600 ">
                                              a few moments ago
                                          </div>
                                      </div>
                                  </a>
-                                 <a href="#"
-                                     class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+                                 <a href="#" class="flex py-3 px-4 border-b hover:bg-gray-100 ">
                                      <div class="flex-shrink-0">
                                          <img class="w-11 h-11 rounded-full"
                                              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
                                              alt="Jese Leos avatar" />
                                          <div
-                                             class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-gray-900 rounded-full border border-white dark:border-gray-700">
+                                             class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-gray-900 rounded-full border border-white ">
                                              <svg aria-hidden="true" class="w-3 h-3 text-white" fill="currentColor"
                                                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                  <path
@@ -105,25 +102,24 @@
                                          </div>
                                      </div>
                                      <div class="pl-3 w-full">
-                                         <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
-                                             <span class="font-semibold text-gray-900 dark:text-white">Jese leos</span>
+                                         <div class="text-gray-500 font-normal text-sm mb-1.5">
+                                             <span class="font-semibold text-gray-900 ">Jese leos</span>
                                              and
-                                             <span class="font-medium text-gray-900 dark:text-white">5 others</span>
+                                             <span class="font-medium text-gray-900 ">5 others</span>
                                              started following you.
                                          </div>
-                                         <div class="text-xs font-medium text-primary-600 dark:text-primary-500">
+                                         <div class="text-xs font-medium text-primary-600 ">
                                              10 minutes ago
                                          </div>
                                      </div>
                                  </a>
-                                 <a href="#"
-                                     class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+                                 <a href="#" class="flex py-3 px-4 border-b hover:bg-gray-100 ">
                                      <div class="flex-shrink-0">
                                          <img class="w-11 h-11 rounded-full"
                                              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/joseph-mcfall.png"
                                              alt="Joseph McFall avatar" />
                                          <div
-                                             class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-red-600 rounded-full border border-white dark:border-gray-700">
+                                             class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-red-600 rounded-full border border-white ">
                                              <svg aria-hidden="true" class="w-3 h-3 text-white" fill="currentColor"
                                                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                  <path fill-rule="evenodd"
@@ -133,26 +129,25 @@
                                          </div>
                                      </div>
                                      <div class="pl-3 w-full">
-                                         <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
-                                             <span class="font-semibold text-gray-900 dark:text-white">Joseph
+                                         <div class="text-gray-500 font-normal text-sm mb-1.5 ">
+                                             <span class="font-semibold text-gray-900 ">Joseph
                                                  Mcfall</span>
                                              and
-                                             <span class="font-medium text-gray-900 dark:text-white">141 others</span>
+                                             <span class="font-medium text-gray-900 ">141 others</span>
                                              love your story. See it and view more stories.
                                          </div>
-                                         <div class="text-xs font-medium text-primary-600 dark:text-primary-500">
+                                         <div class="text-xs font-medium text-primary-600 ">
                                              44 minutes ago
                                          </div>
                                      </div>
                                  </a>
-                                 <a href="#"
-                                     class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+                                 <a href="#" class="flex py-3 px-4 border-b hover:bg-gray-100 ">
                                      <div class="flex-shrink-0">
                                          <img class="w-11 h-11 rounded-full"
                                              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png"
                                              alt="Roberta Casas image" />
                                          <div
-                                             class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-green-400 rounded-full border border-white dark:border-gray-700">
+                                             class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-green-400 rounded-full border border-white ">
                                              <svg aria-hidden="true" class="w-3 h-3 text-white" fill="currentColor"
                                                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                  <path fill-rule="evenodd"
@@ -162,26 +157,25 @@
                                          </div>
                                      </div>
                                      <div class="pl-3 w-full">
-                                         <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
-                                             <span class="font-semibold text-gray-900 dark:text-white">Leslie
+                                         <div class="text-gray-500 font-normal text-sm mb-1.5 ">
+                                             <span class="font-semibold text-gray-900 ">Leslie
                                                  Livingston</span>
                                              mentioned you in a comment:
-                                             <span
-                                                 class="font-medium text-primary-600 dark:text-primary-500">@bonnie.green</span>
+                                             <span class="font-medium text-primary-600 ">@bonnie.green</span>
                                              what do you say?
                                          </div>
-                                         <div class="text-xs font-medium text-primary-600 dark:text-primary-500">
+                                         <div class="text-xs font-medium text-primary-600 ">
                                              1 hour ago
                                          </div>
                                      </div>
                                  </a>
-                                 <a href="#" class="flex py-3 px-4 hover:bg-gray-100 dark:hover:bg-gray-600">
+                                 <a href="#" class="flex py-3 px-4 hover:bg-gray-100 ">
                                      <div class="flex-shrink-0">
                                          <img class="w-11 h-11 rounded-full"
                                              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/robert-brown.png"
                                              alt="Robert image" />
                                          <div
-                                             class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-purple-500 rounded-full border border-white dark:border-gray-700">
+                                             class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-purple-500 rounded-full border border-white ">
                                              <svg aria-hidden="true" class="w-3 h-3 text-white" fill="currentColor"
                                                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                  <path
@@ -191,23 +185,23 @@
                                          </div>
                                      </div>
                                      <div class="pl-3 w-full">
-                                         <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
-                                             <span class="font-semibold text-gray-900 dark:text-white">Robert
+                                         <div class="text-gray-500 font-normal text-sm mb-1.5 ">
+                                             <span class="font-semibold text-gray-900 ">Robert
                                                  Brown</span>
                                              posted a new video: Glassmorphism - learn how to implement the
                                              new design trend.
                                          </div>
-                                         <div class="text-xs font-medium text-primary-600 dark:text-primary-500">
+                                         <div class="text-xs font-medium text-primary-600 ">
                                              3 hours ago
                                          </div>
                                      </div>
                                  </a>
                              </div>
                              <a href="#"
-                                 class="block py-2 text-md font-medium text-center text-gray-900 bg-gray-50 hover:bg-gray-100 dark:bg-gray-600 dark:text-white dark:hover:underline">
+                                 class="block py-2 text-md font-medium text-center text-gray-900 bg-gray-50 hover:bg-gray-100 ">
                                  <div class="inline-flex items-center">
-                                     <svg aria-hidden="true" class="mr-2 w-4 h-4 text-gray-500 dark:text-gray-400"
-                                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                     <svg aria-hidden="true" class="mr-2 w-4 h-4 text-gray-500 " fill="currentColor"
+                                         viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
                                          <path fill-rule="evenodd"
                                              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
@@ -222,7 +216,7 @@
 
                      {{-- Apps Icon --}}
                      <button type="button"
-                         class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+                         class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs  "
                          data-hs-offcanvas="#hs-offcanvas-right">
                          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor" viewBox="0 0 16 16">
@@ -237,23 +231,23 @@
                          class="hs-dropdown relative inline-block [--placement:bottom-right]">
                          <button id="hs-dropdown-with-header" type="button" @click="isOpen=!isOpen"
                              @click.away="isOpen=false"
-                             class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
-                             <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800"
+                             class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs  ">
+                             <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white "
                                  src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
                                  alt="Image Description">
                          </button>
 
                          {{-- Profile Dropdown --}}
                          <div x-show="isOpen"
-                             class="hs-dropdown-menu transition-[opacity,margin] duration absolute min-w-[15rem] right-0 mt-1 bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700"
+                             class="hs-dropdown-menu transition-[opacity,margin] duration absolute min-w-[15rem] right-0 mt-1 bg-white shadow-md rounded-lg p-2 "
                              aria-labelledby="hs-dropdown-with-header">
-                             <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
-                                 <p class="text-sm text-gray-500 dark:text-gray-400">Signed in as</p>
-                                 <p class="text-sm font-medium text-gray-800 dark:text-gray-300">
+                             <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg ">
+                                 <p class="text-sm text-gray-500 ">Signed in as</p>
+                                 <p class="text-sm font-medium text-gray-800 ">
                                      {{ Auth::user()->email }} </p>
                              </div>
                              <div class="mt-2 py-2 first:pt-0 last:pb-0">
-                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500  "
                                      href="#">
                                      <svg class="flex-none" width="16" height="16" viewBox="0 0 16 16"
                                          fill="currentColor">
@@ -262,7 +256,7 @@
                                      </svg>
                                      Newsletter
                                  </a>
-                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500  "
                                      href="#">
                                      <svg class="flex-none" width="16" height="16" viewBox="0 0 16 16"
                                          fill="currentColor">
@@ -273,7 +267,7 @@
                                      </svg>
                                      Purchases
                                  </a>
-                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500  "
                                      href="#">
                                      <svg class="flex-none" width="16" height="16" viewBox="0 0 16 16"
                                          fill="currentColor">
@@ -284,7 +278,7 @@
                                      </svg>
                                      Downloads
                                  </a>
-                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500  "
                                      href="#">
                                      <svg class="flex-none" width="16" height="16" viewBox="0 0 16 16"
                                          fill="currentColor">
@@ -296,7 +290,7 @@
                                  <!-- Logout Button -->
                                  <form method="POST" action="{{ route('logout') }}">
                                      @csrf
-                                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-red-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-red-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500  "
                                          href="{{ route('logout') }}"
                                          onclick="event.preventDefault(); this.closest('form').submit();">
                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
