@@ -65,11 +65,30 @@ class ProfileController extends Controller
         return view('profile.create-event');
     }
 
-    public function storeEvent(Request $request, User $user)
+    public function storeEvent(Request $request)
     {
+        $user = $request->user();
+        $request->validate([
+            'title' => 'required|min:4|max:255',
+            'description' => 'required',
+            'date' => 'required',
+            'location' => 'required',
+            'participants' => 'required',
+        ]);
+
         $event = new Event();
         $event->title = $request->get('title');
-
+        $event->description = $request->get('description');
+        $event->date = $request->get('date');
+        $event->location = $request->get('location');
+        $event->participants = $request->get('participants');
+        $event->user_id = $user->id;
+        if ($request->hasFile('image_url')) {
+            $path = "/storage/" . $request->file('image_url')->store('event_images','public');
+        }else{
+            $path = "/storage/event_images/default.png";
+        }
+        $event->image_url = $path;
         $user->events()->save($event);
         return redirect()->route('events.index');
     }

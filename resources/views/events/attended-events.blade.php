@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+
     <div>
         <div class="flex items-center justify-between">
             <div>
@@ -14,7 +15,7 @@
             </div>
         </div>
 
-       <!-- component -->
+        <!-- component -->
         <!-- Card List Section -->
         <section x-data="xData()" class="bg-transparent py-10 px-12">
             <!-- Card Grid -->
@@ -27,14 +28,14 @@
                         <!-- Clickable Area -->
                         <a href="{{ route('events.certificate')}}" class="cursor-pointer ">
                             <figure class="group relative">
-                                    <span
-                                        class="z-10 opacity-0 transition duration-300 group-hover:opacity-100 group-hover:ease-in-out absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pr-10 pl-10 pt-4 pb-4 text-center text-black bg-opacity-90 bg-white  dark:text-white dark:bg-opacity-95  dark:bg-gray-800  rounded-3xl">
-                                        View Certificate
-                                    </span>
+                                <span
+                                    class="z-10 opacity-0 transition duration-300 group-hover:opacity-100 group-hover:ease-in-out absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pr-10 pl-10 pt-4 pb-4 text-center text-black bg-opacity-90 bg-white  dark:text-white dark:bg-opacity-95  dark:bg-gray-800  rounded-3xl">
+                                    View Certificate
+                                </span>
 
-                                    <!-- Image -->
-                                    <img :src="post.image + '?auto=format&fit=crop&w=400&q=50'"
-                                        class="rounded-t-xl h-72 w-full object-cover group-hover:opacity-70 z-0" />
+                                <!-- Image -->
+                                <img :src="post.image + '?auto=format&fit=crop&w=400&q=50'"
+                                    class="rounded-t-xl h-72 w-full object-cover group-hover:opacity-70 z-0" />
                                 <div class="p-4">
                                     <!-- Date -->
                                     <span
