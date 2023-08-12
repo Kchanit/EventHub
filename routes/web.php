@@ -32,13 +32,13 @@ Route::get('/events/members', [MemberController::class, 'index'])
     ->name('events.members');
 Route::get('/events/budgets', [BudgetController::class, 'index'])
     ->name('events.budgets');
-Route::get('/events/{event}', [EventController::class, 'show'])
-    ->name('events.show');
 
 Route::get('/events/my-events', [MyEventController::class, 'index'])
     ->name('events.my-events');
 Route::get('events/attended-events', [AttendedEventController::class, 'index'])
     ->name('events.attended-events');
+Route::get('/events/{event}', [EventController::class, 'show'])
+    ->name('events.show');
 
 
 Route::get('/info', [InfoController::class, 'index'])

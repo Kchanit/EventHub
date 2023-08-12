@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+
     <div>
         <div class="flex items-center justify-between">
             <div>
