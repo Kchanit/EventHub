@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AttendedEventController;
 use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MyEventController;
@@ -39,6 +40,8 @@ Route::get('/events/members', [MemberController::class, 'index'])
 Route::get('/events/budgets', [BudgetController::class, 'index'])
     ->name('events.budgets');
 
+Route::get('/events/schedules', [ScheduleController::class, 'index'])
+    ->name('events.schedules');
 Route::get('/events/my-events', [MyEventController::class, 'index'])
     ->name('events.my-events');
 
