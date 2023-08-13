@@ -62,7 +62,11 @@ class ProfileController extends Controller
 
     public function createEvent()
     {
-        return view('profile.create-event');
+        if (Auth::guest()) {
+            return redirect()->route('login');
+        } else {
+            return view('profile.create-event');
+        }
     }
 
     public function storeEvent(Request $request)
@@ -84,8 +88,8 @@ class ProfileController extends Controller
         $event->participants = $request->get('participants');
         $event->user_id = $user->id;
         if ($request->hasFile('image_url')) {
-            $path = $request->file('image_url')->store('event_images','public');
-        }else{
+            $path = $request->file('image_url')->store('event_images', 'public');
+        } else {
             $path = "event_images/default.png";
         }
         $event->image_url = $path;
