@@ -84,6 +84,11 @@ Route::middleware('auth')->group(function () {
         ->name('profile.store-event');
 
     Route::get('/events/my-events', [MyEventController::class, 'index'])->name('events.my-events');
+
+    Route::post('/events/{event}/leave-event', [EventController::class, 'leaveEvent'])
+        ->name('events.leave-event');
+    Route::post('/events/{event}/join-event', [EventController::class, 'joinEvent'])
+        ->name('events.join-event');
 });
 
 Route::resource('events', EventController::class);

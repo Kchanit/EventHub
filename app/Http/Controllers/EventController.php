@@ -75,4 +75,19 @@ class EventController extends Controller
         $events = $user->events()->get();
         return view('events.index', ['events' => $events]);
     }
+
+    public function joinEvent(Request $request, Event $event)
+    {
+        $event->attendees()->attach($request->user());
+        $event->save();
+        // error when refresh
+        return redirect()->route('events.index');
+    }
+
+    public function leaveEvent(Request $request, Event $event)
+    {
+        $event->attendees()->detach($request->user());
+        $event->save();
+        return redirect()->route('events.index');
+    }
 }

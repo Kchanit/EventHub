@@ -11,18 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('event_attendees', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            // $table->foreignIdFor(\App\Models\User::class);
+            $table->foreignId('event_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->string('location');
-            $table->integer('attendees_limit')->nullable();
-            $table->text('description');
-            $table->date('date');
-            $table->string('image_url')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('event_attendees');
     }
 };
