@@ -9,8 +9,7 @@ class MyEventController extends Controller
 {
     public function index(Request $request)
     {
-        $user = $request->user();
-        $events = $user->events()->get();
+        $events = $request->user()->ownedEvents;
         return view('events.index', ['events' => $events]);
     }
 
