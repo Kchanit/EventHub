@@ -5,10 +5,10 @@ use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MemberController;
-use App\Http\Controllers\MyEventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\EditInfoController;
+use App\Http\Controllers\MyEvent\MyEventController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,8 +42,6 @@ Route::get('/events/budgets', [BudgetController::class, 'index'])
 
 Route::get('/events/schedules', [ScheduleController::class, 'index'])
     ->name('events.schedules');
-Route::get('/events/my-events', [MyEventController::class, 'index'])
-    ->name('events.my-events');
 
 Route::get('/events/my-events/attendees', [MyEventController::class, 'attendees'])
     ->name('events.attendees');
@@ -60,7 +58,6 @@ Route::get('events/attended-events/certificate', [AttendedEventController::class
 
 //==============================================================================
 
-Route::resource('events', EventController::class);
 
 
 //======================             Info              =========================
@@ -85,7 +82,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/events/create-event', [ProfileController::class, 'storeEvent'])
         ->name('profile.store-event');
+
+    Route::get('/events/my-events', [MyEventController::class, 'index'])->name('events.my-events');
 });
+
+Route::resource('events', EventController::class);
 
 //==============================================================================
 require __DIR__ . '/auth.php';

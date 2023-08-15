@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -34,18 +35,18 @@ class EventController extends Controller
             'location' => 'required',
         ]);
 
-        if($request->image_url != ''){        
-            $path = public_path().'/';
-  
+        if ($request->image_url != '') {
+            $path = public_path() . '/';
+
             //code for remove old file
-            if($event->image_url != ''  && $event->image_url!= null && $event->image_url!="event_images/default.png"){
-                 $file_old = storage_path('/app/public/'.$event->image_url);
-                 unlink($file_old);
+            if ($event->image_url != ''  && $event->image_url != null && $event->image_url != "event_images/default.png") {
+                $file_old = storage_path('/app/public/' . $event->image_url);
+                unlink($file_old);
             }
             // upload new file
             if ($request->hasFile('image_url')) {
-                $path = $request->file('image_url')->store('event_images','public');
-            }else{
+                $path = $request->file('image_url')->store('event_images', 'public');
+            } else {
                 $path = "event_images/default.png";
             }
             $event->image_url = $path;
@@ -66,5 +67,12 @@ class EventController extends Controller
         Gate::authorize('update', $event);
 
         return view('events.edit', ['event' => $event]);
+    }
+
+    public function myEvents(Request $request)
+    {
+        $user = $request->user();
+        $events = $user->events()->get();
+        return view('events.index', ['events' => $events]);
     }
 }
