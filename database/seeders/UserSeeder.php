@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
         $user->student_id = 'B6012345';
         $user->faculty = 'Science';
         $user->college_year = '3';
+        $user->image_url = 'user_images/image1.jpg';
         $user->save();
 
         $user = new User();
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
         $user->student_id = 'B6012346';
         $user->faculty = 'Engineering';
         $user->college_year = '2';
+        $user->image_url = 'user_images/image2.jpg';
         $user->role = 'organizer';
         $user->save();
 
@@ -39,7 +41,10 @@ class UserSeeder extends Seeder
         $user->student_id = 'B6012347';
         $user->faculty = 'Science';
         $user->college_year = '3';
+        $user->image_url = 'user_images/image3.jpg';
         $user->role = 'organizer';
         $user->save();
+
+        User::factory(15)->create();
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -50,5 +51,13 @@ class EventSeeder extends Seeder
         $event->description = 'THE LORD OF THE RINGS - THE FELLOWSHIP OF THE RING is a concert that will be held in Bangkok, Thailand. The concert will feature the music from the film, which was composed by Howard Shore. The music is performed by a live orchestra and choir, with the film projected on a large screen behind them.';
         $event->date = '2023-11-05';
         $event->save();
+
+        Event::factory(10)->create();
+        $users = User::all();
+        Event::all()->each(function ($event) use ($users) {
+            $event->attendees()->attach(
+                $users->random(rand(5, 15))->pluck('id')->toArray()
+            );
+        });
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\AttendedEventController;
-use App\Http\Controllers\BudgetController;
-use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\MyEvent\BudgetController;
+use App\Http\Controllers\MyEvent\ScheduleController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\EditInfoController;
+use App\Http\Controllers\MyEvent\MemberController;
 use App\Http\Controllers\MyEvent\MyEventController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,8 +43,7 @@ Route::get('/events/budgets', [BudgetController::class, 'index'])
 Route::get('/events/schedules', [ScheduleController::class, 'index'])
     ->name('events.schedules');
 
-Route::get('/events/my-events/attendees', [MyEventController::class, 'attendees'])
-    ->name('events.attendees');
+
 
 //==============================================================================
 
@@ -84,7 +83,8 @@ Route::middleware('auth')->group(function () {
         ->name('profile.store-event');
 
     Route::get('/events/my-events', [MyEventController::class, 'index'])->name('events.my-events');
-
+    Route::get('/events/{event}/attendees', [MyEventController::class, 'attendees'])
+        ->name('events.attendees');
     Route::post('/events/{event}/leave-event', [EventController::class, 'leaveEvent'])
         ->name('events.leave-event');
     Route::post('/events/{event}/join-event', [EventController::class, 'joinEvent'])

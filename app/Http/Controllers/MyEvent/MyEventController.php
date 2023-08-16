@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\MyEvent;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class MyEventController extends Controller
 {
@@ -13,8 +15,9 @@ class MyEventController extends Controller
         return view('events.index', ['events' => $events]);
     }
 
-    public function attendees()
-    {
-        return view('events.attendees');
+    public function attendees(Event $event)
+    {   
+        Gate::authorize('update', $event);
+        return view('events.attendees', ['event' => $event]);
     }
 }
