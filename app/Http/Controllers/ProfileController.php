@@ -77,7 +77,7 @@ class ProfileController extends Controller
             'description' => 'required',
             'date' => 'required',
             'location' => 'required',
-            'participants' => 'required',
+            'attendees_limit' => 'required',
         ]);
 
         $event = new Event();
@@ -85,7 +85,7 @@ class ProfileController extends Controller
         $event->description = $request->get('description');
         $event->date = $request->get('date');
         $event->location = $request->get('location');
-        $event->participants = $request->get('participants');
+        $event->attendees_limit = $request->get('attendees_limit');
         $event->user_id = $user->id;
         if ($request->hasFile('image_url')) {
             $path = $request->file('image_url')->store('event_images', 'public');
@@ -93,7 +93,7 @@ class ProfileController extends Controller
             $path = "event_images/default.png";
         }
         $event->image_url = $path;
-        $user->events()->save($event);
+        $user->ownedEvents()->save($event);
         return redirect()->route('events.index');
     }
 }

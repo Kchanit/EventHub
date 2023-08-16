@@ -69,16 +69,16 @@
                         </div>
 
                         <div class="space-y-2">
-                            <label for="participants"
+                            <label for="attendees_limit"
                                 class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
-                                Participants
+                                Attendees limit
                             </label>
 
-                            <input id="participants" name="participants" type="number" min="1"
-                                value="{{ $event->participants }}"
-                                class="@error('participants') border-red-400 @enderror py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+                            <input id="attendees_limit" name="attendees_limit" type="number" min="1"
+                                value="{{ $event->attendees_limit }}"
+                                class="@error('attendees_limit') border-red-400 @enderror py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                                 placeholder="10">
-                            @error('participants')
+                            @error('attendees_limit')
                                 <div class=" text-red-500 text-sm">
                                     {{ $message }}
                                 </div>
@@ -90,13 +90,14 @@
                                 class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
                                 Preview image
                             </label>
-                            
+
                             <label for="image_url"
                                 class="@error('image_url') border-red-400 @enderror group p-4 sm:p-7 block cursor-pointer text-center border-2 border-dashed border-gray-200 rounded-lg focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 dark:border-gray-700">
-                                <input id="image_url" name="image_url" type="file" class="sr-only" accept="image/*" 
-                                onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0]);">
-                                <img src="{{asset('storage/' . $event->image_url)}}" id="preview" class="max-h-[400px] mx-auto shadow-md rounded-lg">
-                            
+                                <input id="image_url" name="image_url" type="file" class="sr-only" accept="image/*"
+                                    onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0]);">
+                                <img src="{{ asset('storage/' . $event->image_url) }}" id="preview"
+                                    class="max-h-[400px] mx-auto shadow-md rounded-lg">
+
                             </label>
                             @error('image')
                                 <div class=" text-red-500 text-sm">
@@ -111,10 +112,10 @@
                                 Description
                             </label>
 
-                            <textarea id="description" name="description" 
+                            <textarea id="description" name="description"
                                 class="@error('description') border-red-400 @enderror py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                                 rows="6"
-                                placeholder="A detailed summary will better explain your event to the participants. Our users will see this in your dedicated event page.">{{$event->description}}</textarea>
+                                placeholder="A detailed summary will better explain your event to the attendees. Our users will see this in your dedicated event page.">{{ $event->description }}</textarea>
                             @error('description')
                                 <div class=" text-red-500 text-sm">
                                     {{ $message }}

@@ -56,7 +56,7 @@ class EventController extends Controller
         $event->description = $request->description;
         $event->date = $request->date;
         $event->location = $request->location;
-        $event->participants = $request->participants;
+        $event->attendees_limit = $request->attendees_limit;
         $event->save();
 
         return redirect()->route('events.show', ['event' => $event]);
