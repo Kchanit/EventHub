@@ -9,6 +9,7 @@ use App\Http\Controllers\InfoController;
 use App\Http\Controllers\EditInfoController;
 use App\Http\Controllers\MyEvent\MemberController;
 use App\Http\Controllers\MyEvent\MyEventController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Officer\BudgetApproval;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [EventController::class, 'index'])
     ->name('events.index');
 
+Route::get('/mark-as-read', [NotificationController::class, 'markAsRead'])
+    ->name('mark-as-read');
+Route::get('/mark-this-as-read', [NotificationController::class, 'markThisAsRead'])
+    ->name('mark-this-as-read');
+
 Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
     ->name('profile.create-event');
 
@@ -42,8 +48,6 @@ Route::get('events/attended-events/certificate', [AttendedEventController::class
     ->name('events.certificate');
 
 //==============================================================================
-
-
 
 //======================             Info              =========================
 
