@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('total');
             $table->string('note')->nullable();
-            $table->date('date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->date('date');
             $table->foreignId('event_id')->constrained();
             $table->foreignId('created_by')->constrained('users');
             $table->timestamps();
