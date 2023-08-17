@@ -9,6 +9,7 @@ use App\Http\Controllers\InfoController;
 use App\Http\Controllers\EditInfoController;
 use App\Http\Controllers\MyEvent\MemberController;
 use App\Http\Controllers\MyEvent\MyEventController;
+use App\Http\Controllers\Officer\BudgetApproval;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,21 +30,6 @@ Route::get('/', [EventController::class, 'index'])
 
 Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
     ->name('profile.create-event');
-
-//==============================================================================
-
-//======================          My Events            =========================
-
-Route::get('/events/members', [MemberController::class, 'index'])
-    ->name('events.members');
-
-Route::get('/events/budgets', [BudgetController::class, 'index'])
-    ->name('events.budgets');
-
-Route::get('/events/schedules', [ScheduleController::class, 'index'])
-    ->name('events.schedules');
-
-
 
 //==============================================================================
 
@@ -81,14 +67,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/events/create-event', [ProfileController::class, 'storeEvent'])
         ->name('profile.store-event');
-
+    // My Events
     Route::get('/events/my-events', [MyEventController::class, 'index'])->name('events.my-events');
     Route::get('/events/{event}/attendees', [MyEventController::class, 'attendees'])
         ->name('events.attendees');
+    Route::get('/events/{event}/members', [MemberController::class, 'index'])
+        ->name('events.members');
+    Route::get('/events/{event}/budgets', [BudgetController::class, 'index'])
+        ->name('events.budgets');
+    Route::get('/events/{event}/schedules', [ScheduleController::class, 'index'])
+        ->name('events.schedules');
+
     Route::post('/events/{event}/leave-event', [EventController::class, 'leaveEvent'])
         ->name('events.leave-event');
     Route::post('/events/{event}/join-event', [EventController::class, 'joinEvent'])
         ->name('events.join-event');
+
+    Route::get('/officer', [BudgetApproval::class, 'index'])->name('officer.index');
 });
 
 Route::resource('events', EventController::class);
