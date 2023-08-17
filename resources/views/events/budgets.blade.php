@@ -1,6 +1,5 @@
 @extends('layouts.main2')
 @section('content')
-
     <!-- Table Section -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
 
@@ -384,7 +383,7 @@
                                 </svg>
                             </div>
                             <h1 class="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4">
-                                Creaate new expense
+                                Create new expense
                             </h1>
 
                             {{-- Name --}}
@@ -490,6 +489,7 @@
         cancel.addEventListener("click", () => {
             modal.close();
         });
+
 
         function modalHandler(val) {
             if (val) {

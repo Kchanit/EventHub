@@ -54,6 +54,8 @@ Route::get('/info/editInfo', [EditInfoController::class, 'index'])
     ->name('editInfo.index');
 
 //==============================================================================
+Route::get('/officer', [BudgetApproval::class, 'index'])->name('officer.index');
+Route::get('/officer/show', [BudgetApproval::class, 'show'])->name('officer.show');
 
 //======================        Dashboard & Auth       =========================
 
@@ -82,8 +84,6 @@ Route::middleware('auth')->group(function () {
         ->name('events.leave-event');
     Route::post('/events/{event}/join-event', [EventController::class, 'joinEvent'])
         ->name('events.join-event');
-
-    Route::get('/officer', [BudgetApproval::class, 'index'])->name('officer.index');
 });
 
 Route::resource('events', EventController::class);

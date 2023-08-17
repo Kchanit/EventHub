@@ -47,7 +47,7 @@
                                             </svg>
                                             Sort
                                         </button>
-                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 divide-y divide-gray-200 min-w-[12rem] z-10 bg-white shadow-md rounded-lg p-2 mt-2 dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700"
+                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 divide-y divide-gray-200 min-w-[12rem] z-10 bg-white shadow-md rounded-lg p-2 dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700"
                                             aria-labelledby="hs-as-table-table-export-dropdown">
                                             <div class="py-2 first:pt-0 last:pb-0">
                                                 <span
@@ -131,7 +131,7 @@
                                                 1
                                             </span>
                                         </button>
-                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 divide-y divide-gray-200 min-w-[12rem] z-10 bg-white shadow-md rounded-lg mt-2 dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700"
+                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 divide-y divide-gray-200 min-w-[12rem] z-10 bg-white shadow-md rounded-lg dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700"
                                             aria-labelledby="hs-as-table-table-filter-dropdown">
                                             <div class="divide-y divide-gray-200 dark:divide-gray-700">
                                                 <label for="hs-as-filters-dropdown-all" class="flex py-2.5 px-3">
@@ -188,6 +188,14 @@
                                         <div class="flex items-center gap-x-2">
                                             <span
                                                 class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                                                Title
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left">
+                                        <div class="flex items-center gap-x-2">
+                                            <span
+                                                class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
                                                 Description
                                             </span>
                                         </div>
@@ -215,22 +223,17 @@
 
                             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                                 <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
+
                                     <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <div class="flex items-center gap-x-4">
-                                                <img class="flex-shrink-0 h-[2.375rem] w-[2.375rem] rounded-md"
-                                                    src="https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80"
-                                                    alt="Image Description">
-                                                <div>
-                                                    <span
-                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Brown
-                                                        Hat</span>
-                                                </div>
-                                            </div>
+                                        <a class="block h-full p-6" href="{{ route('officer.show') }}">
+                                            <img class="flex-shrink-0 h-[2.375rem] w-[2.375rem] rounded-md"
+                                                src="https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80"
+                                                alt="Image Description">
+
                                         </a>
                                     </td>
                                     <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
+                                        <a class="block h-full p-6" href="{{ route('officer.show') }}">
                                             <div class="flex items-center gap-x-3">
                                                 <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full"
                                                     src="https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
@@ -244,39 +247,15 @@
                                             </div>
                                         </a>
                                     </td>
+                                    <td class="h-px w-px whitespace-nowrap">
+                                        <a class="block h-full p-6" href="{{ route('officer.show') }}">
+                                            <span class="text-sm text-gray-600 dark:text-gray-400">Test Title</span>
+                                        </a>
+                                    </td>
                                     <td class="h-px w-72 min-w-[18rem]">
-                                        <a class="block h-full p-6" href="#">
+                                        <a class="block h-full p-6" href="{{ route('officer.show') }}">
                                             <div class="flex gap-x-1 mb-2">
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
+
                                             </div>
                                             <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">I
                                                 just love it!</span>
@@ -287,12 +266,12 @@
                                         </a>
                                     </td>
                                     <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
+                                        <a class="block h-full p-6" href="{{ route('officer.show') }}">
                                             <span class="text-sm text-gray-600 dark:text-gray-400">10 Jan 2022</span>
                                         </a>
                                     </td>
                                     <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
+                                        <a class="block h-full p-6" href="{{ route('officer.show') }}">
                                             <span
                                                 class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                                                 <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
@@ -310,16 +289,10 @@
                                 <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
                                     <td class="h-px w-px whitespace-nowrap">
                                         <a class="block h-full p-6" href="#">
-                                            <div class="flex items-center gap-x-4">
-                                                <img class="flex-shrink-0 h-[2.375rem] w-[2.375rem] rounded-md"
-                                                    src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80"
-                                                    alt="Image Description">
-                                                <div>
-                                                    <span
-                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Calvin
-                                                        Klein T-shirts</span>
-                                                </div>
-                                            </div>
+                                            <img class="flex-shrink-0 h-[2.375rem] w-[2.375rem] rounded-md"
+                                                src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80"
+                                                alt="Image Description">
+
                                         </a>
                                     </td>
                                     <td class="h-px w-px whitespace-nowrap">
@@ -337,40 +310,14 @@
                                             </div>
                                         </a>
                                     </td>
+                                    <td class="h-px w-px whitespace-nowrap">
+                                        <a class="block h-full p-6" href="#">
+                                            <span class="text-sm text-gray-600 dark:text-gray-400">Test Title</span>
+                                        </a>
+                                    </td>
                                     <td class="h-px w-72 min-w-[18rem]">
                                         <a class="block h-full p-6" href="#">
-                                            <div class="flex gap-x-1 mb-2">
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                            </div>
+
                                             <span
                                                 class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Really
                                                 nice</span>
@@ -399,283 +346,7 @@
                                     </td>
                                 </tr>
 
-                                <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <div class="flex items-center gap-x-4">
-                                                <img class="flex-shrink-0 h-[2.375rem] w-[2.375rem] rounded-md"
-                                                    src="https://images.unsplash.com/photo-1626947346165-4c2288dadc2a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80"
-                                                    alt="Image Description">
-                                                <div>
-                                                    <span
-                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Clarks
-                                                        shoes</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <div class="flex items-center gap-x-3">
-                                                <span
-                                                    class="inline-flex items-center justify-center h-[2.375rem] w-[2.375rem] rounded-full bg-gray-300 dark:bg-gray-700">
-                                                    <span
-                                                        class="font-medium text-gray-800 leading-none dark:text-gray-200">A</span>
-                                                </span>
-                                                <div class="grow">
-                                                    <span
-                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Anne
-                                                        Richard</span>
-                                                    <span class="block text-sm text-gray-500">anne@site.com</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-72 min-w-[18rem]">
-                                        <a class="block h-full p-6" href="#">
-                                            <div class="flex gap-x-1 mb-2">
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-400 dark:text-gray-600"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                            </div>
-                                            <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Good
-                                                product</span>
-                                            <span class="block text-sm text-gray-500">A really well built shoe. It looks
-                                                great and wears just as well. A great staple in ball caps.</span>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <span class="text-sm text-gray-600 dark:text-gray-400">June 18 2022</span>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <span
-                                                class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
-                                                    width="16" height="16" fill="currentColor"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                                                </svg>
-                                                Published
-                                            </span>
-                                        </a>
-                                    </td>
-                                </tr>
 
-                                <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <div class="flex items-center gap-x-4">
-                                                <img class="flex-shrink-0 h-[2.375rem] w-[2.375rem] rounded-md"
-                                                    src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80"
-                                                    alt="Image Description">
-                                                <div>
-                                                    <span
-                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Levis
-                                                        women's jeans</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <div class="flex items-center gap-x-3">
-                                                <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full"
-                                                    src="https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80"
-                                                    alt="Image Description">
-                                                <div class="grow">
-                                                    <span
-                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Samia
-                                                        Kartoon</span>
-                                                    <span class="block text-sm text-gray-500">samia@site.com</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-72 min-w-[18rem]">
-                                        <a class="block h-full p-6" href="#">
-                                            <div class="flex gap-x-1 mb-2">
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                            </div>
-                                            <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Buy
-                                                the product, you will not regret it!</span>
-                                            <span class="block text-sm text-gray-500">Don't let this merchandise get away!
-                                                It's a must buy and you will look good in it while working out.</span>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <span class="text-sm text-gray-600 dark:text-gray-400">10 Jan 2022</span>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <span
-                                                class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
-                                                    width="16" height="16" fill="currentColor"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                                                </svg>
-                                                Published
-                                            </span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <div class="flex items-center gap-x-4">
-                                                <img class="flex-shrink-0 h-[2.375rem] w-[2.375rem] rounded-md"
-                                                    src="https://images.unsplash.com/photo-1594032194509-0056023973b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80"
-                                                    alt="Image Description">
-                                                <div>
-                                                    <span
-                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Asos
-                                                        T-shirts</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <div class="flex items-center gap-x-3">
-                                                <span
-                                                    class="inline-flex items-center justify-center h-[2.375rem] w-[2.375rem] rounded-full bg-gray-300 dark:bg-gray-700">
-                                                    <span
-                                                        class="font-medium text-gray-800 leading-none dark:text-gray-200">D</span>
-                                                </span>
-                                                <div class="grow">
-                                                    <span
-                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">David
-                                                        Harrison</span>
-                                                    <span class="block text-sm text-gray-500">david@site.com</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-72 min-w-[18rem]">
-                                        <a class="block h-full p-6" href="#">
-                                            <div class="flex gap-x-1 mb-2">
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-800 dark:text-gray-200"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                                <svg class="w-3 h-3 text-gray-400 dark:text-gray-600"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                </svg>
-                                            </div>
-                                            <span
-                                                class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Ready
-                                                for the heat!</span>
-                                            <span class="block text-sm text-gray-500">As good as the heat Rdy T-shirt but
-                                                without the sleeves. Love the stripes on the back.</span>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <span class="text-sm text-gray-600 dark:text-gray-400">07 May 2022</span>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <span
-                                                class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
-                                                    width="16" height="16" fill="currentColor"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                                                </svg>
-                                                Published
-                                            </span>
-                                        </a>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                         <!-- End Table -->

@@ -37,7 +37,7 @@ class BudgetApproval extends Controller
      */
     public function show(Officer $officer)
     {
-        //
+        return view('officer.show');
     }
 
     /**

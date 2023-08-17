@@ -318,7 +318,7 @@
 
                         {{-- Profile Dropdown --}}
                         <div x-show="isOpen"
-                            class="hs-dropdown-menu transition-[opacity,margin] duration absolute min-w-[15rem] z-20 right-0 mt-1 bg-white shadow-md rounded-lg p-2 "
+                            class="hs-dropdown-menu z-50 transition-[opacity,margin] duration absolute min-w-[15rem]  right-0 mt-1 bg-white shadow-md rounded-lg p-2 "
                             aria-labelledby="hs-dropdown-with-header">
                             <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg ">
                                 <p class="text-sm text-gray-500 ">Signed in as</p>
