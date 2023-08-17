@@ -27,11 +27,11 @@
                 </button>
 
                 <button type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-indigo-700 text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800" 
-                href="#" onclick="modalHandler(true)">
+                id="create-btn" href="#" onclick="modalHandler(true)">
                   <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
-                  Add tasks
+                  Add task
                 </button>
               </div>
             </div>
@@ -91,18 +91,23 @@
               <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
                 <!--New Row-->
                 <td class="h-px w-px whitespace-nowrap">
-                  <div class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                       <div class="px-6 py-2">
                         <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Beverage Booth</span>
                       </div>
-                  </div>
+                    </a>
                 </td>
-                <td class="h-px w-72 whitespace-nowrap">
-                  <div class="px-6 py-3">
-                    <span class="block text-sm text-gray-500">build mini booth and require 2 members</span>
-                  </div>
-                </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                      <div class="px-6 py-2">
+                        <span class="block text-sm text-gray-800 dark:text-gray-200">build mini booth and require 2 members</span>
+                      </div>
+                    </a>
+                </td>
+
+                <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">
                       <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -111,8 +116,10 @@
                       In progress
                     </span>
                   </div>
+                </a>
                 </td>
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <div class="flex items-center gap-x-3">
                       <span class="text-xs text-gray-500">1/5</span>
@@ -121,11 +128,14 @@
                       </div>
                     </div>
                   </div>
+                </a>
                 </td>
                 <td class="h-px w-px whitespace-nowrap">
-                  <div class="px-6 py-3">
-                    <span class="text-sm text-gray-500">28 Dec, 12:12</span>
-                  </div>
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                    <div class="px-6 py-3">
+                      <span class="text-sm text-gray-500">28 Dec, 12:12</span>
+                    </div>
+                  </a>
                 </td>
                 <td class="h-px w-px whitespace-nowrap">
                   <div class="px-6 py-1.5">
@@ -138,18 +148,23 @@
 
               <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
                 <td class="h-px w-px whitespace-nowrap">
-                  <div class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                       <div class="px-6 py-2">
                         <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">MC work</span>
                       </div>
-                  </div>
+                    </a>
                 </td>
+
                 <td class="h-px w-72 whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="block text-sm text-gray-500">plan speech and schedule</span>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">
                       <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -158,8 +173,11 @@
                       In progress
                     </span>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <div class="flex items-center gap-x-3">
                       <span class="text-xs text-gray-500">3/5</span>
@@ -168,11 +186,15 @@
                       </div>
                     </div>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="text-sm text-gray-500">20 Dec, 09:27</span>
                   </div>
+                </a>
                 </td>
                 <td class="h-px w-px whitespace-nowrap">
                   <div class="px-6 py-1.5">
@@ -186,18 +208,23 @@
               <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
 
                 <td class="h-px w-px whitespace-nowrap">
-                  <div class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                       <div class="px-6 py-2">
                         <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Props work</span>
                       </div>
-                  </div>
+                    </a>
                 </td>
+
                 <td class="h-px w-72 whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="block text-sm text-gray-500">make props for attendances</span>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                       <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -206,8 +233,11 @@
                       Complete
                     </span>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <div class="flex items-center gap-x-3">
                       <span class="text-xs text-gray-500">5/5</span>
@@ -216,12 +246,17 @@
                       </div>
                     </div>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
-                  <div class="px-6 py-3">
-                    <span class="text-sm text-gray-500">18 Dec, 15:20</span>
-                  </div>
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                    <div class="px-6 py-3">
+                      <span class="text-sm text-gray-500">18 Dec, 15:20</span>
+                    </div>
+                  </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
                   <div class="px-6 py-1.5">
                     <button type="button" class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium" href="#">
@@ -235,28 +270,35 @@
 
 
                 <td class="h-px w-px whitespace-nowrap">
-                  <div class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
-                      <div class="px-6 py-2">
-                        <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Permissions</span>
-                      </div>
-                  </div>
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">                      <div class="px-6 py-2">
+                      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Permissions</span>
+                    </div>
+                  </a>
                 </td>
+
                 <td class="h-px w-72 whitespace-nowrap">
-                  <div class="px-6 py-3">
-                    <span class="block text-sm text-gray-500">Waiting for permissions</span>
-                  </div>
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                    <div class="px-6 py-3">
+                      <span class="block text-sm text-gray-500">Waiting for permissions</span>
+                    </div>
+                  </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
-                  <div class="px-6 py-3">
-                    <span class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
-                      <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                      </svg>
-                      Not started
-                    </span>
-                  </div>
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                    <div class="px-6 py-3">
+                      <span class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                        <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        Not started
+                      </span>
+                    </div>
+                  </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <div class="flex items-center gap-x-3">
                       <span class="text-xs text-gray-500">0/5</span>
@@ -265,12 +307,17 @@
                       </div>
                     </div>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="text-sm text-gray-500">18 Dec, 15:20</span>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
                   <div class="px-6 py-1.5">
                     <button type="button" class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium" href="#">
@@ -282,18 +329,22 @@
 
               <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
                 <td class="h-px w-px whitespace-nowrap">
-                  <div class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                       <div class="px-6 py-2">
                         <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Overall schedule</span>
                       </div>
-                  </div>
+                    </a>
                 </td>
                 <td class="h-px w-72 whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="block text-sm text-gray-500">draft and finalize overall schedule</span>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                       <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -302,8 +353,10 @@
                       Complete
                     </span>
                   </div>
+                </a>
                 </td>
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <div class="flex items-center gap-x-3">
                       <span class="text-xs text-gray-500">5/5</span>
@@ -312,12 +365,17 @@
                       </div>
                     </div>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="text-sm text-gray-500">15 Dec, 14:41</span>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
                   <div class="px-6 py-1.5">
                     <button type="button" class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium" href="#">
@@ -329,19 +387,23 @@
 
               <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
                 <td class="h-px w-px whitespace-nowrap">
-                  <div class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
-                      <div class="px-6 py-2">
-                        <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Buy materials</span>
-
-                      </div>
-                  </div>
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                    <div class="px-6 py-2">
+                      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Buy materials</span>
+                    </div>
+                  </a>
                 </td>
+
                 <td class="h-px w-72 whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="block text-sm text-gray-500">makro material shopping</span>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                       <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -350,8 +412,11 @@
                       Complete
                     </span>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <div class="flex items-center gap-x-3">
                       <span class="text-xs text-gray-500">5/5</span>
@@ -360,12 +425,17 @@
                       </div>
                     </div>
                   </div>
+                </a>
                 </td>
+
                 <td class="h-px w-px whitespace-nowrap">
+                  <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                   <div class="px-6 py-3">
                     <span class="text-sm text-gray-500">11 Dec, 18:51</span>
                   </div>
+                </a>
                 </td>
+                
                 <td class="h-px w-px whitespace-nowrap">
                   <div class="px-6 py-1.5">
                     <button type="button" class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium" href="#">
@@ -448,12 +518,11 @@
 
                       {{-- Brief --}}
                       <label for="brief" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                          Brief
-                        </label>
-                          <textarea id="brief"
-                            class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-20 flex items-center pl-3 text-sm border-gray-300 rounded border"
-                            placeholder="short task description" />
-                          </textarea>
+                        Brief</label>
+                    <textarea id="brief"
+                        class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-20 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                        placeholder="Short task description."></textarea>
+
 
                       <div class="flex gap-5 align-left">
                           <div>
