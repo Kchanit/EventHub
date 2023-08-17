@@ -128,164 +128,96 @@
                 @if (Auth::check())
                     <div x-data="{ isOpen: false }">
                         <!-- Notification Icon -->
-                        <button type="button" @click="isOpen=!isOpen" @click.away="isOpen=false"
-                            class="inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs  ">
-                            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                fill="currentColor" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                            </svg>
-                        </button>
-
+                        <div>
+                            <span class="relative inline-block">
+                                <button type="button" @click="isOpen=!isOpen" @click.away="isOpen=false"
+                                    class="inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs  ">
+                                    <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16"
+                                        height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                                    </svg>
+                                </button>
+                                @if (count(auth()->user()->unreadNotifications))
+                                    <span
+                                        class="absolute top-1/2 -left-1 inline-flex items-center justify-center px-2 py-1 text-[10px] font-bold leading-none text-red-100 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
+                                        {{ count(auth()->user()->unreadNotifications) }}
+                                    </span>
+                                @endif
+                            </span>
+                        </div>
                         {{-- Notification Dropdown --}}
                         <div x-show="isOpen"
                             class=" overflow-hidden absolute right-0 z-50 my-4 max-w-sm bg-white text-base list-none bg-green divide-y divide-gray-100 shadow-lg  rounded-xl"
                             id="notification-dropdown">
-                            <div class="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 ">
-                                Notifications
+                            <div
+                                class="flex flex-row block py-2 px-4 text-base font-medium text-center justify-between text-gray-700 bg-gray-50 ">
+                                <div>
+                                    Notifications
+                                </div>
+                                <div>
+                                    @if (auth()->user()->unreadNotifications)
+                                        <a href="{{ route('mark-as-read') }}" class=" text-xs btn btn-success btn-sm">
+                                            Mark All as Read
+                                        </a>
+                                    @endif
+                                </div>
                             </div>
-                            <div>
-                                <a href="#" class="flex py-3 px-4 border-b hover:bg-gray-100 ">
-                                    <div class="flex-shrink-0">
-                                        <img class="w-11 h-11 rounded-full"
-                                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                                            alt="Bonnie Green avatar" />
-                                        <div
-                                            class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 rounded-full border border-white bg-primary-700 ">
-                                            <svg aria-hidden="true" class="w-3 h-3 text-white" fill="currentColor"
-                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z">
-                                                </path>
-                                                <path
-                                                    d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z">
-                                                </path>
-                                            </svg>
+                            <div class="overflow-auto max-h-[70vh]">
+                                @if (count(auth()->user()->Notifications))
+                                    @foreach (auth()->user()->unreadNotifications as $notification)
+                                        <a href="{{ route('mark-this-as-read', ['id' => $notification->id]) }}"
+                                            class="flex py-3 px-4 border-b bg-blue-50 hover:bg-blue-100 ">
+                                            <div class="flex-shrink-0">
+                                                <img class="w-11 h-11 rounded-full"
+                                                    src="{{ asset('storage/' . $notification->data['image_url']) }}" />
+                                            </div>
+                                            <div class="pl-3 w-full">
+                                                <div class="text-gray-500 font-normal text-sm mb-1.5 ">
+                                                    <span
+                                                        class="font-semibold text-gray-900 ">{{ $notification->data['title'] }}</span>
+                                                    <p> {{ $notification->data['data'] }} </p>
+                                                </div>
+                                                <div id='time' class="text-xs font-medium text-primary-600 ">
+                                                    {{ \Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                    @foreach (auth()->user()->readNotifications as $notification)
+                                        <a href="#" class="flex py-3 px-4 border-b hover:bg-gray-100 ">
+                                            <div class="flex-shrink-0">
+                                                <img class="w-11 h-11 rounded-full"
+                                                    src="{{ asset('storage/' . $notification->data['image_url']) }}"" />
+                                            </div>
+                                            <div class="pl-3 w-full">
+                                                <div class="text-gray-500 font-normal text-sm mb-1.5 ">
+                                                    <span
+                                                        class="font-semibold text-gray-900 ">{{ $notification->data['title'] }}</span>
+                                                    <p> {{ $notification->data['data'] }} </p>
+                                                </div>
+                                                <div id='time' class="text-xs font-medium text-primary-600 ">
+                                                    {{ \Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                @else
+                                    <a href="#" class="min-w-full flex py-3 px-4 border-b hover:bg-gray-100">
+                                        <div class="flex-shrink-0">
+                                            <img class="w-11 h-11 rounded-full"
+                                                src="{{ asset('storage/eventhub.png') }} " alt="Bonnie Green avatar" />
                                         </div>
-                                    </div>
-                                    <div class="pl-3 w-full">
-                                        <div class="text-gray-500 font-normal text-sm mb-1.5 ">
-                                            New message from
-                                            <span class="font-semibold text-gray-900 ">Bonnie
-                                                Green</span>:
-                                            "Hey, what's up? All set for the presentation?"
+                                        <div class="pl-3 w-full">
+                                            <div class="text-gray-500 font-normal text-sm mb-1.5 ">
+                                                Welcome to EventHub,
+                                                <span
+                                                    class="font-semibold text-gray-900 ">{{ auth()->user()->name }}</span>
+                                                ! We hope you have a wonderful day!
+                                            </div>
                                         </div>
-                                        <div class="text-xs font-medium text-primary-600 ">
-                                            a few moments ago
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" class="flex py-3 px-4 border-b hover:bg-gray-100 ">
-                                    <div class="flex-shrink-0">
-                                        <img class="w-11 h-11 rounded-full"
-                                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
-                                            alt="Jese Leos avatar" />
-                                        <div
-                                            class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-gray-900 rounded-full border border-white ">
-                                            <svg aria-hidden="true" class="w-3 h-3 text-white" fill="currentColor"
-                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="pl-3 w-full">
-                                        <div class="text-gray-500 font-normal text-sm mb-1.5">
-                                            <span class="font-semibold text-gray-900 ">Jese leos</span>
-                                            and
-                                            <span class="font-medium text-gray-900 ">5 others</span>
-                                            started following you.
-                                        </div>
-                                        <div class="text-xs font-medium text-primary-600 ">
-                                            10 minutes ago
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" class="flex py-3 px-4 border-b hover:bg-gray-100 ">
-                                    <div class="flex-shrink-0">
-                                        <img class="w-11 h-11 rounded-full"
-                                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/joseph-mcfall.png"
-                                            alt="Joseph McFall avatar" />
-                                        <div
-                                            class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-red-600 rounded-full border border-white ">
-                                            <svg aria-hidden="true" class="w-3 h-3 text-white" fill="currentColor"
-                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="pl-3 w-full">
-                                        <div class="text-gray-500 font-normal text-sm mb-1.5 ">
-                                            <span class="font-semibold text-gray-900 ">Joseph
-                                                Mcfall</span>
-                                            and
-                                            <span class="font-medium text-gray-900 ">141 others</span>
-                                            love your story. See it and view more stories.
-                                        </div>
-                                        <div class="text-xs font-medium text-primary-600 ">
-                                            44 minutes ago
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" class="flex py-3 px-4 border-b hover:bg-gray-100 ">
-                                    <div class="flex-shrink-0">
-                                        <img class="w-11 h-11 rounded-full"
-                                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png"
-                                            alt="Roberta Casas image" />
-                                        <div
-                                            class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-green-400 rounded-full border border-white ">
-                                            <svg aria-hidden="true" class="w-3 h-3 text-white" fill="currentColor"
-                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="pl-3 w-full">
-                                        <div class="text-gray-500 font-normal text-sm mb-1.5 ">
-                                            <span class="font-semibold text-gray-900 ">Leslie
-                                                Livingston</span>
-                                            mentioned you in a comment:
-                                            <span class="font-medium text-primary-600 ">@bonnie.green</span>
-                                            what do you say?
-                                        </div>
-                                        <div class="text-xs font-medium text-primary-600 ">
-                                            1 hour ago
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" class="flex py-3 px-4 hover:bg-gray-100 ">
-                                    <div class="flex-shrink-0">
-                                        <img class="w-11 h-11 rounded-full"
-                                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/robert-brown.png"
-                                            alt="Robert image" />
-                                        <div
-                                            class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-purple-500 rounded-full border border-white ">
-                                            <svg aria-hidden="true" class="w-3 h-3 text-white" fill="currentColor"
-                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="pl-3 w-full">
-                                        <div class="text-gray-500 font-normal text-sm mb-1.5 ">
-                                            <span class="font-semibold text-gray-900 ">Robert
-                                                Brown</span>
-                                            posted a new video: Glassmorphism - learn how to implement
-                                            the
-                                            new design trend.
-                                        </div>
-                                        <div class="text-xs font-medium text-primary-600 ">
-                                            3 hours ago
-                                        </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                @endif
                             </div>
                             <a href="#"
                                 class="block py-2 text-md font-medium text-center text-gray-900 bg-gray-50 hover:bg-gray-100 ">
@@ -406,3 +338,11 @@
         </div>
     </nav>
 </header>
+<script type="text/javascript">
+    function showTime() {
+        document.getElementById('time').innerHTML = \Carbon\ Carbon::parse($notification - > created_at) - >
+            diffForHumans();
+    }
+
+    setInterval(showTime, 60);
+</script>

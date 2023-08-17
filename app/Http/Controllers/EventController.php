@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\User;
+use App\Notifications\EventNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class EventController extends Controller
@@ -78,10 +80,13 @@ class EventController extends Controller
 
     public function joinEvent(Request $request, Event $event)
     {
-        $event->attendees()->attach($request->user());
+        $user = $request->user();
+        $event->attendees()->attach($user);
         $event->save();
         // error when refresh
+        User::find($user->id)->notify(new EventNotification($event));
         return redirect()->route('events.index');
+        
     }
 
     public function leaveEvent(Request $request, Event $event)
@@ -90,4 +95,5 @@ class EventController extends Controller
         $event->save();
         return redirect()->route('events.index');
     }
+
 }
