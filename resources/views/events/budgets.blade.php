@@ -114,73 +114,87 @@
                                     <th scope="col" class="px-6 py-3 text-right"></th>
                                 </tr>
                             </thead>
+                            <div class="overflow-auto">
 
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span class="font-mono text-sm text-blue-600 dark:text-blue-500">Food</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span class="text-sm text-gray-600 dark:text-gray-400">$3500.00</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span class="text-sm text-gray-600 dark:text-gray-400">20</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span class="text-sm text-gray-600 dark:text-gray-400">$3500.00</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span
-                                                    class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                                    <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
-                                                        width="16" height="16" fill="currentColor"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                                                    </svg>
-                                                    Paid
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </td>
+                                @foreach ($event->expenses as $expense)
+                                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                        <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
+                                            <td class="h-px w-px whitespace-nowrap">
+                                                <a class="block" href="javascript:;"
+                                                    data-hs-overlay="#hs-ai-invoice-modal">
+                                                    <div class="px-6 py-2">
+                                                        <span
+                                                            class="font-mono text-sm text-blue-600 dark:text-blue-500">{{ $expense->title }}</span>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="h-px w-px whitespace-nowrap">
+                                                <a class="block" href="javascript:;"
+                                                    data-hs-overlay="#hs-ai-invoice-modal">
+                                                    <div class="px-6 py-2">
+                                                        <span
+                                                            class="text-sm text-gray-600 dark:text-gray-400">{{ $expense->amount }}</span>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="h-px w-px whitespace-nowrap">
+                                                <a class="block" href="javascript:;"
+                                                    data-hs-overlay="#hs-ai-invoice-modal">
+                                                    <div class="px-6 py-2">
+                                                        <span
+                                                            class="text-sm text-gray-600 dark:text-gray-400">{{ $expense->quantity }}</span>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="h-px w-px whitespace-nowrap">
+                                                <a class="block" href="javascript:;"
+                                                    data-hs-overlay="#hs-ai-invoice-modal">
+                                                    <div class="px-6 py-2">
+                                                        <span
+                                                            class="text-sm text-gray-600 dark:text-gray-400">{{ $expense->total }}</span>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="h-px w-px whitespace-nowrap">
+                                                <a class="block" href="javascript:;"
+                                                    data-hs-overlay="#hs-ai-invoice-modal">
+                                                    <div class="px-6 py-2">
+                                                        <span
+                                                            class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                                            <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
+                                                                width="16" height="16" fill="currentColor"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                                            </svg>
+                                                            Paid
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </td>
 
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span class="text-sm text-gray-600 dark:text-gray-400">28 December</span>
-                                            </div>
-                                        </a>
-                                    </td>
+                                            <td class="h-px w-px whitespace-nowrap">
+                                                <a class="block" href="javascript:;"
+                                                    data-hs-overlay="#hs-ai-invoice-modal">
+                                                    <div class="px-6 py-2">
+                                                        <span class="text-sm text-gray-600 dark:text-gray-400">
+                                                            {{ $expense->date }}</span>
+                                                    </div>
+                                                </a>
+                                            </td>
 
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span class="text-sm text-gray-600 dark:text-gray-400">Food for
-                                                    attendees</span>
-                                            </div>
-                                        </a>
-                                    </td>
+                                            <td class="h-px w-px whitespace-nowrap">
+                                                <a class="block" href="javascript:;"
+                                                    data-hs-overlay="#hs-ai-invoice-modal">
+                                                    <div class="px-6 py-2">
+                                                        <span
+                                                            class="text-sm text-gray-600 dark:text-gray-400">{{ $expense->note }}</span>
+                                                    </div>
+                                                </a>
+                                            </td>
 
-                                </tr>
-                                <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
+                                        </tr>
+                                        {{-- <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
                                     <td class="h-px w-px whitespace-nowrap">
                                         <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                                             <div class="px-6 py-2">
@@ -244,76 +258,11 @@
                                         </a>
                                     </td>
 
-                                </tr>
+                                </tr> --}}
 
-                                <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span
-                                                    class="font-mono text-sm text-blue-600 dark:text-blue-500">Food</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span class="text-sm text-gray-600 dark:text-gray-400">$3500.00</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span class="text-sm text-gray-600 dark:text-gray-400">20</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span class="text-sm text-gray-600 dark:text-gray-400">$3500.00</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span
-                                                    class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                                    <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
-                                                        width="16" height="16" fill="currentColor"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                                                    </svg>
-                                                    Paid
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span class="text-sm text-gray-600 dark:text-gray-400">28 December</span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span class="text-sm text-gray-600 dark:text-gray-400">Food for
-                                                    attendees</span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                </tr>
-
-
-                            </tbody>
+                                    </tbody>
+                                @endforeach
+                            </div>
                         </table>
                         <!-- End Table -->
 
@@ -363,9 +312,8 @@
 
     {{-- Modal --}}
     <dialog class="modal" id="modal">
-        <form action="" method="">
+        <form action="{{ route('events.budgets.store-expense', ['event' => $event]) }}" method="POST">
             @csrf
-            @method('PUT')
             <div class="h-full w-full fixed top-0  left-0 z-[60] overflow-x-hidden overflow-y-auto">
                 <div class="py-12 bg-opacity-90  transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0"
                     id="modal">
@@ -387,18 +335,18 @@
                             </h1>
 
                             {{-- Name --}}
-                            <label for="name" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                                Item</label>
-                            <input id="name"
-                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
-                                placeholder="James" />
+                            <label for="title" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                                Title</label>
+                            <input id="title" name="title" type="text"
+                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 @error('date') border-red-400 @enderror font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                                placeholder="Expense title" />
 
                             {{-- Date --}}
-                            <label for="expiry" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                            <label for="date" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
                                 Date</label>
                             <div class="relative mb-5 mt-2">
-                                <div class="absolute right-0 text-gray-600 flex items-center pr-3 h-full cursor-pointer">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                {{-- <div class="absolute right-0 text-gray-600 flex items-center pr-3 h-full cursor-pointer"> --}}
+                                {{-- <svg xmlns="http://www.w3.org/2000/svg"
                                         class="icon icon-tabler icon-tabler-calendar-event" width="20" height="20"
                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
                                         stroke-linecap="round" stroke-linejoin="round">
@@ -409,11 +357,11 @@
                                         <line x1="8" y1="3" x2="8" y2="7" />
                                         <line x1="4" y1="11" x2="20" y2="11" />
                                         <rect x="8" y="15" width="2" height="2" />
-                                    </svg>
-                                </div>
-                                <input id="expiry"
-                                    class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
-                                    placeholder="MM/YY" />
+                                    </svg> --}}
+                                {{-- </div> --}}
+                                <input id="date" type="date" name="date"
+                                    class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 @error('date') border-red-400 @enderror font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" />
+
                             </div>
 
                             <div class="flex gap-2">
@@ -422,8 +370,8 @@
                                     <label for="amount"
                                         class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
                                         Amount</label>
-                                    <input id="amount" type="number"
-                                        class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                                    <input id="amount" type="number" name="amount"
+                                        class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 @error('date') border-red-400 @enderror font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
                                         placeholder="1000" />
                                 </div>
 
@@ -432,8 +380,8 @@
                                     <label for="quantity"
                                         class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
                                         Quantity</label>
-                                    <input id="quantity" type="number"
-                                        class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                                    <input id="quantity" type="number" name="quantity"
+                                        class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 @error('date') border-red-400 @enderror font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
                                         placeholder="1" />
                                 </div>
                             </div>
@@ -441,14 +389,14 @@
                             {{-- Note --}}
                             <label for="note" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
                                 Note</label>
-                            <textarea id="note"
-                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-20 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                            <textarea id="note" name="note" type="text"
+                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 @error('date') border-red-400 @enderror font-normal w-full h-20 flex items-center pl-3 text-sm border-gray-300 rounded border"
                                 placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."></textarea>
 
 
                             {{-- Buttons --}}
                             <div class="flex items-center justify-start w-full">
-                                <button
+                                <button type="submit"
                                     class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 rounded-md transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 text-white px-8 py-2 text-sm">Submit</button>
                                 <button
                                     class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded-md px-8 py-2 text-sm"
@@ -521,5 +469,9 @@
                 }
             })();
         }
+
+        const currentDate = new Date().toISOString().split("T")[0];
+
+        document.getElementById("date").value = currentDate;
     </script>
 @endsection

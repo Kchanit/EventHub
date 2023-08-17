@@ -7,6 +7,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\EditInfoController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\MyEvent\MemberController;
 use App\Http\Controllers\MyEvent\MyEventController;
 use App\Http\Controllers\Officer\BudgetApproval;
@@ -77,6 +78,10 @@ Route::middleware('auth')->group(function () {
         ->name('events.members');
     Route::get('/events/{event}/budgets', [BudgetController::class, 'index'])
         ->name('events.budgets');
+
+    Route::post('/events/{event}/budgets/create-expense', [ExpenseController::class, 'store'])
+        ->name('events.budgets.store-expense');
+
     Route::get('/events/{event}/schedules', [ScheduleController::class, 'index'])
         ->name('events.schedules');
 
