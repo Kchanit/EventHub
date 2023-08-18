@@ -61,7 +61,6 @@ Route::get('/info/editInfo', [EditInfoController::class, 'index'])
     ->name('editInfo.index');
 
 //==============================================================================
-Route::get('/officer', [BudgetApproval::class, 'index'])->name('officer.index');
 Route::get('/officer/show', [BudgetApproval::class, 'show'])->name('officer.show');
 
 //======================        Dashboard & Auth       =========================
@@ -101,6 +100,11 @@ Route::middleware('auth')->group(function () {
 
     Route::put('/events/{event}/budgets/submit-budget', [EventController::class, 'submitBudget'])
         ->name('events.budgets.submit-budget');
+
+
+    // Officer
+    Route::get('/officer', [BudgetApproval::class, 'index'])
+        ->name('officer.index');
 });
 
 Route::resource('events', EventController::class);
