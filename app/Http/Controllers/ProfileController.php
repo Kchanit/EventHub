@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Event;
 use App\Models\User;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -71,6 +72,8 @@ class ProfileController extends Controller
 
     public function storeEvent(Request $request)
     {
+        $this->authorize('create', Event::class);
+
         $user = $request->user();
         $request->validate([
             'title' => 'required|min:4|max:255',

@@ -2,12 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Event;
+use App\Models\Expense;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
-use Illuminate\Support\Facades\Auth;
 
-class EventPolicy
+class ExpensePolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -20,9 +19,9 @@ class EventPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Event $event): bool
+    public function view(User $user, Expense $expense): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -36,23 +35,23 @@ class EventPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Event $event): bool
+    public function update(User $user, Expense $expense): bool
     {
-        return $user->id === $event->user_id;
+        return true;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Event $event): bool
+    public function delete(User $user, Expense $expense): bool
     {
-        return $user->id === $event->user_id;
+        return true;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Event $event): bool
+    public function restore(User $user, Expense $expense): bool
     {
         return false;
     }
@@ -60,15 +59,8 @@ class EventPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Event $event): bool
+    public function forceDelete(User $user, Expense $expense): bool
     {
         return false;
-    }
-
-    public function changeEventBudgetStatus(User $user, Event $event): bool
-    {
-        if ($user->isOfficer()) {
-            return true;
-        } else return false;
     }
 }

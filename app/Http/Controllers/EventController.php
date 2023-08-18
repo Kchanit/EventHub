@@ -98,6 +98,7 @@ class EventController extends Controller
 
     public function submitBudget(Event $event)
     {
+        // Owner only
         $event->budget_status = EventBudgetStatus::PENDING;
         $event->save();
         return redirect()->back();
@@ -105,6 +106,7 @@ class EventController extends Controller
 
     public function approveBudget(Event $event)
     {
+        $this->authorize('changeEventBudgetStatus', Event::class);
         $event->budget_status = EventBudgetStatus::APPROVED;
         $event->save();
         return redirect()->back();
@@ -112,6 +114,7 @@ class EventController extends Controller
 
     public function rejectBudget(Event $event)
     {
+        $this->authorize('changeEventBudgetStatus', Event::class);
         $event->budget_status = EventBudgetStatus::REJECTED;
         $event->save();
         return redirect()->back();
