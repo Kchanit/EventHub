@@ -4,6 +4,7 @@ use App\Http\Controllers\AttendedEventController;
 use App\Http\Controllers\MyEvent\BudgetController;
 use App\Http\Controllers\MyEvent\ScheduleController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\AllTasksController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\EditInfoController;
@@ -34,7 +35,8 @@ Route::get('/mark-as-read', [NotificationController::class, 'markAsRead'])
     ->name('mark-as-read');
 Route::get('/mark-this-as-read', [NotificationController::class, 'markThisAsRead'])
     ->name('mark-this-as-read');
-
+Route::get('/events/all-tasks', [AllTasksController::class, 'index'])
+    ->name('events.all-tasks');
 Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
     ->name('profile.create-event');
 
