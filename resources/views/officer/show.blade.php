@@ -19,7 +19,7 @@
                             </path>
                         </svg>
                         <p class="">
-                            {{ date('d F', strtotime($event->date)) }}
+                            {{ date('d F Y', strtotime($event->date)) }}
                         </p>
                     </div>
                     <div class="flex gap-x-2 text-lg text-gray-800">
@@ -34,11 +34,11 @@
                         </p>
                     </div>
                     <div class="flex text-lg">
-                        Attendees: {{ count($event->attendees) }}
+                        <span class="font-semibold">Attendees:</span> {{count($event->attendees) }}
                     </div>
                     <div class="">
-                        <h3 class="text-lg mb-1 leading-none text-gray-900 dark:text-white">Description</h3>
-                        <p class="font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{ $event->description }}</p>
+                        <h3 class="text-lg font-semibold mb-1 leading-none text-gray-900 dark:text-white">Description</h3>
+                        <p class="text-lg text-gray-800 sm:mb-5 dark:text-gray-400">{{ $event->description }}</p>
                     </div>
                 </div>
             </div>
