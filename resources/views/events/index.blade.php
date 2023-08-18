@@ -6,7 +6,7 @@
         {{-- Header --}}
         <div class="flex items-center justify-between mb-5">
             <div>
-                <h1 class="text-3xl font-bold">
+                <h1 class="text-3xl font-semibold">
                     All Events
                 </h1>
                 <p class="text-sm text-gray-500">
