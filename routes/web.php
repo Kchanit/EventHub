@@ -35,8 +35,8 @@ Route::get('/mark-as-read', [NotificationController::class, 'markAsRead'])
     ->name('mark-as-read');
 Route::get('/mark-this-as-read', [NotificationController::class, 'markThisAsRead'])
     ->name('mark-this-as-read');
-Route::get('/events/all-tasks', [AllTasksController::class, 'index'])
-    ->name('events.all-tasks');
+//Route::get('/events/all-tasks', [AllTasksController::class, 'index'])
+//    ->name('events.all-tasks');
 Route::get('/events/create-event', [ProfileController::class, 'createEvent'])
     ->name('profile.create-event');
 
@@ -85,11 +85,16 @@ Route::middleware('auth')->group(function () {
         ->name('events.members');
     Route::get('/events/{event}/budgets', [BudgetController::class, 'index'])
         ->name('events.budgets');
+    Route::get('events/{event}/all-tasks', [AllTasksController::class, 'index'])
+        ->name('events.all-tasks');
 
     Route::post('/events/{event}/budgets/create-expense', [ExpenseController::class, 'store'])
         ->name('events.budgets.store-expense');
     Route::delete('/events/{event}/budgets/{expense}/delete', [ExpenseController::class, 'destroy'])
         ->name('events.budgets.delete');
+
+    Route::post('/events/{event}/all-tasks/create-task', [AllTasksController::class, 'store'])
+        ->name('events.all-tasks.store-tasks');
 
     Route::get('/events/{event}/schedules', [ScheduleController::class, 'index'])
         ->name('events.schedules');

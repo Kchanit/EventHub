@@ -24,4 +24,9 @@ class Event extends Model
     {
         return $this->hasMany(Expense::class);
     }
+
+    public function all_tasks(): HasMany
+    {
+        return $this->hasMany(AllTasks::class);
+    }
 }
