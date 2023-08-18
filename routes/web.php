@@ -74,6 +74,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/events/create-event', [ProfileController::class, 'storeEvent'])
         ->name('profile.store-event');
+
     // My Events
     Route::get('/events/my-events', [MyEventController::class, 'index'])->name('events.my-events');
     Route::get('/events/{event}/attendees', [MyEventController::class, 'attendees'])
@@ -85,6 +86,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/events/{event}/budgets/create-expense', [ExpenseController::class, 'store'])
         ->name('events.budgets.store-expense');
+    Route::delete('/events/{event}/budgets/{expense}/delete', [ExpenseController::class, 'destroy'])
+        ->name('events.budgets.delete');
 
     Route::get('/events/{event}/schedules', [ScheduleController::class, 'index'])
         ->name('events.schedules');

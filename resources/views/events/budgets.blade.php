@@ -23,30 +23,31 @@
 
                             <div>
                                 <div class="inline-flex gap-x-2">
-                                    <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                                        href="#">
-                                        View all
-                                    </a>
+                                    @if (count($event->expenses) > 0)
+                                        <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                                            href="#">
+                                            View all
+                                        </a>
 
-                                    <button type="button"
-                                        class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold hover:bg-indigo-600 bg-indigo-700 text-white  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                                        id="create-btn" href="#" onclick="modalHandler(true)">
-                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16"
-                                            height="16" viewBox="0 0 16 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" />
-                                        </svg>
-                                        Create
-                                    </button>
+                                        <button type="button"
+                                            class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold hover:bg-indigo-600 bg-indigo-700 text-white  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                                            id="create-btn" href="#" onclick="modalHandler(true)">
+                                            <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16"
+                                                height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" />
+                                            </svg>
+                                            Create
+                                        </button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                         <!-- End Header -->
-
-                        <!-- Table -->
-                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                            @if (count($event->attendees))
+                        @if (count($event->expenses) > 0)
+                            <!-- Table -->
+                            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                 <thead class="bg-gray-50 dark:bg-slate-900">
                                     <tr>
                                         <th scope="col" class="px-6 py-3 text-left">
@@ -116,7 +117,6 @@
                                     </tr>
                                 </thead>
                                 <div class="overflow-auto">
-
                                     @foreach ($event->expenses as $expense)
                                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                                             <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
@@ -194,6 +194,19 @@
                                                     </a>
                                                 </td>
 
+                                                <td>
+                                                    <form
+                                                        action="{{ route('events.budgets.delete', ['event' => $event, 'expense' => $expense]) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" href=""
+                                                            class="text-sm text-gray-600">
+                                                            Delete
+                                                        </button>
+                                                    </form>
+                                                </td>
+
                                             </tr>
                                             {{-- <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
                                     <td class="h-px w-px whitespace-nowrap">
@@ -264,16 +277,58 @@
                                         </tbody>
                                     @endforeach
                                 </div>
-                            @endif
-                        </table>
-                        <!-- End Table -->
+                            </table>
+                            <!-- End Table -->
+                        @else
+                            <!-- Body -->
+                            <div class="max-w-sm w-full min-h-[400px] flex flex-col justify-center mx-auto px-6 py-4">
+                                <div
+                                    class="flex justify-center items-center w-[46px] h-[46px] bg-gray-100 rounded-md dark:bg-gray-800">
+                                    <svg class="w-6 h-6 text-gray-600 dark:text-gray-400"
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" viewBox="0 0 16 16">
+                                        <path
+                                            d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
+                                        <path
+                                            d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                                    </svg>
+                                </div>
 
+                                <h2 class="mt-5 font-semibold text-gray-800 dark:text-white">
+                                    No expense yet</h2>
+                                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                                    Draft an expense and submit it to an officer.
+                                </p>
+
+
+                                <div class="mt-5 grid sm:flex gap-2">
+                                    <button type="button" id="create-btn2" onclick="modalHandler(true)"
+                                        class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" viewBox="0 0 16 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" />
+                                        </svg>
+                                        Create a new expense
+                                    </button>
+
+                                    {{-- <button type="button"
+                                        class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                                        Use a Template
+                                    </button> --}}
+                                </div>
+                            </div>
+                            <!-- End Body -->
+                        @endif
                         <!-- Footer -->
                         <div
                             class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
                             <div>
                                 <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="font-semibold text-gray-800 dark:text-gray-200">9</span> results
+                                    <span
+                                        class="font-semibold text-gray-800 dark:text-gray-200">{{ count($event->expenses) }}</span>
+                                    results
                                 </p>
                             </div>
 
@@ -304,6 +359,7 @@
                             </div>
                         </div>
                         <!-- End Footer -->
+
                     </div>
                 </div>
             </div>
@@ -400,13 +456,13 @@
                             <div class="flex items-center justify-start w-full">
                                 <button type="submit"
                                     class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 rounded-md transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 text-white px-8 py-2 text-sm">Submit</button>
-                                <button
+                                <button type="button"
                                     class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded-md px-8 py-2 text-sm"
                                     onclick="modalHandler()" id="cancel-btn">Cancel</button>
                             </div>
 
                             {{-- exit icon --}}
-                            <button
+                            <button type="button"
                                 class="cursor-pointer absolute top-0 right-0 mt-4 mr-5 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"
                                 onclick="modalHandler()" aria-label="close modal" role="button" id="close-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x"
@@ -427,10 +483,14 @@
     <script>
         const modal = document.querySelector("#modal");
         const openModal = document.getElementById("create-btn");
+        const openModal2 = document.getElementById("create-btn2");
         const closeModal = document.querySelector("#close-btn");
         const cancel = document.querySelector("#cancel-btn");
 
         openModal.addEventListener("click", () => {
+            modal.showModal();
+        });
+        openModal2.addEventListener("click", () => {
             modal.showModal();
         });
         closeModal.addEventListener("click", () => {
@@ -439,7 +499,6 @@
         cancel.addEventListener("click", () => {
             modal.close();
         });
-
 
         function modalHandler(val) {
             if (val) {
@@ -454,6 +513,7 @@
             (function fade() {
                 if ((el.style.opacity -= 0.1) < 0) {
                     el.style.display = "none";
+                    el.style.opacity = 1; // Reset opacity for next use
                 } else {
                     requestAnimationFrame(fade);
                 }
