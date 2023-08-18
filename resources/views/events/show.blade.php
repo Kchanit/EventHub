@@ -40,26 +40,27 @@
             </dl>
 
 
-
-            @if (auth()->check())
-                @if ($event->attendees->contains(auth()->user()))
-                    <form action="{{ route('events.leave-event', ['event' => $event]) }}" method="POST">
-                        @csrf
-                        <button type="submit"
-                            class="inline-flex items-center text-white bg-red-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                            Leave event
-                        </button>
-                    </form>
-                @else
-                    <form action="{{ route('events.join-event', ['event' => $event]) }}" method="POST">
-                        @csrf
-                        <button type="submit"
-                            class="inline-flex items-center text-white bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                            Join event
-                        </button>
-                    </form>
+            @can('joinEvent', $event)
+                @if (auth()->check())
+                    @if ($event->attendees->contains(auth()->user()))
+                        <form action="{{ route('events.leave-event', ['event' => $event]) }}" method="POST">
+                            @csrf
+                            <button type="submit"
+                                class="inline-flex items-center text-white bg-red-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                Leave event
+                            </button>
+                        </form>
+                    @else
+                        <form action="{{ route('events.join-event', ['event' => $event]) }}" method="POST">
+                            @csrf
+                            <button type="submit"
+                                class="inline-flex items-center text-white bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                Join event
+                            </button>
+                        </form>
+                    @endif
                 @endif
-            @endif
+            @endcan
 
 
             @can('update', $event)

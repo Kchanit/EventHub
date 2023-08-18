@@ -23,6 +23,14 @@ return new class extends Migration
             $table->string('faculty');
             $table->string('college_year');
             $table->string('image_url')->nullable();
+
+            $table->date('date_of_birth')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('line_id')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('github')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });

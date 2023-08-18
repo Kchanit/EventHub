@@ -71,4 +71,12 @@ class EventPolicy
             return true;
         } else return false;
     }
+
+    public function joinEvent(User $user, Event $event): bool
+    {
+        return (!$event->attendees()->where('user_id', $user->id)->exists())
+            && ($event->attendees()->count() < $event->attendees_limit)
+            && ($event->date > now())
+            && (Auth::user()->id != $event->user_id);
+    }
 }

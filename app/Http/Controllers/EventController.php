@@ -81,6 +81,7 @@ class EventController extends Controller
 
     public function joinEvent(Request $request, Event $event)
     {
+        $this->authorize('joinEvent', Event::class);
         $user = $request->user();
         $event->attendees()->attach($user);
         $event->save();
