@@ -102,4 +102,18 @@ class EventController extends Controller
         $event->save();
         return redirect()->back();
     }
+
+    public function approveBudget(Event $event)
+    {
+        $event->budget_status = EventBudgetStatus::APPROVED;
+        $event->save();
+        return redirect()->back();
+    }
+
+    public function rejectBudget(Event $event)
+    {
+        $event->budget_status = EventBudgetStatus::REJECTED;
+        $event->save();
+        return redirect()->back();
+    }
 }

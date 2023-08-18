@@ -279,7 +279,7 @@
 
         {{-- Buttons --}}
         <div class="flex justify-center mt-5 gap-x-5">
-            <form action="" method="POST">
+            <form action="{{ route('events.budgets.approve-budget', ['event' => $event]) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <button type="submit" id="submit-budget-btn"
@@ -287,7 +287,7 @@
                     Approve
                 </button>
             </form>
-            <form action="" method="POST">
+            <form action="{{ route('events.budgets.reject-budget', ['event' => $event]) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <button type="submit" id="submit-budget-btn"
