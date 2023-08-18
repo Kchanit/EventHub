@@ -98,6 +98,9 @@ Route::middleware('auth')->group(function () {
         ->name('events.leave-event');
     Route::post('/events/{event}/join-event', [EventController::class, 'joinEvent'])
         ->name('events.join-event');
+
+    Route::put('/events/{event}/budgets/submit-budget', [EventController::class, 'submitBudget'])
+        ->name('events.budgets.submit-budget');
 });
 
 Route::resource('events', EventController::class);

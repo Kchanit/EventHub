@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('description');
             $table->date('date');
             $table->string('image_url')->nullable();
+            $table->string('budget_status')->default('NONE');
             $table->timestamps();
             $table->softDeletes();
         });

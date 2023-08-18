@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enums\EventBudgetStatus;
 use App\Models\Event;
 use App\Models\User;
 use App\Notifications\EventNotification;
@@ -86,7 +87,6 @@ class EventController extends Controller
         // error when refresh
         User::find($user->id)->notify(new EventNotification($event));
         return redirect()->route('events.index');
-        
     }
 
     public function leaveEvent(Request $request, Event $event)
@@ -96,4 +96,10 @@ class EventController extends Controller
         return redirect()->route('events.index');
     }
 
+    public function submitBudget(Event $event)
+    {
+        $event->budget_status = EventBudgetStatus::PENDING;
+        $event->save();
+        return redirect()->back();
+    }
 }
