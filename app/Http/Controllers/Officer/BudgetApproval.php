@@ -38,9 +38,9 @@ class BudgetApproval extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Officer $officer)
+    public function show(Event $event)
     {
-        return view('officer.show');
+        return view('officer.show', ['event' => $event]);
     }
 
     /**
