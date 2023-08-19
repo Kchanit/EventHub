@@ -45,9 +45,10 @@
                         </div>
                         <!-- End Header -->
 
+                    @if (count($event->tasks) > 0)
                         <!-- Table -->
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                            @if (count($event->tasks) > 0)
+                            
                             <thead class="bg-gray-50 dark:bg-slate-900">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-left">
@@ -107,166 +108,96 @@
                                     <th scope="col" class="px-6 py-3 text-right"></th>
                                 </tr>
                             </thead>
-                        <div class="overflow-auto">
-                            @foreach ($event->tasks as $task)
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                                    <!--New Row-->
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span
-                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-200">
-                                                    {{$task->title}}
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </td>
 
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span class="block text-sm text-gray-800 dark:text-gray-200">
-                                                    {{$task->brief}}
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <div class="flex items-center gap-x-3">
-                                                    <span class="block text-sm text-gray-800 dark:text-gray-200">
-                                                        {{$task->assignee}}
+                            <div class="overflow-auto">
+                                @foreach ($event->tasks as $task)
+                                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                    <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
+                                        <!--New Row-->
+                                        <td class="h-px w-px whitespace-nowrap">
+                                            <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                                                <div class="px-6 py-2">
+                                                    <span
+                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">
+                                                        {{$task->title}}
                                                     </span>
-                                                    
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </td>
+                                            </a>
+                                        </td>
 
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <span class="block text-sm text-gray-800 dark:text-gray-200">
-                                                    {{$task->status}}
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <div class="flex items-center gap-x-3">
+                                        <td class="h-px w-px whitespace-nowrap">
+                                            <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                                                <div class="px-6 py-2">
                                                     <span class="block text-sm text-gray-800 dark:text-gray-200">
-                                                        {{$task->priority}}
+                                                        {{$task->brief}}
                                                     </span>
-                                                    
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <span class="text-sm text-gray-500">
-                                                    {{$task->date}}
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <form
-                                            action="{{ route('events.all-tasks.delete', ['event' => $event, 'task' => $task]) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" href=""
-                                                class="text-sm text-gray-600">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                            </a>
+                                        </td>
 
-                                {{--
-                                <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span
-                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Props
-                                                    work</span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-72 whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <span class="block text-sm text-gray-500">make props for attendances</span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <span
-                                                    class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                                    <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
-                                                        width="16" height="16" fill="currentColor"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                                                    </svg>
-                                                    Complete
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <div class="flex items-center gap-x-3">
-                                                    <span class="text-xs text-gray-500">5/5</span>
-                                                    <div
-                                                        class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700">
-                                                        <div class="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-gray-200"
-                                                            role="progressbar" style="width: 100%" aria-valuenow="100"
-                                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                        <td class="h-px w-px whitespace-nowrap">
+                                            <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                                                <div class="px-6 py-3">
+                                                    <div class="flex items-center gap-x-3">
+                                                        <span class="block text-sm text-gray-800 dark:text-gray-200">
+                                                            {{$task->assignee}}
+                                                        </span>
+                                                        
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </td>
+                                            </a>
+                                        </td>
 
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <span class="text-sm text-gray-500">18 Dec, 15:20</span>
-                                            </div>
-                                        </a>
-                                    </td>
+                                        <td class="h-px w-px whitespace-nowrap">
+                                            <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                                                <div class="px-6 py-3">
+                                                    <span class="block text-sm text-gray-800 dark:text-gray-200">
+                                                        {{$task->status}}
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </td>
 
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <div class="px-6 py-1.5">
-                                            <button type="button"
-                                                class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium"
-                                                href="#">
-                                                Edit
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                --}}
-                            </tbody>
-                        </div>
-                    </table>
+                                        <td class="h-px w-px whitespace-nowrap">
+                                            <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                                                <div class="px-6 py-3">
+                                                    <div class="flex items-center gap-x-3">
+                                                        <span class="block text-sm text-gray-800 dark:text-gray-200">
+                                                            {{$task->priority}}
+                                                        </span>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </td>
+
+                                        <td class="h-px w-px whitespace-nowrap">
+                                            <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                                                <div class="px-6 py-3">
+                                                    <span class="text-sm text-gray-500">
+                                                        {{$task->date}}
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </td>
+
+                                        <td class="h-px w-px whitespace-nowrap">
+                                            <form
+                                                action="{{ route('events.all-tasks.delete', ['event' => $event, 'task' => $task]) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" href=""
+                                                    class="text-sm text-gray-600">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                @endforeach
+                            </div>
+                        </table>
                         <!-- End Table -->
                     @else
                     <!-- Body -->
@@ -290,7 +221,8 @@
                         </div>
 
                         <h2 class="mt-5 font-semibold text-gray-800 dark:text-white">
-                            No task yet</h2>
+                            No task yet
+                        </h2>
                         <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
                             Create a new task here.
                         </p>
@@ -317,9 +249,7 @@
                     <!-- End Body -->
                     
                     <!-- Footer -->
-                    
-                    <div
-                        class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
+                    <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-400">
                                 <span class="font-semibold text-gray-800 dark:text-gray-200">{{ count($event->tasks) }}</span> results
@@ -335,14 +265,14 @@
                                         <path fill-rule="evenodd"
                                             d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
                                     </svg>
-                                     Prev
+                                    Prev
                                 </button>
 
                                 <button type="button"
                                     class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
                                     Next
                                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16"
-                                         height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            height="16" fill="currentColor" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
                                             d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                     </svg>
