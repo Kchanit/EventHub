@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Enums\EventBudgetStatus;
 use App\Models\Event;
 use App\Models\User;
+use App\Notifications\EventMemberAddedNotification;
+use App\Notifications\EventMemberRemovedNotification;
 use App\Notifications\EventNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -86,7 +88,7 @@ class EventController extends Controller
         $event->attendees()->attach($user);
         $event->save();
         // error when refresh
-        User::find($user->id)->notify(new EventNotification($event));
+        $user->notify(new EventNotification($event));
         return redirect()->route('events.index');
     }
 
@@ -119,5 +121,37 @@ class EventController extends Controller
         $event->budget_status = EventBudgetStatus::REJECTED;
         $event->save();
         return redirect()->back();
+    }
+
+    public function addMember(Request $request, Event $event)
+    {
+        $request->validate([
+            'student_id' => 'required',
+        ]);
+        $student_id = $request->get('student_id');
+        $user = User::where('student_id', $student_id)->first();
+        if ($user && !($this->isMember($event, $student_id))) {
+            $this->authorize('update', $event);
+            $event->members()->attach($user);
+            $event->save();
+            $user->notify(new EventMemberAddedNotification(auth()->user()->name, $event));
+        }
+        return redirect()->route('events.members', ['event' => $event]);
+    }
+
+    public function isMember(Event $event, $student_id): bool
+    {
+        if ($event->members->firstWhere('student_id', $student_id) === null)
+            return false;
+        return true;
+    }
+
+    public function removeMember(Request $request, Event $event, User $user)
+    {
+        $this->authorize('update', $event);
+        $event->members()->detach($user);
+        $event->save();
+        $user->notify(new EventMemberRemovedNotification(auth()->user()->name, $event));
+        return redirect()->route('events.members', ['event' => $event]);
     }
 }

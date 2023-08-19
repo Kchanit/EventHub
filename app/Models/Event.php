@@ -20,6 +20,11 @@ class Event extends Model
         return $this->belongsToMany(User::class, 'event_attendees');
     }
 
+    public function members()
+    {
+        return $this->belongsToMany(User::class, 'event_members');
+    }
+
     public function expenses(): HasMany
     {
         return $this->hasMany(Expense::class);

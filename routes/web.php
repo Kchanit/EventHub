@@ -83,7 +83,13 @@ Route::middleware('auth')->group(function () {
         ->name('events.members');
     Route::get('/events/{event}/budgets', [BudgetController::class, 'index'])
         ->name('events.budgets');
+    // members
+    Route::post('/events/{event}/members/add-member', [EventController::class, 'addMember'])
+        ->name('events.members.add');
+    Route::delete('/events/{event}/members/{user}/remove-member', [EventController::class, 'removeMember'])
+        ->name('events.members.remove');
 
+    // budgets
     Route::post('/events/{event}/budgets/create-expense', [ExpenseController::class, 'store'])
         ->name('events.budgets.store-expense');
     Route::delete('/events/{event}/budgets/{expense}/delete', [ExpenseController::class, 'destroy'])
