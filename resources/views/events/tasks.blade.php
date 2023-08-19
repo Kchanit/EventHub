@@ -142,7 +142,7 @@
                                                             <div class="flex items-center gap-x-3">
                                                                 <span
                                                                     class="block text-sm text-gray-800 dark:text-gray-200">
-                                                                    {{ $task->assignee }}
+                                                                    {{ $task->assignee->name }}
                                                                 </span>
 
                                                             </div>
@@ -400,34 +400,55 @@
                                 Create new task
                             </h1>
 
-                            {{-- Name --}}
-                            <label for="name" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                            {{-- Title --}}
+                            <label for="title" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
                                 Task</label>
-                            <input id="name"
-                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                            <input id="title" name="title"
+                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border"
                                 placeholder="task name" />
 
                             {{-- Brief --}}
                             <label for="brief" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
                                 Brief</label>
-                            <textarea id="brief"
-                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-20 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                            <textarea id="brief" name="brief"
+                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-20 flex items-center pl-3 text-sm border-gray-300 rounded-lg border"
                                 placeholder="Task description."></textarea>
 
-                            <label for="assignee" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                                Assignee</label>
-                            <input id="assignee"
-                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
-                                placeholder="assignee name" />
+                            {{-- Assignee --}}
+                            <label for="assignee_id"
+                                class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                                Assignee Student ID</label>
+                            <input id="assignee_id" name="assignee_id"
+                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border"
+                                placeholder="B600000" />
 
+                            {{-- Due Date --}}
+                            <div class="space-y-2 mb-5 text-sm font-medium text-gray-800  dark:text-gray-200">
+                                <label class="text-gray-800 block text-sm font-bold leading-tight tracking-normal"
+                                    for="date">
+                                    Select Date
+                                </label>
+                                <input id="date" name="date" type="date" value="{{ old('date', '') }}"
+                                    class="@error('date') border-red-400 @enderror mb-5 py-2 px-3 pr-11 border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500"
+                                    placeholder="Select date start">
+
+                                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+
+                                @error('date')
+                                    <div class=" text-red-500 text-sm">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            {{-- Status --}}
                             <div class="flex gap-5 align-left">
                                 <div>
-                                    {{-- Status --}}
                                     <label for="status"
                                         class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
                                         Status</label>
-                                    <select
-                                        class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border">
+                                    <select id="status" name="status"
+                                        class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border">
                                         <option selected>To do</option>
                                         <option>In progress</option>
                                         <option>Done</option>
@@ -440,8 +461,8 @@
                                     <label for="priority"
                                         class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
                                         Priority</label>
-                                    <select
-                                        class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border">
+                                    <select id="priority" name="priority"
+                                        class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border">
                                         <option selected>Low</option>
                                         <option>Medium</option>
                                         <option>High</option>
@@ -450,14 +471,13 @@
                                 </div>
                             </div>
 
-
                             {{-- Buttons --}}
                             <div class="flex items-center justify-start w-full">
-                                <button
-                                    class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 rounded-md transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 text-white px-8 py-2 text-sm">
+                                <button type="submit"
+                                    class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 rounded-lg transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 text-white px-8 py-2 text-sm">
                                     Add task</button>
                                 <button type="button"
-                                    class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded-md px-8 py-2 text-sm"
+                                    class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded-lg px-8 py-2 text-sm"
                                     onclick="modalHandler()" id="cancel-btn">Cancel</button>
                             </div>
 

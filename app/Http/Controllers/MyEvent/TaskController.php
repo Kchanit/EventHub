@@ -8,9 +8,10 @@ use App\Models\Task;
 use Illuminate\Http\Request;
 
 
-class TaskController extends Controller {
+class TaskController extends Controller
+{
 
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index(Event $event)
@@ -33,10 +34,11 @@ class TaskController extends Controller {
         $task = new Task();
         $task->title = $request->get('title');
         $task->brief = $request->get('brief');
-        $task->assignee = $request->get('assignee');
         $task->status = $request->get('status');
         $task->priority = $request->get('priority');
         $task->date = $request->get('date');
+        $task->assignee()->associate($request->get('assignee_id'));
+        // $task->assignee_id = $request->get('assignee_id');
         $task->created_by = auth()->user()->id;
         $task->event_id = $event->id;
 

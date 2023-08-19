@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string('title');
             $table->string('brief')->nullable();
             $table->string('status');
-            $table->integer('progress');
-            $table->date('date');
-            $table->foreignId('assignee');
+            $table->date('date')->default(now());
+            $table->foreignId('assignee_id')->constrained('users');
             $table->foreignId('event_id')->constrained();
             $table->foreignId('created_by')->constrained('users');
-            $table->string('priority')->nullable();
+            $table->string('priority')->default('Low');
+            $table->string('task_status')->default('To do');
             $table->timestamps();
         });
     }

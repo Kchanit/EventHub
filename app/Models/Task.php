@@ -9,10 +9,15 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'brief', 'assignee', 'status', 'priority', 'date', 'event_id', 'created_by'];
+    protected $fillable = ['title', 'brief', 'assignee_id', 'status', 'priority', 'date', 'event_id', 'created_by'];
 
     public function event()
     {
         return $this->belongsTo(Event::class);
+    }
+
+    public function assignee()
+    {
+        return $this->belongsTo(User::class, 'assignee_id');
     }
 }

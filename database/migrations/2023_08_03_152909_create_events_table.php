@@ -15,7 +15,6 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            // $table->foreignIdFor(\App\Models\User::class);
             $table->foreignId('user_id')->constrained();
             $table->string('location');
             $table->integer('attendees_limit')->nullable();
