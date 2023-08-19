@@ -26,6 +26,7 @@ class EventSeeder extends Seeder
         $event->user_id = '1';
         $event->description = 'Brewtopia Bangkok 2023 is a beer festival that will be held in Bangkok, Thailand. The festival will feature more than 100 beers from around the world, including local craft beers and international brands. There will also be food stalls, live music, and other entertainment.';
         $event->date = '2023-09-03';
+        $event->event_status = 'PUBLISHED';
         $event->save();
 
         $event = new Event();
@@ -38,22 +39,29 @@ class EventSeeder extends Seeder
         $event->user_id = '2';
         $event->description = 'LE SSERAFIM TOUR FLAME RISES IN BANGKOK is a concert that will be held in Bangkok, Thailand. The concert will feature the band LE SSERAFIM, who are known for their energetic performances and catchy songs. They have been touring around Asia since 2015, and this will be their first time performing in Thailand.';
         $event->date = '2023-10-04';
+        $event->event_status = 'PUBLISHED';
         $event->save();
 
         $event = new Event();
         $event->title = 'THE LORD OF THE RINGS - THE FELLOWSHIP OF THE RING';
         $event->location = 'Prince Mahidol Hall, Mahidol University';
-        $event->attendees_limit = '200';
+        $event->attendees_limit = '10';
         // $event->image_url = 'https://p-u.popcdn.net/event_details/posters/000/015/721/large/a034421d54902df5c3723de0ac24bf8b8b3a6077.jpg?1690230019';
         // $imagePath = Storage::putFile('public/event_images', storage_path('app/public/image3.jpg'));
         $event->image_url = 'event_images/image3.jpg';
         $event->user_id = '3';
         $event->description = 'THE LORD OF THE RINGS - THE FELLOWSHIP OF THE RING is a concert that will be held in Bangkok, Thailand. The concert will feature the music from the film, which was composed by Howard Shore. The music is performed by a live orchestra and choir, with the film projected on a large screen behind them.';
         $event->date = '2023-11-05';
+        $event->event_status = 'PUBLISHED';
         $event->save();
 
         Event::factory(10)->create();
         $users = User::where('id', '>', 4)->get();
+        Event::where('id', '=', 3)->each(function ($event) use ($users) {
+            $event->attendees()->attach(
+                $users->random(10)->pluck('id')->toArray()
+            );
+        });
         Event::where('id', '>', 3)->each(function ($event) use ($users) {
             $event->attendees()->attach(
                 $users->random(rand(5, 15))->pluck('id')->toArray()
