@@ -1,6 +1,7 @@
 @extends('layouts.main2')
 
 @section('content')
+
     <!-- Table Section -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <!-- Card -->
@@ -17,7 +18,7 @@
                                     Event Tasks
                                 </h2>
                                 <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    Add tasks, edit and more.
+                                    List of tasks for the event.
                                 </p>
                             </div>
 
@@ -278,6 +279,7 @@
                             </table>
                             <!-- End Table -->
                         @else
+                            {{-- If No Task --}}
                             <!-- Body -->
                             <div class="max-w-sm w-full min-h-[400px] flex flex-col justify-center mx-auto px-6 py-4">
                                 <div
@@ -299,9 +301,9 @@
                                 </div>
 
                                 <h2 class="mt-5 font-semibold text-gray-800 dark:text-white">
-                                    No task yet</h2>
+                                    No tasks have been added yet</h2>
                                 <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                                    Create a new task here.
+                                    Create new task here to start managing your event.
                                 </p>
 
                                 <div class="mt-5 grid sm:flex gap-2">

@@ -16,7 +16,7 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::where('event_status', 'PUBLISHED')->get();
+        $events = Event::published()->get();
         return view('events.index', ['events' => $events]);
     }
 
