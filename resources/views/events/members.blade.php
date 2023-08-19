@@ -305,7 +305,7 @@
                         </form>
                         <button
                             class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded-md px-8 py-2 text-sm"
-                            type="button" onclick="modalHandler(); removeForm();" id="cancel-btn">Cancel</button>
+                            type="button" onclick="modalHandler();" id="cancel-btn">Cancel</button>
                     </div>
 
                     {{-- Exit Icon --}}

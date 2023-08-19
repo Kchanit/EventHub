@@ -514,6 +514,11 @@
         const openModal2 = document.getElementById("create-btn2");
         const closeModal = document.querySelector("#close-btn");
         const cancel = document.querySelector("#cancel-btn");
+        const title = document.getElementById("title");
+        const date = document.getElementById("date");
+        const amount = document.getElementById("amount");
+        const quantity = document.getElementById("quantity");
+        const note = document.getElementById("note");
 
         openModal.addEventListener("click", () => {
             modal.showModal();
@@ -537,7 +542,6 @@
         }
 
         function fadeOut(el) {
-            el.style.opacity = 1;
             (function fade() {
                 if ((el.style.opacity -= 0.1) < 0) {
                     el.style.display = "none";
@@ -547,6 +551,11 @@
                     requestAnimationFrame(fade);
                 }
             })();
+            title.value = '';
+            date.value = '';
+            amount.value = '';
+            quantity.value = '';
+            note.value = '';
         }
 
         function fadeIn(el, display) {
