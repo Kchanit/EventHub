@@ -344,6 +344,7 @@
             } else {
                 modal.style.display = "hidden";
                 input.value = '';
+                input.style.borderColor = "gray";
                 modal.close()
                 // fadeOut(modal);
             }

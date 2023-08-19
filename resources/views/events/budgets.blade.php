@@ -374,19 +374,19 @@
         <!-- End Table Section -->
 
         {{-- Submit Budget Button --}}
-        @can('update',$event)
-        @if (count($event->expenses) > 0)
-            <div class="flex justify-center mt-5">
-                <form action="{{ route('events.budgets.submit-budget', ['event' => $event]) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <button type="submit" id="submit-budget-btn"
-                        class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
-                        Submit budget to officer
-                    </button>
-                </form>
-            </div>
-        @endif
+        @can('update', $event)
+            @if (count($event->expenses) > 0)
+                <div class="flex justify-center mt-5">
+                    <form action="{{ route('events.budgets.submit-budget', ['event' => $event]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" id="submit-budget-btn"
+                            class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                            Submit budget to officer
+                        </button>
+                    </form>
+                </div>
+            @endif
         @endcan
         {{-- End Submit Budget Button --}}
 
@@ -484,7 +484,7 @@
                                         class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 rounded-md transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 text-white px-8 py-2 text-sm">Submit</button>
                                     <button type="button"
                                         class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded-md px-8 py-2 text-sm"
-                                        onclick="modalHandler()" id="cancel-btn">Cancel</button>
+                                        onclick="modalHandler(false)" id="cancel-btn">Cancel</button>
                                 </div>
 
                                 {{-- exit icon --}}
@@ -542,6 +542,7 @@
                 if ((el.style.opacity -= 0.1) < 0) {
                     el.style.display = "none";
                     el.style.opacity = 1; // Reset opacity for next use
+                    el.close()
                 } else {
                     requestAnimationFrame(fade);
                 }

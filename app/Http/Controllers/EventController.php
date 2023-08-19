@@ -131,7 +131,7 @@ class EventController extends Controller
         ]);
         $student_id = $request->get('student_id');
         $user = User::where('student_id', $student_id)->first();
-        if ($user && !($this->isMember($event, $student_id))) {
+        if ($user && !($this->isMember($event, $student_id)) && ($user->id != $event->user_id)) {
             $event->members()->attach($user);
             $event->save();
             $user->notify(new EventMemberAddedNotification(auth()->user()->name, $event));

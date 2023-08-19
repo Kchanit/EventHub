@@ -17,7 +17,7 @@ class MyEventController extends Controller
 
     public function attendees(Event $event)
     {
-        Gate::authorize('update', $event);
+        Gate::authorize('member', $event);
         return view('events.attendees', ['event' => $event]);
     }
 }
