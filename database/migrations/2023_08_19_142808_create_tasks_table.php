@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('status');
             $table->integer('progress');
             $table->date('date');
+            $table->foreignId('assignee');
             $table->foreignId('event_id')->constrained();
             $table->foreignId('created_by')->constrained('users');
+            $table->string('priority')->nullable();
             $table->timestamps();
         });
     }

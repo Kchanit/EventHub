@@ -186,7 +186,7 @@
                                                 </td>
                                                 <td class="h-px w-px whitespace-nowrap">
                                                     <form
-                                                        action="{{ route('events.all-tasks.delete', ['event' => $event, 'task' => $task]) }}"
+                                                        action="{{ route('events.tasks.delete', ['event' => $event, 'task' => $task]) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
@@ -372,7 +372,7 @@
 
     {{-- Modal --}}
     <dialog class="modal" id="modal">
-        <form action="{{ route('events.all-tasks.store-tasks', ['event' => $event]) }}" method="POST">
+        <form action="{{ route('events.tasks.store-tasks', ['event' => $event]) }}" method="POST">
             @csrf
             <div class="h-full w-full fixed top-0  left-0 z-[60] overflow-x-hidden overflow-y-auto">
                 <div class="py-12 bg-opacity-50  transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0"

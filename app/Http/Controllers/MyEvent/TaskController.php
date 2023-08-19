@@ -8,14 +8,14 @@ use App\Models\Task;
 use Illuminate\Http\Request;
 
 
-class AllTasksController extends Controller {
+class TaskController extends Controller {
 
      /**
      * Display a listing of the resource.
      */
     public function index(Event $event)
     {
-        return view('events.all-tasks', ['event' => $event]);
+        return view('events.tasks', ['event' => $event]);
     }
 
     /**
@@ -40,8 +40,8 @@ class AllTasksController extends Controller {
         $task->created_by = auth()->user()->id;
         $task->event_id = $event->id;
 
-        $event->task()->save($task);
-        return redirect()->route('events.all-tasks', ['event' => $event]);
+        $event->tasks()->save($task);
+        return redirect()->route('events.tasks', ['event' => $event]);
     }
 
     /**

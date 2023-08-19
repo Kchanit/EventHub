@@ -11,6 +11,7 @@ use App\Http\Controllers\EditInfoController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\MyEvent\MemberController;
 use App\Http\Controllers\MyEvent\MyEventController;
+use App\Http\Controllers\MyEvent\TaskController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Officer\BudgetApproval;
 use Illuminate\Support\Facades\Route;
@@ -85,18 +86,19 @@ Route::middleware('auth')->group(function () {
         ->name('events.members');
     Route::get('/events/{event}/budgets', [BudgetController::class, 'index'])
         ->name('events.budgets');
-    Route::get('events/{event}/tasks', [AllTasksController::class, 'index'])
-        ->name('events.all-tasks');
+    // Tasks
+    Route::get('events/{event}/tasks', [TaskController::class, 'index'])
+        ->name('events.tasks');
+    Route::post('/events/{event}/tasks/create-task', [TaskController::class, 'store'])
+        ->name('events.tasks.store-tasks');
+    Route::delete('/events/{event}/tasks/{task}/delete', [TaskController::class, 'destroy'])
+        ->name('events.tasks.delete');
 
     Route::post('/events/{event}/budgets/create-expense', [ExpenseController::class, 'store'])
         ->name('events.budgets.store-expense');
     Route::delete('/events/{event}/budgets/{expense}/delete', [ExpenseController::class, 'destroy'])
         ->name('events.budgets.delete');
 
-    Route::post('/events/{event}/tasks/create-task', [AllTasksController::class, 'store'])
-        ->name('events.all-tasks.store-tasks');
-    Route::delete('/events/{event}/tasks/{task}/delete', [AllTasksController::class, 'destroy'])
-        ->name('events.all-tasks.delete');
 
     Route::get('/events/{event}/schedules', [ScheduleController::class, 'index'])
         ->name('events.schedules');
