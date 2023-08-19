@@ -374,14 +374,18 @@
         <!-- End Table Section -->
 
         {{-- Submit Budget Button --}}
-        <form action="{{ route('events.budgets.submit-budget', ['event' => $event]) }}" method="POST">
-            @csrf
-            @method('PUT')
-            <button type="submit" id="submit-budget-btn"
-                class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
-                Submit budget to officer
-            </button>
-        </form>
+        @if (count($event->expenses) > 0)
+            <div class="flex justify-center mt-5">
+                <form action="{{ route('events.budgets.submit-budget', ['event' => $event]) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" id="submit-budget-btn"
+                        class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                        Submit budget to officer
+                    </button>
+                </form>
+            </div>
+        @endif
         {{-- End Submit Budget Button --}}
 
         {{-- Modal --}}
