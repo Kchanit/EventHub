@@ -206,6 +206,7 @@
                                                     </tr>
                                                 </tbody>
                                             @endforeach
+                                        </div>
                                         @else
                                             {{-- no attendees --}}
                                             <div class="px-6 py-3 flex justify-center">

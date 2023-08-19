@@ -20,7 +20,7 @@ class EventFactory extends Factory
     {
         return [
             'title' => fake()->sentence(2),
-            'user_id' => User::all()->random()->id,
+            'user_id' => User::where('id', '>', 4)->get()->random()->id,
             'location' => fake()->streetName() . ', ' . fake()->state(),
             'attendees_limit' => fake()->numberBetween(10, 20),
             'description' => fake()->paragraph(),
