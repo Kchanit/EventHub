@@ -22,11 +22,10 @@ class EventSeeder extends Seeder
         // $event->image_url = 'https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610';
         // $imagePath = Storage::putFile('public/event_images', storage_path('app/public/image1.png'));
         $event->image_url = 'event_images/image1.png';
-        $event->user_id = '2';
+        $event->user_id = '1';
         $event->description = 'Brewtopia Bangkok 2023 is a beer festival that will be held in Bangkok, Thailand. The festival will feature more than 100 beers from around the world, including local craft beers and international brands. There will also be food stalls, live music, and other entertainment.';
-        $event->date = '2023-08-03';
+        $event->date = '2023-09-03';
         $event->save();
-        $event->attendees()->attach(1);
 
         $event = new Event();
         $event->title = 'LE SSERAFIM TOUR FLAME RISES IN BANGKOK';
@@ -53,8 +52,8 @@ class EventSeeder extends Seeder
         $event->save();
 
         Event::factory(10)->create();
-        $users = User::all();
-        Event::all()->each(function ($event) use ($users) {
+        $users = User::where('id', '>', 4)->get();
+        Event::where('id', '>', 3)->each(function ($event) use ($users) {
             $event->attendees()->attach(
                 $users->random(rand(5, 15))->pluck('id')->toArray()
             );

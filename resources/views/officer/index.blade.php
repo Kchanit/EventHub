@@ -172,8 +172,6 @@
                                                 class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
                                                 Image
                                             </span>
-                                            {{-- <img class="bg-gray-300  h-full w-full object-cover z-0"
-                                                    src="{{ asset('storage/' . $event->image_url) }}" /> --}}
                                         </div>
                                     </th>
 
@@ -228,12 +226,13 @@
                                         <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
 
                                             <td class="h-px w-px whitespace-nowrap">
-                                                <a class="block h-full p-6"
+                                                <a class="block h-full p-2"
                                                     href="{{ route('officer.show', ['event' => $event]) }}">
                                                     {{-- <img class="flex-shrink-0 h-[2.375rem] w-[2.375rem] rounded-md"
                                                     src="https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80"
                                                     alt="Image Description"> --}}
-                                                    <img class="bg-gray-300  h-full w-full object-cover z-0"
+                                                    <img class="bg-gray-300  h-100% w-100% object-cover z-0"
+                                                        alt="Event Image"
                                                         src="{{ asset('storage/' . $event->image_url) }}" />
 
                                                 </a>
@@ -262,13 +261,11 @@
                                                 </a>
                                             </td>
                                             <td class="h-px w-72 min-w-[18rem]">
-                                                <a class="block h-full p-6"
+                                                <a class="block h-full p-6  "
                                                     href="{{ route('officer.show', ['event' => $event]) }}">
-                                                    <span
-                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">I
-                                                        just love it!</span>
-
-                                                    {{ $event->description }}
+                                                    <span class="line-clamp-5">
+                                                        {{ $event->description }}
+                                                    </span>
                                                 </a>
                                             </td>
                                             <td class="h-px w-px whitespace-nowrap">
