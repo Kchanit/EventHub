@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Enums\EventStatus;
 use App\Models\Event;
 use App\Models\User;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -71,6 +73,8 @@ class ProfileController extends Controller
 
     public function storeEvent(Request $request)
     {
+        $this->authorize('create', Event::class);
+
         $user = $request->user();
         $request->validate([
             'title' => 'required|min:4|max:255',
@@ -87,6 +91,7 @@ class ProfileController extends Controller
         $event->location = $request->get('location');
         $event->attendees_limit = $request->get('attendees_limit');
         $event->user_id = $user->id;
+        $event->event_status = EventStatus::DRAFTED;
         if ($request->hasFile('image_url')) {
             $path = $request->file('image_url')->store('event_images', 'public');
         } else {

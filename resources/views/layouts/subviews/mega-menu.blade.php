@@ -124,7 +124,7 @@
 
             {{-- Noti + Profile --}}
             <div class="flex
-                                flex-row items-center justify-end gap-2">
+                                flex-row items-center justify-end gap-3">
                 @if (Auth::check())
                     <div x-data="{ isOpen: false }">
                         <!-- Notification Icon -->
@@ -151,7 +151,7 @@
                             class=" overflow-hidden absolute right-0 z-50 my-4 max-w-sm bg-white text-base list-none bg-green divide-y divide-gray-100 shadow-lg  rounded-xl"
                             id="notification-dropdown">
                             <div
-                                class="flex flex-row block py-2 px-4 text-base font-medium text-center justify-between text-gray-700 bg-gray-50 ">
+                                class="flex flex-row py-2 px-4 text-base font-medium text-center justify-between text-gray-700 bg-gray-50 ">
                                 <div>
                                     Notifications
                                 </div>
@@ -206,7 +206,8 @@
                                     <a href="#" class="min-w-full flex py-3 px-4 border-b hover:bg-gray-100">
                                         <div class="flex-shrink-0">
                                             <img class="w-11 h-11 rounded-full"
-                                                src="{{ asset('storage/eventhub.png') }} " alt="Bonnie Green avatar" />
+                                                src="{{ asset('storage/eventhub.png') }} "
+                                                alt="Bonnie Green avatar" />
                                         </div>
                                         <div class="pl-3 w-full">
                                             <div class="text-gray-500 font-normal text-sm mb-1.5 ">

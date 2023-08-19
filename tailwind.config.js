@@ -12,7 +12,18 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                sans: [
+                    "Figtree",
+                    "Inter",
+                    "Poppins",
+                    ...defaultTheme.fontFamily.sans,
+                ],
+                'body': [
+                    "Figtree",
+                    "Inter",
+                    "Poppins",
+                    ...defaultTheme.fontFamily.sans,
+                ],
             },
             colors: {
                 tgray: "#EDEDED",

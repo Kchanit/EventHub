@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Enums\EventBudgetStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,6 +22,8 @@ return new class extends Migration
             $table->text('description');
             $table->date('date');
             $table->string('image_url')->nullable();
+            $table->string('event_status')->default('NONE');
+            $table->string('budget_status')->default('NONE');
             $table->timestamps();
             $table->softDeletes();
         });

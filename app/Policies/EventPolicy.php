@@ -46,7 +46,7 @@ class EventPolicy
      */
     public function delete(User $user, Event $event): bool
     {
-        return true;
+        return $user->id === $event->user_id;
     }
 
     /**
@@ -54,7 +54,7 @@ class EventPolicy
      */
     public function restore(User $user, Event $event): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -62,6 +62,23 @@ class EventPolicy
      */
     public function forceDelete(User $user, Event $event): bool
     {
-        return true;
+        return false;
+    }
+
+    public function changeEventBudgetStatus(User $user, Event $event): bool
+    {
+        if ($user->isOfficer()) {
+            return true;
+        } else return false;
+    }
+
+    public function joinEvent(User $user, Event $event): bool
+    {
+        return 
+        // ($event->date > now())
+            // && ($event->attendees()->count() < $event->attendees_limit)
+            // && (!$event->attendees()->where('user_id', $user->id)->exists())
+            // && 
+            (Auth::user()->id != $event->user_id);
     }
 }

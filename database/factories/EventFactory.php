@@ -24,7 +24,8 @@ class EventFactory extends Factory
             'location' => fake()->streetName() . ', ' . fake()->state(),
             'attendees_limit' => fake()->numberBetween(10, 20),
             'description' => fake()->paragraph(),
-            'date' => fake()->date(),
+            'date' => fake()->dateTimeBetween('+1 weeks', '+2 years')->format('Y-m-d'),
+            'event_status' => 'PUBLISHED',
             'image_url' => 'event_images/default.png'
         ];
     }

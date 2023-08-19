@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Enums\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -56,5 +58,10 @@ class User extends Authenticatable
     public function attendedEvents(): BelongsToMany
     {
         return $this->belongsToMany(Event::class, 'event_attendees');
+    }
+
+    public function isOfficer(): bool
+    {
+        return $this->role === 'OFFICER';
     }
 }

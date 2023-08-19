@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Officer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Enums\EventBudgetStatus;
+use App\Models\Event;
 use App\Models\Officer;
 use Illuminate\Http\Request;
 
@@ -13,7 +15,8 @@ class BudgetApproval extends Controller
      */
     public function index()
     {
-        return view('officer.index');
+        $events = Event::where('budget_status', EventBudgetStatus::PENDING)->get();
+        return view('officer.index', ['events' => $events]);
     }
 
     /**
@@ -35,9 +38,9 @@ class BudgetApproval extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Officer $officer)
+    public function show(Event $event)
     {
-        return view('officer.show');
+        return view('officer.show', ['event' => $event]);
     }
 
     /**

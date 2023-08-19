@@ -220,134 +220,80 @@
                                     </th>
                                 </tr>
                             </thead>
+                            <div class="overlfow-auto">
+                                @foreach ($events as $event)
+                                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                        <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
 
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
+                                            <td class="h-px w-px whitespace-nowrap">
+                                                <a class="block h-full p-2"
+                                                    href="{{ route('officer.show', ['event' => $event]) }}">
+                                                    {{-- <img class="flex-shrink-0 h-[2.375rem] w-[2.375rem] rounded-md"
+                                                    src="https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80"
+                                                    alt="Image Description"> --}}
+                                                    <img class="bg-gray-300  h-100% w-100% object-cover z-0"
+                                                        alt="Event Image"
+                                                        src="{{ asset('storage/' . $event->image_url) }}" />
 
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="{{ route('officer.show') }}">
-                                            <img class="flex-shrink-0 h-[2.375rem] w-[2.375rem] rounded-md"
-                                                src="https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80"
-                                                alt="Image Description">
-
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="{{ route('officer.show') }}">
-                                            <div class="flex items-center gap-x-3">
-                                                <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full"
-                                                    src="https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-                                                    alt="Image Description">
-                                                <div class="grow">
+                                                </a>
+                                            </td>
+                                            <td class="h-px w-px whitespace-nowrap">
+                                                <a class="block h-full p-6"
+                                                    href="{{ route('officer.show', ['event' => $event]) }}">
+                                                    <div class="flex items-center gap-x-3">
+                                                        <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full"
+                                                            src="https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
+                                                            alt="Image Description">
+                                                        <div class="grow">
+                                                            <span
+                                                                class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $event->organizer->name }}</span>
+                                                            <span
+                                                                class="block text-sm text-gray-500">{{ $event->organizer->email }}</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="h-px w-px whitespace-nowrap ">
+                                                <a class="block h-full p-6"
+                                                    href="{{ route('officer.show', ['event' => $event]) }}">
                                                     <span
-                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Christina
-                                                        Bersh</span>
-                                                    <span class="block text-sm text-gray-500">christina@site.com</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="{{ route('officer.show') }}">
-                                            <span class="text-sm text-gray-600 dark:text-gray-400">Test Title</span>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-72 min-w-[18rem]">
-                                        <a class="block h-full p-6" href="{{ route('officer.show') }}">
-                                            <div class="flex gap-x-1 mb-2">
-
-                                            </div>
-                                            <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">I
-                                                just love it!</span>
-                                            <span class="block text-sm text-gray-500">I bought this hat for my boyfriend,
-                                                but then i found out he cheated on me so I kept it and I love it!! I wear it
-                                                all the time and there is no problem with the fit even though its a mens"
-                                                hat.</span>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="{{ route('officer.show') }}">
-                                            <span class="text-sm text-gray-600 dark:text-gray-400">10 Jan 2022</span>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="{{ route('officer.show') }}">
-                                            <span
-                                                class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
-                                                    width="16" height="16" fill="currentColor"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                                                </svg>
-                                                Published
-                                            </span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <img class="flex-shrink-0 h-[2.375rem] w-[2.375rem] rounded-md"
-                                                src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80"
-                                                alt="Image Description">
-
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <div class="flex items-center gap-x-3">
-                                                <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full"
-                                                    src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-                                                    alt="Image Description">
-                                                <div class="grow">
+                                                        class="text-sm text-gray-600 dark:text-gray-400">{{ $event->title }}</span>
+                                                </a>
+                                            </td>
+                                            <td class="h-px w-72 min-w-[18rem]">
+                                                <a class="block h-full p-6  "
+                                                    href="{{ route('officer.show', ['event' => $event]) }}">
+                                                    <span class="line-clamp-5">
+                                                        {{ $event->description }}
+                                                    </span>
+                                                </a>
+                                            </td>
+                                            <td class="h-px w-px whitespace-nowrap">
+                                                <a class="block h-full p-6"
+                                                    href="{{ route('officer.show', ['event' => $event]) }}">
                                                     <span
-                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">David
-                                                        Harrison</span>
-                                                    <span class="block text-sm text-gray-500">david@site.com</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <span class="text-sm text-gray-600 dark:text-gray-400">Test Title</span>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-72 min-w-[18rem]">
-                                        <a class="block h-full p-6" href="#">
-
-                                            <span
-                                                class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Really
-                                                nice</span>
-                                            <span class="block text-sm text-gray-500">Material is great and very
-                                                comfortable and stylish.</span>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <span class="text-sm text-gray-600 dark:text-gray-400">04 Aug 2020</span>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block h-full p-6" href="#">
-                                            <span
-                                                class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
-                                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
-                                                    width="16" height="16" fill="currentColor"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-                                                </svg>
-                                                Rejected
-                                            </span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-
-                            </tbody>
+                                                        class="text-sm text-gray-600 dark:text-gray-400">{{ $event->date }}</span>
+                                                </a>
+                                            </td>
+                                            <td class="h-px w-px whitespace-nowrap">
+                                                <a class="block h-full p-6"
+                                                    href="{{ route('officer.show', ['event' => $event]) }}">
+                                                    <span
+                                                        class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                                        <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
+                                                            width="16" height="16" fill="currentColor"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                                        </svg>
+                                                        {{ $event->budget_status }}
+                                                    </span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                @endforeach
+                            </div>
                         </table>
                         <!-- End Table -->
 
