@@ -14,7 +14,7 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::get();
+        $events = Event::where('event_status', 'PUBLISHED')->get();
         return view('events.index', ['events' => $events]);
     }
 
@@ -82,7 +82,7 @@ class EventController extends Controller
     public function joinEvent(Request $request, Event $event)
     {
         $this->authorize('joinEvent', $event);
-        
+
         $user = $request->user();
         $event->attendees()->attach($user);
         $event->save();

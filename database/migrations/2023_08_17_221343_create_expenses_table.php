@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('note')->nullable();
             $table->date('date');
             $table->foreignId('event_id')->constrained();
-            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('created_by')->constrained('users')->nullable();
             $table->timestamps();
         });
     }

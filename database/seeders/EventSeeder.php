@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Event;
+use App\Models\Expense;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -57,6 +58,38 @@ class EventSeeder extends Seeder
             $event->attendees()->attach(
                 $users->random(rand(5, 15))->pluck('id')->toArray()
             );
+        });
+
+        Event::all()->each(function ($event) {
+            $event->expenses()->createMany([
+                [
+                    'title' => 'Food',
+                    'amount' => 1000,
+                    'quantity' => 1,
+                    'total' => 1000,
+                    'note' => 'Food for the event',
+                    'date' => '2023-09-03',
+                    'created_by' => $event->user_id,
+                ],
+                [
+                    'title' => 'Venue',
+                    'amount' => 5000,
+                    'quantity' => 1,
+                    'total' => 5000,
+                    'note' => 'Venue for the event',
+                    'date' => '2023-09-03',
+                    'created_by' => $event->user_id,
+                ],
+                [
+                    'title' => 'Music',
+                    'amount' => 2000,
+                    'quantity' => 1,
+                    'total' => 2000,
+                    'note' => 'Music for the event',
+                    'date' => '2023-09-03',
+                    'created_by' => $event->user_id,
+                ],
+            ]);
         });
     }
 }
