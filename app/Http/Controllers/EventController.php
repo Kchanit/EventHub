@@ -124,14 +124,14 @@ class EventController extends Controller
     }
 
     public function addMember(Request $request, Event $event)
-    {
+    {   
+        $this->authorize('member', $event);
         $request->validate([
             'student_id' => 'required',
         ]);
         $student_id = $request->get('student_id');
         $user = User::where('student_id', $student_id)->first();
         if ($user && !($this->isMember($event, $student_id))) {
-            $this->authorize('update', $event);
             $event->members()->attach($user);
             $event->save();
             $user->notify(new EventMemberAddedNotification(auth()->user()->name, $event));

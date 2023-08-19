@@ -374,6 +374,7 @@
         <!-- End Table Section -->
 
         {{-- Submit Budget Button --}}
+        @can('update',$event)
         @if (count($event->expenses) > 0)
             <div class="flex justify-center mt-5">
                 <form action="{{ route('events.budgets.submit-budget', ['event' => $event]) }}" method="POST">
@@ -386,6 +387,7 @@
                 </form>
             </div>
         @endif
+        @endcan
         {{-- End Submit Budget Button --}}
 
         {{-- Modal --}}

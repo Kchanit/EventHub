@@ -60,7 +60,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Event::class, 'event_attendees');
     }
 
-    public function CoOrganizedEvents(): BelongsToMany
+    public function coOrganizedEvents(): BelongsToMany
     {
         return $this->belongsToMany(Event::class, 'event_members');
     }

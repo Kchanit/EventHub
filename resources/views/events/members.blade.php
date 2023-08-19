@@ -157,7 +157,9 @@
                                                 </td>
                                                 {{-- button --}}
                                                 <td class="h-px w-px whitespace-nowrap">
+                                                    
                                                     <div class="px-6 py-1.5">
+                                                        @can('update',$event)
                                                         <form
                                                             action="{{ route('events.members.remove', ['event' => $event, 'user' => $user]) }}"
                                                             method="POST">
@@ -168,7 +170,9 @@
                                                                 Delete
                                                             </button>
                                                         </form>
+                                                        @endcan
                                                     </div>
+                                                    
                                                 </td>
                                             </tr>
                                         </tbody>
