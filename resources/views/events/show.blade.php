@@ -62,6 +62,9 @@
                 @endif
             @endcan
 
+            <h3 class="">
+                Created by: {{ $event->Organizer->name .' '. $event->Organizer->email}} 
+            </h3>
 
             @can('update', $event)
                 <div class="flex items-center space-x-4">

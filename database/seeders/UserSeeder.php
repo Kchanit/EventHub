@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $user = new User();
-        $user->name = 'JohnDoe01';
+        $user->name = 'John Doe01';
         $user->email = 'user01@gmail.com';
         $user->password = '1234';
         $user->student_id = 'B6012345';
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         $user->save();
 
         $user = new User();
-        $user->name = 'JohnDoe02';
+        $user->name = 'Jane Doe02';
         $user->email = 'user02@gmail.com';
         $user->password = '1234';
         $user->student_id = 'B6012346';
@@ -35,8 +35,8 @@ class UserSeeder extends Seeder
         $user->save();
 
         $user = new User();
-        $user->name = 'orga01';
-        $user->email = 'orga@gmail.com';
+        $user->name = 'user03';
+        $user->email = 'user03@gmail.com';
         $user->password = '1234';
         $user->student_id = 'B6012347';
         $user->faculty = 'Science';
