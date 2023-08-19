@@ -157,7 +157,6 @@
                                                 </td>
                                                 {{-- button --}}
                                                 <td class="h-px w-px whitespace-nowrap">
-                                                    
                                                     <div class="px-6 py-1.5">
                                                         @can('update',$event)
                                                         <form
@@ -172,7 +171,6 @@
                                                         </form>
                                                         @endcan
                                                     </div>
-                                                    
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -285,7 +283,6 @@
                             <input name="student_id" id="student_id" type="text"
                                 class=" mb-5 mt-2  text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 items-center pl-3 text-sm border-gray-300 rounded border  @error('student_id') border-red-400 @enderror "
                                 placeholder="Enter User ID">
-
                             {{-- Buttons --}}
                             <div class="flex items-center justify-start w-full">
                                 <button
@@ -293,7 +290,7 @@
                                     type="submit">Add Member</button>
                         </form>
                         <button
-                            wire:click="reset" class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded-md px-8 py-2 text-sm"
+                            class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded-md px-8 py-2 text-sm"
                             type="button" onclick="modalHandler()" id="cancel-btn">Cancel</button>
                     </div>
 
@@ -347,8 +344,6 @@
             } else {
                 modal.style.display = "hidden";
                 input.value = '';
-                input.style.borderColor = "gray";
-                document.getElementById("error").style.display = "hidden";
                 modal.close()
                 // fadeOut(modal);
             }
