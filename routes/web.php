@@ -85,7 +85,7 @@ Route::middleware('auth')->group(function () {
         ->name('events.members');
     Route::get('/events/{event}/budgets', [BudgetController::class, 'index'])
         ->name('events.budgets');
-    Route::get('events/{event}/all-tasks', [AllTasksController::class, 'index'])
+    Route::get('events/{event}/tasks', [AllTasksController::class, 'index'])
         ->name('events.all-tasks');
 
     Route::post('/events/{event}/budgets/create-expense', [ExpenseController::class, 'store'])
@@ -93,8 +93,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/events/{event}/budgets/{expense}/delete', [ExpenseController::class, 'destroy'])
         ->name('events.budgets.delete');
 
-    Route::post('/events/{event}/all-tasks/create-task', [AllTasksController::class, 'store'])
+    Route::post('/events/{event}/tasks/create-task', [AllTasksController::class, 'store'])
         ->name('events.all-tasks.store-tasks');
+    Route::delete('/events/{event}/tasks/{task}/delete', [AllTasksController::class, 'destroy'])
+        ->name('events.all-tasks.delete');
 
     Route::get('/events/{event}/schedules', [ScheduleController::class, 'index'])
         ->name('events.schedules');

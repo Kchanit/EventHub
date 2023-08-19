@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\AllTasks;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 
@@ -29,23 +29,24 @@ class AllTasksController extends Controller {
      */
     public function store(Request $request, Event $event)
     {
-        $all_tasks = new AllTasks();
-        $all_tasks->title = $request->get('title');
-        $all_tasks->brief = $request->get('brief');
-        $all_tasks->status = $request->get('status');
-        $all_tasks->progress = $request->get('progress');
-        $all_tasks->date = $request->get('date');
-        $all_tasks->created_by = auth()->user()->id;
-        $all_tasks->event_id = $event->id;
+        $task = new Task();
+        $task->title = $request->get('title');
+        $task->brief = $request->get('brief');
+        $task->assignee = $request->get('assignee');
+        $task->status = $request->get('status');
+        $task->priority = $request->get('priority');
+        $task->date = $request->get('date');
+        $task->created_by = auth()->user()->id;
+        $task->event_id = $event->id;
 
-        $event->all_tasks()->save($all_tasks);
+        $event->task()->save($task);
         return redirect()->route('events.all-tasks', ['event' => $event]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(AllTasks $all_tasks)
+    public function show(Task $task)
     {
         //
     }
@@ -53,7 +54,7 @@ class AllTasksController extends Controller {
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AllTasks $all_tasks)
+    public function edit(Task $task)
     {
         //
     }
@@ -61,7 +62,7 @@ class AllTasksController extends Controller {
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AllTasks $all_tasks)
+    public function update(Request $request, Task $task)
     {
         //
     }
@@ -69,10 +70,10 @@ class AllTasksController extends Controller {
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event, AllTasks $all_tasks)
+    public function destroy(Event $event, Task $task)
     {
 
-        $all_tasks->delete();
+        $task->delete();
 
         return redirect()->back();
     }

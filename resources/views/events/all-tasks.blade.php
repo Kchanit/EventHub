@@ -23,11 +23,11 @@
 
                             <div>
                                 <div class="inline-flex gap-x-2">
-                                     @if (count($event->all_tasks) > 0)
+                                    @if (count($event->tasks) > 0)
                                     <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                                         href="#">
                                         View all
-                                </a>
+                                    </a>
 
                                     <button type="button"
                                         class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-indigo-700 text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
@@ -39,7 +39,7 @@
                                         </svg>
                                         Add task
                                     </button>
-                                    @endif
+                                    @endif 
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
 
                         <!-- Table -->
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                            @if (count($event->all_tasks) > 0)
+                            @if (count($event->tasks) > 0)
                             <thead class="bg-gray-50 dark:bg-slate-900">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-left">
@@ -72,6 +72,15 @@
                                         <div class="flex items-center gap-x-2">
                                             <span
                                                 class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                                                Assignee
+                                            </span>
+                                        </div>
+                                    </th>
+
+                                    <th scope="col" class="px-6 py-3 text-left">
+                                        <div class="flex items-center gap-x-2">
+                                            <span
+                                                class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
                                                 Status
                                             </span>
                                         </div>
@@ -81,7 +90,7 @@
                                         <div class="flex items-center gap-x-2">
                                             <span
                                                 class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                                                Progress
+                                                Priority
                                             </span>
                                         </div>
                                     </th>
@@ -99,7 +108,7 @@
                                 </tr>
                             </thead>
                         <div class="overflow-auto">
-                            @foreach ($event->all_tasks as $all_tasks)
+                            @foreach ($event->tasks as $task)
                             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                                 <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
                                     <!--New Row-->
@@ -108,7 +117,7 @@
                                             <div class="px-6 py-2">
                                                 <span
                                                     class="block text-sm font-semibold text-gray-800 dark:text-gray-200">
-                                                    {{$all_tasks->title}}
+                                                    {{$task->title}}
                                                 </span>
                                             </div>
                                         </a>
@@ -118,7 +127,7 @@
                                         <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                                             <div class="px-6 py-2">
                                                 <span class="block text-sm text-gray-800 dark:text-gray-200">
-                                                    {{$all_tasks->brief}}
+                                                    {{$task->brief}}
                                                 </span>
                                             </div>
                                         </a>
@@ -127,8 +136,21 @@
                                     <td class="h-px w-px whitespace-nowrap">
                                         <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                                             <div class="px-6 py-3">
+                                                <div class="flex items-center gap-x-3">
+                                                    <span class="block text-sm text-gray-800 dark:text-gray-200">
+                                                        {{$task->assignee}}
+                                                    </span>
+                                                    
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </td>
+
+                                    <td class="h-px w-px whitespace-nowrap">
+                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
+                                            <div class="px-6 py-3">
                                                 <span class="block text-sm text-gray-800 dark:text-gray-200">
-                                                    {{$all_tasks->status}}
+                                                    {{$task->status}}
                                                 </span>
                                             </div>
                                         </a>
@@ -137,7 +159,9 @@
                                         <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                                             <div class="px-6 py-3">
                                                 <div class="flex items-center gap-x-3">
-                                                    <span class="text-xs text-gray-500">{{$all_tasks->progress}}/5</span>
+                                                    <span class="block text-sm text-gray-800 dark:text-gray-200">
+                                                        {{$task->priority}}
+                                                    </span>
                                                     
                                                 </div>
                                             </div>
@@ -146,93 +170,28 @@
                                     <td class="h-px w-px whitespace-nowrap">
                                         <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
                                             <div class="px-6 py-3">
-                                                <span class="text-sm text-gray-500">{{$all_tasks->date}}</span>
+                                                <span class="text-sm text-gray-500">
+                                                    {{$task->date}}
+                                                </span>
                                             </div>
                                         </a>
                                     </td>
                                     <td class="h-px w-px whitespace-nowrap">
-                                        <div class="px-6 py-1.5">
-                                            <button type="button"
-                                                class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium"
-                                                href="#">
-                                                Edit
+                                        <form
+                                            action="{{ route('events.all-tasks.delete', ['event' => $event, 'task' => $task]) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" href=""
+                                                class="text-sm text-gray-600">
+                                                Delete
                                             </button>
-                                        </div>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
 
                                 {{--
-                                <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span
-                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-200">MC
-                                                    work</span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-72 whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <span class="block text-sm text-gray-500">plan speech and schedule</span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <span
-                                                    class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">
-                                                    <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
-                                                        width="16" height="16" fill="currentColor"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                                                    </svg>
-                                                    In progress
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <div class="flex items-center gap-x-3">
-                                                    <span class="text-xs text-gray-500">3/5</span>
-                                                    <div
-                                                        class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700">
-                                                        <div class="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-gray-200"
-                                                            role="progressbar" style="width: 78%" aria-valuenow="78"
-                                                            aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <span class="text-sm text-gray-500">20 Dec, 09:27</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <div class="px-6 py-1.5">
-                                            <button type="button"
-                                                class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium"
-                                                href="#">
-                                                Edit
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-
                                 <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
 
                                     <td class="h-px w-px whitespace-nowrap">
@@ -304,169 +263,98 @@
                                         </div>
                                     </td>
                                 </tr>
-
-                                <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-2">
-                                                <span
-                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Permissions</span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-72 whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <span class="block text-sm text-gray-500">Waiting for permissions</span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <span
-                                                    class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
-                                                    <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg"
-                                                        width="16" height="16" fill="currentColor"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                                                    </svg>
-                                                    Not started
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <div class="flex items-center gap-x-3">
-                                                    <span class="text-xs text-gray-500">0/5</span>
-                                                    <div
-                                                        class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700">
-                                                        <div class="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-gray-200"
-                                                            role="progressbar" style="width: 1%" aria-valuenow="1"
-                                                            aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <a class="block" href="javascript:;" data-hs-overlay="#hs-ai-invoice-modal">
-                                            <div class="px-6 py-3">
-                                                <span class="text-sm text-gray-500">18 Dec, 15:20</span>
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td class="h-px w-px whitespace-nowrap">
-                                        <div class="px-6 py-1.5">
-                                            <button type="button"
-                                                class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium"
-                                                href="#">
-                                                Edit
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>  --}}
+                                --}}
                             </tbody>
                         </div>
-                        
-                        </table>
-                        
+                    </table>
                         <!-- End Table -->
-                        @else
-                        <!-- Body -->
-                        <div class="max-w-sm w-full min-h-[400px] flex flex-col justify-center mx-auto px-6 py-4">
-                            <div
-                                class="flex justify-center items-center w-[46px] h-[46px] bg-gray-100 rounded-md dark:bg-gray-800">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="icon icon-tabler icon-tabler-clipboard-list" width="44" height="44"
-                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
-                                    <path
-                                        d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                                    <path d="M9 12l.01 0" />
-                                    <path d="M13 12l2 0" />
-                                    <path d="M9 16l.01 0" />
-                                    <path d="M13 16l2 0" />
+                    @else
+                    <!-- Body -->
+                    <div class="max-w-sm w-full min-h-[400px] flex flex-col justify-center mx-auto px-6 py-4">
+                        <div
+                            class="flex justify-center items-center w-[46px] h-[46px] bg-gray-100 rounded-md dark:bg-gray-800">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-clipboard-list" width="44" height="44"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                                <path
+                                    d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                                <path d="M9 12l.01 0" />
+                                <path d="M13 12l2 0" />
+                                <path d="M9 16l.01 0" />
+                                <path d="M13 16l2 0" />
+                            </svg>
+                        </div>
+
+                        <h2 class="mt-5 font-semibold text-gray-800 dark:text-white">
+                            No task yet</h2>
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                            Create a new task here.
+                        </p>
+
+                        <div class="mt-5 grid sm:flex gap-2">
+                            <button type="button" id="create-btn2" onclick="modalHandler(true)"
+                                class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-indigo-700 text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" />
                                 </svg>
-                            </div>
+                                Create a new task
+                            </button>
 
-                            <h2 class="mt-5 font-semibold text-gray-800 dark:text-white">
-                                No task yet</h2>
-                            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                                Create a new task here.
+                            {{-- <button type="button"
+                                class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                                Use a Template
+                            </button> --}}
+                        </div>
+                    </div>
+                    @endif
+                    <!-- End Body -->
+                    
+                    <!-- Footer -->
+                    
+                    <div
+                        class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                <span class="font-semibold text-gray-800 dark:text-gray-200">{{ count($event->tasks) }}</span> results
                             </p>
+                        </div>
 
-
-                            <div class="mt-5 grid sm:flex gap-2">
-                                <button type="button" id="create-btn2" onclick="modalHandler(true)"
-                                    class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-indigo-700 text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                        <div>
+                            <div class="inline-flex gap-x-2">
+                                <button type="button"
+                                    class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
                                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16"
-                                            height="16" viewBox="0 0 16 16" fill="none">
-                                            <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" />
-                                        </svg>
-                                    Create a new task
+                                        height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                                    </svg>
+                                     Prev
                                 </button>
 
-                                {{-- <button type="button"
+                                <button type="button"
                                     class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
-                                    Use a Template
-                                </button> --}}
+                                    Next
+                                    <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16"
+                                         height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
-                        <!-- End Body -->
-                    @endif
-                        <!-- Footer -->
-                        <div
-                            class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
-                            <div>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="font-semibold text-gray-800 dark:text-gray-200">{{ count($event->all_tasks) }}</span> results
-                                </p>
-                            </div>
-
-                            <div>
-                                <div class="inline-flex gap-x-2">
-                                    <button type="button"
-                                        class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
-                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16"
-                                            height="16" fill="currentColor" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-                                        </svg>
-                                        Prev
-                                    </button>
-
-                                    <button type="button"
-                                        class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
-                                        Next
-                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16"
-                                            height="16" fill="currentColor" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Footer -->
                     </div>
+                    <!-- End Footer -->
                 </div>
             </div>
         </div>
+    </div>
         <!-- End Card -->
     </div>
     <!-- End Table Section -->
@@ -515,6 +403,11 @@
                                 class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-20 flex items-center pl-3 text-sm border-gray-300 rounded border"
                                 placeholder="Task description."></textarea>
 
+                            <label for="assignee" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                                Assignee</label>
+                            <input id="assignee"
+                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                                placeholder="assignee name" />
 
                             <div class="flex gap-5 align-left">
                                 <div>
@@ -524,25 +417,24 @@
                                         Status</label>
                                     <select
                                         class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border">
-                                        <option selected>Not started</option>
+                                        <option selected>To do</option>
                                         <option>In progress</option>
-                                        <option>Complete</option>
+                                        <option>Done</option>
+                                        <option>Cancled</option>
                                     </select>
                                 </div>
 
                                 <div class="">
-                                    {{-- Progress --}}
-                                    <label for="progress"
+                                    {{-- Priority --}}
+                                    <label for="priority"
                                         class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                                        Progress</label>
+                                        Priority</label>
                                     <select
                                         class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border">
-                                        <option selected>0</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                        <option selected>Low</option>
+                                        <option>Medium</option>
+                                        <option>High</option>
+                                        <option>Urgent</option>
                                     </select>
                                 </div>
                             </div>
