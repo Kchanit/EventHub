@@ -1,8 +1,8 @@
 @extends('layouts.main2')
+
 @section('content')
     <!-- Table Section -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-
         <!-- Card -->
         <div class="flex flex-col">
             <div class="-m-1.5 overflow-x-auto">
@@ -321,6 +321,7 @@
                             </div>
                             <!-- End Body -->
                         @endif
+                        
                         <!-- Footer -->
                         <div
                             class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">

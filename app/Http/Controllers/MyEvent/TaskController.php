@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\MyEvent;
 
+use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\Task;
 use Illuminate\Http\Request;
