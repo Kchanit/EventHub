@@ -158,17 +158,17 @@
                                                 {{-- button --}}
                                                 <td class="h-px w-px whitespace-nowrap">
                                                     <div class="px-6 py-1.5">
-                                                        @can('update',$event)
-                                                        <form
-                                                            action="{{ route('events.members.remove', ['event' => $event, 'user' => $user]) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" href=""
-                                                                class=" text-gray-400 inline-flex items-center gap-x-1.5 px-3 mr-5 text-sm hover:text-gray-600 font-medium">
-                                                                Delete
-                                                            </button>
-                                                        </form>
+                                                        @can('update', $event)
+                                                            <form
+                                                                action="{{ route('events.members.remove', ['event' => $event, 'user' => $user]) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" href=""
+                                                                    class=" text-gray-400 inline-flex items-center gap-x-1.5 px-3 mr-5 text-sm hover:text-gray-600">
+                                                                    Delete
+                                                                </button>
+                                                            </form>
                                                         @endcan
                                                     </div>
                                                 </td>
@@ -181,19 +181,25 @@
                                 <div class="max-w-sm w-full min-h-[400px] flex flex-col justify-center mx-auto px-6 py-4">
                                     <div
                                         class="flex justify-center items-center w-[46px] h-[46px] bg-gray-100 rounded-md dark:bg-gray-800">
-                                        <svg class="w-6 h-6 text-gray-600 dark:text-gray-400"
-                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16">
-                                            <path
-                                                d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                                            <path
-                                                d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                            </g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M20 18L14 18M17 15V21M4 21C4 17.134 7.13401 14 11 14C11.695 14 12.3663 14.1013 13 14.2899M15 7C15 9.20914 13.2091 11 11 11C8.79086 11 7 9.20914 7 7C7 4.79086 8.79086 3 11 3C13.2091 3 15 4.79086 15 7Z"
+                                                    stroke="#4b4949" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                            </g>
                                         </svg>
                                     </div>
 
                                     <h2 class="mt-5 font-semibold text-gray-800 dark:text-white">
-                                        No member yet</h2>
-                                    
+                                        There are no members yet.</h2>
+                                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                                        Click the 'Add member' button to add one.
+                                    </p>
+
 
 
                                     <div class="mt-5 grid sm:flex gap-2">
@@ -205,7 +211,7 @@
                                                 <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor"
                                                     stroke-width="2" stroke-linecap="round" />
                                             </svg>
-                                            Add new member
+                                            Add member
                                         </button>
                                     </div>
                                 </div>
@@ -275,14 +281,22 @@
                             @csrf
                             <label for="student_id" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
                                 Student ID</label>
+
                             @error('student_id')
-                                <div class=" text-red-500 text-sm" id="error">
+                                <div class="text-red-500 text-sm" id="err_txt1">
                                     {{ $message }}
                                 </div>
                             @enderror
+
+                            @error('exist')
+                                <div class="field-validation-error text-red-500 text-sm" id="err_txt2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
                             <input name="student_id" id="student_id" type="text"
-                                class=" mb-5 mt-2  text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 items-center pl-3 text-sm border-gray-300 rounded border  @error('student_id') border-red-400 @enderror "
-                                placeholder="Enter User ID">
+                                class="form-control mb-5 mt-2  text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 items-center pl-3 text-sm border-gray-300 rounded border  @error('student_id') border-red-400 @enderror "
+                                placeholder="Enter Student ID">
                             {{-- Buttons --}}
                             <div class="flex items-center justify-start w-full">
                                 <button
@@ -291,7 +305,7 @@
                         </form>
                         <button
                             class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded-md px-8 py-2 text-sm"
-                            type="button" onclick="modalHandler()" id="cancel-btn">Cancel</button>
+                            type="button" onclick="modalHandler(); removeForm();" id="cancel-btn">Cancel</button>
                     </div>
 
                     {{-- Exit Icon --}}
@@ -321,6 +335,7 @@
         const closeModal = document.querySelector("#close-btn");
         const cancel = document.querySelector("#cancel-btn");
         const input = document.getElementById("student_id");
+        const errText = document.getElementById("err_txt1");
         @if (count($errors) > 0)
             modal.showModal();
         @endif
@@ -340,8 +355,10 @@
         function modalHandler(val) {
             if (val) {
                 modal.style.display = display || "flex";
+                errText.style.display = "hidden";
                 // fadeIn(modal);
             } else {
+
                 modal.style.display = "hidden";
                 input.value = '';
                 input.style.borderColor = "gray";

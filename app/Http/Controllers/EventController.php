@@ -135,8 +135,9 @@ class EventController extends Controller
             $event->members()->attach($user);
             $event->save();
             $user->notify(new EventMemberAddedNotification(auth()->user()->name, $event));
+            return redirect()->route('events.members', ['event' => $event]);
         }
-        return redirect()->route('events.members', ['event' => $event]);
+        return redirect()->route('events.members', ['event' => $event])->withErrors(['exist' => 'This user is already a member.']);
     }
 
     public function isMember(Event $event, $student_id): bool
