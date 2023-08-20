@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Event;
+use App\Models\Task;
 use App\Models\Expense;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -98,7 +99,65 @@ class EventSeeder extends Seeder
                     'date' => '2023-09-03',
                     'created_by' => $event->user_id,
                 ],
+                [
+                    'title' => 'Props',
+                    'amount' => 35,
+                    'quantity' => 25,
+                    'total' => 875,
+                    'note' => 'Props for cheering',
+                    'date' => '2023-08-12',
+                    'created_by' => $event->user_id,
+                ],
+                [
+                    'title' => 'Papers and Foam',
+                    'amount' => 48,
+                    'quantity' => 10,
+                    'total' => 480,
+                    'note' => 'For crafting games',
+                    'date' => '2023-07-24',
+                    'created_by' => $event->user_id,
+                ]
             ]);
-        });
+       
+
+        $event->tasks()->createMany([
+            [
+                'title' => 'Craft props',
+                'brief' => '4 staffs required',
+                'assignee_id' => 1,
+                'status' => 'To do',
+                'priority' => 'Medium',
+                'date' => '2023-09-03',
+                'created_by' => $event->user_id,
+            ],
+            [
+                'title' => 'Permissions',
+                'brief' => 'Waiting for officer permissions',
+                'assignee_id' => 2,
+                'status' => 'In Progress',
+                'priority' => 'Urgent',
+                'date' => '2023-08-05',
+                'created_by' => $event->user_id,
+            ],
+            [
+                'title' => 'MC Works',
+                'brief' => 'Draft the speech',
+                'assignee_id' => 1,
+                'status' => 'Done',
+                'priority' => 'High',
+                'date' => '2023-07-13',
+                'created_by' => $event->user_id,
+            ],
+            [
+                'title' => 'Rehearsal queue',
+                'brief' => 'practice queue',
+                'assignee_id' => 2,
+                'status' => 'Cancled',
+                'priority' => 'Low',
+                'date' => '2023-07-28',
+                'created_by' => $event->user_id,
+            ],
+        ]);
+     });
     }
 }
