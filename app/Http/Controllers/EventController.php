@@ -37,7 +37,7 @@ class EventController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'date' => 'required',
+            'start_date' => 'required',
             'location' => 'required',
         ]);
 
@@ -60,7 +60,8 @@ class EventController extends Controller
 
         $event->title = $request->title;
         $event->description = $request->description;
-        $event->date = $request->date;
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
         $event->location = $request->location;
         $event->attendees_limit = $request->attendees_limit;
         $event->save();
@@ -129,7 +130,7 @@ class EventController extends Controller
     }
 
     public function addMember(Request $request, Event $event)
-    {   
+    {
         $this->authorize('member', $event);
         $request->validate([
             'student_id' => 'required',
