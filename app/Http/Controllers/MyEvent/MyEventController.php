@@ -24,6 +24,7 @@ class MyEventController extends Controller
 
         return view('events.my-events', ['drafted_events' => $drafted_events, 'pending_events' => $pending_events, 'published_events' => $published_events]);
     }
+    
 
     public function drafted(Request $request)
     {
@@ -47,5 +48,12 @@ class MyEventController extends Controller
     {
         Gate::authorize('update', $event);
         return view('events.attendees', ['event' => $event]);
+    }
+    
+    public function destroy(Event $event)
+    {
+    Gate::authorize('delete', $event);
+    $event->delete();
+    return redirect()->route('my-events.index')->with('success', 'Event has been deleted successfully');
     }
 }

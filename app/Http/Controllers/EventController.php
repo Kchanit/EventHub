@@ -94,6 +94,17 @@ class EventController extends Controller
         return redirect()->route('events.index');
     }
 
+    public function destroy(Event $event)
+    {
+        // ตรวจสอบสิทธิ์ว่าผู้ใช้สามารถลบ event นี้ได้หรือไม่ (ใช้ Policy หรือตรวจสอบอื่น ๆ)
+        $this->authorize('delete', $event);
+    
+        // ลบ event
+        $event->delete();
+    
+        return redirect()->route('events.index')->with('success', 'Event has been deleted successfully.');
+    }
+
     public function leaveEvent(Request $request, Event $event)
     {
         $event->attendees()->detach($request->user());
