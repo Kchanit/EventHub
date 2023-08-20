@@ -31,7 +31,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [EventController::class, 'index'])
     ->name('events.index');
-
+Route::get('/search', [EventController::class, 'search'])
+    ->name('events.search');
 Route::get('/mark-as-read', [NotificationController::class, 'markAsRead'])
     ->name('mark-as-read');
 Route::get('/mark-this-as-read', [NotificationController::class, 'markThisAsRead'])
@@ -104,12 +105,12 @@ Route::middleware('auth')->group(function () {
         ->name('events.budgets.store-expense');
     Route::delete('/events/{event}/budgets/{expense}/delete', [ExpenseController::class, 'destroy'])
         ->name('events.budgets.delete');
-        Route::put('/events/{event}/budgets/submit-budget', [EventController::class, 'submitBudget'])
-            ->name('events.budgets.submit-budget');
-        Route::put('/officer/{event}/budgets/approve-budget', [EventController::class, 'approveBudget'])
-            ->name('events.budgets.approve-budget');
-        Route::put('/officer/{event}/budgets/reject-budget', [EventController::class, 'rejectBudget'])
-            ->name('events.budgets.reject-budget');
+    Route::put('/events/{event}/budgets/submit-budget', [EventController::class, 'submitBudget'])
+        ->name('events.budgets.submit-budget');
+    Route::put('/officer/{event}/budgets/approve-budget', [EventController::class, 'approveBudget'])
+        ->name('events.budgets.approve-budget');
+    Route::put('/officer/{event}/budgets/reject-budget', [EventController::class, 'rejectBudget'])
+        ->name('events.budgets.reject-budget');
 
 
     Route::get('/events/{event}/schedules', [ScheduleController::class, 'index'])

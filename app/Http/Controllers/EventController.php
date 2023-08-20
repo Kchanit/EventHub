@@ -21,6 +21,51 @@ class EventController extends Controller
         return view('events.index', ['events' => $events]);
     }
 
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $output = '';
+
+            $events = Event::where('title', 'LIKE', '%' . $request->search . '%')
+                // ->orWhere('category', 'LIKE', '%' . $request->search . '%')
+                // ->orWhere('price', 'LIKE', '%' . $request->search . '%')
+                ->get();
+
+            if ($events) {
+
+                foreach ($events as $event) {
+                    $str = 'storage\/' . str_replace('/','\/',$event->image_url);
+
+
+                    $output .=
+                    '<div class="rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300  bg-white  duration-150 hover:-translate-y-1">' .
+                        ' <a href="'. route("events.show", ["event" => $event]) .'">' .
+                            '<figure class="group relative">' . 
+                                '<img class="bg-gray-300  h-full w-full object-cover z-0" src="'.'storage/'.$event->image_url . '" />'.
+                                '<div class="px-4 py-2">'.
+                                    '<span class="block text-xs font-semibold uppercase text-blue-600 ">'.
+                                            date('d F', strtotime($event->date)).
+                                    '</span>'.
+                                    '<p class="text-lg font-bold leading-5 line-clamp-2 mt-1 text-gray-800 ">'. 
+                                            $event->title. 
+                                    '</p>
+                                    <p class="text-gray-500 leading-4 mt-1">'.
+                                            $event->location.
+                                    '</p>
+                                </div
+                            </figure>
+                        </a>
+                    </div>'
+                ;}
+
+                return response()->json($output);
+            }
+        }
+
+        return view('events.index', ['events' => Event::published()->get()]);
+    }
+
     public function show(Event $event)
     {
         return view('events.show', ['event' => $event]);
@@ -129,7 +174,7 @@ class EventController extends Controller
     }
 
     public function addMember(Request $request, Event $event)
-    {   
+    {
         $this->authorize('member', $event);
         $request->validate([
             'student_id' => 'required',
