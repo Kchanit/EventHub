@@ -35,14 +35,12 @@ class EventController extends Controller
             if ($events) {
 
                 foreach ($events as $event) {
-                    $str = 'storage\/' . str_replace('/','\/',$event->image_url);
-
 
                     $output .=
                     '<div class="rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300  bg-white  duration-150 hover:-translate-y-1">' .
                         ' <a href="'. route("events.show", ["event" => $event]) .'">' .
                             '<figure class="group relative">' . 
-                                '<img class="bg-gray-300  h-full w-full object-cover z-0" src="'.'storage/'.$event->image_url . '" />'.
+                                '<img class="bg-gray-300  h-full w-full object-cover z-0" src="'. asset('storage/' . $event->image_url) . '" />'.
                                 '<div class="px-4 py-2">'.
                                     '<span class="block text-xs font-semibold uppercase text-blue-600 ">'.
                                             date('d F', strtotime($event->date)).
