@@ -36,6 +36,11 @@ class Event extends Model
         return $this->hasMany(Task::class);
     }
 
+    public function certificate()
+    {
+        return $this->has(Certificate::class);
+    }
+
     public function scopePublished($query)
     {
         return $query->where('event_status', EventStatus::PUBLISHED);

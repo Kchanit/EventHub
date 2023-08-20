@@ -75,6 +75,7 @@
                                         </path>
                                     </svg>
                                     <div>
+                                        
                                         <p class="font-semibold">
                                             Upcoming Events
                                         </p>
