@@ -443,64 +443,6 @@
                                 <input id="date" type="date" name="date"
                                     class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 @error('date') border-red-400 @enderror font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" />
 
-<<<<<<< HEAD
-=======
-                                </div>
-
-                                <div class="flex gap-2">
-                                    <div>
-                                        {{-- Amount --}}
-                                        <label for="amount"
-                                            class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                                            Amount</label>
-                                        <input id="amount" type="number" name="amount"
-                                            class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 @error('date') border-red-400 @enderror font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
-                                            placeholder="1000" />
-                                    </div>
-
-                                    <div>
-                                        {{-- Quantity --}}
-                                        <label for="quantity"
-                                            class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                                            Quantity</label>
-                                        <input id="quantity" type="number" name="quantity"
-                                            class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 @error('date') border-red-400 @enderror font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
-                                            placeholder="1" />
-                                    </div>
-                                </div>
-
-                                {{-- Note --}}
-                                <label for="note"
-                                    class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                                    Note</label>
-                                <textarea id="note" name="note" type="text"
-                                    class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 @error('date') border-red-400 @enderror font-normal w-full h-20 flex items-center pl-3 text-sm border-gray-300 rounded border"
-                                    placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."></textarea>
-
-
-                                {{-- Buttons --}}
-                                <div class="flex items-center justify-start w-full">
-                                    <button type="submit"
-                                        class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 rounded-md transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 text-white px-8 py-2 text-sm">Submit</button>
-                                    <button type="button"
-                                        class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded-md px-8 py-2 text-sm"
-                                        onclick="modalHandler(false)" id="cancel-btn">Cancel</button>
-                                </div>
-
-                                {{-- exit icon --}}
-                                <button type="button"
-                                    class="cursor-pointer absolute top-0 right-0 mt-4 mr-5 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"
-                                    onclick="modalHandler()" aria-label="close modal" role="button" id="close-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x"
-                                        width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5"
-                                        stroke="currentColor" fill="none" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" />
-                                        <line x1="18" y1="6" x2="6" y2="18" />
-                                        <line x1="6" y1="6" x2="18" y2="18" />
-                                    </svg>
-                                </button>
->>>>>>> member
                             </div>
 
                             <div class="flex gap-2">
