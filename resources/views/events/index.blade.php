@@ -97,11 +97,11 @@
         </div>
         {{-- End Header --}}
         <!-- Grid -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
+        <div class=" card mycard grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
             @foreach ($events as $event)
                 <!-- Card -->
                 <div
-                    class=" rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300  bg-white  duration-150 hover:-translate-y-1">
+                    class="rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300  bg-white  duration-150 hover:-translate-y-1">
                     <!-- Clickable Area -->
                     <a href=" {{ route('events.show', ['event' => $event]) }} ">
                         <figure class="group relative">
@@ -151,4 +151,30 @@
         <!-- End Grid -->
     </div>
     <!-- End Card Blog -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#search').on('keyup', function(){
+            var value = $(this).val();
+            $.ajax({
+                type: "get",
+                url: "/search",
+                data: {'search':value},
+                success: function (data) {
+                    $('.mycard').html(data);
+                }
+            });
+
+        });
+    });
+
+</script>
+    
 @endsection

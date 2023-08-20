@@ -31,7 +31,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [EventController::class, 'index'])
     ->name('events.index');
-
+Route::get('/search', [EventController::class, 'search'])
+    ->name('events.search');
 Route::get('/mark-as-read', [NotificationController::class, 'markAsRead'])
     ->name('mark-as-read');
 Route::get('/mark-this-as-read', [NotificationController::class, 'markThisAsRead'])
