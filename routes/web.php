@@ -58,9 +58,10 @@ Route::get('events/attended-events/certificate', [AttendedEventController::class
 Route::get('/info', [InfoController::class, 'index'])
     ->name('info.index');
 
-Route::get('/info/editInfo', [EditInfoController::class, 'index'])
-    ->name('editInfo.index');
-
+Route::get('/info/edit', [InfoController::class, 'edit'])
+    ->name('info.edit');
+Route::put('/info/update', [ProfileController::class, 'update'])
+    ->name('info.update');
 //==============================================================================
 
 //======================        Dashboard & Auth       =========================

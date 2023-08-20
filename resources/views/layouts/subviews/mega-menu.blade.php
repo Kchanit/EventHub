@@ -330,7 +330,7 @@
                             </div>
                             <div class="mt-2 py-2 first:pt-0 last:pb-0">
                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500  "
-                                    href="#">
+                                    href="{{ route('info.index') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                         fill="#0f0f0f" viewBox="0 0 256 256">
                                         <path

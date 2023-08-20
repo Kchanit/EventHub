@@ -27,9 +27,8 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('line_id')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('linkedin')->nullable();
-            $table->string('github')->nullable();
+            $table->string('facebook_url')->nullable();
+            $table->text('bio')->nullable();
 
             $table->rememberToken();
             $table->timestamps();
