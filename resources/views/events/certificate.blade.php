@@ -10,8 +10,8 @@
                         Certificate of Achievement
                     </h1>
                     <p class="text-sm text-gray-500">
-                        {{$event->title}}
-                        {{$event->user}}
+                        {{$certificate->event->title}}
+        
                     </p>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                 <div class="max-w-3xl hover:scale-105 ease-in duration-300">
                     {{-- cert --}}
                     <img class="w-full object-cover rounded-xl shadow-lg"
-                        src="https://templatelab.com/wp-content/uploads/2018/11/Certificate-employee-1-e1542525135159.jpg">
+                        src="{{ asset('storage/' . $certificate->image_url) }}">
                     {{-- end cert --}}
                 </div>
                 <div class="grid grid-flow-col sm:grid-flow-row gap-5 content-between justify-between">
@@ -36,9 +36,9 @@
                     {{-- date --}}
                     <div
                         class="hover:scale-105 ease-in duration-200 grid-flow-col border border-gray-200 text-center rounded-xl py-3 px-16 sm:p-8 dark:border-gray-700 bg-white shadow-md md:w-auto focus:outline-none">
-                        <h4 class="font-medium text-xl text-gray-800 dark:text-gray-200 uppercase">{{ date('M', strtotime($event->date)) }}</h4>
-                        <span class="my-5 font-bold text-5xl text-gray-800 dark:text-gray-200 ">{{ date('j', strtotime($event->date)) }}</span>
-                        <p class=" text-lg text-gray-500">{{ date('o', strtotime($event->date)) }}</p>
+                        <h4 class="font-medium text-xl text-gray-800 dark:text-gray-200 uppercase">{{ date('M', strtotime($certificate->event->date)) }}</h4>
+                        <span class="my-5 font-bold text-5xl text-gray-800 dark:text-gray-200 ">{{ date('j', strtotime($certificate->event->date)) }}</span>
+                        <p class=" text-lg text-gray-500">{{ date('o', strtotime($certificate->event->date)) }}</p>
                     </div>
                     {{-- end date --}}
                     {{-- download --}}
