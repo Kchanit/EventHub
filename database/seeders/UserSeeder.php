@@ -43,7 +43,8 @@ class UserSeeder extends Seeder
         $user->college_year = '3';
         $user->image_url = 'user_images/image3.jpg';
         $user->save();
-
+        
+        // officer
         $user = new User();
         $user->name = 'officer01';
         $user->email = 'officer01@gmail.com';

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Event;
 use App\Models\Expense;
 use Database\Factories\ExpenseFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,60 +16,79 @@ class ExpenseSeeder extends Seeder
     public function run(): void
     {
         // title amount quantity total note date event_id created_by
-        $expense = New Expense();
-        $expense->title = 'Food and Beverages';
-        $expense->amount = '85';
-        $expense->quantity = '30';
-        $expense->total = '2550';
-        $expense->note = 'Food and beverages for lunch';
-        $expense->date = '2023-08-15';
-        $expense->event_id = '1';
-        $expense->created_by = '2';
-        $expense->save();
+        $expense = [
+            [
+                'title' => 'Props',
+                'amount' => 35,
+                'quantity' => 25,
+                'total' => 875,
+                'note' => 'Props for cheering',
+                'date' => '2023-08-12',
+                'event_id' => 1,
+                'created_by' => 1,
+            ],
+            [
+                'title' => 'Papers and Foam',
+                'amount' => 48,
+                'quantity' => 10,
+                'total' => 480,
+                'note' => 'For crafting games',
+                'date' => '2023-07-24',
+                'created_by' => 1,
+            ],
+            [
+                'title' => 'Venue Rental',
+                'amount' => 1000.00,
+                'quantity' => 1,
+                'total' => 1000.00,
+                'note' => 'Reserved event venue for the event day',
+                'created_by' => 2,
+            ],
+            [
+                'title' => 'Catering Services',
+                'amount' => 500.00,
+                'quantity' => 1,
+                'total' => 500.00,
+                'note' => 'Arranged catering services for event attendees',
+                'created_by' => 2,
+            ],
+            [
+                'title' => 'Promotional Materials',
+                'amount' => 120.00,
+                'quantity' => 20,
+                'total' => 2400.00,
+                'note' => 'Designed and printed promotional materials for the event',
+                'created_by' => 2,
+            ],
+            [
+                'title' => 'Equipment Rental',
+                'amount' => 400.00,
+                'quantity' => 1,
+                'total' => 400.00,
+                'note' => 'Rented sound and lighting equipment for the event',
+                'created_by' => 2,
+            ],
+            [
+                'title' => 'Transportation',
+                'amount' => 150.00,
+                'quantity' => 1,
+                'total' => 150.00,
+                'note' => 'Arranged transportation for event staff and performers',
+                'created_by' => 2,
+            ]
+        ];
 
-        $expense = New Expense();
-        $expense->title = 'Props';
-        $expense->amount = '35';
-        $expense->quantity = '25';
-        $expense->total = '875';
-        $expense->note = 'Props for cheering';
-        $expense->date = '2023-08-03';
-        $expense->event_id = '1';
-        $expense->created_by = '2';
-        $expense->save();
-
-        $expense = New Expense();
-        $expense->title = 'Papers and foam';
-        $expense->amount = '48';
-        $expense->quantity = '10';
-        $expense->total = '480';
-        $expense->note = 'For crafting game';
-        $expense->date = '2023-07-24';
-        $expense->event_id = '1';
-        $expense->created_by = '2';
-        $expense->save();
-
-        $expense = New Expense();
-        $expense->title = 'Food for staff';
-        $expense->amount = '50';
-        $expense->quantity = '14';
-        $expense->total = '700';
-        $expense->date = '2023-08-20';
-        $expense->event_id = '1';
-        $expense->created_by = '2';
-        $expense->save();
-
-        $expense = New Expense();
-        $expense->title = 'Prizes';
-        $expense->amount = '145';
-        $expense->quantity = '4';
-        $expense->total = '580';
-        $expense->note = 'Prizes for winners';
-        $expense->date = '2023-08-03';
-        $expense->event_id = '2';
-        $expense->created_by = '1';
-        $expense->save();
-
-        Expense::factory(100)->create();
+        // foreach ($expense as $expenseData) {
+        //     $expense = new Expense();
+        //     $expense->title = $expenseData['title'];
+        //     $expense->amount = $expenseData['amount'];
+        //     $expense->quantity = $expenseData['quantity'];
+        //     $expense->total = $expenseData['total'];
+        //     $expense->note = $expenseData['note'];
+        //     $expense->event_id = $expenseData['event_id'];
+        //     $expense->created_by = $expenseData['created_by'];
+        //     $expense->save();
+        // }
+       
     }
 }
