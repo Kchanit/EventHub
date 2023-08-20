@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Certificate;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,14 @@ class AttendedEventController extends Controller
 
     public function pastEvent(Request $request)
     {
-        $events = $request->user()->attendedEvents;
+        $events = $request->user()->attendedEvents()->whereDate('start_date', '<', today())->get();
         return view('events.attended-events', ['events' => $events]);
     }
 
     public function certificate(Event $event)
     {
-        return view('events.certificate', ['event' => $event]);
+        $certificate = Certificate::where('user_id',auth()->user()->id)->where('event_id',$event->id)->first();
+        
+        return view('events.certificate', ['certificate' => $certificate]);
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_id')->constrained();
+            $table->foreignId('event_id')->constrained('events');
             $table->foreignId('user_id')->constrained('users');
             $table->date('event_date')->nullable();
             $table->string('image_url')->nullable();
