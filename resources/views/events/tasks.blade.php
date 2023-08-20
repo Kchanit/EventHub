@@ -428,7 +428,7 @@
                             <div class="space-y-2 mb-5 text-sm font-medium text-gray-800  dark:text-gray-200">
                                 <label class="text-gray-800 block text-sm font-bold leading-tight tracking-normal"
                                     for="date">
-                                    Select Date
+                                    Due Date
                                 </label>
                                 <input id="date" name="date" type="date" value="{{ old('date', '') }}"
                                     class="@error('date') border-red-400 @enderror mb-5 py-2 px-3 pr-11 border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500"
@@ -508,6 +508,10 @@
         const openModal = document.getElementById("create-btn");
         const closeModal = document.querySelector("#close-btn");
         const cancel = document.querySelector("#cancel-btn");
+        const title = document.getElementById("title");
+        const brief = document.getElementById("brief");
+        const date = document.getElementById("due_date");
+        const student_id = document.getElementById("student_id");
 
         openModal.addEventListener("click", () => {
             modal.showModal();
@@ -532,10 +536,16 @@
             (function fade() {
                 if ((el.style.opacity -= 0.1) < 0) {
                     el.style.display = "none";
+                    el.style.opacity = 1; // Reset opacity for next use
+                    el.close()
                 } else {
                     requestAnimationFrame(fade);
                 }
             })();
+            title.value = "";
+            brief.value = "";
+            date.value = "";
+            student_id.value = "";
         }
 
         function fadeIn(el, display) {

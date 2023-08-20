@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('brief')->nullable();
             $table->string('status');
-            $table->date('date')->default(now());
+            $table->date('date')->nullable();
             $table->foreignId('assignee_id')->constrained('users');
             $table->foreignId('event_id')->constrained();
             $table->foreignId('created_by')->constrained('users');
