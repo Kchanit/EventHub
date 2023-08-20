@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
         $user->faculty = 'Science';
         $user->college_year = '3';
         $user->image_url = 'user_images/image1.jpg';
+        $user->phone_number = '0123456789';
         $user->save();
 
         $user = new User();
@@ -32,6 +33,7 @@ class UserSeeder extends Seeder
         $user->faculty = 'Engineering';
         $user->college_year = '2';
         $user->image_url = 'user_images/image2.jpg';
+        $user->phone_number = '0123234122';
         $user->save();
 
         $user = new User();
@@ -42,6 +44,7 @@ class UserSeeder extends Seeder
         $user->faculty = 'Science';
         $user->college_year = '3';
         $user->image_url = 'user_images/image3.jpg';
+        $user->phone_number = '0842341234';
         $user->save();
 
         $user = new User();

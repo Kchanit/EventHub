@@ -8,36 +8,51 @@
             <img src="{{ asset('storage/' . $event->image_url) }}"
                 class="bg-gray-300 mb-4 max-w-[16rem] object-cover z-0 shadow-md">
 
-            <p class="flex mb-4 text-xl gap-x-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    style="fill: rgba(0, 0, 0, 1);">
-                    <path
-                        d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM5 7h14v2H5V7z">
-                    </path>
-                </svg>
-                {{ date('d F', strtotime($event->date)) }}
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
-                {{ $event->location }}
-            </p>
+            <div class="flex items-center mb-4 text-xl gap-x-4">
+                <div class="flex items-center gap-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        style="fill: rgba(0, 0, 0, 1);">
+                        <path
+                            d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM5 7h14v2H5V7z">
+                        </path>
+                    </svg>
+                    {{-- Date --}}
+                    @if ($event->end_date === null)
+                        <!--Single Date -->
+                        <span class="  uppercase  ">
+                            {{ date('d F', strtotime($event->start_date)) }}
+                        </span>
+                    @else
+                        {{-- Multiple Dates --}}
+                        {{-- Same month --}}
+                        @if (date('m', strtotime($event->start_date)) == date('m', strtotime($event->end_date)))
+                            <span class="  uppercase  ">
+                                {{ date('d', strtotime($event->start_date)) . ' - ' . date('d F', strtotime($event->end_date)) }}
+                            </span>
+                        @else
+                            {{-- Diff month --}}
+                            <span class="  uppercase  ">
+                                {{ date('d M', strtotime($event->start_date)) . ' - ' . date('d M', strtotime($event->end_date)) }}
+                            </span>
+                        @endif
+                    @endif
+                </div>
+                <div class="flex">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                    {{ $event->location }}
+                </div>
+            </div>
             <dl>
                 <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Description</dt>
                 <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{ $event->description }}</dd>
             </dl>
-            <dl class="flex items-center space-x-6">
-                <div>
-                    <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Category</dt>
-                    <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">Electronics/PC</dd>
-                </div>
-                <div>
-                    <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Item weight</dt>
-                    <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">12kg</dd>
-                </div>
-            </dl>
+
 
 
             @can('joinEvent', $event)

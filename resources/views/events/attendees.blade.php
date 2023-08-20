@@ -202,24 +202,12 @@
                                                         <div class="px-6 py-3">
                                                             <div class="flex items-center gap-x-3">
                                                                 <span class="text-xs text-gray-500">
-                                                                    080-xxx-xxxx
+                                                                    {{ $user->phone_number }}
                                                                 </span>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    {{-- button --}}
-                                                    <td class="h-px w-px whitespace-nowrap">
-                                                        <div class="px-6 py-1.5">
-                                                            <a class=" rounded-3xl border border-gray-200 inline-flex items-center gap-x-1.5 px-3 mr-5 text-lg text-green-600 decoration-2 hover:scale-110 font-medium"
-                                                                href="#">
-                                                                ✔︎
-                                                            </a>
-                                                            <a class="rounded-3xl border inline-flex items-center gap-x-1.5 px-3 text-lg text-red-600 decoration-2 hover:scale-110 font-medium"
-                                                                href="#">
-                                                                ✘
-                                                            </a>
-                                                        </div>
-                                                    </td>
+
                                                 </tr>
                                             </tbody>
                                         @endforeach

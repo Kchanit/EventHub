@@ -150,7 +150,7 @@
                                                     <div class="px-6 py-3">
                                                         <div class="flex items-center gap-x-3">
                                                             <span class="text-xs text-gray-500">
-                                                                080-xxx-xxxx
+                                                                {{ $user->phone_number }}
                                                             </span>
                                                         </div>
                                                     </div>

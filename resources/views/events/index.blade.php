@@ -114,10 +114,26 @@
                                 src="{{ asset('storage/' . $event->image_url) }}" />
 
                             <div class="px-4 py-2">
-                                <!-- Date -->
-                                <span class="block text-xs font-semibold uppercase text-blue-600 ">
-                                    {{ date('d F', strtotime($event->date)) }}
-                                </span>
+                                {{-- Date --}}
+                                @if ($event->end_date === null)
+                                    <!--Single Date -->
+                                    <span class="block text-xs font-semibold uppercase text-blue-600 ">
+                                        {{ date('d F', strtotime($event->start_date)) }}
+                                    </span>
+                                @else
+                                    {{-- Multiple Dates --}}
+                                    {{-- Same month --}}
+                                    @if (date('m', strtotime($event->start_date)) == date('m', strtotime($event->end_date)))
+                                        <span class="block text-xs font-semibold uppercase text-blue-600 ">
+                                            {{ date('d', strtotime($event->start_date)) . ' - ' . date('d F', strtotime($event->end_date)) }}
+                                        </span>
+                                    @else
+                                        {{-- Diff month --}}
+                                        <span class="block text-xs font-semibold uppercase text-blue-600 ">
+                                            {{ date('d M', strtotime($event->start_date)) . ' - ' . date('d M', strtotime($event->end_date)) }}
+                                        </span>
+                                    @endif
+                                @endif
                                 <!-- Title -->
                                 <p class="text-lg font-bold leading-5 line-clamp-2 mt-1 text-gray-800 ">
                                     {{ $event->title }}
@@ -135,6 +151,4 @@
         <!-- End Grid -->
     </div>
     <!-- End Card Blog -->
-
-    
 @endsection

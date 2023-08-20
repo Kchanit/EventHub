@@ -23,11 +23,12 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'role' => 'user',
             'password' => '1234', // password
-            'student_id' => 'B'. fake()->numberBetween(55,65) . fake()->randomNumber(5),
+            'student_id' => 'B' . fake()->numberBetween(55, 65) . fake()->randomNumber(5),
             'faculty' => rand(0, 1) ? 'Science' : 'Business',
-            'college_year' =>fake()->numberBetween(1,4),
+            'college_year' => fake()->numberBetween(1, 4),
             'remember_token' => Str::random(10),
-            'image_url' => 'user_images/image'. rand(1,3) .'.jpg' 
+            'image_url' => 'user_images/image' . rand(1, 3) . '.jpg',
+            'phone_number' => fake()->phoneNumber(),
         ];
     }
 
