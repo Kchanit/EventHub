@@ -27,8 +27,8 @@
                             <div>
                                 <p class="text-sm text-gray-600 dark:text-gray-400">
                                     <span
-                                        class="font-semibold text-gray-800 dark:text-gray-200">{{ count($event->attendees) }}</span>
-                                    results
+                                        class="font-semibold text-gray-800 dark:text-gray-200">{{ count($event->attendees) . ' / ' . $event->attendees_limit }}</span>
+
                                 </p>
                             </div>
 
@@ -69,7 +69,14 @@
                                             <span class="sr-only">Checkbox</span>
                                         </label>
                                     </th> --}}
-
+                                            <th scope="col" class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3 text-left">
+                                                <div class="flex items-center gap-x-2">
+                                                    <span
+                                                        class="pl-5 text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                                                        No.
+                                                    </span>
+                                                </div>
+                                            </th>
                                             <th scope="col" class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3 text-left">
                                                 <div class="flex items-center gap-x-2">
                                                     <span
@@ -134,6 +141,17 @@
                                                             </label>
                                                         </div>
                                                     </td> --}}
+                                                    
+                                                    {{-- no. --}}
+                                                    <td class="h-px w-px whitespace-nowrap">
+                                                        <div class="px-6 py-3">
+                                                            <span
+                                                                class="block text-sm font-semibold text-gray-800 dark:text-gray-200">
+                                                                {{ $loop->iteration }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+
                                                     {{-- image+name --}}
                                                     <td class="pl-5 h-px w-px whitespace-nowrap">
                                                         <div class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">

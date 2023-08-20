@@ -26,7 +26,7 @@
 
                             <div>
                                 <div class="inline-flex gap-x-2">
-                                    @if (count($event->expenses) > 0)
+                                    @if (count($expenses) > 0)
                                         <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                                             href="#">
                                             View all
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <!-- End Header -->
-                        @if (count($event->expenses) > 0)
+                        @if (count($expenses) > 0)
                             <!-- Table -->
                             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                 <thead class="bg-gray-50 dark:bg-slate-900">
@@ -120,7 +120,7 @@
                                     </tr>
                                 </thead>
                                 <div class="overflow-auto">
-                                    @foreach ($event->expenses as $expense)
+                                    @foreach ($expenses as $expense)
                                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                                             <tr class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
                                                 <td class="h-px w-px whitespace-nowrap">
@@ -330,11 +330,16 @@
                             <div>
                                 <p class="text-sm text-gray-600 dark:text-gray-400">
                                     <span
-                                        class="font-semibold text-gray-800 dark:text-gray-200">{{ count($event->expenses) }}</span>
+                                        class="font-semibold text-gray-800 dark:text-gray-200">{{ count($expenses) }}</span>
                                     results
                                 </p>
                             </div>
 
+                            {{--  --}}
+                            <div>
+                                {{ $expenses->links() }}
+                            </div>
+                            {{--  --}}
                             <div>
                                 <div class="inline-flex gap-x-2">
                                     <button type="button"
@@ -372,7 +377,7 @@
     <!-- End Table Section -->
 
     {{-- Submit Budget Button --}}
-    @if (count($event->expenses) > 0)
+    @if (count($expenses) > 0)
         <div class="flex justify-center mt-5">
             <form action="{{ route('events.budgets.submit-budget', ['event' => $event]) }}" method="POST">
                 @csrf
