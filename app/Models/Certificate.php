@@ -9,7 +9,7 @@ class Certificate extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'brief', 'assignee_id', 'status', 'priority', 'date', 'event_id', 'created_by'];
+    protected $fillable = [];
 
     public function event()
     {
@@ -18,6 +18,6 @@ class Certificate extends Model
 
     public function users()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 }
