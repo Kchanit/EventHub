@@ -24,7 +24,7 @@ class ExpenseSeeder extends Seeder
                 'total' => 875,
                 'note' => 'Props for cheering',
                 'date' => '2023-08-12',
-                'event_id' => 1,
+                'event_id' => 2,
                 'created_by' => 1,
             ],
             [
@@ -34,6 +34,7 @@ class ExpenseSeeder extends Seeder
                 'total' => 480,
                 'note' => 'For crafting games',
                 'date' => '2023-07-24',
+                'event_id' => 2,
                 'created_by' => 1,
             ],
             [
@@ -42,6 +43,8 @@ class ExpenseSeeder extends Seeder
                 'quantity' => 1,
                 'total' => 1000.00,
                 'note' => 'Reserved event venue for the event day',
+                'date' => '2023-08-04',
+                'event_id' => 2,
                 'created_by' => 2,
             ],
             [
@@ -50,6 +53,8 @@ class ExpenseSeeder extends Seeder
                 'quantity' => 1,
                 'total' => 500.00,
                 'note' => 'Arranged catering services for event attendees',
+                'date' => '2023-08-14',
+                'event_id' => 2,
                 'created_by' => 2,
             ],
             [
@@ -58,6 +63,8 @@ class ExpenseSeeder extends Seeder
                 'quantity' => 20,
                 'total' => 2400.00,
                 'note' => 'Designed and printed promotional materials for the event',
+                'date' => '2023-07-30',
+                'event_id' => 2,
                 'created_by' => 2,
             ],
             [
@@ -66,6 +73,8 @@ class ExpenseSeeder extends Seeder
                 'quantity' => 1,
                 'total' => 400.00,
                 'note' => 'Rented sound and lighting equipment for the event',
+                'date' => '2023-08-09',
+                'event_id' => 2,
                 'created_by' => 2,
             ],
             [
@@ -74,21 +83,24 @@ class ExpenseSeeder extends Seeder
                 'quantity' => 1,
                 'total' => 150.00,
                 'note' => 'Arranged transportation for event staff and performers',
+                'date' => '2023-08-24',
+                'event_id' => 2,
                 'created_by' => 2,
             ]
         ];
 
-        // foreach ($expense as $expenseData) {
-        //     $expense = new Expense();
-        //     $expense->title = $expenseData['title'];
-        //     $expense->amount = $expenseData['amount'];
-        //     $expense->quantity = $expenseData['quantity'];
-        //     $expense->total = $expenseData['total'];
-        //     $expense->note = $expenseData['note'];
-        //     $expense->event_id = $expenseData['event_id'];
-        //     $expense->created_by = $expenseData['created_by'];
-        //     $expense->save();
-        // }
-       
+        foreach ($expense as $expenseData) {
+            $expense = new Expense();
+            $expense->title = $expenseData['title'];
+            $expense->amount = $expenseData['amount'];
+            $expense->quantity = $expenseData['quantity'];
+            $expense->total = $expenseData['total'];
+            $expense->note = $expenseData['note'];
+            $expense->date = $expenseData['date'];
+            $expense->event_id = $expenseData['event_id'];
+            $expense->created_by = $expenseData['created_by'];
+            $expense->save();
+        }
+
     }
 }

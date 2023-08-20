@@ -44,6 +44,8 @@ class EventSeeder extends Seeder
         $event->event_status = 'PUBLISHED';
         $event->save();
 
+
+        // full attended event
         $event = new Event();
         $event->title = 'THE LORD OF THE RINGS - THE FELLOWSHIP OF THE RING';
         $event->location = 'Prince Mahidol Hall, Mahidol University';
@@ -179,12 +181,18 @@ class EventSeeder extends Seeder
 
         Event::factory(10)->create();
         $users = User::where('id', '>', 4)->get();
+        // full attendees
         Event::where('id', '=', 3)->each(function ($event) use ($users) {
             $event->attendees()->attach(
                 $users->random(10)->pluck('id')->toArray()
             );
         });
-        Event::where('id', '>', 3)->each(function ($event) use ($users) {
+        //no attendees
+        Event::where('id', '=', 4)->each(function ($event) use ($users) {
+            $event->attendees()->detach();
+        });
+        // random attendees
+        Event::where('id', '>', 4)->each(function ($event) use ($users) {
             $event->attendees()->attach(
                 $users->random(rand(5, 15))->pluck('id')->toArray()
             );
