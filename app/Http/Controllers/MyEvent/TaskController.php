@@ -5,6 +5,7 @@ namespace App\Http\Controllers\MyEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -25,7 +26,6 @@ class TaskController extends Controller
     public function create()
     {
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -37,7 +37,8 @@ class TaskController extends Controller
         $task->status = $request->get('status');
         $task->priority = $request->get('priority');
         $task->date = $request->get('date');
-        $task->assignee()->associate($request->get('assignee_id'));
+        $user = User::where('student_id', $request->get('assignee_id'))->first();
+        $task->assignee()->associate($user->id);
         // $task->assignee_id = $request->get('assignee_id');
         $task->created_by = auth()->user()->id;
         $task->event_id = $event->id;
