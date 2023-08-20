@@ -79,7 +79,7 @@ class ProfileController extends Controller
         $request->validate([
             'title' => 'required|min:4|max:255',
             'description' => 'required',
-            'date' => 'required',
+            'start_date' => 'required',
             'location' => 'required',
             'attendees_limit' => 'required',
         ]);
@@ -87,7 +87,8 @@ class ProfileController extends Controller
         $event = new Event();
         $event->title = $request->get('title');
         $event->description = $request->get('description');
-        $event->date = $request->get('date');
+        $event->start_date = $request->get('start_date');
+        $event->end_date = $request->get('end_date');
         $event->location = $request->get('location');
         $event->attendees_limit = $request->get('attendees_limit');
         $event->user_id = $user->id;

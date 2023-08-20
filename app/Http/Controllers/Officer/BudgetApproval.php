@@ -15,7 +15,7 @@ class BudgetApproval extends Controller
      */
     public function index()
     {
-        $events = Event::where('budget_status', EventBudgetStatus::PENDING)->get();
+        $events = Event::all()->where('budget_status', 'PENDING');
         return view('officer.index', ['events' => $events]);
     }
 
@@ -46,7 +46,7 @@ class BudgetApproval extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Officer $officer)
+    public function edit()
     {
         //
     }
@@ -54,7 +54,7 @@ class BudgetApproval extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Officer $officer)
+    public function update(Request $request,)
     {
         //
     }
@@ -62,7 +62,7 @@ class BudgetApproval extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Officer $officer)
+    public function destroy()
     {
         //
     }

@@ -47,26 +47,48 @@
                                 </div>
                             @enderror
                         </div>
-
-                        <div class="space-y-2 text-sm font-medium text-gray-800  dark:text-gray-200">
-                            <label class="block mt-2.5" for="date">
-                                Select Date
+                        {{-- Date --}}
+                        <div class="space-y-2">
+                            <label for="event_type"
+                                class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
+                                Event Type
                             </label>
-                            <input id="date" name="date" type="date" value="{{ old('date', '') }}"
-                                class="@error('date') border-red-400 @enderror py-2 px-3 pr-11 border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-                                placeholder="Select date start">
 
-                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                            <span class="mx-2">
-                                to
-                            </span>
-                            @error('date')
-                                <div class=" text-red-500 text-sm">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                            <div class="flex items-center space-x-4">
+                                <input type="radio" id="single_day" name="event_type" value="single_day" checked>
+                                <label for="single_day">Single Day</label>
+
+                                <input type="radio" id="multi_day" name="event_type" value="multi_day">
+                                <label for="multi_day">Multi Day</label>
+                            </div>
                         </div>
 
+                        <div class="space-y-2 text-sm font-medium  text-gray-800  dark:text-gray-200">
+                            <label class="block mt-2.5" for="start_date">
+                                Select date
+                            </label>
+                            <div class="flex">
+                                <input id="start_date" name="start_date" type="date" value="{{ old('start_date', '') }}"
+                                    class="@error('date') border-red-400 @enderror py-2 px-3 pr-11 border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+                                    placeholder="Select start date">
+                                <div id="dateInputs" class="hidden">
+                                    <span class="mx-2">
+                                        to
+                                    </span>
+                                    <input id="end_date" name="end_date" type="date" value="{{ old('end_date', '') }}"
+                                        class="@error('date') border-red-400 @enderror py-2 px-3 pr-11 border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+                                        placeholder="Select end date">
+
+                                    @error('end_date')
+                                        <div class=" text-red-500 text-sm">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- End Date --}}
                         <div class="space-y-2">
                             <label for="attendees_limit"
                                 class="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
@@ -170,4 +192,17 @@
         </form>
     </div>
     <!-- End Card Section -->
+    <script>
+        const singleDayRadio = document.getElementById('single_day');
+        const multiDayRadio = document.getElementById('multi_day');
+        const dateInputs = document.getElementById('dateInputs');
+
+        singleDayRadio.addEventListener('change', () => {
+            dateInputs.style.display = 'none';
+        });
+
+        multiDayRadio.addEventListener('change', () => {
+            dateInputs.style.display = 'block';
+        });
+    </script>
 @endsection

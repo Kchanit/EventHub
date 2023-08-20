@@ -10,7 +10,7 @@
                     All Events
                 </h1>
                 <p class="text-sm text-gray-500">
-                    Let's see all events happening in the university
+                    Events you have drafted for and have not published yet.
                 </p>
             </div>
 
@@ -135,4 +135,6 @@
         <!-- End Grid -->
     </div>
     <!-- End Card Blog -->
+
+    
 @endsection

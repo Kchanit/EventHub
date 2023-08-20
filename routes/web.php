@@ -78,6 +78,8 @@ Route::middleware('auth')->group(function () {
 
     // My Events
     Route::get('/events/my-events', [MyEventController::class, 'index'])->name('events.my-events');
+    Route::get('/events/drafted-events', [MyEventController::class, 'drafted'])->name('events.drafted');
+
     Route::get('/events/{event}/attendees', [MyEventController::class, 'attendees'])
         ->name('events.attendees');
     Route::get('/events/{event}/members', [MemberController::class, 'index'])
@@ -102,6 +104,12 @@ Route::middleware('auth')->group(function () {
         ->name('events.budgets.store-expense');
     Route::delete('/events/{event}/budgets/{expense}/delete', [ExpenseController::class, 'destroy'])
         ->name('events.budgets.delete');
+        Route::put('/events/{event}/budgets/submit-budget', [EventController::class, 'submitBudget'])
+            ->name('events.budgets.submit-budget');
+        Route::put('/officer/{event}/budgets/approve-budget', [EventController::class, 'approveBudget'])
+            ->name('events.budgets.approve-budget');
+        Route::put('/officer/{event}/budgets/reject-budget', [EventController::class, 'rejectBudget'])
+            ->name('events.budgets.reject-budget');
 
 
     Route::get('/events/{event}/schedules', [ScheduleController::class, 'index'])
@@ -112,12 +120,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/events/{event}/join-event', [EventController::class, 'joinEvent'])
         ->name('events.join-event');
 
-    Route::put('/events/{event}/budgets/submit-budget', [EventController::class, 'submitBudget'])
-        ->name('events.budgets.submit-budget');
-    Route::put('/officer/{event}/budgets/approve-budget', [EventController::class, 'approveBudget'])
-        ->name('events.budgets.approve-budget');
-    Route::put('/officer/{event}/budgets/reject-budget', [EventController::class, 'rejectBudget'])
-        ->name('events.budgets.reject-budget');
 
 
     // Officer

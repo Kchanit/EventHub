@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Enums\EventBudgetStatus;
+use App\Models\Enums\EventStatus;
 use App\Models\Event;
 use App\Models\User;
 use App\Notifications\EventMemberAddedNotification;
@@ -104,21 +105,24 @@ class EventController extends Controller
     {
         // Owner only
         $event->budget_status = EventBudgetStatus::PENDING;
+        $event->event_status = EventStatus::PENDING;
         $event->save();
         return redirect()->back();
     }
 
     public function approveBudget(Event $event)
     {
-        $this->authorize('changeEventBudgetStatus', Event::class);
+        // $user = Auth::user();
+        // $this->authorize('changeEventBudgetStatus', [$user, $event]);
         $event->budget_status = EventBudgetStatus::APPROVED;
+        $event->event_status = EventStatus::PUBLISHED;
         $event->save();
         return redirect()->back();
     }
 
     public function rejectBudget(Event $event)
     {
-        $this->authorize('changeEventBudgetStatus', Event::class);
+        $this->authorize('changeEventBudgetStatus', [User::class, Event::class]);
         $event->budget_status = EventBudgetStatus::REJECTED;
         $event->save();
         return redirect()->back();

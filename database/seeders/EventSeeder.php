@@ -25,7 +25,8 @@ class EventSeeder extends Seeder
         $event->image_url = 'event_images/image1.png';
         $event->user_id = '1';
         $event->description = 'Brewtopia Bangkok 2023 is a beer festival that will be held in Bangkok, Thailand. The festival will feature more than 100 beers from around the world, including local craft beers and international brands. There will also be food stalls, live music, and other entertainment.';
-        $event->date = '2023-09-03';
+        $event->start_date = '2023-09-03';
+        $event->end_date = '2023-09-05';
         $event->event_status = 'PUBLISHED';
         $event->save();
 
@@ -38,7 +39,7 @@ class EventSeeder extends Seeder
         $event->image_url = 'event_images/image2.png';
         $event->user_id = '2';
         $event->description = 'LE SSERAFIM TOUR FLAME RISES IN BANGKOK is a concert that will be held in Bangkok, Thailand. The concert will feature the band LE SSERAFIM, who are known for their energetic performances and catchy songs. They have been touring around Asia since 2015, and this will be their first time performing in Thailand.';
-        $event->date = '2023-10-04';
+        $event->start_date = '2023-10-04';
         $event->event_status = 'PUBLISHED';
         $event->save();
 
@@ -51,7 +52,7 @@ class EventSeeder extends Seeder
         $event->image_url = 'event_images/image3.jpg';
         $event->user_id = '3';
         $event->description = 'THE LORD OF THE RINGS - THE FELLOWSHIP OF THE RING is a concert that will be held in Bangkok, Thailand. The concert will feature the music from the film, which was composed by Howard Shore. The music is performed by a live orchestra and choir, with the film projected on a large screen behind them.';
-        $event->date = '2023-11-05';
+        $event->start_date = '2023-11-05';
         $event->event_status = 'PUBLISHED';
         $event->save();
 

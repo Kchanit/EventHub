@@ -4,8 +4,9 @@ namespace App\Models\Enums;
 
 enum EventStatus: string
 {
-    case PENDING = 'NONE';
+    case NONE = 'NONE';
     case DRAFTED = 'DRAFTED';
+    case PENDING = 'PENDING';
     case PUBLISHED = 'PUBLISHED';
     case CANCELLED = 'CANCELLED';
 }
