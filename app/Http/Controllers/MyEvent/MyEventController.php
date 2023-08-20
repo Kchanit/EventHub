@@ -25,6 +25,18 @@ class MyEventController extends Controller
         return view('events.my-events', ['drafted_events' => $drafted_events, 'pending_events' => $pending_events, 'published_events' => $published_events]);
     }
 
+    public function futureEvents(Request $request)
+    {
+        $events = $request->user()->appliedEvents->where('start_date', '>=', now());
+        return view('events.future-events', ['events' => $events]);
+    }
+
+    public function pastEvents(Request $request)
+    {
+        $events = $request->user()->appliedEvents->where('start_date', '<', now());
+        return view('events.past-events', ['events' => $events]);
+    }
+
     public function drafted(Request $request)
     {
         $events = $request->user()->ownedEvents()->where('status', EventStatus::DRAFTED)->get();

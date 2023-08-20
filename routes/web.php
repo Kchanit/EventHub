@@ -79,6 +79,9 @@ Route::middleware('auth')->group(function () {
     // My Events
     Route::get('/events/my-events', [MyEventController::class, 'index'])->name('events.my-events');
     Route::get('/events/drafted-events', [MyEventController::class, 'drafted'])->name('events.drafted');
+    Route::get('/events/future-events', [MyEventController::class, 'futureEvents'])->name('events.future-events');
+    Route::get('/events/past-events', [MyEventController::class, 'pastEvents'])->name('events.past-events');
+
 
     Route::get('/events/{event}/attendees', [MyEventController::class, 'attendees'])
         ->name('events.attendees');

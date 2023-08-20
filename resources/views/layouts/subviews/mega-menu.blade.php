@@ -58,7 +58,7 @@
                         class="absolute left-0 -translate-x-1/3 pt-2 hidden group-hover:block z-50 transition-all ease-in-out duration-1000">
                         <div
                             class="w-[350px] max-w-[75vw] p-3 flex flex-col gap-1 border border-black-200 bg-white shadow-xl rounded-2xl ">
-                            <a href="#"
+                            <a href="{{ route('events.future-events') }}"
                                 class="px-4 py-3 rounded-xl hover:bg-black-50 flex flex-col gap-1 hover:bg-twhite">
                                 <div class="flex flex-row gap-4">
                                     <svg class="w-3.5 h-3.5 justify-start" xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="#"
+                            <a href="{{ route('events.past-events') }}"
                                 class="px-4 py-3 rounded-xl hover:bg-black-50 flex flex-col gap-1 hover:bg-twhite">
                                 <div class="flex flex-row gap-4">
                                     <svg class="w-3.5 h-3.5 justify-start" xmlns="http://www.w3.org/2000/svg"
