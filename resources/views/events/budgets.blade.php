@@ -395,8 +395,8 @@
     <dialog class="modal" id="modal">
         <form action="{{ route('events.budgets.store-expense', ['event' => $event]) }}" method="POST">
             @csrf
-            <div class="h-full w-full fixed top-0  left-0 z-[60] overflow-x-hidden overflow-y-auto">
-                <div class="py-12 bg-opacity-90  transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0"
+            <div class="h-full w-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto">
+                <div class="py-12 bg-opacity-10 bg-black  transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0"
                     id="modal">
                     <div role="alert" class="container mx-auto w-11/12 md:w-2/3 max-w-lg">
                         <div class="relative  py-8 px-5 md:px-10 bg-white shadow-lg rounded-3xl border-gray-400">
