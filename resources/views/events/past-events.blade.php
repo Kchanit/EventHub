@@ -92,12 +92,12 @@
                 <div
                     class=" rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300  bg-white  duration-150 hover:-translate-y-1">
                     <!-- Clickable Area -->
-                    <a href=" {{ route('events.show', ['event' => $event]) }} ">
+                    <a href=" {{ route('events.certificate', ['event' => $event]) }} " class="cursor-pointer ">
                         <figure class="group relative">
-                            {{-- Image from upload --}}
-                            {{-- <img class="bg-gray-300  h-full w-full object-cover z-0"
-                                src="{{ asset('storage/' . $event->image_url) }}" /> --}}
-
+                            <span
+                                class="z-50 opacity-0 transition duration-300 group-hover:opacity-100 group-hover:ease-in-out absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pr-10 pl-10 pt-4 pb-4 text-center text-black bg-opacity-90 bg-white  dark:text-white dark:bg-opacity-95  dark:bg-gray-800  rounded-3xl">
+                                View Certificate
+                            </span>
                             <!-- Image -->
                             <img class="bg-gray-300  h-full w-full object-cover z-0"
                                 src="{{ asset('storage/' . $event->image_url) }}" />
