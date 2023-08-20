@@ -36,6 +36,12 @@ class ExpenseController extends Controller
         //     'quantity' => 'required|integer',
         //     'note' => 'nullable|string',
         // ]);
+        $request->validate([
+            'title' => 'required|min:4|max:255',
+            'amount' => 'required|numeric|min:1',
+            'quantity' => 'required|numeric|min:1',
+            'date' => 'required',
+        ]);
 
         $expense = new Expense();
         $expense->title = $request->get('title');

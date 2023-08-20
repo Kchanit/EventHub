@@ -138,6 +138,17 @@ class EventController extends Controller
         return redirect()->route('events.index');
     }
 
+    public function destroy(Event $event)
+    {
+        // ตรวจสอบสิทธิ์ว่าผู้ใช้สามารถลบ event นี้ได้หรือไม่ (ใช้ Policy หรือตรวจสอบอื่น ๆ)
+        $this->authorize('delete', $event);
+    
+        // ลบ event
+        $event->delete();
+    
+        return redirect()->route('events.index')->with('success', 'Event has been deleted successfully.');
+    }
+
     public function leaveEvent(Request $request, Event $event)
     {
         $event->attendees()->detach($request->user());
@@ -176,7 +187,7 @@ class EventController extends Controller
     {
         $this->authorize('member', $event);
         $request->validate([
-            'student_id' => 'required',
+            'student_id' => 'required|regex:/^[0-9]+$/|min:10|max:10',
         ]);
         $student_id = $request->get('student_id');
         $user = User::where('student_id', $student_id)->first();

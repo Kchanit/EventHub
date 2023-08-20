@@ -130,6 +130,8 @@ Route::middleware('auth')->group(function () {
         ->name('events.leave-event');
     Route::post('/events/{event}/join-event', [EventController::class, 'joinEvent'])
         ->name('events.join-event');
+    Route::delete('/my-events/{event}', 'MyEvent\MyEventController@destroy')
+        ->name('my-events.destroy');
 
 
 
