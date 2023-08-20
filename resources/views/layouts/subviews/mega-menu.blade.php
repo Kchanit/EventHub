@@ -71,6 +71,7 @@
                                         </path>
                                     </svg>
                                     <div>
+                                        
                                         <p class="font-semibold">
                                             Upcoming Events
                                         </p>
@@ -80,7 +81,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="#"
+                            <a href="{{ route('events.past-events') }}"
                                 class="px-4 py-3 rounded-xl hover:bg-black-50 flex flex-col gap-1 hover:bg-twhite">
                                 <div class="flex flex-row gap-4">
                                     <svg class="w-3.5 h-3.5 justify-start" xmlns="http://www.w3.org/2000/svg"

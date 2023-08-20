@@ -74,4 +74,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Task::class, 'assignee_id');
     }
+
+    public function certificates(): HasMany
+    {
+        return $this->hasMany(Certificate::class, 'user_id');
+    }
 }
