@@ -55,7 +55,7 @@
                         <!-- End Header -->
 
                         <!-- Table -->
-                        <div class="min-h-[540px] overflow-auto max-h-[540px]">
+                        <div class="min-h-[485px] overflow-auto max-h-[540px]">
                             <table
                                 class="table-auto overflow-scroll min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                 @if (count($event->attendees))
@@ -141,7 +141,7 @@
                                                             </label>
                                                         </div>
                                                     </td> --}}
-                                                    
+
                                                     {{-- no. --}}
                                                     <td class="h-px w-px whitespace-nowrap">
                                                         <div class="px-6 py-3">

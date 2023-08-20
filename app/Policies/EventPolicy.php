@@ -81,4 +81,10 @@ class EventPolicy
             // && 
             (Auth::user()->id != $event->user_id);
     }
+
+    public function member(User $user, Event $event): bool
+    {
+        return $user->id === $event->user_id
+            || $event->members->contains($user);
+    }
 }

@@ -12,15 +12,15 @@ class MyEventController extends Controller
 {
     public function index(Request $request)
     {
-        $drafted_events = Event::where('event_status', EventStatus::DRAFTED)
-            ->where('user_id', $request->user()->id)
-            ->get();
-        $pending_events = Event::where('event_status', EventStatus::PENDING)
-            ->where('user_id', $request->user()->id)
-            ->get();
-        $published_events = Event::where('event_status', EventStatus::PUBLISHED)
-            ->where('user_id', $request->user()->id)
-            ->get();;
+        $drafted_events = $request->user()->ownedEvents
+            ->merge($request->user()->coOrganizedEvents)
+            ->where('event_status', 'DRAFTED');
+        $pending_events = $request->user()->ownedEvents
+            ->merge($request->user()->coOrganizedEvents)
+            ->where('event_status', 'PENDING');
+        $published_events = $request->user()->ownedEvents
+            ->merge($request->user()->coOrganizedEvents)
+            ->where('event_status', 'PUBLISHED');
 
         return view('events.my-events', ['drafted_events' => $drafted_events, 'pending_events' => $pending_events, 'published_events' => $published_events]);
     }
@@ -41,11 +41,14 @@ class MyEventController extends Controller
     {
         $events = $request->user()->ownedEvents()->where('status', EventStatus::PUBLISHED)->get();
         return view('events.index', ['events' => $events, "title" => "Published Events"]);
+
+        // $events = $request->user()->ownedEvents->merge($request->user()->coOrganizedEvents);
+        // return view('events.index', ['events' => $events]);
     }
 
     public function attendees(Event $event)
     {
-        Gate::authorize('update', $event);
+        Gate::authorize('member', $event);
         return view('events.attendees', ['event' => $event]);
     }
 }
