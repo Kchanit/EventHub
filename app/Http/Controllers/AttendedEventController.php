@@ -26,11 +26,4 @@ class AttendedEventController extends Controller
         
         return view('events.certificate', ['certificate' => $certificate]);
     }
-
-    public function downloadCertificate(Certificate $certificate)
-    {
-        $imagePath = $certificate->image_url;
-
-        return response()->download(storage_path('/app/public/' . $imagePath));
-    }
 }
