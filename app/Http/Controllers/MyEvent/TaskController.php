@@ -30,14 +30,24 @@ class TaskController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request, Event $event)
-    {
+    {   
+        
+        $request->validate([
+            'title' => 'required|min:4|max:255',
+            'brief' => 'required',
+            'assignee' => 'required|regex:/^[0-9]+$/|min:10|max:10',
+            'status' => 'required',
+            'priority' => 'required',
+            'date' => 'required',
+        ]);
+
         $task = new Task();
         $task->title = $request->get('title');
         $task->brief = $request->get('brief');
         $task->status = $request->get('status');
         $task->priority = $request->get('priority');
         $task->date = $request->get('date');
-        $task->assignee()->associate($request->get('assignee_id'));
+        $task->assignee()->associate($request->get('assignee'));
         // $task->assignee_id = $request->get('assignee_id');
         $task->created_by = auth()->user()->id;
         $task->event_id = $event->id;

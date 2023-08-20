@@ -131,7 +131,7 @@ class EventController extends Controller
     public function addMember(Request $request, Event $event)
     {
         $request->validate([
-            'student_id' => 'required',
+            'student_id' => 'required|regex:/^[0-9]+$/|min:10|max:10',
         ]);
         $student_id = $request->get('student_id');
         $user = User::where('student_id', $student_id)->first();
