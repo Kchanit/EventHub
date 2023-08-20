@@ -16,7 +16,7 @@ class AttendedEventController extends Controller
 
     public function pastEvent(Request $request)
     {
-        $events = $request->user()->attendedEvents;
+        $events = $request->user()->attendedEvents()->whereDate('start_date', '<', today())->get();
         return view('events.attended-events', ['events' => $events]);
     }
 

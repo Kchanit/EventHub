@@ -42,9 +42,9 @@
                      {{-- end name --}}
                     <div 
                         class="hover:scale-105 ease-in duration-200 grid-flow-col border border-gray-200 text-center rounded-xl py-3 px-16 sm:p-8 dark:border-gray-700 bg-white shadow-md md:w-auto focus:outline-none">
-                        <h4 class="font-medium text-xl text-gray-800 dark:text-gray-200 uppercase">{{ date('M', strtotime($certificate->event->date)) }}</h4>
-                        <span class="my-5 font-bold text-5xl text-gray-800 dark:text-gray-200 ">{{ date('j', strtotime($certificate->event->date)) }}</span>
-                        <p class=" text-lg text-gray-500">{{ date('o', strtotime($certificate->event->date)) }}</p>
+                        <h4 class="font-medium text-xl text-gray-800 dark:text-gray-200 uppercase">{{ date('M', strtotime($certificate->event->start_date)) }}</h4>
+                        <span class="my-5 font-bold text-5xl text-gray-800 dark:text-gray-200 ">{{ date('j', strtotime($certificate->event->start_date)) }}</span>
+                        <p class=" text-lg text-gray-500">{{ date('o', strtotime($certificate->event->start_date)) }}</p>
                     </div>
                     {{-- end date --}}
                   
