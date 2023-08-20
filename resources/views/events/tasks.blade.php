@@ -100,7 +100,7 @@
                                             <div class="flex items-center gap-x-2">
                                                 <span
                                                     class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                                                    Created
+                                                    Due Date
                                                 </span>
                                             </div>
                                         </th>
@@ -161,6 +161,7 @@
                                                         </div>
                                                     </a>
                                                 </td>
+
                                                 <td class="h-px w-px whitespace-nowrap">
                                                     <a class="block" href="javascript:;"
                                                         data-hs-overlay="#hs-ai-invoice-modal">
@@ -180,10 +181,18 @@
                                                         data-hs-overlay="#hs-ai-invoice-modal">
                                                         <div class="px-6 py-3">
                                                             <span class="text-sm text-gray-500">
-                                                                {{ $task->date }}
+                                                                {{ date('d-m-Y', strtotime($task->date)) }}
                                                             </span>
                                                         </div>
                                                     </a>
+                                                </td>
+                                                <td class="h-px w-px whitespace-nowrap ">
+
+                                                    <button type="button" href="" id="edit-btn"
+                                                        class="text-sm text-indigo-600 hover:text-indigo-800 cursor-pointer">
+                                                        Edit
+                                                    </button>
+
                                                 </td>
                                                 <td class="h-px w-px whitespace-nowrap">
                                                     <form
@@ -198,7 +207,190 @@
                                                     </form>
                                                 </td>
                                             </tr>
+                                            {{-- Edit Modal --}}
+                                            <dialog class="modal" id="modal2">
+                                                <form action="{{ route('events.tasks.edit', ['task' => $task]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div
+                                                        class="h-full w-full fixed top-0  left-0 z-[60] overflow-x-hidden overflow-y-auto">
+                                                        <div class="py-12 bg-opacity-10 bg-black transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0"
+                                                            id="modal2">
+                                                            <div role="alert"
+                                                                class="container mx-auto w-11/12 md:w-2/3 max-w-lg">
+                                                                <div
+                                                                    class="relative  py-8 px-5 md:px-10 bg-white shadow-lg rounded-3xl border-gray-400">
+                                                                    <div
+                                                                        class="w-full flex justify-start text-gray-600 mb-3">
+                                                                        {{-- Tasks Icon --}}
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            class="icon icon-tabler icon-tabler-clipboard-list"
+                                                                            width="44" height="44"
+                                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                                            stroke="#2c3e50" fill="none"
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round">
+                                                                            <path stroke="none" d="M0 0h24v24H0z"
+                                                                                fill="none" />
+                                                                            <path
+                                                                                d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                                                                            <path
+                                                                                d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                                                                            <path d="M9 12l.01 0" />
+                                                                            <path d="M13 12l2 0" />
+                                                                            <path d="M9 16l.01 0" />
+                                                                            <path d="M13 16l2 0" />
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h1
+                                                                        class="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4">
+                                                                        Edit task detail
+                                                                    </h1>
+
+                                                                    {{-- Title --}}
+                                                                    <div class="mb-5">
+
+                                                                        <label for="title"
+                                                                            class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                                                                            Task</label>
+                                                                        <input id="title2" name="title"
+                                                                            value="{{ $task->title }}"
+                                                                            class=" mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border"
+                                                                            placeholder="task name" />
+                                                                        @error('title')
+                                                                            <div class=" text-red-500 text-sm" id="err_txt3">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    {{-- Brief --}}
+                                                                    <label for="brief"
+                                                                        class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                                                                        Brief</label>
+                                                                    <textarea id="brief2" name="brief"
+                                                                        class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-20 flex items-center pl-3 text-sm border-gray-300 rounded-lg border"
+                                                                        placeholder="Task description.">{{ $task->brief }}</textarea>
+                                                                    <div class="mb-5">
+                                                                        {{-- Assignee --}}
+                                                                        <label for="assignee_id"
+                                                                            class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                                                                            Assignee Student ID</label>
+                                                                        <input id="assignee_id2" name="assignee_id"
+                                                                            value="{{ $task->assignee->student_id }}"
+                                                                            class="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border"
+                                                                            placeholder="B600000" />
+                                                                        @error('assignee_id')
+                                                                            <div class=" text-red-500 text-sm" id="err_txt4">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    {{-- Due Date --}}
+                                                                    <div
+                                                                        class="space-y-2 mb-5 text-sm font-medium text-gray-800  dark:text-gray-200">
+                                                                        <label
+                                                                            class="text-gray-800 block text-sm font-bold leading-tight tracking-normal"
+                                                                            for="date">
+                                                                            Due Date
+                                                                        </label>
+                                                                        <input id="date2" name="date"
+                                                                            type="date" value="{{ $task->date }}"
+                                                                            class="@error('date') border-red-400 @enderror mb-5 py-2 px-3 pr-11 border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500"
+                                                                            placeholder="Select date start">
+
+                                                                        @error('date2')
+                                                                            <div class=" text-red-500 text-sm">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+
+                                                                    {{-- Status --}}
+                                                                    <div class="flex gap-5 align-left">
+                                                                        <div>
+                                                                            <label for="status"
+                                                                                class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                                                                                Status</label>
+                                                                            <select id="status2" name="status"
+                                                                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border">
+                                                                                <option
+                                                                                    @if ($task->status === 'To do') selected @endif>
+                                                                                    To do</option>
+                                                                                <option
+                                                                                    @if ($task->status === 'In progress') selected @endif>
+                                                                                    In progress</option>
+                                                                                <option
+                                                                                    @if ($task->status === 'Done') selected @endif>
+                                                                                    Done</option>
+                                                                                <option
+                                                                                    @if ($task->status === 'Cancled') selected @endif>
+                                                                                    Cancled</option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="">
+                                                                            {{-- Priority --}}
+                                                                            <label for="priority"
+                                                                                class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                                                                                Priority</label>
+                                                                            <select id="priority2" name="priority"
+                                                                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border">
+                                                                                <option
+                                                                                    @if ($task->priority === 'Low') selected @endif>
+                                                                                    Low</option>
+                                                                                <option
+                                                                                    @if ($task->priority === 'Medium') selected @endif>
+                                                                                    Medium</option>
+                                                                                <option
+                                                                                    @if ($task->priority === 'High') selected @endif>
+                                                                                    High</option>
+                                                                                <option
+                                                                                    @if ($task->priority === 'Urgent') selected @endif>
+                                                                                    Urgent</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    {{-- Buttons --}}
+                                                                    <div class="flex items-center justify-start w-full">
+                                                                        <button type="submit"
+                                                                            class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 rounded-lg transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 text-white px-8 py-2 text-sm">
+                                                                            Confirm</button>
+                                                                        <button type="button"
+                                                                            class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded-lg px-8 py-2 text-sm"
+                                                                            onclick="modalHandler()"
+                                                                            id="cancel-btn2">Cancel</button>
+                                                                    </div>
+
+                                                                    {{-- exit icon --}}
+                                                                    <button type="button"
+                                                                        class="cursor-pointer absolute top-0 right-0 mt-4 mr-5 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"
+                                                                        onclick="modalHandler()" aria-label="close modal"
+                                                                        role="button" id="close-btn2">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            class="icon icon-tabler icon-tabler-x"
+                                                                            width="20" height="20"
+                                                                            viewBox="0 0 24 24" stroke-width="2.5"
+                                                                            stroke="currentColor" fill="none"
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round">
+                                                                            <path stroke="none" d="M0 0h24v24H0z" />
+                                                                            <line x1="18" y1="6"
+                                                                                x2="6" y2="18" />
+                                                                            <line x1="6" y1="6"
+                                                                                x2="18" y2="18" />
+                                                                        </svg>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </dialog>
                                         </tbody>
+
+                                        {{-- End Edit Modal --}}
                                     @endforeach
 
                                     {{--
@@ -372,7 +564,7 @@
     </div>
     <!-- End Table Section -->
 
-    {{-- Modal --}}
+    {{-- Create Modal --}}
     <dialog class="modal" id="modal">
         <form action="{{ route('events.tasks.store-tasks', ['event' => $event]) }}" method="POST">
             @csrf
@@ -403,27 +595,40 @@
                             </h1>
 
                             {{-- Title --}}
-                            <label for="title" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                                Task</label>
-                            <input id="title" name="title"
-                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border"
-                                placeholder="task name" />
+                            <div class="mb-5">
 
+                                <label for="title"
+                                    class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                                    Task</label>
+                                <input id="title" name="title"
+                                    class=" mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border"
+                                    placeholder="task name" />
+                                @error('title')
+                                    <div class=" text-red-500 text-sm" id="err_txt1">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                             {{-- Brief --}}
                             <label for="brief" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
                                 Brief</label>
                             <textarea id="brief" name="brief"
                                 class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-20 flex items-center pl-3 text-sm border-gray-300 rounded-lg border"
                                 placeholder="Task description."></textarea>
-
-                            {{-- Assignee --}}
-                            <label for="assignee_id"
-                                class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                                Assignee Student ID</label>
-                            <input id="assignee_id" name="assignee_id"
-                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border"
-                                placeholder="B600000" />
-
+                            <div class="mb-5">
+                                {{-- Assignee --}}
+                                <label for="assignee_id"
+                                    class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                                    Assignee Student ID</label>
+                                <input id="assignee_id" name="assignee_id"
+                                    class="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border"
+                                    placeholder="B600000" />
+                                @error('assignee_id')
+                                    <div class=" text-red-500 text-sm" id="err_txt2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                             {{-- Due Date --}}
                             <div class="space-y-2 mb-5 text-sm font-medium text-gray-800  dark:text-gray-200">
                                 <label class="text-gray-800 block text-sm font-bold leading-tight tracking-normal"
@@ -501,26 +706,49 @@
             </div>
         </form>
     </dialog>
+    {{-- End Create Modal --}}
 
-    {{-- End Modal --}}
+
     <script>
         const modal = document.querySelector("#modal");
+        const modal2 = document.querySelector("#modal2");
         const openModal = document.getElementById("create-btn");
+        const openModal2 = document.getElementById("edit-btn");
         const closeModal = document.querySelector("#close-btn");
+        const closeModal2 = document.querySelector("#close-btn2");
         const cancel = document.querySelector("#cancel-btn");
+        const cancel2 = document.querySelector("#cancel-btn2");
         const title = document.getElementById("title");
         const brief = document.getElementById("brief");
         const date = document.getElementById("due_date");
         const student_id = document.getElementById("student_id");
+        const errText = document.getElementById("err_txt1");
+        const errText2 = document.getElementById("err_txt2");
+        const errText3 = document.getElementById("err_txt3");
+        const errText4 = document.getElementById("err_txt4");
+        @if ($errors->any())
+            {
+                modal.showModal();
+            }
+        @endif
 
         openModal.addEventListener("click", () => {
             modal.showModal();
         });
+        openModal2.addEventListener("click", () => {
+            modal2.showModal();
+        });
         closeModal.addEventListener("click", () => {
             modal.close();
         });
+        closeModal2.addEventListener("click", () => {
+            modal2.close();
+        });
         cancel.addEventListener("click", () => {
             modal.close();
+        });
+        cancel2.addEventListener("click", () => {
+            modal2.close();
         });
 
         function modalHandler(val) {
@@ -543,9 +771,17 @@
                 }
             })();
             title.value = "";
+            title2.value = "";
             brief.value = "";
+            brief2.value = "";
             date.value = "";
+            date2.value = "";
             student_id.value = "";
+            student_id2.value = "";
+            errText.innerHTML = "";
+            errText2.innerHTML = "";
+            errText3.innerHTML = "";
+            errText4.innerHTML = "";
         }
 
         function fadeIn(el, display) {

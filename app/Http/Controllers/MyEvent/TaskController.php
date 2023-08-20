@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\Task;
 use App\Models\User;
+use App\Rules\ValidStudentId;
 use Illuminate\Http\Request;
 
 
@@ -31,6 +32,11 @@ class TaskController extends Controller
      */
     public function store(Request $request, Event $event)
     {
+        $request->validate([
+            'title' => 'required',
+            'assignee_id' => ['required', new ValidStudentId],
+        ]);
+
         $task = new Task();
         $task->title = $request->get('title');
         $task->brief = $request->get('brief');
@@ -44,7 +50,7 @@ class TaskController extends Controller
         $task->event_id = $event->id;
 
         $event->tasks()->save($task);
-        return redirect()->route('events.tasks', ['event' => $event]);
+        return redirect()->back();
     }
 
     /**
@@ -68,7 +74,16 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $task->title = $request->get('title');
+        $task->brief = $request->get('brief');
+        $task->status = $request->get('status');
+        $task->priority = $request->get('priority');
+        $task->date = $request->get('date');
+        $user = User::where('student_id', $request->get('assignee_id'))->first();
+        $task->assignee()->associate($user->id);
+        $task->save();
+
+        return redirect()->back();
     }
 
     /**

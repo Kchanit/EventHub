@@ -91,6 +91,8 @@ Route::middleware('auth')->group(function () {
         ->name('events.tasks');
     Route::post('/events/{event}/tasks/create-task', [TaskController::class, 'store'])
         ->name('events.tasks.store-tasks');
+    Route::put('/events/tasks/{task}/edit', [TaskController::class, 'update'])
+        ->name('events.tasks.edit');
     Route::delete('/events/{event}/tasks/{task}/delete', [TaskController::class, 'destroy'])
         ->name('events.tasks.delete');
     // members
@@ -102,14 +104,17 @@ Route::middleware('auth')->group(function () {
     // budgets
     Route::post('/events/{event}/budgets/create-expense', [ExpenseController::class, 'store'])
         ->name('events.budgets.store-expense');
+
+    Route::put('/events/{event}/budgets/{expense}/update', [ExpenseController::class, 'update'])
+        ->name('events.budgets.update');
     Route::delete('/events/{event}/budgets/{expense}/delete', [ExpenseController::class, 'destroy'])
         ->name('events.budgets.delete');
-        Route::put('/events/{event}/budgets/submit-budget', [EventController::class, 'submitBudget'])
-            ->name('events.budgets.submit-budget');
-        Route::put('/officer/{event}/budgets/approve-budget', [EventController::class, 'approveBudget'])
-            ->name('events.budgets.approve-budget');
-        Route::put('/officer/{event}/budgets/reject-budget', [EventController::class, 'rejectBudget'])
-            ->name('events.budgets.reject-budget');
+    Route::put('/events/{event}/budgets/submit-budget', [EventController::class, 'submitBudget'])
+        ->name('events.budgets.submit-budget');
+    Route::put('/officer/{event}/budgets/approve-budget', [EventController::class, 'approveBudget'])
+        ->name('events.budgets.approve-budget');
+    Route::put('/officer/{event}/budgets/reject-budget', [EventController::class, 'rejectBudget'])
+        ->name('events.budgets.reject-budget');
 
 
     Route::get('/events/{event}/schedules', [ScheduleController::class, 'index'])

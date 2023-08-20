@@ -70,9 +70,20 @@ class ExpenseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Expense $expense)
+    public function update(Request $request, Expense $expense, Event $event)
     {
-        //
+        $expense = new Expense();
+        $expense->title = $request->get('title');
+        $expense->amount = $request->get('amount');
+        $expense->quantity = $request->get('quantity');
+        $expense->note = $request->get('note');
+        $expense->date = $request->get('date');
+        $expense->total = $request->get('amount') * $request->get('quantity');
+        $expense->created_by = auth()->user()->id;
+        $expense->event_id = $event->id;
+
+        $event->expenses()->save($expense);
+        return redirect()->back();
     }
 
     /**

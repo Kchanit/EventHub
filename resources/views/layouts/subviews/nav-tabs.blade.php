@@ -10,7 +10,7 @@
             </div>
             <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
                 <a class="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500"
-                    href="{{ route('events.members', $event) }}">Members</a>
+                    href="{{ route('events.members', $event) }}">Staff</a>
             </div>
             <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
                 <a class="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500"
