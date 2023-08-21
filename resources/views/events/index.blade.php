@@ -215,6 +215,12 @@
             @endforeach
         </div>
         <!-- End Grid -->
+
+        {{-- Pagination --}}
+        <div class="flex justify-center gap-x-5">
+            {{ $events->links() }}
+        </div>
+        {{--  --}}
     </div>
     <!-- End Card Blog -->
 

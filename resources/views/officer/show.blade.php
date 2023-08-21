@@ -2,10 +2,10 @@
 
 @section('content')
     <section class="bg-white">
-        <div class="py-8 px-4 mx-auto max-w-2xl ">
+        <div class="py-8 px-4 mx-auto max-w-5xl ">
             <div class="flex flex-row gap-x-5">
                 <img src="{{ asset('storage/' . $event->image_url) }}"
-                    class="bg-gray-300 mb-4 max-w-[16rem] object-cover z-0 shadow-md">
+                    class="bg-gray-300 mb-4 max-h-[32rem] object-cover z-0 shadow-md">
                 <div class="flex flex-col gap-y-3">
                     {{-- Title --}}
                     <h2 class="text-3xl font-bold lg:text-4xl  leading-none text-gray-900 md:text-2xl dark:text-white">
@@ -19,7 +19,7 @@
                             </path>
                         </svg>
                         <p class="">
-                            {{ date('d F Y', strtotime($event->date)) }}
+                            {{ date('d F Y', strtotime($event->start_date)) }}
                         </p>
                     </div>
                     <div class="flex gap-x-2 text-lg text-gray-800">
@@ -34,7 +34,14 @@
                         </p>
                     </div>
                     <div class="flex text-lg">
-                        <span class="font-semibold">Attendees:</span> {{count($event->attendees) }}
+                        <span class="font-semibold">Attendees Limit :</span>
+                        {{ $event->attendees_limit }}
+                    </div>
+                    <div class="flex text-lg">
+                        <div class="font-semibold">
+                            Total Budget :
+                        </div>
+                        {{ $event->expenses->sum('total') }} Baht
                     </div>
                     <div class="">
                         <h3 class="text-lg font-semibold mb-1 leading-none text-gray-900 dark:text-white">Description</h3>
@@ -211,18 +218,6 @@
                                                     </a>
                                                 </td>
 
-                                                <td>
-                                                    <form
-                                                        action="{{ route('events.budgets.delete', ['event' => $event, 'expense' => $expense]) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" href=""
-                                                            class="text-sm text-gray-600">
-                                                            Delete
-                                                        </button>
-                                                    </form>
-                                                </td>
 
                                             </tr>
                                         </tbody>

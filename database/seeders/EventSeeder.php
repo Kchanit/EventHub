@@ -8,6 +8,7 @@ use App\Models\Expense;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 
 class EventSeeder extends Seeder
@@ -23,7 +24,7 @@ class EventSeeder extends Seeder
         $event->attendees_limit = '100';
         // $event->image_url = 'https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610';
         // $imagePath = Storage::putFile('public/event_images', storage_path('app/public/image1.png'));
-        $event->image_url = 'event_images/image1.png';
+        $event->image_url = 'event_images/image1.jpg';
         $event->user_id = '1';
         $event->description = 'Brewtopia Bangkok 2023 is a beer festival that will be held in Bangkok, Thailand. The festival will feature more than 100 beers from around the world, including local craft beers and international brands. There will also be food stalls, live music, and other entertainment.';
         $event->start_date = '2023-09-03';
@@ -37,7 +38,7 @@ class EventSeeder extends Seeder
         $event->attendees_limit = '1000';
         // $event->image_url = 'https://p-u.popcdn.net/event_details/posters/000/015/695/large/2f4b41db65c10947730f2a64eb916bfd4b6230a8.png?1689753720';
         // $imagePath = Storage::putFile('public/event_images', storage_path('app/public/image2.png'));
-        $event->image_url = 'event_images/image2.png';
+        $event->image_url = 'event_images/image2.jpg';
         $event->user_id = '2';
         $event->description = 'LE SSERAFIM TOUR FLAME RISES IN BANGKOK is a concert that will be held in Bangkok, Thailand. The concert will feature the band LE SSERAFIM, who are known for their energetic performances and catchy songs. They have been touring around Asia since 2015, and this will be their first time performing in Thailand.';
         $event->start_date = '2023-10-04';
@@ -135,7 +136,7 @@ class EventSeeder extends Seeder
         $event->title = 'Tech Symposium: Future Innovations';
         $event->location = 'Tech Hub, Singapore';
         $event->attendees_limit = '30';
-        $event->image_url = 'event_images/image9.jpg';
+        $event->image_url = 'event_images/image10.jpg';
         $event->user_id = '2';
         $event->description = 'Delve into discussions on future innovations and emerging technologies at the Tech Symposium, where experts share insights and visions.';
         $event->start_date = '2023-09-09';
@@ -146,7 +147,7 @@ class EventSeeder extends Seeder
         $event->title = 'Science Fair: Innovations Unveiled';
         $event->location = 'Science Museum, Tokyo';
         $event->attendees_limit = '20';
-        $event->image_url = 'event_images/image10.jpg';
+        $event->image_url = 'event_images/image11.jpg';
         $event->user_id = '2';
         $event->description = 'Explore groundbreaking scientific discoveries and innovations at the Science Fair, where knowledge meets curiosity.';
         $event->start_date = '2023-09-11';
@@ -158,7 +159,7 @@ class EventSeeder extends Seeder
         $event->title = 'Health and Wellness Expo';
         $event->location = 'Convention Center, Toronto';
         $event->attendees_limit = '50';
-        $event->image_url = 'event_images/image11.jpg';
+        $event->image_url = 'event_images/image12.png';
         $event->user_id = '2';
         $event->description = 'Discover holistic well-being at the Health and Wellness Expo, featuring expert speakers, fitness workshops, and natural products.';
         $event->start_date = '2023-10-01';
@@ -170,16 +171,42 @@ class EventSeeder extends Seeder
         $event->title = 'Literary Festival: Words & Imagination';
         $event->location = 'Library Hall, Dublin';
         $event->attendees_limit = '40';
-        $event->image_url = 'event_images/image12.jpg';
+        $event->image_url = 'event_images/image13.png';
         $event->user_id = '2';
         $event->description = 'Celebrate the world of literature at the Literary Festival, where renowned authors, poets, and storytellers share their creative journeys.';
         $event->start_date = '2023-09-20';
         $event->end_date = '2023-09-23';
         $event->event_status = 'DRAFTED';
         $event->save();
-        
 
-        Event::factory(10)->create();
+        $eventImages = [
+            'event_images/image14.jpg',
+            'event_images/image15.png',
+            'event_images/image16.png',
+            'event_images/image17.jpg',
+            'event_images/image18.jpg',
+            'event_images/image19.png',
+            'event_images/image20.jpg',
+            'event_images/image21.png',
+            'event_images/image22.png',
+            'event_images/image23.png',
+        ];
+        $eventStatuses = ['DRAFTED', 'PUBLISHED', 'PENDING'];
+        for ($i = 0; $i < 10; $i++) {
+            $event = new Event();
+            $event->title = fake()->sentence(4);
+            $event->location = fake()->city() . ', ' . fake()->country();
+            $event->attendees_limit = rand(20, 100);
+            $event->image_url = Arr::get($eventImages, $i);
+            $event->user_id = rand(1, 3);
+            $event->description = fake()->paragraph(3);
+            $event->start_date = now()->addDays(rand(1, 30))->format('Y-m-d');
+            $event->end_date = now()->addDays(rand(31, 60))->format('Y-m-d');
+            $event->event_status = Arr::random($eventStatuses);
+            $event->save();
+        }
+
+        Event::factory(40)->create();
         $users = User::where('id', '>', 4)->get();
         // full attendees
         Event::where('id', '=', 3)->each(function ($event) use ($users) {
@@ -247,7 +274,7 @@ class EventSeeder extends Seeder
         //             'created_by' => $event->user_id,
         //         ]
         //     ]);
-       
+
 
         // $event->tasks()->createMany([
         //     [
@@ -287,6 +314,6 @@ class EventSeeder extends Seeder
         //         'created_by' => $event->user_id,
         //     ],
         // ]);
-    //  });
+        //  });
     }
 }

@@ -17,7 +17,7 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::published()->get();
+        $events = Event::published()->paginate(20);
         $promos = $events->random(3);
         return view('events.index', ['events' => $events, 'promos' => $promos]);
     }
@@ -136,7 +136,7 @@ class EventController extends Controller
         $event->save();
         // error when refresh
         $user->notify(new EventNotification($event));
-        return redirect()->route('events.index');
+        return redirect()->route('events.future-events');
     }
 
     public function destroy(Event $event)
