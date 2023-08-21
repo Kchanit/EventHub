@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'faculty' => rand(0, 1) ? 'Science' : 'Business',
             'college_year' => fake()->numberBetween(1, 4),
             'remember_token' => Str::random(10),
-            'image_url' => 'user_images/image' . rand(9, 26) . '.jpg',
+            'image_url' => 'user_images/user' . rand(9, 26) . '.jpg',
             'phone_number' => fake()->phoneNumber(),
         ];
     }

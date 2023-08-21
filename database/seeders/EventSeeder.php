@@ -49,7 +49,7 @@ class EventSeeder extends Seeder
         $event->image_url = 'event_images/image3.jpg';
         $event->user_id = '3';
         $event->description = 'For the first time in Thailand, prepare yourself for an extraordinary journey into the heart of Middle-earth! Join the brave hobbits from the Shire, accompanied by their valiant allies, as they strive to protect the One Ring from the clutches of the ominous Dark Lord of Mordor. Experience an immersive musical extravaganza, brought to life by the talented Thailand Philharmonic Orchestra with over 100 musicians performing on an array of rare instruments. This is complemented by a majestic choir of 150 voices, all contributing to a breathtaking symphony that spans over 3 hours (with intermissions).';
-        $event->start_date = '2023-11-05';
+        $event->start_date = '2023-06-05';
         $event->event_status = 'PUBLISHED';
         $event->save();
 
@@ -80,7 +80,7 @@ FOR ENQUIRIES: rcbexhibition@rivercity.co.th
         $event->user_id = '2';
         $event->description = 'Step into a world where emotions and creativity intertwine, where canvases burst forth with vibrant hues, and where every stroke of a brush unveils a myriad of emotions. Welcome to the mesmerizing realm of the "Colors of Expression" art exhibition – a captivating journey through the kaleidoscope of human feelings translated onto canvas, presented with finesse and mastery.';
         $event->start_date = '2023-10-20';
-        $event->end_date = '2023-10-25';
+        $event->end_date = '2023-04-25';
         $event->event_status = 'PUBLISHED';
         $event->save();
 
@@ -288,6 +288,12 @@ Event Organizer
         Event::where('id', '=', 4)->each(function ($event) use ($users) {
             $event->attendees()->detach();
         });
+        Event::where('id', '=', 3)->each(function ($event) use ($users) {
+            $event->attendees()->attach($users->where('id', '=', 2)->pluck('id')->toArray());
+        });
+        Event::where('id', '=', 5)->each(function ($event) use ($users) {
+            $event->attendees()->attach($users->where('id', '=', 2)->pluck('id')->toArray());
+        });
         // random attendees
         Event::where('id', '>', 4)->each(function ($event) use ($users) {
             $event->attendees()->attach(
@@ -296,94 +302,98 @@ Event Organizer
         });
 
 
-        // Event::all()->each(function ($event) {
-        //     $event->expenses()->createMany([
-        //         [
-        //             'title' => 'Food',
-        //             'amount' => 1000,
-        //             'quantity' => 1,
-        //             'total' => 1000,
-        //             'note' => 'Food for the event',
-        //             'date' => '2023-09-03',
-        //             'created_by' => $event->user_id,
-        //         ],
-        //         [
-        //             'title' => 'Venue',
-        //             'amount' => 5000,
-        //             'quantity' => 1,
-        //             'total' => 5000,
-        //             'note' => 'Venue for the event',
-        //             'date' => '2023-09-03',
-        //             'created_by' => $event->user_id,
-        //         ],
-        //         [
-        //             'title' => 'Music',
-        //             'amount' => 2000,
-        //             'quantity' => 1,
-        //             'total' => 2000,
-        //             'note' => 'Music for the event',
-        //             'date' => '2023-09-03',
-        //             'created_by' => $event->user_id,
-        //         ],
-        //         [
-        //             'title' => 'Props',
-        //             'amount' => 35,
-        //             'quantity' => 25,
-        //             'total' => 875,
-        //             'note' => 'Props for cheering',
-        //             'date' => '2023-08-12',
-        //             'created_by' => $event->user_id,
-        //         ],
-        //         [
-        //             'title' => 'Papers and Foam',
-        //             'amount' => 48,
-        //             'quantity' => 10,
-        //             'total' => 480,
-        //             'note' => 'For crafting games',
-        //             'date' => '2023-07-24',
-        //             'created_by' => $event->user_id,
-        //         ]
-        //     ]);
 
+        Event::where('id', '>', 2)->each(function ($event) {
+            $event->members()->attach(
+                User::where('id', '>', 4)->get()->random(rand(3, 7))->pluck('id')->toArray()
+            );
 
-        // $event->tasks()->createMany([
-        //     [
-        //         'title' => 'Craft props',
-        //         'brief' => '4 staffs required',
-        //         'assignee_id' => 1,
-        //         'status' => 'To do',
-        //         'priority' => 'Medium',
-        //         'date' => '2023-09-03',
-        //         'created_by' => $event->user_id,
-        //     ],
-        //     [
-        //         'title' => 'Permissions',
-        //         'brief' => 'Waiting for officer permissions',
-        //         'assignee_id' => 2,
-        //         'status' => 'In Progress',
-        //         'priority' => 'Urgent',
-        //         'date' => '2023-08-05',
-        //         'created_by' => $event->user_id,
-        //     ],
-        //     [
-        //         'title' => 'MC Works',
-        //         'brief' => 'Draft the speech',
-        //         'assignee_id' => 1,
-        //         'status' => 'Done',
-        //         'priority' => 'High',
-        //         'date' => '2023-07-13',
-        //         'created_by' => $event->user_id,
-        //     ],
-        //     [
-        //         'title' => 'Rehearsal queue',
-        //         'brief' => 'practice queue',
-        //         'assignee_id' => 2,
-        //         'status' => 'Cancelled',
-        //         'priority' => 'Low',
-        //         'date' => '2023-07-28',
-        //         'created_by' => $event->user_id,
-        //     ],
-        // ]);
-        //  });
+            $event->expenses()->createMany([
+                [
+                    'title' => 'Food',
+                    'amount' => 1000,
+                    'quantity' => 1,
+                    'total' => 1000,
+                    'note' => 'Food for the event',
+                    'date' => '2023-09-03',
+                    'created_by' => $event->user_id,
+                ],
+                [
+                    'title' => 'Venue',
+                    'amount' => 5000,
+                    'quantity' => 1,
+                    'total' => 5000,
+                    'note' => 'Venue for the event',
+                    'date' => '2023-09-03',
+                    'created_by' => $event->user_id,
+                ],
+                [
+                    'title' => 'Music',
+                    'amount' => 2000,
+                    'quantity' => 1,
+                    'total' => 2000,
+                    'note' => 'Music for the event',
+                    'date' => '2023-09-03',
+                    'created_by' => $event->user_id,
+                ],
+                [
+                    'title' => 'Props',
+                    'amount' => 35,
+                    'quantity' => 25,
+                    'total' => 875,
+                    'note' => 'Props for cheering',
+                    'date' => '2023-08-12',
+                    'created_by' => $event->user_id,
+                ],
+                [
+                    'title' => 'Papers and Foam',
+                    'amount' => 48,
+                    'quantity' => 10,
+                    'total' => 480,
+                    'note' => 'For crafting games',
+                    'date' => '2023-07-24',
+                    'created_by' => $event->user_id,
+                ]
+            ]);
+
+            $event->tasks()->createMany([
+                [
+                    'title' => 'Craft props',
+                    'brief' => '4 staffs required',
+                    'assignee_id' => $event->members->random()->id,
+                    'status' => 'To do',
+                    'priority' => 'Medium',
+                    'date' => '2023-09-03',
+                    'created_by' => $event->user_id,
+                ],
+                [
+                    'title' => 'Permissions',
+                    'brief' => 'Waiting for officer permissions',
+                    'assignee_id' => $event->members->random()->id,
+                    'status' => 'In Progress',
+                    'priority' => 'Urgent',
+                    'date' => '2023-08-05',
+                    'created_by' => $event->user_id,
+                ],
+                [
+                    'title' => 'MC Works',
+                    'brief' => 'Draft the speech',
+                    'assignee_id' => $event->members->random()->id,
+                    'status' => 'Done',
+                    'priority' => 'High',
+                    'date' => '2023-07-13',
+                    'created_by' => $event->user_id,
+                ],
+                [
+                    'title' => 'Rehearsal queue',
+                    'brief' => 'practice queue',
+                    'assignee_id' => $event->members->random()->id,
+                    'status' => 'Cancelled',
+                    'priority' => 'Low',
+                    'date' => '2023-07-28',
+                    'created_by' => $event->user_id,
+                ],
+            ]);
+        });
     }
 }
