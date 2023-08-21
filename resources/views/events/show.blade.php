@@ -2,9 +2,9 @@
 
 @section('content')
 
-    <section class="bg-white relative   ">
+    <section class="relative bg-white ">
         <!-- Gradients -->
-        <div aria-hidden="true" class="flex absolute -top-96 left-1/2 transform -translate-x-1/2">
+        <div aria-hidden="true" class="absolute flex transform -translate-x-1/2 -top-96 left-1/2">
             <div
                 class="bg-gradient-to-r from-violet-300/50 to-purple-100 -z-40 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem] dark:from-violet-900/50 dark:to-purple-900">
             </div>
@@ -14,49 +14,60 @@
         </div>
         <!-- End Gradients -->
 
-        <div class="py-2 px-8 mx-auto relative">
+        <div class="relative px-8 py-2 mx-auto">
             <!-- Hero -->
             <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 ">
                 <!-- Grid -->
-                <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 lg:justify-center md:items-center ">
+                <div class="grid gap-4 md:grid-cols-2 md:gap-8 xl:gap-20 lg:justify-center md:items-center ">
                     <div>
                         <h1
-                            class="block text-3xl line-clamp-2 font-bold text-gray-800 sm:text-4xl  lg:text-5xl lg:leading-tight dark:text-white">
+                            class="block text-3xl font-bold text-gray-800 line-clamp-2 sm:text-4xl lg:text-5xl lg:leading-tight dark:text-white">
                             {{ $event->title }}
                         </h1>
-                        <p class="mt-3 text-lg text-gray-800  line-clamp-2">{{ $event->description }}</p>
+                        <p class="mt-3 text-lg text-gray-800 line-clamp-2">{{ $event->description }}</p>
 
                         <!-- Buttons -->
-                        <div class="mt-7 grid gap-3 w-full sm:inline-flex">
-                            <form action="{{ route('events.join-event', ['event' => $event]) }}" method="POST">
-                                @csrf
-                                <button type="submit"
-                                    class="inline-flex justify-center items-center gap-x-3 text-center bg-blue-600 hover:bg-blue-700 border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800"
-                                    href="#">
-                                    Join event
-                                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16"
-                                        fill="none">
-                                        <path
-                                            d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                                    </svg>
-                                </button>
-                            </form>
-
-
-                        </div>
+                        @can('joinEvent', $event)
+                            <div class="grid w-full gap-3 mt-7 sm:inline-flex">
+                                <form action="{{ route('events.join-event', ['event' => $event]) }}" method="POST">
+                                    @csrf
+                                    <button type="submit"
+                                        class="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white transition bg-blue-600 border border-transparent rounded-md gap-x-3 lg:text-base hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
+                                        href="#">
+                                        Join event
+                                        <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16"
+                                            fill="none">
+                                            <path
+                                                d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                        @else
+                            <button type="submit"
+                                class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm text-center text-gray-500 transition bg-white border border-transparent rounded-md shadow-lg cursor-not-allowed fonot-medium gap-x-3 lg:text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
+                                disabled>
+                                Join event
+                                <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path
+                                        d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </button>
+                        @endcan
                         <!-- End Buttons -->
 
                         <!-- Items -->
-                        <div class="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
+                        <div class="grid grid-cols-2 mt-6 lg:mt-10 gap-x-5">
                             <!-- Count Attendess Card -->
-                            <div class=" p-7 flex flex-col bg-white border shadow-sm rounded-xl">
-                                <h4 class="text-xs uppercase tracking-wide text-gray-500">
+                            <div class="flex flex-col bg-white border shadow-sm p-7 rounded-xl">
+                                <h4 class="text-xs tracking-wide text-gray-500 uppercase">
                                     Total Attendees
                                 </h4>
 
-                                <div class="mt-1 flex items-center content-center text-blue-500">
-                                    <p class="text-3xl  font-bold ">
+                                <div class="flex items-center content-center mt-1 text-blue-500">
+                                    <p class="text-3xl font-bold ">
                                         {{ $event->attendees->count() }}
                                     </p>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22"
@@ -69,12 +80,12 @@
                             <!-- End Card -->
 
                             <!-- Countdown Card -->
-                            <div class=" p-7 flex flex-col bg-white border shadow-sm rounded-xl">
-                                <p class="text-xs uppercase tracking-wide text-gray-500">
+                            <div class="flex flex-col bg-white border shadow-sm p-7 rounded-xl">
+                                <p class="text-xs tracking-wide text-gray-500 uppercase">
                                     Countdown
                                 </p>
 
-                                <h3 id="countdown" class="text-xl sm:text-2xl font-medium text-pink-500 ">
+                                <h3 id="countdown" class="text-xl font-medium text-pink-500 sm:text-2xl ">
                                     Loading...
                                 </h3>
                             </div>
@@ -85,7 +96,7 @@
                     <!-- End Col -->
 
                     <div class="relative ml-4">
-                        <img class="w-3/4 rounded-md object-cover" src="{{ asset('storage/' . $event->image_url) }}"
+                        <img class="object-cover w-3/4 rounded-md" src="{{ asset('storage/' . $event->image_url) }}"
                             alt="Image Description">
 
                     </div>
@@ -96,25 +107,25 @@
 
             <div class="flex max-w-[85rem] mt-10 mx-auto px-8 gap-x-28 ">
 
-                <dl class=" text-gray-900 divide-y w-2/3 divide-gray-200 ">
+                <dl class="w-2/3 text-gray-900 divide-y divide-gray-200 ">
                     <div class="flex flex-col pb-3">
                         <dt class="mb-1 text-gray-500 md:text-lg ">Date</dt>
                         <dd class="text-lg font-semibold">{{-- Date --}}
                             @if ($event->end_date === null)
                                 <!--Single Date -->
-                                <span class="  uppercase  ">
+                                <span class="uppercase ">
                                     {{ date('d F Y', strtotime($event->start_date)) }}
                                 </span>
                             @else
                                 {{-- Multiple Dates --}}
                                 {{-- Same month --}}
                                 @if (date('m', strtotime($event->start_date)) == date('m', strtotime($event->end_date)))
-                                    <span class="  uppercase  ">
+                                    <span class="uppercase ">
                                         {{ date('d', strtotime($event->start_date)) . ' - ' . date('d F Y', strtotime($event->end_date)) }}
                                     </span>
                                 @else
                                     {{-- Diff month --}}
-                                    <span class="  uppercase  ">
+                                    <span class="uppercase ">
                                         {{ date('d M', strtotime($event->start_date)) . ' - ' . date('d M', strtotime($event->end_date)) }}
                                     </span>
                                 @endif
@@ -158,7 +169,7 @@
                     <div class="flex flex-col items-end space-y-4">
 
                         <a href="{{ route('events.edit', $event) }}"
-                            class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                            class="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-gray-700 align-middle transition-all bg-white border rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -173,7 +184,7 @@
                             @method('DELETE')
                             <button type="button"
                                 onclick="event.preventDefault(); document.getElementById('delete-event-form').submit();"
-                                class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-red-600 text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                class="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white transition-all bg-red-600 border border-transparent rounded-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff"
                                     viewBox="0 0 256 256">
                                     <path
