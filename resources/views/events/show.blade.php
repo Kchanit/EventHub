@@ -180,13 +180,13 @@
                     <button
                         class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
                         onclick="fadeOut(modal);validateForm();">
-                        Delete personal account
+                        Delete Event
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    {{-- end mpdal --}}
+    {{-- end modal --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script>

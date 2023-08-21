@@ -223,7 +223,7 @@
         </div>
     </div>
 </form>
-    {{-- end mpdal --}}
+    {{-- end modal --}}
     <script>
         var form = document.forms["myForm"]; // storing the form
         // Get the modal

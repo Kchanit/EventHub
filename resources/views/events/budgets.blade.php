@@ -419,7 +419,7 @@
                                             Submit Budget
                                         </h3>
                                         <p class="text-gray-500">
-                                            This will submit the budget to the officer for approval. Are you sure you want to proceed?
+                                            Once the budget is improved, the event will be published and made available to the public. Please make sure that the event is ready to be published before submitting the budget.
                                         </p>
                                     </div>
                                 </div>

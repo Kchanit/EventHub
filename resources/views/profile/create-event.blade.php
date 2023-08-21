@@ -239,14 +239,14 @@
                     </button>
                     <button type="submit" 
                         class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
-                        Save changes
+                        Create
                     </button>
                 </div>
             </div>
         </div>
     </div>
     </form>
-    {{-- end mpdal --}}
+    {{-- end modal --}}
     <script>
         var form = document.forms["myForm"]; // storing the form
         // Get the modal
