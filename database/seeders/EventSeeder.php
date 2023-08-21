@@ -41,7 +41,7 @@ class EventSeeder extends Seeder
         $event->image_url = 'event_images/image2.jpg';
         $event->user_id = '2';
         $event->description = 'LE SSERAFIM TOUR FLAME RISES IN BANGKOK is a concert that will be held in Bangkok, Thailand. The concert will feature the band LE SSERAFIM, who are known for their energetic performances and catchy songs. They have been touring around Asia since 2015, and this will be their first time performing in Thailand.';
-        $event->start_date = '2023-10-04';
+        $event->start_date = '2023-06-04';
         $event->event_status = 'PUBLISHED';
         $event->save();
 
@@ -212,6 +212,12 @@ class EventSeeder extends Seeder
         Event::where('id', '=', 3)->each(function ($event) use ($users) {
             $event->attendees()->attach(
                 $users->random(10)->pluck('id')->toArray()
+            );
+        });
+        // Test Certificate
+        Event::where('id', '=', 2)->each(function ($event) use ($users) {
+            $event->attendees()->attach(
+                $users->where('id', '=', 1)->pluck('id')->toArray()
             );
         });
         //no attendees

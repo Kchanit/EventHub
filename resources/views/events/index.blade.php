@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="max-w-[66rem] px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
+        <div class="max-w-[70rem] px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
             <header class="">
                 <h1 class="text-3xl font-semibold">
                     New Events
