@@ -262,7 +262,7 @@ Event Organizer
             $event->location = fake()->city() . ', ' . fake()->country();
             $event->attendees_limit = rand(20, 100);
             $event->image_url = Arr::get($eventImages, $i);
-            $event->user_id = rand(1, 3);
+            $event->user_id = rand(4, 20);
             $event->description = fake()->paragraph(3);
             $event->start_date = now()->addDays(rand(1, 30))->format('Y-m-d');
             $event->end_date = now()->addDays(rand(31, 60))->format('Y-m-d');
@@ -298,7 +298,7 @@ Event Organizer
         // random attendees
         Event::where('id', '>', 4)->each(function ($event) use ($users) {
             $event->attendees()->attach(
-                $users->random(rand(5, 15))->pluck('id')->toArray()
+                $users->where('id', '>', 4)->random(rand(5, 15))->pluck('id')->toArray()
             );
         });
 
