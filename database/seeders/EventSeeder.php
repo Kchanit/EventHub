@@ -243,8 +243,6 @@ Event Organizer
         $event->event_status = 'DRAFTED';
         $event->save();
 
-
-
         $eventImages = [
             'event_images/image14.jpg',
             'event_images/image15.png',
