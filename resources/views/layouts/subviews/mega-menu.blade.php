@@ -1,5 +1,5 @@
 <header
-    class="flex flex-wrap sm:justify-start sm:flex-nowrap relative w-full bg-white border-b text-sm py-2.5 z-50 sm:py-4 dark:bg-slate-900 dark:border-gray-700">
+    class="sticky top-0 flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white border-b text-sm py-2.5 z-50 sm:py-4 dark:bg-slate-900 dark:border-gray-700">
     <nav class="max-w-7xl flex basis-full items-center w-full mx-auto px-4 sm:px-6 lg:px-8" aria-label="Global">
         <div class="mr-5 md:mr-8">
             <a class="flex-none text-xl font-semibold dark:text-white" href="{{ route('events.index') }}"
