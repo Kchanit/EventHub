@@ -83,7 +83,8 @@
                                         <form name="join-event-form"
                                             action="{{ route('events.join-event', ['event' => $event]) }}" method="POST">
                                             @csrf
-                                            <button type="button" id="join-btn" onclick="fadeIn(joinModal)"
+                                            <button id="join-btn"
+                                                @if (auth()->check()) type="button" onclick="fadeIn(joinModal)" @else type="submit" @endif
                                                 class="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white transition bg-blue-600 border border-transparent rounded-md gap-x-3 lg:text-base hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
                                                 href="#">
                                                 Join event
