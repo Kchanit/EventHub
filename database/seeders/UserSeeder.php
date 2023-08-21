@@ -275,6 +275,7 @@ class UserSeeder extends Seeder
         $user->student_id = '0';
         $user->faculty = '-';
         $user->college_year = '0';
+        $user->image_url = 'user_images/user24.jpg';
         $user->role = Role::OFFICER;
         $user->save();
 
@@ -285,7 +286,7 @@ class UserSeeder extends Seeder
         $user->student_id = '6410406533';
         $user->faculty = 'Science';
         $user->college_year = '3';
-        $user->image_url = 'user_images/user01.jpg';
+        $user->image_url = 'user_images/user24.jpg';
         $user->phone_number = '0123456789';
         $user->save();
 

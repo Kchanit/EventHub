@@ -42,8 +42,9 @@
                             </button>
                         @else
                             {{-- Disable --}}
-                            @if (auth()->user()->isMember($event) ||
-                                    auth()->user()->isOfficer())
+                            @if (auth()->check() &&
+                                    (auth()->user()->isMember($event) ||
+                                        auth()->user()->isOfficer()))
                                 <button type="submit"
                                     class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm text-center text-gray-500 transition bg-white border border-transparent rounded-md shadow-lg cursor-not-allowed fonot-medium gap-x-3 lg:text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
                                     disabled>
@@ -59,22 +60,22 @@
                                 @if ($event->attendees->contains(auth()->user()))
                                     {{-- Leave --}}
                                     <div class="grid w-full gap-3 mt-7 sm:inline-flex">
-                                    <form name="leave-event-form" action="{{ route('events.leave-event', ['event' => $event]) }}"
-                                        method="POST">
-                                        @csrf
-                                        <button type="button" id="leave-btn" onclick="fadeIn(leaveModal)"
-                                            class="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white transition bg-red-600 border border-transparent rounded-md gap-x-3 lg:text-base hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
-                                            href="#">
-                                            Leave event
-                                            <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16"
-                                                fill="none">
-                                                <path
-                                                    d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                                            </svg>
-                                        </button>
-                                    </form>
-                                </div>
+                                        <form name="leave-event-form"
+                                            action="{{ route('events.leave-event', ['event' => $event]) }}" method="POST">
+                                            @csrf
+                                            <button type="button" id="leave-btn" onclick="fadeIn(leaveModal)"
+                                                class="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white transition bg-red-600 border border-transparent rounded-md gap-x-3 lg:text-base hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
+                                                href="#">
+                                                Leave event
+                                                <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16"
+                                                    fill="none">
+                                                    <path
+                                                        d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
                                     {{-- End Leave --}}
                                 @else
                                     {{-- Normal Join --}}
@@ -101,7 +102,6 @@
 
                         <!-- End Buttons -->
 
-
                         <!-- Items -->
                         <div class="grid grid-cols-2 mt-6 lg:mt-10 gap-x-5">
                             <!-- Count Attendess Card -->
@@ -112,7 +112,7 @@
 
                                 <div class="flex items-center content-center mt-1 text-blue-500">
                                     <p class="text-3xl font-bold ">
-                                        {{ $event->attendees->count() }}
+                                        {{ $event->attendees->count() . '/' . $event->attendees_limit }}
                                     </p>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22"
                                         class="inline-block w-6 h-6 stroke-current">
@@ -524,6 +524,7 @@
                 form.submit();
             }, 1200);
         }
+
         function validateLeaveForm() {
             event.preventDefault(); // prevent form submit
             var form = document.forms["leave-event-form"]; // storing the form

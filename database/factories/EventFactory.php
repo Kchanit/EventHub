@@ -25,7 +25,7 @@ class EventFactory extends Factory
             'attendees_limit' => fake()->numberBetween(10, 20),
             'description' => fake()->paragraph(10, true),
             'start_date' => fake()->dateTimeBetween('+1 weeks', '+2 years')->format('Y-m-d'),
-            'event_status' => 'PUBLISHED',
+            'event_status' => rand(0, 1) ? 'DRAFTED' : 'PENDING',
             'image_url' => 'event_images/default.png'
         ];
     }

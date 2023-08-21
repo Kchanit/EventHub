@@ -23,7 +23,7 @@ class EventSeeder extends Seeder
         $event->location = 'Sermsuk Warehouse, Bangkok';
         $event->attendees_limit = '100';
         $event->image_url = 'event_images/image1.jpg';
-        $event->user_id = '1';
+        $event->user_id = '2';
         $event->description = 'Introducing Brew Crew, the premier international craft and culture community at Brewtopia the first-ever international craft & culture festival in Thailand, where beverages, food, and music harmoniously unite.  Join us in embracing the true essence of Brewtopia as more than just a festival – it\'s a vibrant community that celebrates the love of all things brew.  Let\'s raise our glasses and be part of the legendary Brew Crew experience! ';
         $event->start_date = '2023-09-03';
         $event->end_date = '2023-09-05';
@@ -59,7 +59,7 @@ class EventSeeder extends Seeder
         $event->location = 'Innovation Center, Silicon Valley';
         $event->attendees_limit = '10';
         $event->image_url = 'event_images/image4.jpg';
-        $event->user_id = '1';
+        $event->user_id = '3';
         $event->description = 'RCB Film Cub: Modern Art
 RCB Film Club จะพาคุณเดินทางไปพบกับศิลปะสมัยใหม่และความเปลี่ยนแปลงของโลกแห่งศิลปะตั้งแต่ช่วงปลายศตวรรษที่ 19 ผ่านเรื่องราวชีวิตและผลงานของศิลปินผู้มีอิทธิพลต่อการศิลปะมากมายที่ยังคงตราตรึงมาจนถึงปัจจุบัน ไม่ว่าจะเป็น วินเซ็นต์ แวนโก๊ะ (อิมเพรสชันนิสม์), ปาโบล ปิกาโซ (ลัทธิเขียนภาพแบบเหลี่ยม), เดวิด ฮอคนีย์ (ศิลปะป๊อป) และ ยาโยอิ คุซามะ (ศิลปะแอ็บสแตรค)
 RCB Film Club will take you on a journey to discover modern art, an artistic movement that emerged in the late 19th century, through the lives and works of influential artists of movement within modern art, such as Vincent Van Gogh (Impressionism), Pablo Picasso (Cubism), David Hockney (Pop Art), and Yayoi Kusama (Abstract).
@@ -89,7 +89,7 @@ FOR ENQUIRIES: rcbexhibition@rivercity.co.th
         $event->location = 'Central Park, London';
         $event->image_url = 'event_images/image6.jpg';
         $event->attendees_limit = '50';
-        $event->user_id = '2';
+        $event->user_id = '1';
         $event->description = 'Fitness Festival: Active Life\' is a vibrant event celebrating wellness and physical activity. Attendees enjoy interactive workouts, expert-led sessions, and wellness workshops, fostering a community of health enthusiasts. Embrace movement, learn about holistic well-being, and discover the latest fitness trends at this dynamic festival.';
         $event->start_date = '2023-11-08';
         $event->event_status = 'PUBLISHED';
@@ -100,7 +100,7 @@ FOR ENQUIRIES: rcbexhibition@rivercity.co.th
         $event->location = 'Grand Plaza, Paris';
         $event->attendees_limit = '30';
         $event->image_url = 'event_images/image7.jpg';
-        $event->user_id = '2';
+        $event->user_id = '1';
         $event->description = 'Siam Niramit Phuket 
 World Class Culture Entertainment
 Discover & Enjoy the Wonders of Thai Culture
@@ -135,7 +135,7 @@ For Transfer Service, Please check hotel\'s list here
         $event->location = 'Sunset Park, Los Angeles';
         $event->attendees_limit = '25';
         $event->image_url = 'event_images/image8.jpg';
-        $event->user_id = '2';
+        $event->user_id = '1';
         $event->description = 'Vespa x CROSSPLAY 2023
 การโคจรมาเจอกันของ 6 ศิลปินบนเส้นทางสายดนตรีแห่งมิตรภาพ คอนเสิร์ตคู่ 3 ครั้ง 3 คู่ กับเพลงพิเศษที่แรกที่เดียวก่อนใคร
 ทุกคู่จัดเต็มให้ทุกคนได้เต็มอิ่มคูณสองตลอดคืน!
@@ -201,7 +201,7 @@ Event Organizer
         $event->location = 'Tech Hub, Singapore';
         $event->attendees_limit = '30';
         $event->image_url = 'event_images/image10.jpg';
-        $event->user_id = '2';
+        $event->user_id = '1';
         $event->description = 'a visionary event that delves into the forefront of technological advancement. Set to take place on 9 September 2023 at Tech Hub, this symposium gathers tech enthusiasts, professionals, and pioneers to explore the next frontier of innovation. Attendees will engage with groundbreaking ideas, witness live demonstrations, and participate in enlightening discussions led by industry leaders. From AI and robotics to sustainable tech solutions, the symposium offers a glimpse into the shape of things to come. Join us at \'Tech Symposium: Future Innovations\' to be part of shaping tomorro\'s technological landscape.';
         $event->start_date = '2023-09-09';
         $event->event_status = 'PENDING';
@@ -212,7 +212,7 @@ Event Organizer
         $event->location = 'Science Museum, Tokyo';
         $event->attendees_limit = '20';
         $event->image_url = 'event_images/image11.jpg';
-        $event->user_id = '2';
+        $event->user_id = '1';
         $event->description = 'Opens the doors to a world of discovery and creativity. This engaging event is a convergence of curious minds, where innovators and attendees gather to witness the unveiling of groundbreaking concepts. From ingenious experiments to revolutionary breakthroughs, the fair showcases the diversity of scientific inquiry across various disciplines. Embark on a journey of intellectual curiosity and witness the future being shaped at the\'Science Fair: Innovations Unveiled.';
         $event->start_date = '2023-09-11';
         $event->event_status = 'DRAFTED';
@@ -224,7 +224,7 @@ Event Organizer
         $event->location = 'Convention Center, Toronto';
         $event->attendees_limit = '50';
         $event->image_url = 'event_images/image12.png';
-        $event->user_id = '2';
+        $event->user_id = '1';
         $event->description = 'Join us at the Health and Wellness Expo for a transformative journey towards vitality and balance. Immerse yourself in a world of holistic well-being through expert seminars, interactive workshops, mindful movement, and holistic therapies. Explore the latest in health technology, nourishing nutrition, and self-care practices. Connect with a vibrant community of like-minded individuals and leave with practical tools to enhance your overall health and happiness. Your wellness adventure starts here!';
         $event->start_date = '2023-10-01';
         $event->end_date = '2023-10-07';

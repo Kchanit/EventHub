@@ -2,24 +2,22 @@
 
 @section('content')
     <section>
-        <div class="max-w-[70rem] px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
-            <header class="">
-                <h1 class="text-3xl font-semibold">
+        <div class="max-w-[70rem] px-4 py- mx-auto sm:px-6 sm:py-12 lg:px-8 lg:py-0">
+            {{-- <h1 class="text-3xl font-semibold">
                     New Events
-                </h1>
+                </h1> --}}
 
-                {{-- <p class="max-w-md mx-auto mt-4 text-gray-500">
+            {{-- <p class="max-w-md mx-auto mt-4 text-gray-500">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
                     praesentium cumque iure dicta incidunt est ipsam, officia dolor fugit
                     natus?
                 </p> --}}
-            </header>
 
             <ul class="px-6 grid grid-cols-1 gap-4 mt-8 lg:grid-cols-3">
                 <li>
                     <a href="{{ route('events.show', ['event' => $promos[0]]) }}" class="relative block group">
                         <img src="{{ asset('storage/' . $promos[0]->image_url) }}" alt=""
-                            class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90" />
+                            class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90 round" />
 
                         <div class="absolute inset-0 flex flex-col items-start justify-end p-6">
                             <h3 class="text-xl font-medium text-white">{{ $promos[0]->title }}</h3>

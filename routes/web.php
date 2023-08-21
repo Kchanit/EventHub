@@ -134,14 +134,16 @@ Route::middleware('auth')->group(function () {
         ->name('my-events.destroy');
 
 
-
     // Officer
     Route::get('/officer', [BudgetApproval::class, 'index'])
         ->name('officer.index');
     Route::get('/officer/{event}', [BudgetApproval::class, 'show'])->name('officer.show');
-});
 
+    Route::get('events/{event}/show', [EventController::class, 'show'])
+        ->name('events.show');
+});
 Route::resource('events', EventController::class);
+
 
 //==============================================================================
 require __DIR__ . '/auth.php';

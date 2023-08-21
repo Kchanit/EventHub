@@ -106,6 +106,6 @@ class ProfileController extends Controller
         }
         $event->image_url = $path;
         $user->ownedEvents()->save($event);
-        return redirect()->route('events.index');
+        return redirect()->route('events.my-events');
     }
 }

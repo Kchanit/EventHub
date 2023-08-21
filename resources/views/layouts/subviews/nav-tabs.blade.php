@@ -6,7 +6,7 @@
             class="max-w-7xl snap-x w-full flex items-center overflow-x-auto scrollbar-x px-4 sm:px-6 lg:px-8 pb-4 md:pb-0 mx-auto dark:scrollbar-x">
             <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last-pr-0">
                 <a class="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500"
-                    href="{{ route('events.my-events') }}">My Events</a>
+                    href="{{ route('events.show', $event) }}">My Events</a>
             </div>
             <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
                 <a class="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500"
