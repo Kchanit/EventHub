@@ -23,7 +23,7 @@ class EventFactory extends Factory
             'user_id' => User::where('id', '>', 4)->get()->random()->id,
             'location' => fake()->streetName() . ', ' . fake()->state(),
             'attendees_limit' => fake()->numberBetween(10, 20),
-            'description' => fake()->paragraph(),
+            'description' => fake()->paragraph(10, true),
             'start_date' => fake()->dateTimeBetween('+1 weeks', '+2 years')->format('Y-m-d'),
             'event_status' => 'PUBLISHED',
             'image_url' => 'event_images/default.png'

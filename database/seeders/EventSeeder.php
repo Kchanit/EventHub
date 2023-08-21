@@ -22,11 +22,9 @@ class EventSeeder extends Seeder
         $event->title = 'Brewtopia Bangkok 2023';
         $event->location = 'Sermsuk Warehouse, Bangkok';
         $event->attendees_limit = '100';
-        // $event->image_url = 'https://s3-ap-southeast-1.amazonaws.com/tm-img-poster-event/586d3de00b4411ee911101117567899b.png?format=basic&resize=w425,h610';
-        // $imagePath = Storage::putFile('public/event_images', storage_path('app/public/image1.png'));
         $event->image_url = 'event_images/image1.jpg';
         $event->user_id = '1';
-        $event->description = 'Brewtopia Bangkok 2023 is a beer festival that will be held in Bangkok, Thailand. The festival will feature more than 100 beers from around the world, including local craft beers and international brands. There will also be food stalls, live music, and other entertainment.';
+        $event->description = 'Introducing Brew Crew, the premier international craft and culture community at Brewtopia the first-ever international craft & culture festival in Thailand, where beverages, food, and music harmoniously unite.  Join us in embracing the true essence of Brewtopia as more than just a festival – it\'s a vibrant community that celebrates the love of all things brew.  Let\'s raise our glasses and be part of the legendary Brew Crew experience! ';
         $event->start_date = '2023-09-03';
         $event->end_date = '2023-09-05';
         $event->event_status = 'PUBLISHED';
@@ -36,30 +34,24 @@ class EventSeeder extends Seeder
         $event->title = 'LE SSERAFIM TOUR FLAME RISES IN BANGKOK';
         $event->location = 'Thunder Dome, Bangkok';
         $event->attendees_limit = '1000';
-        // $event->image_url = 'https://p-u.popcdn.net/event_details/posters/000/015/695/large/2f4b41db65c10947730f2a64eb916bfd4b6230a8.png?1689753720';
-        // $imagePath = Storage::putFile('public/event_images', storage_path('app/public/image2.png'));
         $event->image_url = 'event_images/image2.jpg';
         $event->user_id = '2';
         $event->description = 'LE SSERAFIM TOUR FLAME RISES IN BANGKOK is a concert that will be held in Bangkok, Thailand. The concert will feature the band LE SSERAFIM, who are known for their energetic performances and catchy songs. They have been touring around Asia since 2015, and this will be their first time performing in Thailand.';
-        $event->start_date = '2023-06-04';
+        $event->start_date = '2023-09-04';
         $event->event_status = 'PUBLISHED';
         $event->save();
-
 
         // full attended event
         $event = new Event();
         $event->title = 'THE LORD OF THE RINGS - THE FELLOWSHIP OF THE RING';
         $event->location = 'Prince Mahidol Hall, Mahidol University';
         $event->attendees_limit = '10';
-        // $event->image_url = 'https://p-u.popcdn.net/event_details/posters/000/015/721/large/a034421d54902df5c3723de0ac24bf8b8b3a6077.jpg?1690230019';
-        // $imagePath = Storage::putFile('public/event_images', storage_path('app/public/image3.jpg'));
         $event->image_url = 'event_images/image3.jpg';
         $event->user_id = '3';
-        $event->description = 'THE LORD OF THE RINGS - THE FELLOWSHIP OF THE RING is a concert that will be held in Bangkok, Thailand. The concert will feature the music from the film, which was composed by Howard Shore. The music is performed by a live orchestra and choir, with the film projected on a large screen behind them.';
+        $event->description = 'For the first time in Thailand, prepare yourself for an extraordinary journey into the heart of Middle-earth! Join the brave hobbits from the Shire, accompanied by their valiant allies, as they strive to protect the One Ring from the clutches of the ominous Dark Lord of Mordor. Experience an immersive musical extravaganza, brought to life by the talented Thailand Philharmonic Orchestra with over 100 musicians performing on an array of rare instruments. This is complemented by a majestic choir of 150 voices, all contributing to a breathtaking symphony that spans over 3 hours (with intermissions).';
         $event->start_date = '2023-11-05';
         $event->event_status = 'PUBLISHED';
         $event->save();
-
 
         // ready events
         $event = new Event();
@@ -68,7 +60,13 @@ class EventSeeder extends Seeder
         $event->attendees_limit = '10';
         $event->image_url = 'event_images/image4.jpg';
         $event->user_id = '1';
-        $event->description = 'Join us at the Tech Conference 2023 to explore the latest trends in technology and innovation.';
+        $event->description = 'RCB Film Cub: Modern Art
+RCB Film Club จะพาคุณเดินทางไปพบกับศิลปะสมัยใหม่และความเปลี่ยนแปลงของโลกแห่งศิลปะตั้งแต่ช่วงปลายศตวรรษที่ 19 ผ่านเรื่องราวชีวิตและผลงานของศิลปินผู้มีอิทธิพลต่อการศิลปะมากมายที่ยังคงตราตรึงมาจนถึงปัจจุบัน ไม่ว่าจะเป็น วินเซ็นต์ แวนโก๊ะ (อิมเพรสชันนิสม์), ปาโบล ปิกาโซ (ลัทธิเขียนภาพแบบเหลี่ยม), เดวิด ฮอคนีย์ (ศิลปะป๊อป) และ ยาโยอิ คุซามะ (ศิลปะแอ็บสแตรค)
+RCB Film Club will take you on a journey to discover modern art, an artistic movement that emerged in the late 19th century, through the lives and works of influential artists of movement within modern art, such as Vincent Van Gogh (Impressionism), Pablo Picasso (Cubism), David Hockney (Pop Art), and Yayoi Kusama (Abstract).
+Venue: RCB Forum, 2nd floor, River City Bangkok
+150 THB Tickets available at https://www.ticketmelon.com/rivercitybangkok/movie-program 
+FOR ENQUIRIES: rcbexhibition@rivercity.co.th    
+.';
         $event->start_date = '2023-09-15';
         $event->end_date = '2023-09-17';
         $event->event_status = 'PUBLISHED';
@@ -80,7 +78,7 @@ class EventSeeder extends Seeder
         $event->attendees_limit = '20';
         $event->image_url = 'event_images/image5.jpg';
         $event->user_id = '2';
-        $event->description = 'Experience a visual journey of artistic expression at our exhibition showcasing a vibrant array of colors and creativity.';
+        $event->description = 'Step into a world where emotions and creativity intertwine, where canvases burst forth with vibrant hues, and where every stroke of a brush unveils a myriad of emotions. Welcome to the mesmerizing realm of the "Colors of Expression" art exhibition – a captivating journey through the kaleidoscope of human feelings translated onto canvas, presented with finesse and mastery.';
         $event->start_date = '2023-10-20';
         $event->end_date = '2023-10-25';
         $event->event_status = 'PUBLISHED';
@@ -92,7 +90,7 @@ class EventSeeder extends Seeder
         $event->image_url = 'event_images/image6.jpg';
         $event->attendees_limit = '50';
         $event->user_id = '2';
-        $event->description = 'Get moving and join us at the Fitness Festival for a day of wellness, workouts, and healthy living tips.';
+        $event->description = 'Fitness Festival: Active Life\' is a vibrant event celebrating wellness and physical activity. Attendees enjoy interactive workouts, expert-led sessions, and wellness workshops, fostering a community of health enthusiasts. Embrace movement, learn about holistic well-being, and discover the latest fitness trends at this dynamic festival.';
         $event->start_date = '2023-11-08';
         $event->event_status = 'PUBLISHED';
         $event->save();
@@ -103,7 +101,29 @@ class EventSeeder extends Seeder
         $event->attendees_limit = '30';
         $event->image_url = 'event_images/image7.jpg';
         $event->user_id = '2';
-        $event->description = 'Embark on a gastronomic journey around the world with a diverse selection of culinary creations at the International Food Fair.';
+        $event->description = 'Siam Niramit Phuket 
+World Class Culture Entertainment
+Discover & Enjoy the Wonders of Thai Culture
+Siam Niramit Phuket is the World Class Thai Cultural entertainment attraction. Watch Thailand\'s must-see show which has won both national and international awards. Marvel at the spectacular performances, amazing special effects, sets, and stunning costumes. Siam Niramit Phuket will give you insight into Thailand\'s vibrant history and culture. You can also enjoy the wide selection of delicious dishes and Thai street food.
+Tickets: 
+1. Show Only (Starts at THB 1,800):
+includes: Siam Niramit Show, 100 Year Thai Village, Naga Courtyard
+2. Show with Dinner (Starts at THB 2,200): 
+Includes: Siam Niramit Show, 100 Year Thai Village, Naga Courtyard + Thai Street Food & International Buffet
+**Please select the seating type for the Siam Niramit show (Silver, Gold, Platinum)
+We also provide a Hotel/Resort Transfer service (Pick-up and Drop-off service) at THB 350 per person (same price for adult and child) - please contact:
+reservationphuket@siamniramit.com
+or +66 76 335000 - 1
+Other Information
+PHUKET ONLY - NOT IN BANGKOK
+Open Daily Except Tuesdays
+Gate Opens: 5:30 pm – 10:30 pm
+Restaurant : 6:00 pm - 8:00 pm
+Siam Niramit Show: 8:30pm – 9:50 pm
+Child Height under 100cm free of charge
+Child Height between 100 to 140 cm eligible for children’s rate
+For Transfer Service, Please check hotel\'s list here
+';
         $event->start_date = '2023-12-05';
         $event->end_date = '2023-12-07';
         $event->event_status = 'PUBLISHED';
@@ -116,7 +136,39 @@ class EventSeeder extends Seeder
         $event->attendees_limit = '25';
         $event->image_url = 'event_images/image8.jpg';
         $event->user_id = '2';
-        $event->description = 'Experience the magic of live music at the Harmony Sounds Music Festival featuring a diverse lineup of artists and genres.';
+        $event->description = 'Vespa x CROSSPLAY 2023
+การโคจรมาเจอกันของ 6 ศิลปินบนเส้นทางสายดนตรีแห่งมิตรภาพ คอนเสิร์ตคู่ 3 ครั้ง 3 คู่ กับเพลงพิเศษที่แรกที่เดียวก่อนใคร
+ทุกคู่จัดเต็มให้ทุกคนได้เต็มอิ่มคูณสองตลอดคืน!
+
+
+EP 1: Dept x YEW 
+วันที่ 19 สิงหาคม ณ AMBASSADOR HOTEL, BANGKOK CONVENTION HALL
+
+EP 2: Television off x LANDOKMAI
+วันที่ 9 กันยายน ณ THE PEARL BANGKOK (ARI)
+
+EP 3: Zweed n’ Roll x FREEHAND
+วันที่ 7 ตุลาคม ณ SHOW DC SECRET SPACE 3FL.
+
+
+เปิดขายบัตรแล้ววันนี้ที่ Ticketmelon บัตรมีจำนวนจำกัดนะ ลุย!
+
+บัตร Regular (1 EP) ราคา 650 บาท
+
+บัตร Package (3 EPs) ราคา 1,650 บาท
+
+บัตร At Door (1 EP) ราคา 850 บาท
+
+.
+
+พิเศษ!  แอดเพื่อนในไลน์ @fungjai รับส่วนลดทันทีตั้งแต่วันนี้เป็นต้นไป
+
+__
+
+#CROSSPLAY2023 #Fungjai #vespathailand #vivalavespaTH #vespistiTH 
+
+Event Organizer
+';
         $event->start_date = '2023-09-23';
         $event->event_status = 'PENDING';
         $event->save();
@@ -127,7 +179,19 @@ class EventSeeder extends Seeder
         $event->attendees_limit = '30';
         $event->image_url = 'event_images/image9.jpg';
         $event->user_id = '2';
-        $event->description = 'Witness a stunning display of urban-inspired fashion at the Urban Elegance Fashion Show, where style meets sophistication.';
+        $event->description = '
+        Fashion Show: Urban Elegance epitomizes modern style with a sophisticated twist. This captivating event showcases a fusion of contemporary trends and timeless class, celebrating the marriage of city chic and refined elegance. Attendees are treated to a runway spectacle featuring cutting-edge designs from renowned fashion houses, highlighting urban-inspired attire that exudes grace and flair. From sleek eveningwear to chic street fashion, \'Fashion Show: Urban Elegance\' offers a glimpse into a world where cosmopolitan vibes meet graceful sophistication.
+        
+        Details:
+        
+        Date: 23 September
+        Time: 7PM
+        Venue: Metropolitan Hall, Paris
+        Ticket Prices:
+        General Admission: 1,000 Baht
+        VIP Access: 1,800 Baht
+        Front Row Experience: 2,500 Baht
+        ';
         $event->start_date = '2023-09-05';
         $event->event_status = 'PENDING';
         $event->save();
@@ -138,7 +202,7 @@ class EventSeeder extends Seeder
         $event->attendees_limit = '30';
         $event->image_url = 'event_images/image10.jpg';
         $event->user_id = '2';
-        $event->description = 'Delve into discussions on future innovations and emerging technologies at the Tech Symposium, where experts share insights and visions.';
+        $event->description = 'a visionary event that delves into the forefront of technological advancement. Set to take place on 9 September 2023 at Tech Hub, this symposium gathers tech enthusiasts, professionals, and pioneers to explore the next frontier of innovation. Attendees will engage with groundbreaking ideas, witness live demonstrations, and participate in enlightening discussions led by industry leaders. From AI and robotics to sustainable tech solutions, the symposium offers a glimpse into the shape of things to come. Join us at \'Tech Symposium: Future Innovations\' to be part of shaping tomorro\'s technological landscape.';
         $event->start_date = '2023-09-09';
         $event->event_status = 'PENDING';
         $event->save();
@@ -149,7 +213,7 @@ class EventSeeder extends Seeder
         $event->attendees_limit = '20';
         $event->image_url = 'event_images/image11.jpg';
         $event->user_id = '2';
-        $event->description = 'Explore groundbreaking scientific discoveries and innovations at the Science Fair, where knowledge meets curiosity.';
+        $event->description = 'Opens the doors to a world of discovery and creativity. This engaging event is a convergence of curious minds, where innovators and attendees gather to witness the unveiling of groundbreaking concepts. From ingenious experiments to revolutionary breakthroughs, the fair showcases the diversity of scientific inquiry across various disciplines. Embark on a journey of intellectual curiosity and witness the future being shaped at the\'Science Fair: Innovations Unveiled.';
         $event->start_date = '2023-09-11';
         $event->event_status = 'DRAFTED';
         $event->save();
@@ -161,7 +225,7 @@ class EventSeeder extends Seeder
         $event->attendees_limit = '50';
         $event->image_url = 'event_images/image12.png';
         $event->user_id = '2';
-        $event->description = 'Discover holistic well-being at the Health and Wellness Expo, featuring expert speakers, fitness workshops, and natural products.';
+        $event->description = 'Join us at the Health and Wellness Expo for a transformative journey towards vitality and balance. Immerse yourself in a world of holistic well-being through expert seminars, interactive workshops, mindful movement, and holistic therapies. Explore the latest in health technology, nourishing nutrition, and self-care practices. Connect with a vibrant community of like-minded individuals and leave with practical tools to enhance your overall health and happiness. Your wellness adventure starts here!';
         $event->start_date = '2023-10-01';
         $event->end_date = '2023-10-07';
         $event->event_status = 'PENDING';
@@ -173,11 +237,13 @@ class EventSeeder extends Seeder
         $event->attendees_limit = '40';
         $event->image_url = 'event_images/image13.jpg';
         $event->user_id = '2';
-        $event->description = 'Celebrate the world of literature at the Literary Festival, where renowned authors, poets, and storytellers share their creative journeys.';
+        $event->description = 'Immerse Yourself in Creativity at the Literary Festival: Words & Imagination. Embark on a captivating literary journey at the "Words & Imagination" Literary Festival, set to take place at the esteemed Library Hall in Dublin from September 20th to 23rd, 2023. This four-day celebration of literature, ideas, and artistic expression promises to be a haven for book enthusiasts, writers, and creative minds.';
         $event->start_date = '2023-09-20';
         $event->end_date = '2023-09-23';
         $event->event_status = 'DRAFTED';
         $event->save();
+
+
 
         $eventImages = [
             'event_images/image14.jpg',

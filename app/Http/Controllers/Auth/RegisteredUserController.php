@@ -32,19 +32,33 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'student_id' => ['required', 'unique:users,student_id'], 
+            'student_id' => ['required', 'unique:users,student_id'],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'student_id' => $request->student_id,
-            'faculty' => $request->faculty,
-            'college_year' => $request->college_year,
-        ]);
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->student_id = $request->student_id;
+        $user->faculty = $request->faculty;
+        $user->college_year = $request->college_year;
+
+        //code for remove old file
+        if ($user->image_url != ''  && $user->image_url != null && $user->image_url != "user_images/default.png") {
+            $file_old = storage_path('/app/public/' . $user->image_url);
+            unlink($file_old);
+        }
+        // upload new file
+        if ($request->hasFile('image_url')) {
+            $path = $request->file('image_url')->store('user_images', 'public');
+        } else {
+            $path = "user_images/default.png";
+        }
+        $user->image_url = $path;
+
+        $user->save();
 
         event(new Registered($user));
 
