@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Certificate;
 use App\Models\Task;
 use Database\Factories\TaskFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -196,6 +197,20 @@ class TaskSeeder extends Seeder
                 "created_by" => 2,
             ],
         ];
+
+
+        $cert = new Certificate();
+        $cert->event_id = 3;
+        $cert->user_id = 2;
+        $cert->image_url = 'certificate_images/cert.png';
+        $cert->save();
+
+        $cert = new Certificate();
+        $cert->event_id = 5;
+        $cert->user_id = 2;
+        $cert->image_url = 'certificate_images/cert.png';
+        $cert->save();
+
 
         foreach ($tasks as $taskData) {
             $task = new Task();

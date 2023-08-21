@@ -1,15 +1,14 @@
 @extends('layouts.main')
 
 @section('content')
-    <div >
+    <div>
         <!-- Testimonials -->
-        <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div class="max-w-[85rem] mx-30 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
             <!-- Grid -->
-            <div class="md:grid md:grid-cols-2 md:gap-10 lg:gap-16 md:items-left">
+            <div class="md:grid md:grid-cols-2 md:gap-10 lg:gap-16 md:items-center">
                 <div class="hidden md:block mb-24 md:mb-0 sm:px-6">
-                    <div class="relative">
-                        <img class="rounded-xl"
-                            src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=500&h=600&q=80"
+                    <div class="flex justify-end">
+                        <img class="rounded-xl max-h-[520px]" src="{{ asset('storage/' . auth()->user()->image_url) }}"
                             alt="Image Description">
                     </div>
                 </div>
@@ -42,32 +41,26 @@
                                     <div class="relative z-10">
                                         <h1
                                             class="text-3xl text-gray-800 font-bold md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight dark:text-gray-200">
-                                            Nicole <span class="text-blue-600 dark:text-blue-500">Grazioso</span>
+                                            <span class="text-blue-600 dark:text-blue-500">{{ auth()->user()->name }}</span>
                                         </h1>
-
-                                        <p
-                                            class="text-sm text-gray-800 md:text-2xl md:leading-normal xl:text-sm xl:leading-normal dark:text-gray-200">
-                                            Year 3
-                                        </p>
-
-                                        <p
-                                            class="text-sm text-gray-800 md:text-2xl md:leading-normal xl:text-sm xl:leading-normal dark:text-gray-200">
-                                            Faculty of Science (if show)
-                                        </p>
-
-                                        <div>
-                                            <button
-                                                class="text-sm underline text-gray-800 md:text-sm md:leading-normal xl:text-sm xl:leading-normal dark:text-gray-200">
-                                                Facebook
-                                            </button>
+                                        <div class="p-8">
+                                            <p
+                                                class="text-xl font-bold text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200">
+                                                College Year: {{ auth()->user()->college_year }}
+                                            </p>
+                                            <p
+                                                class="text-xl font-bold text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200">
+                                                Faculty of {{ auth()->user()->faculty }}
+                                            </p>
+                                            <p
+                                                class="text-xl font-bold text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200">
+                                                Student ID: {{ auth()->user()->student_id }}
+                                            </p>
+                                            <p
+                                                class="text-xl font-bold text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200">
+                                                Phone Number: {{ auth()->user()->phone_number }}
+                                            </p>
                                         </div>
-                                        <div>
-                                            <button
-                                                class="text-sm underline text-gray-800 md:text-sm md:leading-normal xl:text-sm xl:leading-normal dark:text-gray-200">
-                                                Instagram
-                                            </button>
-                                        </div>
-
                                     </div>
                     </footer>
 
