@@ -27,36 +27,75 @@
                         <p class="mt-3 text-lg text-gray-800 line-clamp-2">{{ $event->description }}</p>
 
                         <!-- Buttons -->
-                        @can('joinEvent', $event)
-                            <div class="grid w-full gap-3 mt-7 sm:inline-flex">
-                                <form action="{{ route('events.join-event', ['event' => $event]) }}" method="POST">
-                                    @csrf
-                                    <button type="submit"
-                                        class="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white transition bg-blue-600 border border-transparent rounded-md gap-x-3 lg:text-base hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
-                                        href="#">
-                                        Join event
-                                        <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16"
-                                            fill="none">
-                                            <path
-                                                d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                                        </svg>
-                                    </button>
-                                </form>
-                            </div>
-                        @else
+
+                        @if ($event->isFull())
+                            {{-- Full --}}
                             <button type="submit"
                                 class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm text-center text-gray-500 transition bg-white border border-transparent rounded-md shadow-lg cursor-not-allowed fonot-medium gap-x-3 lg:text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
                                 disabled>
-                                Join event
+                                Event is full
                                 <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <path
                                         d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
                                         stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                                 </svg>
                             </button>
-                        @endcan
+                        @else
+                            {{-- Disable --}}
+                            @if (auth()->user()->isMember || auth()->user()->isOfficer)
+                                <button type="submit"
+                                    class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm text-center text-gray-500 transition bg-white border border-transparent rounded-md shadow-lg cursor-not-allowed fonot-medium gap-x-3 lg:text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
+                                    disabled>
+                                    Join event
+                                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path
+                                            d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                    </svg>
+                                </button>
+                            @else
+                                @if (!$event->attendees->contains(auth()->user()))
+                                    {{-- Leave --}}
+                                    <form action="{{ route('events.leave-event', ['event' => $event]) }}" method="POST">
+                                        @csrf
+                                        <button type="submit"
+                                            class="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white transition bg-red-600 border border-transparent rounded-md gap-x-3 lg:text-base hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
+                                            href="#">
+                                            Leave event
+                                            <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16"
+                                                fill="none">
+                                                <path
+                                                    d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                    {{-- End Leave --}}
+                                @else
+                                    {{-- Normal Join --}}
+                                    <div class="grid w-full gap-3 mt-7 sm:inline-flex">
+                                        <form action="{{ route('events.join-event', ['event' => $event]) }}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                class="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white transition bg-blue-600 border border-transparent rounded-md gap-x-3 lg:text-base hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
+                                                href="#">
+                                                Join event
+                                                <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16"
+                                                    fill="none">
+                                                    <path
+                                                        d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                @endif
+                            @endif
+                        @endif
+
                         <!-- End Buttons -->
+
 
                         <!-- Items -->
                         <div class="grid grid-cols-2 mt-6 lg:mt-10 gap-x-5">
@@ -191,7 +230,7 @@
                                         d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
                                     </path>
                                 </svg>
-                                
+
                                 Delete event
                             </button>
                         </form>
