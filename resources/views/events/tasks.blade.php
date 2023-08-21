@@ -630,13 +630,6 @@
                                 @enderror
                             </div>
 
-                            {{-- Assignee --}}
-                            <label for="assignee_id"
-                                class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                                Assignee Student ID</label>
-                            <input id="assignee_id" name="assignee_id"
-                                class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border"
-                                placeholder="641040xxxx" />
 
                             {{-- Due Date --}}
                             <div class="space-y-2 mb-5 text-sm font-medium text-gray-800  dark:text-gray-200">

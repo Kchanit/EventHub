@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $user->name = 'John Doe01';
         $user->email = 'user01@gmail.com';
         $user->password = '1234';
-        $user->student_id = 'B6012345';
+        $user->student_id = '6012345';
         $user->faculty = 'Science';
         $user->college_year = '3';
         $user->image_url = 'user_images/image1.jpg';
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
         $user->name = 'Jane Doe02';
         $user->email = 'user02@gmail.com';
         $user->password = '1234';
-        $user->student_id = 'B6012346';
+        $user->student_id = '6012346';
         $user->faculty = 'Engineering';
         $user->college_year = '2';
         $user->image_url = 'user_images/image2.jpg';
@@ -40,13 +40,13 @@ class UserSeeder extends Seeder
         $user->name = 'user03';
         $user->email = 'user03@gmail.com';
         $user->password = '1234';
-        $user->student_id = 'B6012347';
+        $user->student_id = '6012347';
         $user->faculty = 'Science';
         $user->college_year = '3';
         $user->image_url = 'user_images/image3.jpg';
         $user->phone_number = '0842341234';
         $user->save();
-        
+
         // officer
         $user = new User();
         $user->name = 'officer01';
