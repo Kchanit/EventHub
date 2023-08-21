@@ -174,16 +174,13 @@
                     class=" rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300  bg-white  duration-150 hover:-translate-y-1">
                     <!-- Clickable Area -->
                     <a href=" {{ route('events.show', ['event' => $event]) }} ">
-                        <figure class="group relative">
-                            {{-- Image from upload --}}
-                            {{-- <img class="bg-gray-300  h-full w-full object-cover z-0"
-                                src="{{ asset('storage/' . $event->image_url) }}" /> --}}
+                        <figure class="group relative flex flex-col h-full">
 
                             <!-- Image -->
                             <img class="bg-gray-300 h-full w-full object-cover z-0"
                                 src="{{ asset('storage/' . $event->image_url) }}" />
 
-                            <div class="px-4 py-2">
+                            <div id="data" class="px-4 py-2 flex flex-col justify-between">
                                 <div class="flex justify-between items-center">
                                     {{-- Date --}}
                                     @if ($event->end_date === null)
@@ -261,16 +258,13 @@
                     class=" rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300  bg-white  duration-150 hover:-translate-y-1">
                     <!-- Clickable Area -->
                     <a href=" {{ route('events.show', ['event' => $event]) }} ">
-                        <figure class="group relative">
-                            {{-- Image from upload --}}
-                            {{-- <img class="bg-gray-300  h-full w-full object-cover z-0"
-                                src="{{ asset('storage/' . $event->image_url) }}" /> --}}
+                        <figure class="group relative flex flex-col h-full">
 
                             <!-- Image -->
                             <img class="bg-gray-300 h-full w-full object-cover z-0"
                                 src="{{ asset('storage/' . $event->image_url) }}" />
 
-                            <div class="px-4 py-2">
+                            <div id="data" class="px-4 py-2 flex flex-col justify-between">
                                 <div class="flex justify-between items-center">
                                     {{-- Date --}}
                                     @if ($event->end_date === null)

@@ -151,7 +151,7 @@ class EventSeeder extends Seeder
         $event->user_id = '2';
         $event->description = 'Explore groundbreaking scientific discoveries and innovations at the Science Fair, where knowledge meets curiosity.';
         $event->start_date = '2023-09-11';
-        $event->event_status = 'PENDING';
+        $event->event_status = 'DRAFTED';
         $event->save();
 
         // Drafted events
@@ -164,14 +164,14 @@ class EventSeeder extends Seeder
         $event->description = 'Discover holistic well-being at the Health and Wellness Expo, featuring expert speakers, fitness workshops, and natural products.';
         $event->start_date = '2023-10-01';
         $event->end_date = '2023-10-07';
-        $event->event_status = 'DRAFTED';
+        $event->event_status = 'PENDING';
         $event->save();
 
         $event = new Event();
         $event->title = 'Literary Festival: Words & Imagination';
         $event->location = 'Library Hall, Dublin';
         $event->attendees_limit = '40';
-        $event->image_url = 'event_images/image13.png';
+        $event->image_url = 'event_images/image13.jpg';
         $event->user_id = '2';
         $event->description = 'Celebrate the world of literature at the Literary Festival, where renowned authors, poets, and storytellers share their creative journeys.';
         $event->start_date = '2023-09-20';

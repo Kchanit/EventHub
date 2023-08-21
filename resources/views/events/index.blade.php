@@ -217,7 +217,7 @@
         <!-- End Grid -->
 
         {{-- Pagination --}}
-        <div class="flex justify-center gap-x-5">
+        <div class="flex justify-center mt-10">
             {{ $events->links() }}
         </div>
         {{--  --}}
