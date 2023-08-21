@@ -42,7 +42,8 @@
                             </button>
                         @else
                             {{-- Disable --}}
-                            @if (auth()->user()->isMember || auth()->user()->isOfficer)
+                            @if (auth()->user()->isMember($event) ||
+                                    auth()->user()->isOfficer())
                                 <button type="submit"
                                     class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm text-center text-gray-500 transition bg-white border border-transparent rounded-md shadow-lg cursor-not-allowed fonot-medium gap-x-3 lg:text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
                                     disabled>
@@ -55,11 +56,13 @@
                                     </svg>
                                 </button>
                             @else
-                                @if (!$event->attendees->contains(auth()->user()))
+                                @if ($event->attendees->contains(auth()->user()))
                                     {{-- Leave --}}
-                                    <form action="{{ route('events.leave-event', ['event' => $event]) }}" method="POST">
+                                    <div class="grid w-full gap-3 mt-7 sm:inline-flex">
+                                    <form name="leave-event-form" action="{{ route('events.leave-event', ['event' => $event]) }}"
+                                        method="POST">
                                         @csrf
-                                        <button type="submit"
+                                        <button type="button" id="leave-btn" onclick="fadeIn(leaveModal)"
                                             class="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white transition bg-red-600 border border-transparent rounded-md gap-x-3 lg:text-base hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
                                             href="#">
                                             Leave event
@@ -71,13 +74,15 @@
                                             </svg>
                                         </button>
                                     </form>
+                                </div>
                                     {{-- End Leave --}}
                                 @else
                                     {{-- Normal Join --}}
                                     <div class="grid w-full gap-3 mt-7 sm:inline-flex">
-                                        <form action="{{ route('events.join-event', ['event' => $event]) }}" method="POST">
+                                        <form name="join-event-form"
+                                            action="{{ route('events.join-event', ['event' => $event]) }}" method="POST">
                                             @csrf
-                                            <button type="submit"
+                                            <button type="button" id="join-btn" onclick="fadeIn(joinModal)"
                                                 class="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white transition bg-blue-600 border border-transparent rounded-md gap-x-3 lg:text-base hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
                                                 href="#">
                                                 Join event
@@ -181,32 +186,9 @@
                     </div>
                 </dl>
 
-                {{-- Buttons --}}
-                @can('joinEvent', $event)
-                    @if (auth()->check())
-                        @if ($event->attendees->contains(auth()->user()))
-                            <form action="{{ route('events.leave-event', ['event' => $event]) }}" method="POST">
-                                @csrf
-                                <button type="submit"
-                                    class="inline-flex items-center text-white bg-red-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                    Leave event
-                                </button>
-                            </form>
-                        @else
-                            <form action="{{ route('events.join-event', ['event' => $event]) }}" method="POST">
-                                @csrf
-                                <button type="submit"
-                                    class="inline-flex items-center text-white bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                    Join event
-                                </button>
-                            </form>
-                        @endif
-                    @endif
-                @endcan
-
                 @can('update', $event)
                     <div class="flex flex-col items-end space-y-4">
-
+                        {{-- edit --}}
                         <a href="{{ route('events.edit', $event) }}"
                             class="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-gray-700 align-middle transition-all bg-white border rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -214,10 +196,9 @@
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                             </svg>
-
                             Edit event
                         </a>
-
+                        {{-- delete --}}
                         <form id="delete-event-form" action="{{ route('events.destroy', $event) }}" method="POST">
                             @csrf
                             @method('DELETE')
@@ -230,7 +211,6 @@
                                         d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
                                     </path>
                                 </svg>
-
                                 Delete event
                             </button>
                         </form>
@@ -245,7 +225,7 @@
     </section>
 
 
-    {{-- modal --}}
+    {{-- delete modal --}}
     <div id="modal"
         class="hidden w-full h-full justify-center fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto backdrop-brightness-75 ">
         <div class="self-center md:max-w-2xl md:w-full m-3 md:mx-auto">
@@ -305,7 +285,130 @@
             </div>
         </div>
     </div>
-    {{-- end modal --}}
+    {{-- end del modal --}}
+    {{-- join modal --}}
+    <div id="join-modal"
+        class="hidden w-full h-full justify-center fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto backdrop-brightness-75 ">
+        <div class="self-center md:max-w-2xl md:w-full m-3 md:mx-auto">
+            <div
+                class="relative flex flex-col bg-white border shadow-sm rounded-xl overflow-hidden dark:bg-gray-800 dark:border-gray-700">
+                <div class="absolute top-2 right-2">
+                    <button type="button" id="close" onclick="fadeOut(joinModal)"
+                        class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="p-4 sm:p-10 overflow-y-auto">
+                    <div class="flex gap-x-4 md:gap-x-7">
+                        <!-- Icon -->
+                        <span
+                            class="flex-shrink-0 inline-flex justify-center items-center w-[46px] h-[46px] sm:w-[62px] sm:h-[62px] rounded-full border-4 border-blue-50 bg-blue-100 text-blue-500 dark:bg-blue-700 dark:border-blue-600 dark:text-blue-100">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 7.75C11.3787 7.75 10.875 8.25368 10.875 8.875C10.875 9.28921 10.5392 9.625 10.125 9.625C9.71079 9.625 9.375 9.28921 9.375 8.875C9.375 7.42525 10.5503 6.25 12 6.25C13.4497 6.25 14.625 7.42525 14.625 8.875C14.625 9.58584 14.3415 10.232 13.883 10.704C13.7907 10.7989 13.7027 10.8869 13.6187 10.9708C13.4029 11.1864 13.2138 11.3753 13.0479 11.5885C12.8289 11.8699 12.75 12.0768 12.75 12.25V13C12.75 13.4142 12.4142 13.75 12 13.75C11.5858 13.75 11.25 13.4142 11.25 13V12.25C11.25 11.5948 11.555 11.0644 11.8642 10.6672C12.0929 10.3733 12.3804 10.0863 12.6138 9.85346C12.6842 9.78321 12.7496 9.71789 12.807 9.65877C13.0046 9.45543 13.125 9.18004 13.125 8.875C13.125 8.25368 12.6213 7.75 12 7.75ZM12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17Z"
+                                        fill="#1593f4"></path>
+                                </g>
+                            </svg>
+                        </span>
+                        <!-- End Icon -->
+                        <div class="grow">
+                            <h3 class="mb-2 text-xl font-bold text-gray-800 dark:text-gray-200">
+                                Join Event
+                            </h3>
+                            <p class="text-gray-500">
+                                Are you sure you want to join this event?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="flex justify-end items-center gap-x-2 py-3 px-4 bg-gray-50 border-t dark:bg-gray-800 dark:border-gray-700">
+                    <button type="button" id="cancel" onclick="fadeOut(joinModal)"
+                        class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                        data-hs-overlay="#hs-danger-alert">
+                        Cancel
+                    </button>
+                    <button
+                        class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                        onclick="fadeOut(joinModal);validateJoinForm();">
+                        Join Event
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- end join modal --}}
+    {{-- leave modal --}}
+    <div id="leave-modal"
+        class="hidden w-full h-full justify-center fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto backdrop-brightness-75 ">
+        <div class="self-center md:max-w-2xl md:w-full m-3 md:mx-auto">
+            <div
+                class="relative flex flex-col bg-white border shadow-sm rounded-xl overflow-hidden dark:bg-gray-800 dark:border-gray-700">
+                <div class="absolute top-2 right-2">
+                    <button type="button" id="close" onclick="fadeOut(leaveModal)"
+                        class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="p-4 sm:p-10 overflow-y-auto">
+                    <div class="flex gap-x-4 md:gap-x-7">
+                        <!-- Icon -->
+                        <span
+                            class="flex-shrink-0 inline-flex justify-center items-center w-[46px] h-[46px] sm:w-[62px] sm:h-[62px] rounded-full border-4 border-red-50 bg-red-100 text-red-500 dark:bg-red-700 dark:border-red-600 dark:text-red-100">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg>
+                        </span>
+                        <!-- End Icon -->
+
+                        <div class="grow">
+                            <h3 class="mb-2 text-xl font-bold text-gray-800 dark:text-gray-200">
+                                Leave Event
+                            </h3>
+                            <p class="text-gray-500">
+                                Are you sure you want to leave this event?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="flex justify-end items-center gap-x-2 py-3 px-4 bg-gray-50 border-t dark:bg-gray-800 dark:border-gray-700">
+                    <button type="button" id="cancel" onclick="fadeOut(leaveModal)"
+                        class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                        data-hs-overlay="#hs-danger-alert">
+                        Cancel
+                    </button>
+                    <button
+                        class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                        onclick="fadeOut(leaveModal);validateLeaveForm()">
+                        Leave Event
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- end leave modal --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script>
@@ -340,6 +443,8 @@
         window.addEventListener('load', updateCountdown);
         // Get the modal
         var modal = document.getElementById("modal");
+        var joinModal = document.getElementById("join-modal");
+        var leaveModal = document.getElementById("leave-modal");
         // Get the button that opens the modal
         var btn = document.getElementById("myBtn");
         // Get the <span> element that closes the modal
@@ -392,11 +497,40 @@
 
         function validateForm() {
             event.preventDefault(); // prevent form submit
-            var form = document.forms["myForm"]; // storing the form
+            var form = document.forms["delete-event-form"]; // storing the form
             Swal.fire({
                 position: 'center',
                 icon: 'success',
                 title: 'Deleted!',
+                showConfirmButton: false,
+                timer: 1000
+            })
+            setTimeout(function() {
+                form.submit();
+            }, 1200);
+        }
+
+        function validateJoinForm() {
+            event.preventDefault(); // prevent form submit
+            var form = document.forms["join-event-form"]; // storing the form
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Join!',
+                showConfirmButton: false,
+                timer: 1000
+            })
+            setTimeout(function() {
+                form.submit();
+            }, 1200);
+        }
+        function validateLeaveForm() {
+            event.preventDefault(); // prevent form submit
+            var form = document.forms["leave-event-form"]; // storing the form
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Leave!',
                 showConfirmButton: false,
                 timer: 1000
             })

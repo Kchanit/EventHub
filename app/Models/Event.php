@@ -46,8 +46,8 @@ class Event extends Model
         return $query->where('event_status', EventStatus::PUBLISHED);
     }
 
-    public function isFull()
+    public function isFull(): bool
     {
-        return $this->attendees()->count() >= $this->max_attendees;
+        return $this->attendees()->count() >= $this->attendees_limit;
     }
 }
