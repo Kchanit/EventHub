@@ -24,6 +24,8 @@ class EventController extends Controller
 
     public function search(Request $request)
     {
+        $events = Event::published()->get();
+        $promos = $events->random(3);
         if ($request->ajax()) {
 
             $output = '';
@@ -62,7 +64,7 @@ class EventController extends Controller
             }
         }
 
-        return view('events.index', ['events' => Event::published()->get()]);
+        return view('events.index', ['events' => Event::published()->get(), 'promos' => $promos]);
     }
 
     public function show(Event $event)
