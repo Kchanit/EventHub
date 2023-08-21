@@ -37,7 +37,7 @@ class EventSeeder extends Seeder
         $event->image_url = 'event_images/image2.jpg';
         $event->user_id = '2';
         $event->description = 'LE SSERAFIM TOUR FLAME RISES IN BANGKOK is a concert that will be held in Bangkok, Thailand. The concert will feature the band LE SSERAFIM, who are known for their energetic performances and catchy songs. They have been touring around Asia since 2015, and this will be their first time performing in Thailand.';
-        $event->start_date = '2023-09-04';
+        $event->start_date = '2023-06-04';
         $event->event_status = 'PUBLISHED';
         $event->save();
 
@@ -49,7 +49,7 @@ class EventSeeder extends Seeder
         $event->image_url = 'event_images/image3.jpg';
         $event->user_id = '3';
         $event->description = 'For the first time in Thailand, prepare yourself for an extraordinary journey into the heart of Middle-earth! Join the brave hobbits from the Shire, accompanied by their valiant allies, as they strive to protect the One Ring from the clutches of the ominous Dark Lord of Mordor. Experience an immersive musical extravaganza, brought to life by the talented Thailand Philharmonic Orchestra with over 100 musicians performing on an array of rare instruments. This is complemented by a majestic choir of 150 voices, all contributing to a breathtaking symphony that spans over 3 hours (with intermissions).';
-        $event->start_date = '2023-06-05';
+        $event->start_date = '2022-06-05';
         $event->event_status = 'PUBLISHED';
         $event->save();
 
@@ -77,10 +77,10 @@ FOR ENQUIRIES: rcbexhibition@rivercity.co.th
         $event->location = 'City Art Gallery, New York';
         $event->attendees_limit = '20';
         $event->image_url = 'event_images/image5.jpg';
-        $event->user_id = '2';
+        $event->user_id = '3';
         $event->description = 'Step into a world where emotions and creativity intertwine, where canvases burst forth with vibrant hues, and where every stroke of a brush unveils a myriad of emotions. Welcome to the mesmerizing realm of the "Colors of Expression" art exhibition – a captivating journey through the kaleidoscope of human feelings translated onto canvas, presented with finesse and mastery.';
-        $event->start_date = '2023-10-20';
-        $event->end_date = '2023-04-25';
+        $event->start_date = '2023-04-20';
+        $event->end_date = '2023-06-25';
         $event->event_status = 'PUBLISHED';
         $event->save();
 
@@ -288,12 +288,13 @@ Event Organizer
         Event::where('id', '=', 4)->each(function ($event) use ($users) {
             $event->attendees()->detach();
         });
-        Event::where('id', '=', 3)->each(function ($event) use ($users) {
-            $event->attendees()->attach($users->where('id', '=', 2)->pluck('id')->toArray());
-        });
-        Event::where('id', '=', 5)->each(function ($event) use ($users) {
-            $event->attendees()->attach($users->where('id', '=', 2)->pluck('id')->toArray());
-        });
+        $users = User::all();
+        $event3 = Event::find(3); // Find the event with id 3
+        $event3->attendees()->attach($users->firstWhere('id', 2));
+
+        $event5 = Event::find(5); // Find the event with id 5
+        $event5->attendees()->attach($users->firstWhere('id', 2));
+
         // random attendees
         Event::where('id', '>', 4)->each(function ($event) use ($users) {
             $event->attendees()->attach(
