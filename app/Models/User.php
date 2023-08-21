@@ -79,4 +79,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Certificate::class, 'user_id');
     }
+
+    public function isMember(Event $event): bool
+    {
+        return $this->id === $event->user_id
+            || $event->members->contains($this);
+    }
 }

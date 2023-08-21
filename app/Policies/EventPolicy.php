@@ -74,12 +74,12 @@ class EventPolicy
 
     public function joinEvent(User $user, Event $event): bool
     {
-        return 
-        // ($event->date > now())
+        return
+            // ($event->date > now())
             // && ($event->attendees()->count() < $event->attendees_limit)
             // && (!$event->attendees()->where('user_id', $user->id)->exists())
             // && 
-            (Auth::user()->id != $event->user_id);
+            !$user->isMember($event) && !$user->isOfficer();
     }
 
     public function member(User $user, Event $event): bool

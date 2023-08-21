@@ -1,6 +1,72 @@
 @extends('layouts.main')
 
 @section('content')
+    <section>
+        <div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
+            <header class="text-center">
+                <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">
+                    New Events
+                </h2>
+
+                <p class="max-w-md mx-auto mt-4 text-gray-500">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
+                    praesentium cumque iure dicta incidunt est ipsam, officia dolor fugit
+                    natus?
+                </p>
+            </header>
+
+            <ul class="grid grid-cols-1 gap-4 mt-8 lg:grid-cols-3">
+                <li>
+                    <a href="{{ route('events.show', ['event' => $promos[0]]) }}" class="relative block group">
+                        <img src="{{ asset('storage/' . $promos[0]->image_url) }}" alt=""
+                            class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90" />
+
+                        <div class="absolute inset-0 flex flex-col items-start justify-end p-6">
+                            <h3 class="text-xl font-medium text-white">{{ $promos[0]->title }}</h3>
+
+                            <span
+                                class="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+                                Join Now
+                            </span>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('events.show', ['event' => $promos[1]]) }}" class="relative block group">
+                        <img src="{{ asset('storage/' . $promos[1]->image_url) }}" alt=""
+                            class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90" />
+
+                        <div class="absolute inset-0 flex flex-col items-start justify-end p-6">
+                            <h3 class="text-xl font-medium text-white">{{ $promos[1]->title }}</h3>
+
+                            <span
+                                class="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+                                Join Now
+                            </span>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+                    <a href="{{ route('events.show', ['event' => $promos[2]]) }}" class="relative block group">
+                        <img src="{{ asset('storage/' . $promos[2]->image_url) }}" alt=""
+                            class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90" />
+
+                        <div class="absolute inset-0 flex flex-col items-start justify-end p-6">
+                            <h3 class="text-xl font-medium text-white">{{ $promos[2]->title }}</h3>
+
+                            <span
+                                class="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+                                Join Now
+                            </span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
     <!-- Event Cards -->
     <div class="max-w-[64rem] sm:px-6 lg:px-1 lg:py-5 mx-auto">
         {{-- Header --}}
@@ -152,29 +218,32 @@
     </div>
     <!-- End Card Blog -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<script type="text/javascript">
-    $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-</script>
-
-<script>
-
-    $(document).ready(function () {
-        $('#search').on('keyup', function(){
-            var value = $(this).val();
-            $.ajax({
-                type: "get",
-                url: "/search",
-                data: {'search':value},
-                success: function (data) {
-                    $('.mycard').html(data);
-                }
-            });
-
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'csrftoken': '{{ csrf_token() }}'
+            }
         });
-    });
+    </script>
 
-</script>
-    
+    <script>
+        $(document).ready(function() {
+            $('#search').on('keyup', function() {
+                var value = $(this).val();
+                $.ajax({
+                    type: "get",
+                    url: "/search",
+                    data: {
+                        'search': value
+                    },
+                    success: function(data) {
+                        $('.mycard').html(data);
+                    }
+                });
+
+            });
+        });
+    </script>
 @endsection

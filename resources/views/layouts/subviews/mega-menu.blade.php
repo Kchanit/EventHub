@@ -45,8 +45,8 @@
                 {{--  --}}
                 <div class="relative group">
                     <div>
-                        <a class="flex items-center gap-x-3.5 py-2.5 px-3.5 text-sm transition-all duration-200 ease-in-out text-slate-700 rounded-xl hover:bg-blue-800  hover:text-gray-900 hover:text-opacity-100 hover:shadow-md hover:bg-opacity-10  focus:outline-none focus:ring-1 focus:ring-gray-300 "
-                            href="{{ route('events.attended-events') }}">
+                        <a
+                            class="flex items-center gap-x-3.5 py-2.5 px-3.5 text-sm transition-all duration-200 ease-in-out text-slate-700 rounded-xl hover:bg-blue-800  hover:text-gray-900 hover:text-opacity-100 hover:shadow-md hover:bg-opacity-10  focus:outline-none focus:ring-1 focus:ring-gray-300 ">
                             <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" viewBox="0 0 16 16">
                                 <path
@@ -75,7 +75,7 @@
                                         </path>
                                     </svg>
                                     <div>
-                                        
+
                                         <p class="font-semibold">
                                             Upcoming Events
                                         </p>
@@ -384,4 +384,3 @@
         </div>
     </nav>
 </header>
-

@@ -18,7 +18,8 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::published()->get();
-        return view('events.index', ['events' => $events]);
+        $promos = $events->random(3);
+        return view('events.index', ['events' => $events, 'promos' => $promos]);
     }
 
     public function search(Request $request)
@@ -37,25 +38,25 @@ class EventController extends Controller
                 foreach ($events as $event) {
 
                     $output .=
-                    '<div class="rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300  bg-white  duration-150 hover:-translate-y-1">' .
-                        ' <a href="'. route("events.show", ["event" => $event]) .'">' .
-                            '<figure class="group relative">' . 
-                                '<img class="bg-gray-300  h-full w-full object-cover z-0" src="'. asset('storage/' . $event->image_url) . '" />'.
-                                '<div class="px-4 py-2">'.
-                                    '<span class="block text-xs font-semibold uppercase text-blue-600 ">'.
-                                            date('d F', strtotime($event->date)).
-                                    '</span>'.
-                                    '<p class="text-lg font-bold leading-5 line-clamp-2 mt-1 text-gray-800 ">'. 
-                                            $event->title. 
-                                    '</p>
-                                    <p class="text-gray-500 leading-4 mt-1">'.
-                                            $event->location.
-                                    '</p>
+                        '<div class="rounded-3xl overflow-hidden shadow-lg h-[28rem] shadow-gray-300  bg-white  duration-150 hover:-translate-y-1">' .
+                        ' <a href="' . route("events.show", ["event" => $event]) . '">' .
+                        '<figure class="group relative">' .
+                        '<img class="bg-gray-300  h-full w-full object-cover z-0" src="' . asset('storage/' . $event->image_url) . '" />' .
+                        '<div class="px-4 py-2">' .
+                        '<span class="block text-xs font-semibold uppercase text-blue-600 ">' .
+                        date('d F', strtotime($event->date)) .
+                        '</span>' .
+                        '<p class="text-lg font-bold leading-5 line-clamp-2 mt-1 text-gray-800 ">' .
+                        $event->title .
+                        '</p>
+                                    <p class="text-gray-500 leading-4 mt-1">' .
+                        $event->location .
+                        '</p>
                                 </div
                             </figure>
                         </a>
-                    </div>'
-                ;}
+                    </div>';
+                }
 
                 return response()->json($output);
             }
@@ -142,10 +143,10 @@ class EventController extends Controller
     {
         // ตรวจสอบสิทธิ์ว่าผู้ใช้สามารถลบ event นี้ได้หรือไม่ (ใช้ Policy หรือตรวจสอบอื่น ๆ)
         $this->authorize('delete', $event);
-    
+
         // ลบ event
         $event->delete();
-    
+
         return redirect()->route('events.index')->with('success', 'Event has been deleted successfully.');
     }
 
