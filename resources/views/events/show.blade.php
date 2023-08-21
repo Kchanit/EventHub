@@ -2,8 +2,19 @@
 
 @section('content')
 
-    <section class="bg-white">
-        <div class="py-2 px-8 mx-auto">
+    <section class="bg-white relative   ">
+        <!-- Gradients -->
+        <div aria-hidden="true" class="flex absolute -top-96 left-1/2 transform -translate-x-1/2">
+            <div
+                class="bg-gradient-to-r from-violet-300/50 to-purple-100 -z-40 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem] dark:from-violet-900/50 dark:to-purple-900">
+            </div>
+            <div
+                class="bg-gradient-to-tl from-blue-50 via-blue-100 to-blue-50 -z-40 blur-3xl w-[90rem] h-[50rem] rounded-fulls origin-top-left -rotate-12 -translate-x-[15rem] dark:from-indigo-900/70 dark:via-indigo-900/70 dark:to-blue-900/70">
+            </div>
+        </div>
+        <!-- End Gradients -->
+
+        <div class="py-2 px-8 mx-auto relative">
             <!-- Hero -->
             <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 ">
                 <!-- Grid -->
@@ -36,46 +47,40 @@
                         </div>
                         <!-- End Buttons -->
 
-                        <!-- Reviews -->
+                        <!-- Items -->
                         <div class="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
-                            <!-- Card -->
-                            <div class="py-5">
-                                <div class="flex flex-col bg-white border shadow-sm rounded-xl">
-                                    <div class="p-4 md:p-5">
-                                        <div class="flex items-center gap-x-2">
-                                            <h4 class="text-xs uppercase tracking-wide text-gray-500">
-                                                Total Attendees</h4>
-                                        </div>
+                            <!-- Count Attendess Card -->
+                            <div class=" p-7 flex flex-col bg-white border shadow-sm rounded-xl">
+                                <h4 class="text-xs uppercase tracking-wide text-gray-500">
+                                    Total Attendees
+                                </h4>
 
-                                        <div class="mt-1 flex items-center">
-                                            <p class="mt-2 sm:mt-3 text-4xl sm:text-xl font-bold text-blue-500">
-                                                {{ $event->attendees->count() }}</p>
-                                        </div>
-                                    </div>
+                                <div class="mt-1 flex items-center content-center text-blue-500">
+                                    <p class="text-3xl  font-bold ">
+                                        {{ $event->attendees->count() }}
+                                    </p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22"
+                                        class="inline-block w-6 h-6 stroke-current">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
                                 </div>
                             </div>
                             <!-- End Card -->
 
-                            <!-- Card -->
-                            <div class="pt-5">
-                                <div class="flex flex-col bg-white border shadow-sm rounded-xl">
-                                    <div class="p-4 md:p-5">
-                                        <div class="flex items-center gap-x-2">
-                                            <p class="text-xs uppercase tracking-wide text-gray-500">
-                                                Countdown
-                                            </p>
-                                        </div>
-                                        <div class="mt-1 flex items-center">
-                                            <h3 id="countdown" class="text-xl sm:text-2xl font-medium text-gray-800 ">
-                                                Loading...
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
+                            <!-- Countdown Card -->
+                            <div class=" p-7 flex flex-col bg-white border shadow-sm rounded-xl">
+                                <p class="text-xs uppercase tracking-wide text-gray-500">
+                                    Countdown
+                                </p>
+
+                                <h3 id="countdown" class="text-xl sm:text-2xl font-medium text-pink-500 ">
+                                    Loading...
+                                </h3>
                             </div>
                             <!-- End Card -->
                         </div>
-                        <!-- End Reviews -->
+                        <!-- End Items -->
                     </div>
                     <!-- End Col -->
 
@@ -89,98 +94,100 @@
             </div>
             <!-- End Hero -->
 
+            <div class="flex max-w-[85rem] mt-10 mx-auto px-8 gap-x-28 ">
 
-            <dl class="max-w-4xl text-gray-900 divide-y divide-gray-200 ">
-                <div class="flex flex-col pb-3">
-                    <dt class="mb-1 text-gray-500 md:text-lg ">Date</dt>
-                    <dd class="text-lg font-semibold">{{-- Date --}}
-                        @if ($event->end_date === null)
-                            <!--Single Date -->
-                            <span class="  uppercase  ">
-                                {{ date('d F Y', strtotime($event->start_date)) }}
-                            </span>
-                        @else
-                            {{-- Multiple Dates --}}
-                            {{-- Same month --}}
-                            @if (date('m', strtotime($event->start_date)) == date('m', strtotime($event->end_date)))
+                <dl class=" text-gray-900 divide-y w-2/3 divide-gray-200 ">
+                    <div class="flex flex-col pb-3">
+                        <dt class="mb-1 text-gray-500 md:text-lg ">Date</dt>
+                        <dd class="text-lg font-semibold">{{-- Date --}}
+                            @if ($event->end_date === null)
+                                <!--Single Date -->
                                 <span class="  uppercase  ">
-                                    {{ date('d', strtotime($event->start_date)) . ' - ' . date('d F Y', strtotime($event->end_date)) }}
+                                    {{ date('d F Y', strtotime($event->start_date)) }}
                                 </span>
                             @else
-                                {{-- Diff month --}}
-                                <span class="  uppercase  ">
-                                    {{ date('d M', strtotime($event->start_date)) . ' - ' . date('d M', strtotime($event->end_date)) }}
-                                </span>
+                                {{-- Multiple Dates --}}
+                                {{-- Same month --}}
+                                @if (date('m', strtotime($event->start_date)) == date('m', strtotime($event->end_date)))
+                                    <span class="  uppercase  ">
+                                        {{ date('d', strtotime($event->start_date)) . ' - ' . date('d F Y', strtotime($event->end_date)) }}
+                                    </span>
+                                @else
+                                    {{-- Diff month --}}
+                                    <span class="  uppercase  ">
+                                        {{ date('d M', strtotime($event->start_date)) . ' - ' . date('d M', strtotime($event->end_date)) }}
+                                    </span>
+                                @endif
                             @endif
+                        </dd>
+                    </div>
+                    <div class="flex flex-col py-3">
+                        <dt class="mb-1 text-gray-500 md:text-lg ">Location</dt>
+                        <dd class="text-lg font-semibold">{{ $event->location }}</dd>
+                    </div>
+                    <div class="flex flex-col pt-3">
+                        <dt class="mb-1 text-gray-500 md:text-lg ">Description</dt>
+                        <dd class="text-lg font-semibold">{{ $event->description }}</dd>
+                    </div>
+                </dl>
+
+                {{-- Buttons --}}
+                @can('joinEvent', $event)
+                    @if (auth()->check())
+                        @if ($event->attendees->contains(auth()->user()))
+                            <form action="{{ route('events.leave-event', ['event' => $event]) }}" method="POST">
+                                @csrf
+                                <button type="submit"
+                                    class="inline-flex items-center text-white bg-red-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                    Leave event
+                                </button>
+                            </form>
+                        @else
+                            <form action="{{ route('events.join-event', ['event' => $event]) }}" method="POST">
+                                @csrf
+                                <button type="submit"
+                                    class="inline-flex items-center text-white bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                    Join event
+                                </button>
+                            </form>
                         @endif
-                    </dd>
-                </div>
-                <div class="flex flex-col py-3">
-                    <dt class="mb-1 text-gray-500 md:text-lg ">Location</dt>
-                    <dd class="text-lg font-semibold">{{ $event->location }}</dd>
-                </div>
-                <div class="flex flex-col pt-3">
-                    <dt class="mb-1 text-gray-500 md:text-lg ">Description</dt>
-                    <dd class="text-lg font-semibold">{{ $event->description }}</dd>
-                </div>
-            </dl>
-
-
-
-
-            @can('joinEvent', $event)
-                @if (auth()->check())
-                    @if ($event->attendees->contains(auth()->user()))
-                        <form action="{{ route('events.leave-event', ['event' => $event]) }}" method="POST">
-                            @csrf
-                            <button type="submit"
-                                class="inline-flex items-center text-white bg-red-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                Leave event
-                            </button>
-                        </form>
-                    @else
-                        <form action="{{ route('events.join-event', ['event' => $event]) }}" method="POST">
-                            @csrf
-                            <button type="submit"
-                                class="inline-flex items-center text-white bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                Join event
-                            </button>
-                        </form>
                     @endif
-                @endif
-            @endcan
+                @endcan
 
-            @can('update', $event)
-                <div class="flex items-center space-x-4">
-                    <a href="{{ route('events.edit', $event) }}"
-                        class="text-white inline-flex items-center bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                        <svg aria-hidden="true" class="mr-1 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
-                            <path fill-rule="evenodd"
-                                d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        Edit
-                    </a>
+                @can('update', $event)
+                    <div class="flex flex-col items-end space-y-4">
 
-                    <form id="delete-event-form" action="{{ route('events.destroy', $event) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="button"
-                            onclick="event.preventDefault(); document.getElementById('delete-event-form').submit();"
-                            class="inline-flex items-center text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">
-                            <svg aria-hidden="true" class="w-5 h-5 mr-1.5 -ml-1" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                    clip-rule="evenodd"></path>
+                        <a href="{{ route('events.edit', $event) }}"
+                            class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                             </svg>
-                            Delete
-                        </button>
-                    </form>
-                </div>
-            @endcan
+
+                            Edit event
+                        </a>
+
+                        <form id="delete-event-form" action="{{ route('events.destroy', $event) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button"
+                                onclick="event.preventDefault(); document.getElementById('delete-event-form').submit();"
+                                class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-red-600 text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff"
+                                    viewBox="0 0 256 256">
+                                    <path
+                                        d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                                    </path>
+                                </svg>
+
+                                Delete event
+                            </button>
+                        </form>
+                    </div>
+                @endcan
+                {{-- End Buttons --}}
+            </div>
         </div>
     </section>
 
