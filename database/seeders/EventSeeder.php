@@ -135,7 +135,7 @@ class EventSeeder extends Seeder
         $event->title = 'Tech Symposium: Future Innovations';
         $event->location = 'Tech Hub, Singapore';
         $event->attendees_limit = '30';
-        $event->image_url = 'event_images/image9.jpg';
+        $event->image_url = 'event_images/image10.jpg';
         $event->user_id = '2';
         $event->description = 'Delve into discussions on future innovations and emerging technologies at the Tech Symposium, where experts share insights and visions.';
         $event->start_date = '2023-09-09';
@@ -146,7 +146,7 @@ class EventSeeder extends Seeder
         $event->title = 'Science Fair: Innovations Unveiled';
         $event->location = 'Science Museum, Tokyo';
         $event->attendees_limit = '20';
-        $event->image_url = 'event_images/image10.jpg';
+        $event->image_url = 'event_images/image11.jpg';
         $event->user_id = '2';
         $event->description = 'Explore groundbreaking scientific discoveries and innovations at the Science Fair, where knowledge meets curiosity.';
         $event->start_date = '2023-09-11';
@@ -158,7 +158,7 @@ class EventSeeder extends Seeder
         $event->title = 'Health and Wellness Expo';
         $event->location = 'Convention Center, Toronto';
         $event->attendees_limit = '50';
-        $event->image_url = 'event_images/image11.jpg';
+        $event->image_url = 'event_images/image12.jpg';
         $event->user_id = '2';
         $event->description = 'Discover holistic well-being at the Health and Wellness Expo, featuring expert speakers, fitness workshops, and natural products.';
         $event->start_date = '2023-10-01';
@@ -170,7 +170,7 @@ class EventSeeder extends Seeder
         $event->title = 'Literary Festival: Words & Imagination';
         $event->location = 'Library Hall, Dublin';
         $event->attendees_limit = '40';
-        $event->image_url = 'event_images/image12.jpg';
+        $event->image_url = 'event_images/image13.jpg';
         $event->user_id = '2';
         $event->description = 'Celebrate the world of literature at the Literary Festival, where renowned authors, poets, and storytellers share their creative journeys.';
         $event->start_date = '2023-09-20';
