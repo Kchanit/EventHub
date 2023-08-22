@@ -60,12 +60,10 @@
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
-                <!-- Student ID-->
-                <div class="mt-4">
+                <!-- Student ID (Disabled) -->
                     <x-input-label for="student_id" :value="__('Student ID')" />
                     <x-text-input id="student_id" class="mt-1 w-full text-sm font-medium text-gray-800  dark:text-gray-200"
-                        type="text" name="student_id" value="{{ auth()->user()->student_id }}" autofocus
-                        autocomplete="student_id" />
+                        type="text" name="student_id" value="{{ auth()->user()->student_id }}" />
                     <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
                 </div>
 
@@ -121,6 +119,15 @@
                         name="phone_number" :value="old('phone_number')" autofocus autocomplete="phone_number" />
                     <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
 
+                    <!-- Social Contacts -->
+                    <div class="mt-4">
+                        <x-input-label for="social_contact" :value="__('Social Contact (optional)')" />
+                        <x-text-input id="social_contact"
+                            class="mt-1 w-full text-sm font-medium text-gray-800  dark:text-gray-200" type="text"
+                            name="social_contact" :value="old('social_contact')" autofocus autocomplete="social_contact" />
+                        <x-input-error :messages="$errors->get('social_contact')" class="mt-2" />
+                    </div>
+
                     <!-- FB Contacts -->
                     <div class="mt-4">
                         <x-input-label for="facebook_url" :value="__('Facebook URL (optional)')" />
@@ -143,7 +150,7 @@
                         <x-input-label for="bio" :value="__('Bio')" />
                         <textarea id="bio" name="bio" rows="4"
                             class="mt-1 w-full text-sm font-medium text-gray-800 dark:text-gray-200 border-gray-200 shadow-sm rounded-lg"
-                            type="text" :value="old('bio')" placeholder="Tell them about your self." autofocus autocomplete="bio"></textarea>
+                            type="text" :value="old('bio')" placeholder="Tell them about yourself." autofocus autocomplete="bio"></textarea>
                         <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                     </div>
 

@@ -60,6 +60,11 @@
                                                 class="text-xl font-bold text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200">
                                                 Phone Number: {{ auth()->user()->phone_number }}
                                             </p>
+
+                                            <p
+                                                class="text-xl font-bold text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200">
+                                                Social Contact: {{ auth()->user()->social_contact}}
+                                            </p>
                                         </div>
                                     </div>
                     </footer>

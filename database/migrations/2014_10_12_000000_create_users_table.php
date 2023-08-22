@@ -26,6 +26,7 @@ return new class extends Migration
 
             $table->date('date_of_birth')->nullable();
             $table->string('phone_number')->nullable();
+            $table->string('social_contact')->nullable();
             $table->string('line_id')->nullable();
             $table->string('facebook_url')->nullable();
             $table->text('bio')->nullable();
