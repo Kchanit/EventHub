@@ -7,6 +7,7 @@ Welcome to EventHub!
 -   [EventHub](#eventhub)
     -   [Table of Contents](#table-of-contents)
     -   [Installation](#installation)
+    -   [Example User Data](#example-user-data)
     -   [Contributors](#contributors)
 
 ## Installation
@@ -79,6 +80,18 @@ To get started with the project, follow these steps:
     ```
     sail artisan storage:link
     ```
+
+## Example User Data
+
+1. User1
+    - email: user01@gmail.com
+    - password: 1234
+2. User2
+    - email: user02@gmail.com
+    - password: 1234
+3. Officer1
+    - officer01@gmail.com
+    - password: 1234
 
 ## Contributors
 
