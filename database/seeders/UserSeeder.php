@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Certificate;
 use App\Models\Enums\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -324,7 +325,7 @@ class UserSeeder extends Seeder
             $user->phone_number = $userData['phone'];
             $user->save();
         }
-
+       
         User::factory(100)->create();
     }
 }

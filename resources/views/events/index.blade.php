@@ -74,7 +74,7 @@
                     All Events
                 </h1>
                 <p class="text-sm text-gray-500">
-                    Events you have drafted for and have not published yet.
+                    All events that are available for you to join.
                 </p>
             </div>
 

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             EventSeeder::class,
             ExpenseSeeder::class,
             TaskSeeder::class
+            
         ]);
     }
 }

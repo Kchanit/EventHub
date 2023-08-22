@@ -43,7 +43,7 @@
                     <p class="text font-b">Home</p>
                 </a>
                 {{--  --}}
-                <div class="relative group">
+                <div class="relative group ">
                     <div>
                         <a
                             class="flex items-center gap-x-3.5 py-2.5 px-3.5 text-sm transition-all duration-200 ease-in-out text-slate-700 rounded-xl hover:bg-blue-800  hover:text-gray-900 hover:text-opacity-100 hover:shadow-md hover:bg-opacity-10  focus:outline-none focus:ring-1 focus:ring-gray-300 ">
@@ -104,6 +104,7 @@
                         </div>
                     </div>
                 </div>
+
                 {{-- Event Mangement --}}
                 <div class="relative group">
                     @if (Auth::check() && Auth::user()->role == 'OFFICER')

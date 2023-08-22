@@ -19,7 +19,7 @@ class TaskFactory extends Factory
      */
     public function definition(): array
     {   
-        $status = ['To do', 'In Progress', 'Done', 'Cancled'];
+        $status = ['To do', 'In Progress', 'Done', 'Cancelled'];
         $priority = ['Low', 'Medium', 'High', 'Urgent'];
         
         return [

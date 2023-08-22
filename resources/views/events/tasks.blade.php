@@ -324,8 +324,8 @@
                                                                                     @if ($task->status === 'Done') selected @endif>
                                                                                     Done</option>
                                                                                 <option
-                                                                                    @if ($task->status === 'Cancled') selected @endif>
-                                                                                    Cancled</option>
+                                                                                    @if ($task->status === 'Cancelled') selected @endif>
+                                                                                    Cancelled</option>
                                                                             </select>
                                                                         </div>
 
@@ -661,7 +661,7 @@
                                         <option selected>To do</option>
                                         <option>In progress</option>
                                         <option>Done</option>
-                                        <option>Cancled</option>
+                                        <option>Cancelled</option>
                                     </select>
                                 </div>
 

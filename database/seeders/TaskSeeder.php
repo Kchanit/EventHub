@@ -224,5 +224,16 @@ class TaskSeeder extends Seeder
             $task->created_by = $taskData['created_by'];
             $task->save();
         }
+        $cert = new Certificate();
+        $cert->event_id = 3;
+        $cert->user_id = 2;
+        $cert->image_url = 'certificate_images/cert.png';
+        $cert->save();
+
+        $cert = new Certificate();
+        $cert->event_id = 5;
+        $cert->user_id = 2;
+        $cert->image_url = 'certificate_images/cert.png';
+        $cert->save();
     }
 }
