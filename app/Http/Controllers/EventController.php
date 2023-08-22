@@ -176,15 +176,16 @@ class EventController extends Controller
         $event->budget_status = EventBudgetStatus::APPROVED;
         $event->event_status = EventStatus::PUBLISHED;
         $event->save();
-        return redirect()->back();
+        return redirect()->route('officer.index');
     }
 
     public function rejectBudget(Event $event)
     {
         // $this->authorize('changeEventBudgetStatus', [User::class, Event::class]);
         $event->budget_status = EventBudgetStatus::REJECTED;
+        $event->event_status = EventStatus::DRAFTED;
         $event->save();
-        return redirect()->back();
+        return redirect()->route('officer.index');
     }
 
     public function addMember(Request $request, Event $event)

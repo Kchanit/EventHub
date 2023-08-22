@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 "email" => "augue.id@yahoo.org",
                 "password" => "1234",
                 "student_id" => "6592600573",
-                "faculty" => "Humanities,",
+                "faculty" => "Humanities",
                 "college_year" => "1",
                 "image_url" => "user_images/user12.jpg",
                 "phone" => "089-739-4602"
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
                 "email" => "aliquam.eros@hotmail.couk",
                 "password" => "1234",
                 "student_id" => "6590965461",
-                "faculty" => "Medicine,",
+                "faculty" => "Medicine",
                 "college_year" => "2",
                 "image_url" => "user_images/user02.jpg",
                 "phone" => "084-876-8215"
@@ -51,7 +51,7 @@ class UserSeeder extends Seeder
                 "email" => "tempus@yahoo.ca",
                 "password" => "1234",
                 "student_id" => "6503514390",
-                "faculty" => "Agriculture,",
+                "faculty" => "Agriculture",
                 "college_year" => "4",
                 "image_url" => "user_images/user07.jpg",
                 "phone" => "083-711-8343"
@@ -61,7 +61,7 @@ class UserSeeder extends Seeder
                 "email" => "tincidunt@google.couk",
                 "password" => "1234",
                 "student_id" => "6466870930",
-                "faculty" => "Administration,",
+                "faculty" => "Administration",
                 "college_year" => "3",
                 "image_url" => "user_images/user18.jpg",
                 "phone" => "082-242-5783"
@@ -71,7 +71,7 @@ class UserSeeder extends Seeder
                 "email" => "eu.eleifend@yahoo.ca",
                 "password" => "1234",
                 "student_id" => "6553334634",
-                "faculty" => "Environment,",
+                "faculty" => "Environment",
                 "college_year" => "2",
                 "image_url" => "user_images/user15.jpg",
                 "phone" => "082-440-2410"
@@ -81,7 +81,7 @@ class UserSeeder extends Seeder
                 "email" => "egestas@aol.net",
                 "password" => "1234",
                 "student_id" => "6356723012",
-                "faculty" => "Technology,",
+                "faculty" => "Technology",
                 "college_year" => "2",
                 "image_url" => "user_images/user04.jpg",
                 "phone" => "088-474-1694"
@@ -91,7 +91,7 @@ class UserSeeder extends Seeder
                 "email" => "lacus.aliquam.rutrum@icloud.net",
                 "password" => "1234",
                 "student_id" => "6316274835",
-                "faculty" => "Agriculture,",
+                "faculty" => "Agriculture",
                 "college_year" => "1",
                 "image_url" => "user_images/user05.jpg",
                 "phone" => "085-933-5332"
@@ -101,7 +101,7 @@ class UserSeeder extends Seeder
                 "email" => "euismod@hotmail.edu",
                 "password" => "1234",
                 "student_id" => "6375130041",
-                "faculty" => "Technology,",
+                "faculty" => "Technology",
                 "college_year" => "1",
                 "image_url" => "user_images/user06.jpg",
                 "phone" => "080-171-0121"
@@ -111,7 +111,7 @@ class UserSeeder extends Seeder
                 "email" => "lobortis.quam.a@icloud.ca",
                 "password" => "1234",
                 "student_id" => "6620505468",
-                "faculty" => "Faculty",
+                "faculty" => "Technology",
                 "college_year" => "2",
                 "image_url" => "user_images/user08.jpg",
                 "phone" => "089-327-9976"
@@ -151,7 +151,7 @@ class UserSeeder extends Seeder
                 "email" => "eu.placerat.eget@google.com",
                 "password" => "1234",
                 "student_id" => "6388512442",
-                "faculty" => "Environment,",
+                "faculty" => "Environment",
                 "college_year" => "1",
                 "image_url" => "user_images/user10.jpg",
                 "phone" => "087-729-7393"
@@ -161,7 +161,7 @@ class UserSeeder extends Seeder
                 "email" => "mauris.non@outlook.org",
                 "password" => "1234",
                 "student_id" => "6365545038",
-                "faculty" => "Humanities,",
+                "faculty" => "Humanities",
                 "college_year" => "2",
                 "image_url" => "user_images/user10.jpg",
                 "phone" => "085-332-8442"
@@ -171,7 +171,7 @@ class UserSeeder extends Seeder
                 "email" => "magna@hotmail.ca",
                 "password" => "1234",
                 "student_id" => "6491140939",
-                "faculty" => "Sciences,",
+                "faculty" => "Sciences",
                 "college_year" => "3",
                 "image_url" => "user_images/user14.jpg",
                 "phone" => "081-513-7768"
@@ -181,7 +181,7 @@ class UserSeeder extends Seeder
                 "email" => "suspendisse.sagittis@google.edu",
                 "password" => "1234",
                 "student_id" => "6618058977",
-                "faculty" => "Education,",
+                "faculty" => "Education",
                 "college_year" => "1",
                 "image_url" => "user_images/user15.jpg",
                 "phone" => "085-044-3934"
@@ -191,7 +191,7 @@ class UserSeeder extends Seeder
                 "email" => "id@google.couk",
                 "password" => "1234",
                 "student_id" => "6564857025",
-                "faculty" => "Education,",
+                "faculty" => "Education",
                 "college_year" => "2",
                 "image_url" => "user_images/user14.jpg",
                 "phone" => "086-255-4335"
@@ -201,7 +201,7 @@ class UserSeeder extends Seeder
                 "email" => "gravida.nunc@yahoo.net",
                 "password" => "1234",
                 "student_id" => "6543663120",
-                "faculty" => "Environment,",
+                "faculty" => "Environment",
                 "college_year" => "3",
                 "image_url" => "user_images/user20.jpg",
                 "phone" => "085-746-0162"
@@ -231,7 +231,7 @@ class UserSeeder extends Seeder
                 "email" => "hymenaeos.mauris.ut@outlook.net",
                 "password" => "1234",
                 "student_id" => "6464802350",
-                "faculty" => "of",
+                "faculty" => "Architecture",
                 "college_year" => "1",
                 "image_url" => "user_images/user08.jpg",
                 "phone" => "081-621-2026"
@@ -241,7 +241,7 @@ class UserSeeder extends Seeder
                 "email" => "odio.auctor@yahoo.ca",
                 "password" => "1234",
                 "student_id" => "6520561932",
-                "faculty" => "Architecture,",
+                "faculty" => "Architecture",
                 "college_year" => "3",
                 "image_url" => "user_images/user07.jpg",
                 "phone" => "089-137-3344"
@@ -251,7 +251,7 @@ class UserSeeder extends Seeder
                 "email" => "dictum.ultricies@hotmail.org",
                 "password" => "1234",
                 "student_id" => "6493199646",
-                "faculty" => "Humanities,",
+                "faculty" => "Humanities",
                 "college_year" => "2",
                 "image_url" => "user_images/user13.jpg",
                 "phone" => "086-341-2176"
@@ -261,7 +261,7 @@ class UserSeeder extends Seeder
                 "email" => "etiam.imperdiet@hotmail.net",
                 "password" => "1234",
                 "student_id" => "6558980064",
-                "faculty" => "Forestry,",
+                "faculty" => "Forestry",
                 "college_year" => "4",
                 "image_url" => "user_images/user02.jpg",
                 "phone" => "084-272-3932"

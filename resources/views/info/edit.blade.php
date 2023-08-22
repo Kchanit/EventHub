@@ -66,11 +66,10 @@
                 </div>
 
                 <!-- Student ID (Disabled) -->
-                    <x-input-label for="student_id" :value="__('Student ID')" />
-                    <x-text-input id="student_id" class="mt-1 w-full text-sm font-medium text-gray-800  dark:text-gray-200"
-                        type="text" name="student_id" value="{{ auth()->user()->student_id }}" disabled />
-                    <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
-                </div>
+                <x-input-label for="student_id" :value="__('Student ID')" />
+                <x-text-input id="student_id" class="mt-1 w-full text-sm font-medium text-gray-800  dark:text-gray-200"
+                    type="text" name="student_id" value="{{ auth()->user()->student_id }}" disabled />
+                <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
 
                 <!-- Faculty-->
                 <div class="mt-4">
@@ -146,9 +145,12 @@
                     <button type="submit"
                         class="block mt-5 mb-2 py-3 px-4 w-full justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
                         {{ __('Confirm') }}</button>
-
                 </div>
-                <!-- End Card -->
+
+
+
+            </div>
+            <!-- End Card -->
         </form>
     </div>
     <!-- End Card Section -->

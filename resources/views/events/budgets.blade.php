@@ -376,7 +376,7 @@
 
     {{-- Submit Budget Button --}}
     @if (count($expenses) > 0)
-        <div class="flex justify-center mt-5">
+        <div class="flex justify-center mt-2">
             @if ($event->budget_status == 'PENDING')
                 <button type="button" id="submit-budget-btn"
                     class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm text-center text-gray-500 transition bg-gray-200 border rounded-md shadow-lg cursor-not-allowed fonot-medium gap-x-3 lg:text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"

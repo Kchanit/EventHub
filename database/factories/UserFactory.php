@@ -22,7 +22,7 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '1234', // password
-            'student_id' => fake()->numberBetween(60, 66) . fake()->randomNumber(8),
+            'student_id' => fake()->numberBetween(60, 66) . fake()->randomNumber(7) . fake()->numberBetween(1, 9),
             'faculty' => rand(0, 1) ? 'Science' : 'Business',
             'college_year' => fake()->numberBetween(1, 4),
             'remember_token' => Str::random(10),

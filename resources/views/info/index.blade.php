@@ -62,11 +62,8 @@
                                             </p>
                                              <p
                                                 class="text-xl font-bold text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200">
-                                                Social Contact: 
-                                                <a class="text-xl font-underline text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200" 
-                                                href="{{ auth()->user()->social_contact}}">
-                                                link</a>
-                                                
+                                                Social Contact: {{ auth()->user()->social_contact}}
+                                               
                                             </p>
                                             <p
                                                 class="text-xl font-bold text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200">
