@@ -155,9 +155,32 @@
                                                     <a class="block" href="javascript:;"
                                                         data-hs-overlay="#hs-ai-invoice-modal">
                                                         <div class="px-6 py-3">
-                                                            <span class="block text-sm text-gray-800 dark:text-gray-200">
-                                                                {{ $task->status }}
-                                                            </span>
+
+                                                            @switch($task->status)
+                                                                @case('To do')
+                                                                    <span
+                                                                        class="inline-flex items-center gap-1.5 py-1 px-2 rounded-full text-xs font-medium bg-blue-200 text-blue-800">To
+                                                                        do</span>
+                                                                @break
+
+                                                                @case('Done')
+                                                                    <span
+                                                                        class="inline-flex items-center gap-1.5 py-1 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800">Done</span>
+                                                                @break
+
+                                                                @case('In Progress')
+                                                                    <span
+                                                                        class="inline-flex items-center gap-1.5 py-1 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">In
+                                                                        Progress</span>
+                                                                @break
+
+                                                                @case('Cancelled')
+                                                                    <span
+                                                                        class="inline-flex items-center gap-1.5 py-1 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800">Cancelled</span>
+                                                                @break
+
+                                                                @default
+                                                            @endswitch
                                                         </div>
                                                     </a>
                                                 </td>
@@ -166,11 +189,31 @@
                                                     <a class="block" href="javascript:;"
                                                         data-hs-overlay="#hs-ai-invoice-modal">
                                                         <div class="px-6 py-3">
-                                                            <div class="flex items-center gap-x-3">
-                                                                <span
-                                                                    class="block text-sm text-gray-800 dark:text-gray-200">
-                                                                    {{ $task->priority }}
-                                                                </span>
+                                                            <div class="flex items-center justify-center gap-x-3">
+                                                                @switch($task->priority)
+                                                                    @case('Low')
+                                                                        <span
+                                                                            class="inline-flex items-center gap-1.5 py-1 px-2 rounded-full text-xs font-medium bg-gray-200 text-gray-800">LOW</span>
+                                                                    @break
+
+                                                                    @case('Medium')
+                                                                        <span
+                                                                            class="inline-flex items-center gap-1.5 py-1 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">MEDIUM</span>
+                                                                    @break
+
+                                                                    @case('High')
+                                                                        <span
+                                                                            class="inline-flex items-center gap-1.5 py-1 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800">HIGH</span>
+                                                                    @break
+
+                                                                    @case('Urgent')
+                                                                        <span
+                                                                            class="inline-flex items-center gap-1.5 py-1 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800">URGENT</span>
+                                                                    @break
+
+                                                                    @default
+                                                                @endswitch
+
 
                                                             </div>
                                                         </div>
@@ -337,6 +380,7 @@
                                                                             <select id="priority2" name="priority"
                                                                                 class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded-lg border">
                                                                                 <option
+                                                                                    class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
                                                                                     @if ($task->priority === 'Low') selected @endif>
                                                                                     Low</option>
                                                                                 <option
