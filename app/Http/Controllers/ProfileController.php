@@ -35,8 +35,9 @@ class ProfileController extends Controller
             'name' => 'required',
         ]);
 
-        $user->image_url = $request->get('image_url');
+        $path = $request->file('image_url')->store('event_images', 'public');
         $user->name = $request->get('name');
+        $user->image_url = $path;
         $user->student_id = $request->get('student_id');
         $user->college_year = $request->get('college_year');
         $user->phone_number = $request->get('phone_number');
