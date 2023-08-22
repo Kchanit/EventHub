@@ -94,7 +94,7 @@
                     <select id="faculty"
                         class="block mt-1 w-full text-sm font-medium text-gray-800 dark:text-gray-200 border-gray-200 shadow-sm rounded-lg"
                         type="text" name="faculty" :value="old('faculty')" required autofocus autocomplete="faculty">
-                        <option selected>Select your faculty</option>
+                        <option value="" selected>Select your faculty</option>
                         <option>Faculty of Agriculture</option>
                         <option> Agro-Industry </option>
                         <option> Architecture</option>
@@ -117,7 +117,7 @@
                 <!-- college year-->
                 <div class="mt-4">
                     <x-input-label for="college_year" :value="__('College Year')" />
-                    <select id="college_year"
+                    <select value="" id="college_year"
                         class="block mt-1 w-full text-sm font-medium text-gray-800 dark:text-gray-200 border-gray-200 shadow-sm rounded-lg"
                         type="text" name="college_year" :value="old('college_year')" required autofocus
                         autocomplete="college_year">
