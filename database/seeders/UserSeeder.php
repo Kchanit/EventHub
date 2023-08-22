@@ -325,7 +325,7 @@ class UserSeeder extends Seeder
             $user->phone_number = $userData['phone'];
             $user->save();
         }
-       
+
         User::factory(100)->create();
     }
 }

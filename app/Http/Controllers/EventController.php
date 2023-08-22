@@ -69,7 +69,7 @@ class EventController extends Controller
 
     public function show(Event $event)
     {
-        
+
         return view('events.show', ['event' => $event]);
     }
 
@@ -181,7 +181,7 @@ class EventController extends Controller
 
     public function rejectBudget(Event $event)
     {
-        $this->authorize('changeEventBudgetStatus', [User::class, Event::class]);
+        // $this->authorize('changeEventBudgetStatus', [User::class, Event::class]);
         $event->budget_status = EventBudgetStatus::REJECTED;
         $event->save();
         return redirect()->back();
@@ -191,7 +191,7 @@ class EventController extends Controller
     {
         $this->authorize('member', $event);
         $request->validate([
-            'student_id' => 'required|regex:/^[0-9]+$/|min:10|max:10',
+            'student_id' => 'required|numeric|digits:10',
         ]);
         $student_id = $request->get('student_id');
         $user = User::where('student_id', $student_id)->first();

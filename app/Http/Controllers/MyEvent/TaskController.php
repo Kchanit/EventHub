@@ -33,14 +33,14 @@ class TaskController extends Controller
     public function store(Request $request, Event $event)
     {
 
-        // $request->validate([
-        //     'title' => 'required|min:4|max:255',
-        //     'brief' => 'required',
-        //     'assignee' => 'required|regex:/^[0-9]+$/|min:10|max:10',
-        //     'status' => 'required',
-        //     'priority' => 'required',
-        //     'date' => 'required',
-        // ]);
+        $request->validate([
+            'title' => 'required|min:4|max:255',
+            'brief' => 'required',
+            'assignee_id' => 'required|regex:/^[0-9]+$/|min:10|max:10',
+            'status' => 'required',
+            'priority' => 'required',
+            'date' => 'required',
+        ]);
 
         $task = new Task();
         $task->title = $request->get('title');
