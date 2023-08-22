@@ -36,11 +36,22 @@ class TaskController extends Controller
         $request->validate([
             'title' => 'required|min:4|max:255',
             'brief' => 'required',
-            'assignee_id' => 'required|regex:/^[0-9]+$/|min:10|max:10',
+            'assignee_id' => 'required|numeric|digits:10',
             'status' => 'required',
             'priority' => 'required',
             'date' => 'required',
         ]);
+
+        $student_id = $request->get('assignee_id');
+        $user = User::where('student_id', $student_id)->first();
+
+        if (!$user) {
+            return redirect()->route('events.tasks', ['event' => $event])->withErrors(['assignee_id' => 'User with this student ID does not exist.']);
+        }
+
+        if (!$user->isMember($event, $student_id)) {
+            return redirect()->route('events.tasks', ['event' => $event])->withErrors(['exist' => 'This user is not a staff in this event.']);
+        }
 
         $task = new Task();
         $task->title = $request->get('title');

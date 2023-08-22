@@ -628,6 +628,11 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                                @error('exist')
+                                    <div class=" text-red-500 text-sm" id="err_txt3">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
 
