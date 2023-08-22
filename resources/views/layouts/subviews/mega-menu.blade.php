@@ -8,11 +8,14 @@
 
         <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
             {{-- Search --}}
+            
+
+
             <form action="/search" method="GET" onsubmit="return false;">
                 @csrf
                 <div class="hidden sm:block">
                     <label for="icon" class="sr-only">Search</label>
-                    <div class="relative">
+                    <div class="@if(Request::url() != 'http://localhost/events') invisible @endif relative">
                         <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4">
                             <svg class="h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16"
                                 height="16" fill="currentColor" viewBox="0 0 16 16">
