@@ -35,13 +35,13 @@ class ProfileController extends Controller
             'name' => 'required',
         ]);
 
-        $user->image_url = $request->get('image_url');
+        $path = $request->file('image_url')->store('user_images', 'public');
+        $user->image_url = $path;
         $user->name = $request->get('name');
-        $user->student_id = $request->get('student_id');
+        // $user->student_id = $request->get('student_id');
         $user->college_year = $request->get('college_year');
+        $user->social_contact = $request->get('social_contact');
         $user->phone_number = $request->get('phone_number');
-        $user->facebook_url = $request->get('facebook_url');
-        $user->line_id = $request->get('line_id');
         $user->bio = $request->get('bio');
         $user->save();
         return redirect()->route('info.index');

@@ -63,7 +63,7 @@
                 <!-- Student ID (Disabled) -->
                     <x-input-label for="student_id" :value="__('Student ID')" />
                     <x-text-input id="student_id" class="mt-1 w-full text-sm font-medium text-gray-800  dark:text-gray-200"
-                        type="text" name="student_id" value="{{ auth()->user()->student_id }}" />
+                        type="text" name="student_id" value="{{ auth()->user()->student_id }}" disabled />
                     <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
                 </div>
 
@@ -126,23 +126,6 @@
                             class="mt-1 w-full text-sm font-medium text-gray-800  dark:text-gray-200" type="text"
                             name="social_contact" :value="old('social_contact')" autofocus autocomplete="social_contact" />
                         <x-input-error :messages="$errors->get('social_contact')" class="mt-2" />
-                    </div>
-
-                    <!-- FB Contacts -->
-                    <div class="mt-4">
-                        <x-input-label for="facebook_url" :value="__('Facebook URL (optional)')" />
-                        <x-text-input id="facebook_url"
-                            class="mt-1 w-full text-sm font-medium text-gray-800  dark:text-gray-200" type="text"
-                            name="facebook_url" :value="old('facebook_url')" autofocus autocomplete="facebook_url" />
-                        <x-input-error :messages="$errors->get('facebook_url')" class="mt-2" />
-                    </div>
-                    <!-- Line Contacts -->
-                    <div class="mt-4">
-                        <x-input-label for="line_id" :value="__('Line ID (optional)')" />
-                        <x-text-input id="line_id"
-                            class="mt-1 w-full text-sm font-medium text-gray-800  dark:text-gray-200" type="text"
-                            name="line_id" :value="old('line_id')" autofocus autocomplete="line_id" />
-                        <x-input-error :messages="$errors->get('line_id')" class="mt-2" />
                     </div>
 
                     <!-- Bio -->
