@@ -95,5 +95,7 @@ To get started with the project, follow these steps:
 
 ## Contributors
 
+-   Phawat Pongthawaradet 6410401124
 -   Chanitaphon Lohamongkol 6410406533
--
+-   Dujrawee Lhaoyookhong 6410406584
+-   Napatsorn Laopitakkul 6410406711
